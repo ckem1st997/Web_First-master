@@ -15,6 +15,8 @@ namespace Web_First.Data
             : base(options)
         {
         }
+        public virtual DbSet<all> all { get; set; }
+        public virtual DbSet<Size_SP> Size_SP { get; set; }
         public virtual DbSet<san_pham_sale> San_Pham_Sale{ get; set; }
         public virtual DbSet<san_pham_new> San_Pham_New { get; set; }
         public virtual DbSet<View_Image> View_Image { get; set; }
@@ -40,6 +42,8 @@ namespace Web_First.Data
         public virtual DbSet<Quan_Short> Quan_Short { get; set; }
         public virtual DbSet<Quan_Tay> Quan_Tay { get; set; }
         public virtual DbSet<That_Lung> That_Lung { get; set; }
+        public virtual DbSet<ThongSo_SP> ThongSo_SP { get; set; }
+        public DbSet<Web_First.Models.cart_clone> cart_clone { get; set; }
     }
 
 }

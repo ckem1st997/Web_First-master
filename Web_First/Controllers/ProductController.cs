@@ -7,14 +7,15 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using Web_First.Data;
 using Web_First.Models;
+using X.PagedList;
 
 namespace Web_First.Controllers
 {
     public class ProductController : Controller
     {
-        private readonly Web_FirstContext _context;
+        private readonly MvcSPContext _context;
 
-        public ProductController(Web_FirstContext context)
+        public ProductController(MvcSPContext context)
         {
             _context = context;
         }
@@ -39,6 +40,27 @@ namespace Web_First.Controllers
             {
                 return NotFound();
             }
+            // sale
+            var products = (from a in _context.San_Pham_Sale
+                            select a).Take(20);
+            ViewBag.SP_Sale = products.ToPagedList(1, 20);
+            // image
+
+            var img = from a in _context.ThongSo_SP
+                      where a.Id_SP == id
+                      select a;
+            ViewBag.Img_ts = img;
+            var img1 = from a in _context.all
+                       where a.Id_SP == id
+                       select a;
+            ViewBag.Img_ts1 = img1;
+            var size = from b in _context.Size_SP
+                       where b.Id_SP == id
+                       group b by b.Size into g
+                       select g.Key;
+            ViewBag.Img_ts2 = size;
+
+
 
             return View(san_Pham);
         }

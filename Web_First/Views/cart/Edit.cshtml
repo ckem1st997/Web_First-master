@@ -1,0 +1,62 @@
+﻿@model Web_First.Models.cart_clone
+
+@{
+    ViewData["Title"] = "Edit";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Edit</h1>
+
+<h4>cart_clone</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Edit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="stt" />
+            <div class="form-group">
+                <label asp-for="Id_SP" class="control-label"></label>
+                <input asp-for="Id_SP" class="form-control" />
+                <span asp-validation-for="Id_SP" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Name_SP" class="control-label"></label>
+                <input asp-for="Name_SP" class="form-control" />
+                <span asp-validation-for="Name_SP" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Price_SP" class="control-label"></label>
+                <input asp-for="Price_SP" class="form-control" />
+                <span asp-validation-for="Price_SP" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="sl" class="control-label"></label>
+                <input asp-for="sl" class="form-control" />
+                <span asp-validation-for="sl" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="image_sp" class="control-label"></label>
+                <input asp-for="image_sp" class="form-control" />
+                <span asp-validation-for="image_sp" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Size" class="control-label"></label>
+                <input asp-for="Size" class="form-control" />
+                <span asp-validation-for="Size" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Loai_SP" class="control-label"></label>
+                <input asp-for="Loai_SP" class="form-control" />
+                <span asp-validation-for="Loai_SP" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+

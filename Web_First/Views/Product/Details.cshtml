@@ -1,49 +1,476 @@
-﻿@model Web_First.Models.San_Pham
+﻿@using X.PagedList.Mvc.Core;
+@using X.PagedList;
+@using X.PagedList.Mvc.Bootstrap4;
+@model Web_First.Models.San_Pham
 
 @{
     ViewData["Title"] = "Details";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
+@section Scripts{
+    <script src="~/js/site.js"></script>
+    <link href="~/css/site.css" rel="stylesheet" />
+}
+<div id="product" class="productDetail-page productTemplate" data-style="style_01">
+    <input type="hidden" id="pdInfo" value="/products/quan-icon-denim-lung-thun">
+    <div class="container-fluid">
+        <div class="row breadcrumb-shop">
+            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 pd5  ">
+                <nav aria-label="breadcrumb">
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item"><a href="#">Home</a></li>
+                        <li class="breadcrumb-item"><a href="#">Danh mục</a></li>
+                        <li class="breadcrumb-item active" aria-current="page">@Model.Name_SP</li>
+                        <li class="breadcrumb-item active id_check_idsp" aria-current="page">@Model.Id_SP</li>
+                    </ol>
+                </nav>
+            </div>
+        </div>
+        <div class="row product-detail-wrapper">
+            <div class="col-md-12 col-sm-12 col-xs-12">
+                <div class="row product-detail-main pr_style_01">
+                    <div class="col-md-8 col-sm-12 col-xs-12">
+                        @*ảnh màn nhỏ*@
+                        <div class="visible-xs visible-sm">
+                            <div class="product-full-img ">
+                                @foreach (var item in ViewBag.Img_ts)
+                                {
+                                    <img class="product-image-feature" src="@item.Image_SP_Option" alt="@Model.Name_SP">
+                                    break;
+                                }
 
-<h1>Details</h1>
+                            </div>
+                            <div id="carousel" class="flexslider">
+                                <ul class="slides owl-carousel owl-theme owl-loaded owl-hidden">
+                                    <div class="owl-stage-outer">
+                                        <div class="owl-stage" style="width: 440px; transform: translate3d(-110px, 0px, 0px); transition: all 0s ease 0s;">
+                                            @foreach (var item in ViewBag.Img_ts)
+                                            {
+                                                <div class="owl-item">
+                                                    <li class="product-thumb ">
+                                                        <a href="#" data-image="@item.Image_SP_Option" data-zoom-image="@item.Image_SP_Option">
+                                                            <img src="@item.Image_SP_Option" data-image="@item.Image_SP_Option" alt="@Model.Name_SP">
+                                                        </a>
+                                                    </li>
+                                                </div>
+                                            }
 
-<div>
-    <h4>San_Pham</h4>
-    <hr />
-    <dl class="row">
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.Loai_SP_1)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.Loai_SP_1)
-        </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.Loai_SP_2)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.Loai_SP_2)
-        </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.Name_SP)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.Name_SP)
-        </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.Price_SP)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.Price_SP)
-        </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.Mo_Ta)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.Mo_Ta)
-        </dd>
-    </dl>
-</div>
-<div>
-    <a asp-action="Edit" asp-route-id="@Model.Id_SP">Edit</a> |
-    <a asp-action="Index">Back to List</a>
+                                            @foreach (var item in ViewBag.Img_ts1)
+                                            {
+                                                <div class="owl-item">
+                                                    <li class="product-thumb ">
+                                                        <a href="#" data-image="/@item.Image_SP" data-zoom-image="/@item.Image_SP">
+                                                            <img src="/@item.Image_SP" data-image="/@item.Image_SP" alt="@Model.Name_SP">
+                                                        </a>
+                                                    </li>
+                                                </div>
+                                            }
+
+
+                                        </div>
+                                    </div>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div class="product-gallery">
+                            @*ảnh nhỏ*@
+
+                            <div class="product-gallery__thumbs-container hidden-sm hidden-xs">
+                                <div class="product-gallery__thumbs thumb-fix">
+                                    @foreach (var item in ViewBag.Img_ts)
+                                    {
+                                        <div class="product-gallery__thumb active">
+                                            <a class="product-gallery__thumb-placeholder" href="javascript:void(0);" data-image="@item.Image_SP_Option" data-zoom-image="@item.Image_SP_Option">
+                                                <img alt="@Model.Name_SP" src="@item.Image_SP_Option" data-image="@item.Image_SP_Option">
+                                            </a>
+                                        </div>
+
+                                    }
+                                    @foreach (var item in ViewBag.Img_ts1)
+                                    {
+                                        <div class="product-gallery__thumb active">
+                                            <a class="product-gallery__thumb-placeholder" href="javascript:void(0);" data-image="/@item.Image_SP" data-zoom-image="@item.Image_SP">
+                                                <img alt=" Quần ICON DENIM lưng thun " src="/@item.Image_SP" data-image="/@item.Image_SP">
+                                            </a>
+                                        </div>
+
+                                    }
+
+                                </div>
+                            </div>
+                            @*ảnh to*@
+                            <div class="product-image-detail box__product-gallery scroll hidden-sm hidden-xs">
+                                <ul id="sliderproduct" class="site-box-content slide_product">
+                                    @foreach (var item in ViewBag.Img_ts)
+                                    {
+                                        <li class="product-gallery-item gallery-item current">
+                                            <img class="product-image-feature" src="@item.Image_SP_Option" alt="@Model.Name_SP">
+                                        </li>
+
+                                    }
+                                    @foreach (var item in ViewBag.Img_ts1)
+                                    {
+                                        <li class="product-gallery-item gallery-item current">
+                                            <img class="product-image-feature" src="/@item.Image_SP" alt="@Model.Name_SP">
+                                        </li>
+                                    }
+                                </ul>
+                                <div class="product-image__button">
+                                    <div id="product-zoom-in" class="product-zoom icon-pr-fix" aria-label="Zoom in" title="Zoom in">
+                                        <span class="zoom-in" aria-hidden="true">
+                                            <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 36 36" style="enable-background:new 0 0 36 36; width: 30px; height: 30px;" xml:space="preserve"><polyline points="6,14 9,11 14,16 16,14 11,9 14,6 6,6 "></polyline><polyline points="22,6 25,9 20,14 22,16 27,11 30,14 30,6 "></polyline><polyline points="30,22 27,25 22,20 20,22 25,27 22,30 30,30 "></polyline><polyline points="14,30 11,27 16,22 14,20 9,25 6,22 6,30 "></polyline> </svg>
+                                        </span>
+                                    </div>
+                                    <div class="gallery-index icon-pr-fix"><span class="current">1</span> / <span class="total">8</span></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    @*thông tin*@
+                    <div class="col-md-4 col-sm-12 col-xs-12 product-content-desc" id="detail-product">
+                        <div class="detail-product-list">
+                            <div class="product-title">
+                                <h1>@Model.Name_SP</h1>
+                                <span id="pro_sku"><strong>SKU: </strong><span class="sku-number">@Model.Id_SP</span></span>
+                            </div>
+                            <div class="product-price pdPrice" id="price-preview">
+                                <span class="pro-price">@Model.Price_SP₫</span>
+                            </div>
+                            <form id="add-item-form" action="/cart/add" method="post" class="variants clearfix">
+                                <div class="select clearfix">
+                                    <select id="product-select" name="id" style="display:none;">
+
+                                        <option data-title="Đen-0003 / 29" data-color="Đen-0003" value="1052289635">Đen-0003 / 29 - 380,000₫</option>
+
+                                        <option data-title="Đen-0003 / 30" data-color="Đen-0003" value="1052289636">Đen-0003 / 30 - 380,000₫</option>
+
+                                        <option data-title="Đen-0003 / 31" data-color="Đen-0003" value="1052289637">Đen-0003 / 31 - 380,000₫</option>
+
+                                        <option data-title="Đen-0003 / 32" data-color="Đen-0003" value="1052289638">Đen-0003 / 32 - 380,000₫</option>
+
+                                        <option data-title="Đen-0003 / 34" data-color="Đen-0003" value="1052289639">Đen-0003 / 34 - 380,000₫</option>
+
+                                        <option data-title="Caro nâu-0003 / 29" data-color="Caro nâu-0003" value="1052289640">Caro nâu-0003 / 29 - 380,000₫</option>
+
+                                        <option data-title="Caro nâu-0003 / 30" data-color="Caro nâu-0003" value="1052289641">Caro nâu-0003 / 30 - 380,000₫</option>
+
+                                        <option data-title="Caro nâu-0003 / 31" data-color="Caro nâu-0003" value="1052289642">Caro nâu-0003 / 31 - 380,000₫</option>
+
+                                        <option data-title="Caro nâu-0003 / 32" data-color="Caro nâu-0003" value="1052289643">Caro nâu-0003 / 32 - 380,000₫</option>
+
+                                        <option data-title="Caro nâu-0003 / 34" data-color="Caro nâu-0003" value="1052289644">Caro nâu-0003 / 34 - 380,000₫</option>
+
+                                    </select>
+                                </div>
+                                <div class="product-swatch-content clearfix">
+                                    <div class="select-swatch clearfix" data-option-size="2">
+
+                                        <div id="variant-swatch-0" class="swatch clearfix color swFirst" data-option="option1" data-option-index="0">
+                                            <div class="header">Màu sắc</div>
+                                            <div class="select-swap">
+                                                @foreach (var item in ViewBag.Img_ts)
+                                                {
+                                                    <div data-value="@item.Loai_SP" class="swatch-element color @item.Loai_SP">
+                                                        <input class="variant-0" id="swatch-0-@item.Loai_SP" type="radio" name="option1" value="@item.Loai_SP">
+
+
+                                                        <label class="lbSwatch @item.Loai_SP has-thumb" for="swatch-0-@item.Loai_SP" style="background: url(@item.Image_SP_Option) center left no-repeat ">
+                                                            <span>@item.Loai_SP</span>
+                                                            <img alt="sold-out" class="crossed-out" src="//theme.hstatic.net/1000253775/1000529442/14/soldout.png?v=187">
+                                                            <img alt="select-pro" class="img-check" src="//theme.hstatic.net/1000253775/1000529442/14/select-pro.png?v=187">
+                                                        </label>
+                                                    </div>
+                                                }
+
+                                            </div>
+                                        </div>
+                                        <div id="variant-swatch-1" class="swatch clearfix optionSwatch " data-option="option2" data-option-index="1">
+                                            <div class="header">SIZE</div>
+                                            <div class="select-swap">
+                                                @foreach (var item in ViewBag.Img_ts2)
+                                                {
+                                                    <div data-value="@item" class="swatch-element @item">
+                                                        <input class="variant-1" id="swatch-1-@item." type="radio" name="option2" value="@item">
+
+                                                        <label class="lbSwatch" for="swatch-1-@item">
+                                                            @item
+                                                            <img alt="sold-out" class="crossed-out" src="//theme.hstatic.net/1000253775/1000529442/14/soldout.png?v=187">
+                                                            <img alt="select-pro" class="img-check" src="//theme.hstatic.net/1000253775/1000529442/14/select-pro.png?v=187">
+                                                        </label>
+
+                                                    </div>
+                                                }
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="hdchonsize clearfix">
+                                        <svg aria-hidden="true" class="ruler-icon base">
+                                            <use xlink:href="#ruler-icon">
+                                                <svg id="ruler-icon" viewBox="0 0 17 8" width="100%" height="100%">
+                                                    <path fill="#FFF" d="M1 5h15v2H1z"></path>
+                                                    <path d="M17 4H0v4h17V4"></path>
+                                                    <path fill="#FFF" d="M.5 2.5h4v1h-4z">
+                                                    </path>
+                                                    <path d="M5 2H0v2h5V2"></path>
+                                                    <path fill="#FFF" d="M12.5 2.5h4v1h-4z"></path>
+                                                    <path d="M17 2h-5v2h5V2"></path>
+                                                    <path fill="#FFF" d="M6.5 2.5h4v1h-4z"></path>
+                                                    <path d="M11 2H6v2h5V2"></path>
+                                                    <path fill="#FFF" d="M15.5.5h1v1h-1z"></path>
+                                                    <path d="M17 0h-2v2h2V0"></path>
+                                                    <path fill="#FFF" d="M12.5.5h1v1h-1z"></path>
+                                                    <path d="M14 0h-2v2h2V0"></path>
+                                                    <path fill="#FFF" d="M9.5.5h1v1h-1z"></path>
+                                                    <path d="M11 0H9v2h2V0"></path>
+                                                    <path fill="#FFF" d="M6.5.5h1v1h-1z"></path>
+                                                    <path d="M8 0H6v2h2V0"></path>
+                                                    <g><path fill="#FFF" d="M3.5.5h1v1h-1z"></path><path d="M5 0H3v2h2V0"></path></g>
+                                                    <g><path fill="#FFF" d="M.5.5h1v1h-1z"></path><path d="M2 0H0v2h2V0"></path></g>
+                                                </svg>
+                                                <use xlink:href="#ruler-icon"></use>
+                                            </use>
+                                        </svg>
+                                        <a href="#sizeModal" data-toggle="modal">Hướng dẫn chọn size</a>
+                                    </div>
+                                </div>
+                                <input type="hidden" class="inputAddCart" value="1052289635">
+
+                                <div class="selector-actions">
+
+                                    <div class="quantity-area clearfix">
+                                        <input type="button" value="-" class="qty-btn minus">
+                                        <input type="text" id="quantity" name="quantity" value="1" min="1" class="quantity-selector">
+                                        <input type="button" value="+" class="qty-btn plus">
+                                    </div>
+
+                                    <div class="wrap-addcart clearfix">
+                                        <button type="button" id="add-to-cart" class="btnAddToCart  add-to-cartProduct button dark btn-addtocart addtocart-modal" name="add">
+                                            Đặt hàng
+                                        </button>
+                                        <button type="button" id="buy-now" class="active  add-to-cartProduct button dark btn-addtocart ">
+                                            <img class="availableIcon" src="//theme.hstatic.net/1000253775/1000529442/14/store.svg?v=187" alt="Available Store">
+                                            <span>Xem cửa hàng</span>
+                                        </button>
+                                    </div>
+                                </div>
+                                @*<div class="product-action-bottom visible-xs">
+                                        <div class="input-bottom">
+                                            <input id="quan-input" type="number" value="1" min="1">
+                                        </div>
+                                        <button type="button" id="add-to-cartbottom" class=" add-to-cartProduct add-cart-bottom button dark addtocart-modal" name="add">
+                                            Đặt hàng
+                                        </button>
+                                    </div>*@
+                            </form>
+                            <div class="product-description">
+                                <div class="title-bl">
+                                    <h2>Mô tả</h2>
+                                </div>
+                                <div class="description-content">
+                                    <div class="description-productdetail">
+                                        <p>
+                                            <span>Quần ICON phối sọc mẫu ss20 mới về&nbsp;</span>
+                                            <span>dòng này thì mix đồ cực chất &amp; trẻ trung.</span><br>
+                                            <span>Form slim, lưng thun rất tiện &amp; thoải mái.</span><br>
+                                            <span>Hàng chính hãng, full tem, tag...</span>
+                                        </p><p><span>+ Size 29 : lưng 68cm - đùi 44cm - ống 14cm - dài 92cm<br>+ Size 30: lưng 72cm - đùi 49cm - ống 15cm - dài 93cm<br>+ Size 31 : lưng 76cm - đùi 52cm - ống 15,5cm - dài 95cm<br>+ Size 32: lưng 80cm - đùi 54cm - ống 16cm - dài 96cm<br>+ Size 34: lưng 86cm - đùi 55cm - ống 16,5cm - dài 97cm</span></p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+
+                </div>
+
+                @*thông tin sau*@
+                <div class="info-des-product">
+                    <div class="policy clearfix">
+                        <div class="col-md-4 col-sm-4 col-xs-12">
+                            <div class="policy-item">
+                                <h4>CHÍNH SÁCH GIAO NHẬN - ĐỔI TRẢ HÀNG<span class="icon-open visible-xs"></span></h4>
+                                <div class="content">
+                                    - Free ship cho đơn hàng trên 500,000đ. <br>
+                                    - Mức phí: 20,000đ cho đơn hàng dưới 500,000đ<br>
+                                    - Được kiểm tra hàng trước khi nhận hàng<br>
+                                    - Đổi / Trả trong vòng 7 ngày kể từ khi nhận hàng<br>
+                                    - Không áp dụng đổi/trả sản phẩm trong CTKM<br>
+                                    - Miễn phí đổi trả nếu lỗi sai sót từ phía 160store.com<br>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4 col-sm-4 col-xs-12">
+                            <div class="policy-item">
+                                <h4>ƯU ĐÃI MEMBER <span class="icon-open visible-xs"></span></h4>
+                                <div class="content">
+                                    - Thành viên Silver được giảm 5% khi tích đủ 4 triệu<br>
+                                    - Thành viên VIP 1 được giảm 10% khi tích đủ 12 triệu<br>
+                                    - Thành viên VIP 2 được giảm 15% khi tích đủ 30 triệu<br>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4 col-sm-4 col-xs-12">
+                            <div class="policy-item">
+                                <h4>ĐỊA CHỈ CỬA HÀNG<span class="icon-open visible-xs"></span></h4>
+                                <div class="content">
+                                    ■ Hà Nội: số 2 ngõ 232 Tôn Đức Thắng, P.Hàng Bột, Q.Đống Đa, Hà Nội - 096.8722.160<br>
+                                    <br>
+                                    ■ Đà Nẵng: 144 Lý Tự Trọng, P.Thuận Phước, Q.Hải Châu, TP.Đà Nẵng<br>
+                                    <br>
+                                    ■ TP.Hồ Chí Minh:<br>
+                                    - 391/375 Trần Hưng Đạo, P.Cầu Kho, Q.1 - 0942.863.160<br>
+                                    - 111 Khuông Việt, P.Phú Trung, Q.Tân Phú - 0966.422.160<br>
+                                    - 297/3 Tô Hiến Thành, P.13, Q.10 - 093.8309.160<br>
+                                    - 401 Phan Xích Long, P.3, Q.Phú Nhuận - 096.1787.160<br>
+                                    - 94 Lê Văn Thọ, Q.Gò Vấp (gần chợ Hạnh Thông Tây)<br><br>
+                                    ■ Biên Hòa: 157 Phan Trung (đường 5 cũ), P.Tân Mai, TP.Biên Hòa. <br>
+                                    <br>
+                                    ■ Cần Thơ: 35 Trần Phú, Q.Ninh Kiều, TP.Cần Thơ. (gần Vincom Hùng Vương)<br><br>
+                                    Hotline: 028.7100.6789
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+                @*thông tin mua hàng*@
+                <div class="info-bellow-product box-icon col-md-12 col-xs-12">
+                    <div class="col-md-4 col-sm-4 col-xs-12">
+                        <div class="banner-footer-item">
+                            <img src="//theme.hstatic.net/1000253775/1000529442/14/info_img_1.png?v=187">
+                            <div class="banner-footer-item-info">
+                                <p class="banner-footer-item-title">FREE SHIP ĐƠN HÀNG TỪ 500.000Đ</p>
+                                <p class="banner-footer-item-des"></p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4 col-sm-4 col-xs-12">
+                        <div class="banner-footer-item">
+                            <img src="//theme.hstatic.net/1000253775/1000529442/14/info_img_2.png?v=187">
+                            <div class="banner-footer-item-info">
+                                <p class="banner-footer-item-title">ĐỔI TRẢ TRONG VÒNG 7 NGÀY</p>
+                                <p class="banner-footer-item-des"></p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4 col-sm-4 col-xs-12">
+                        <div class="banner-footer-item">
+                            <img src="//theme.hstatic.net/1000253775/1000529442/14/info_img_3.png?v=187">
+                            <div class="banner-footer-item-info">
+                                <p class="banner-footer-item-title">THANH TOÁN KHI NHẬN HÀNG</p>
+                                <p class="banner-footer-item-des"></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <h class="title-details">Có thể bạn thích</h>
+                @*sản phẩm thêm*@
+                <div class="collection-page">
+                    <div class="wrapper-collection-1">
+                        <div class="container-fluid">
+                            <div class="row">
+                                <div class="col-md-12 col-sm-12 col-xs-12">
+                                    <div class="row fitter">
+                                        <div class="clearfix content-product-list ">
+                                            @{
+                                                var id = new List<string>();
+                                            }
+                                            @foreach (var item in ViewBag.SP_Sale)
+                                            {
+                                                int ss_id(string a)
+                                                {
+                                                    int k = 0;
+                                                    foreach (var it in id)
+                                                    {
+                                                        if (it == a)
+                                                            k = 1;
+                                                    }
+
+                                                    return k;
+                                                }
+                                                if (ss_id(item.Id_SP) == 0)
+                                                {
+                                                    int h = 0;
+                                                    id.Add(item.Id_SP);
+                                                    <div class="col-md-3 col-sm-6 col-xs-6 pro-loop index-loop-mb animation-tran active">
+                                                        <div class="product-block product-resize site-animation fixheight" data-anmation="1" style="height: 308px;">
+                                                            <div class="product-img">
+                                                                <a href="/products/quan-jogger-s-dry" title="@item.Name_SP" class="image-resize" style="height: 234px;">
+                                                                    @foreach (var item1 in ViewBag.SP_Sale)
+                                                                    {
+
+                                                                        if (item.Image_SP.Length < 12)
+                                                                        {
+                                                                            <picture>
+                                                                                <source media="(max-width: 767px)" src="~/Img/sold_out11.png">
+                                                                                <source media="(min-width: 768px)" src="~/Img/sold_out11.png">
+                                                                                <img class="img-loop" alt=" QUẦN JOGGER S.DRY " src="~/Img/sold_out11.png">
+                                                                            </picture>
+                                                                            break;
+                                                                        }
+                                                                        else
+                                                                        {
+
+                                                                            if (@item.Id_SP == @item1.Id_SP)
+                                                                            {
+                                                                                h++;
+                                                                                <picture>
+                                                                                    <source media="(max-width: 767px)" srcset="/@item1.Image_SP">
+                                                                                    <source media="(min-width: 768px)" srcset="/@item1.Image_SP">
+                                                                                    <img class="img-loop" alt=" QUẦN JOGGER S.DRY " srcset="@item1.Image_SP">
+                                                                                </picture>
+                                                                            }
+                                                                            if (h == 2)
+                                                                            {
+                                                                                break;
+                                                                            }
+                                                                        }
+                                                                    }
+                                                                </a>
+                                                            </div>
+                                                            <div class="product-detail clearfix">
+                                                                <div class="box-pro-detail">
+                                                                    <h3 class="pro-name">
+                                                                        <a href="/products/quan-jogger-s-dry" title="@item.Name_SP">
+                                                                            @item.Name_SP
+                                                                        </a>
+                                                                    </h3>
+                                                                    <div class="box-pro-prices">
+                                                                        @{
+                                                                            if (item.Sale > 0)
+                                                                            {
+                                                                                //  int del = ;
+                                                                                <p class="pro-price highlight">
+                                                                                    <span class="giaban">@((item.Price_SP * (100 - item.Sale)) / 100)₫</span>
+                                                                                    <span class="pro-price-del"><del class="compare-price">@item.Price_SP₫</del></span>
+                                                                                </p>
+                                                                            }
+                                                                            else
+                                                                            {
+                                                                                <p class="pro-price ">
+                                                                                    <span class="giaban">@item.Price_SP₫</span>
+                                                                                    <span class="pro-price-del"></span>
+                                                                                </p>
+                                                                            }
+                                                                        }
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                }
+                                            }
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
 </div>

@@ -1,0 +1,66 @@
+﻿@model IEnumerable<Web_First.Models.ThongSo_SP>
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Id_SP)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Id_SP_Option)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Loai_SP)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Size)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.SL_co)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Ngay_ADD)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Id_SP)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Id_SP_Option)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Loai_SP)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Size)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.SL_co)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Ngay_ADD)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.Image_SP_Option">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.Image_SP_Option">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.Image_SP_Option">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
