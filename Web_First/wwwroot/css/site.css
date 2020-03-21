@@ -1,4 +1,4 @@
-/* Please see documentation at https://docs.microsoft.com/aspnet/core/client-side/bundling-and-minification
+﻿/* Please see documentation at https://docs.microsoft.com/aspnet/core/client-side/bundling-and-minification
 for details on configuring this project to bundle and minify static web assets. */
 @media only screen and (max-width: 768px) {
     #sidebar {
@@ -1891,6 +1891,7 @@ RESPONSIVE
     /* HEADER */
     .main-header {
         padding: 0 60px;
+        height: inherit;
     }
 
     #topbar {
@@ -1899,6 +1900,7 @@ RESPONSIVE
 
     .header-mid {
         padding: 20px 0 10px;
+        height: inherit;
     }
 
     .wrap-pd-infor .inf-content {
@@ -2838,11 +2840,11 @@ RESPONSIVE
     top: 12px;
     cursor: pointer;
 }
-
+    /*dấu + của fonware*/
     .policy .policy-item .icon-open:before {
         content: "\f067";
     }
-
+    /*dấu - của fonware*/
     .policy .policy-item .icon-open.active:before {
         content: "\f068";
     }
@@ -2852,6 +2854,7 @@ RESPONSIVE
     font-size: 15px;
     line-height: 1.4;
 }
+
 @media (max-width: 767px) {
     .rightColStore {
         width: 100%;
@@ -2869,6 +2872,7 @@ RESPONSIVE
             display: none;
         }
 }
+
 .policy .policy-item {
     border-top: 2px solid #b2b2b2;
 }
@@ -3472,8 +3476,9 @@ span.pro-quantity-view {
 
 /*details*/
 .breadcrumb-shop {
-    height:45px;
+    height: 45px;
 }
+
 .pd5 {
     height: 45px;
 }
@@ -3995,13 +4000,349 @@ svg.ruler-icon.base {
         margin-top: -4px;
         margin-right: 5px;
     }
+
 .title-details {
     margin-left: 50%;
     font-size: 25px;
 }
-.product-full-img 
-{
-    margin-bottom:10px;
+
+.product-full-img {
+    margin-bottom: 10px;
 }
 
+
+@media (max-width: 430px) {
+    .box-icon .banner-footer-item {
+        border: 0px black solid;
+        padding: 10px 10px 52px 10px;
+        margin-bottom: 45px;
+    }
+}
+@media screen and (max-width: 767px) {
+    button#add-to-cart, button#buy-now {
+        padding: 14px 10px;
+    }
+
+    .box-icon .banner-footer-item .banner-footer-item-info .banner-footer-item-title {
+        font-size: 11px;
+    }
+
+    .size-list .size-intro {
+        width: calc(100%/2 - 20px);
+        margin: 0 10px 20px;
+    }
+
+    .wrapper-home-information .homeStore {
+        padding: 100px 0;
+    }
+
+    .wrapper-home-information .contentHomeStore .textStore {
+        min-width: auto;
+        padding: 10px 20px;
+    }
+
+        .wrapper-home-information .contentHomeStore .textStore a {
+            font-size: 20px;
+        }
+}
+
+/*--------------------- Topbar ---------------------*/
+#topbar {
+    background: #f3f3f3;
+    font-size: 12px;
+}
+
+    #topbar p {
+        padding: 4px 0;
+        margin-bottom: 0;
+    }
+
+.main-header {
+    background: #fff;
+    -webkit-box-shadow: 0 0 3px rgba(0,0,0,0.08) inset;
+    box-shadow: 0 0 3px rgba(0,0,0,0.08) inset;
+    -webkit-transition: background 0.3s ease-in-out, -webkit-box-shadow 0.3s ease-in-out;
+    transition: background 0.3s ease-in-out, -webkit-box-shadow 0.3s ease-in-out;
+    transition: background 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+    transition: background 0.3s ease-in-out, box-shadow 0.3s ease-in-out, -webkit-box-shadow 0.3s ease-in-out;
+}
+
+.header-mid {
+    -webkit-justify-content: space-between;
+    -moz-justify-content: space-between;
+    justify-content: space-between;
+}
+
+.main-header .wrap-logo a {
+    font-size: 32px;
+    font-weight: bold;
+    color: #9e874c
+}
+
+.header-wrap-icon {
+    text-align: right;
+}
+
+    .header-wrap-icon > span {
+        display: inline-block;
+        margin: 8px 5px 0;
+        position: relative;
+        transition: opacity 150ms linear;
+    }
+
+.icon-search {
+    vertical-align: -1px;
+    -ms-transform: rotate(0);
+    -webkit-transform: rotate(0);
+    transform: rotate(0);
+}
+
+    .icon-search:hover {
+        -ms-transform: rotate(-5deg);
+        -webkit-transform: rotate(-5deg);
+        transform: rotate(-5deg);
+    }
+
+.cart-menu .count-holder {
+    position: absolute;
+    top: 8px;
+    left: 0;
+    right: 0;
+    text-align: center;
+    font-size: 13px;
+    line-height: 1;
+    font-weight: bold;
+    height: 17px;
+    overflow: hidden;
+}
+
+.cart-menu .count {
+    transition: top 150ms linear;
+    position: relative;
+    top: 0px;
+    animation-duration: 300ms;
+}
+
+.icon-cart .count {
+    animation-name: scroll-in
+}
+
+.icon-cart:hover .cart-menu .count {
+    animation-name: scroll-out
+}
+
+.icon-cart svg, .icon-search svg, .icon-account svg {
+    fill: #252a2b;
+    width: 24px;
+    height: 24px;
+}
+
+.icon-account {
+    vertical-align: -1px;
+    -ms-transform: rotate(0);
+    -webkit-transform: rotate(0);
+    transform: rotate(0);
+}
+
+@keyframes scroll-in {
+    0% {
+        top: 2px
+    }
+
+    49% {
+        top: -14px
+    }
+
+    50% {
+        top: 19px
+    }
+
+    100% {
+        top: 2px
+    }
+}
+
+@keyframes scroll-out {
+    0% {
+        top: 2px
+    }
+
+    49% {
+        top: 19px
+    }
+
+    50% {
+        top: -14px
+    }
+
+    100% {
+        top: 2px
+    }
+}
+
+.hamburger-menu {
+    width: 27px;
+    height: 19px;
+    cursor: pointer;
+    display: block;
+    transition: all 150ms linear;
+}
+
+    .hamburger-menu .bar, .hamburger-menu .bar:after, .hamburger-menu .bar:before {
+        width: 27px;
+        height: 3px;
+    }
+
+        .hamburger-menu .bar:before {
+            content: "";
+            position: absolute;
+            right: 0;
+            bottom: 7px;
+            background: #252a2b;
+            -ms-transition: bottom 300ms 100ms cubic-bezier(0.23, 1, 0.32, 1),transform 300ms cubic-bezier(0.23, 1, 0.32, 1),width 150ms linear,background 150ms linear;
+            -webkit-transition: bottom 300ms 100ms cubic-bezier(0.23, 1, 0.32, 1),transform 300ms cubic-bezier(0.23, 1, 0.32, 1),width 150ms linear,background 150ms linear;
+            transition: bottom 300ms 100ms cubic-bezier(0.23, 1, 0.32, 1),transform 300ms cubic-bezier(0.23, 1, 0.32, 1),width 150ms linear,background 150ms linear;
+        }
+
+        .hamburger-menu .bar:after {
+            content: "";
+            position: absolute;
+            right: 0;
+            top: 7px;
+            background: #252a2b;
+            -ms-transition: top 300ms 100ms cubic-bezier(0.23, 1, 0.32, 1),transform 300ms cubic-bezier(0.23, 1, 0.32, 1),width 150ms linear,background 150ms linear;
+            -webkit-transition: top 300ms 100ms cubic-bezier(0.23, 1, 0.32, 1),transform 300ms cubic-bezier(0.23, 1, 0.32, 1),width 150ms linear,background 150ms linear;
+            transition: top 300ms 100ms cubic-bezier(0.23, 1, 0.32, 1),transform 300ms cubic-bezier(0.23, 1, 0.32, 1),width 150ms linear,background 150ms linear;
+        }
+
+    .hamburger-menu .bar {
+        position: relative;
+        background: #252a2b;
+        display: block;
+        -ms-transition: all 0ms 100ms, width 150ms linear;
+        -webkit-transition: all 0ms 100ms, width 150ms linear;
+        transition: all 0ms 100ms, width 150ms linear;
+        -ms-transform: translateY(7px);
+        -webkit-transform: translateY(7px);
+        transform: translateY(7px);
+    }
+
+    .hamburger-menu:not(.active):hover .bar {
+        width: 31px;
+    }
+
+        .hamburger-menu:not(.active):hover .bar:before {
+            width: 17px;
+        }
+
+        .hamburger-menu:not(.active):hover .bar:after {
+            width: 20px;
+        }
+
+@media screen and (min-width: 1024px) {
+    .header-mid {
+        -webkit-justify-content: center;
+        -moz-justify-content: center;
+        justify-content: center;
+    }
+
+    header .header-mid > div:not(.wrap-logo) {
+        -webkit-box-flex: 1;
+        -ms-flex: 1 0 0px;
+        flex: 1 0 0;
+    }
+}
+
+.main-header.affix-mobile {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 999;
+    -webkit-box-shadow: 0 0 10px rgba(0,0,0,0.2);
+    -moz-box-shadow: 0 0 10px rgba(0,0,0,0.2);
+    box-shadow: 0 0 10px rgba(0,0,0,0.2);
+    background: #fff;
+    -webkit-animation: fadeInDown 0.6s both;
+    animation: fadeInDown 0.6s both;
+}
+
+    .main-header.affix-mobile .header-mid {
+        padding: 10px 0;
+    }
+
+    .main-header.affix-mobile .wrap-logo,
+    .main-header.affix-mobile .col-header-mid {
+        display: none !important;
+    }
+
+    .main-header.affix-mobile .header-mid {
+        padding: 0;
+        position: absolute;
+        right: 60px;
+        z-index: 9;
+    }
+
+.main-header .wrap-logp-mb {
+    visibility: hidden;
+    opacity: 0;
+    position: absolute;
+    top: 5px;
+    left: 0;
+}
+
+    .main-header .wrap-logp-mb .logoimg {
+        height: 30px;
+    }
+
+.main-header.affix-mobile .wrap-logp-mb {
+    visibility: visible;
+    opacity: 1;
+    display: block !important;
+}
+
+    .main-header.affix-mobile .wrap-logp-mb a {
+        font-size: 24px;
+    }
+
+.search-bar-mobile {
+    display: none;
+    padding: 5px;
+    position: relative;
+}
+
+    .search-bar-mobile form.searchform input.searchinput {
+        height: 30px;
+        font-size: 12px;
+    }
+
+    .search-bar-mobile form.searchform .btn-search {
+        top: 5px;
+        right: 5px;
+        height: 35px;
+        line-height: 35px;
+    }
+
+        .search-bar-mobile form.searchform .btn-search svg {
+            width: 15px;
+            height: 15px;
+        }
+
+    .search-bar-mobile .smart-search-wrapper {
+        position: absolute;
+        width: initial;
+        background: #fff;
+        z-index: 100;
+        right: 5px;
+        left: 5px;
+        padding: 0 5px;
+        box-shadow: 0px 0px 10px rgba(0,0,0,0.08);
+    }
+.wrap-logo a img {
+    height: 100%;
+}
+
+.wrap-logo {
+    height: inherit;
+}
 
