@@ -148,10 +148,19 @@ $(document).ready(function () {
         $(this).parent().addClass('checked');
         $(".product-image-feature").attr("src", $(this).attr("data-image"));
     });
-    $(".policy-item h4").click(function () {
+    //  $(".policy-item h4").children()
+    $(".policy-item h4").off("click").click(function () {
+        // thêm và xóa 1 class luân phiên nhau
+        //if (!$(this).find(".icon-open").hasClass("active"))
+        //    $(this).find(".icon-open").addClass("active");
+        //else
+        //    $(this).find(".icon-open").removeClass("active");
         $(this).find(".icon-open").toggleClass("active");
         $(this).next().slideToggle();
+
+        // $(this).parent().toggleClass("active");
     });
+
 });
 
 //$("#variant-swatch-0 .select-swap .swatch-element.checked .lbSwatch").css("background-image").replace('url("', '').replace('")','')

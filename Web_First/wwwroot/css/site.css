@@ -2852,7 +2852,23 @@ RESPONSIVE
     font-size: 15px;
     line-height: 1.4;
 }
+@media (max-width: 767px) {
+    .rightColStore {
+        width: 100%;
+    }
 
+    .info-des-product {
+        margin: 0 -15px 30px -15px;
+    }
+
+    .policy .policy-item {
+        padding-bottom: 15px;
+    }
+
+        .policy .policy-item .content {
+            display: none;
+        }
+}
 .policy .policy-item {
     border-top: 2px solid #b2b2b2;
 }
