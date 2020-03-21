@@ -451,9 +451,6 @@ function check_size_null(i, s) {
 }
 
 
-
-
-
 $(document).ready(function () {
     $('.owl-carousel').owlCarousel({
         loop: true,
