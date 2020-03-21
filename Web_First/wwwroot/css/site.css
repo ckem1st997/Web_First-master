@@ -1888,26 +1888,7 @@ RESPONSIVE
             -webkit-transform: translate3d(0, 0, 0);
             transform: translate3d(0, 0, 0);
         }
-    /* HEADER */
-    .main-header {
-        padding: 0 60px;
-        height: inherit;
-    }
-
-    #topbar {
-        padding: 0 50px;
-    }
-
-    .header-mid {
-        padding: 20px 0 10px;
-        height: inherit;
-    }
-
-    .wrap-pd-infor .inf-content {
-        padding: 130px 20px;
-        max-width: 80%;
-        margin: auto;
-    }
+   
     /**** COLLECTION ****/
     .sidebar-fix {
         position: -webkit-sticky;
@@ -4343,6 +4324,26 @@ svg.ruler-icon.base {
 }
 
 .wrap-logo {
+    height: 80%;
+}
+
+/* HEADER */
+.main-header {
+    padding: 0 20px;
     height: inherit;
 }
 
+#topbar {
+    padding: 0 50px;
+}
+
+.header-mid {
+    padding: 20px 0 10px;
+    height: inherit;
+}
+
+.wrap-pd-infor .inf-content {
+    padding: 130px 20px;
+    max-width: 80%;
+    margin: auto;
+}
