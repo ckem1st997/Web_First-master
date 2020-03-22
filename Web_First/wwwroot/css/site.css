@@ -360,7 +360,7 @@ body {
         font-size: 14px;
         width: 10rem;
         position: absolute;
-        top: 2.43rem;
+        top: 3.43rem;
         left: 1.5rem;
         padding-left: 0;
         list-style: none;
@@ -374,8 +374,8 @@ body {
         font-size: 14px;
         width: 10rem;
         position: absolute;
-        top: 2.43rem;
-        left: 0.4rem;
+        top: 3rem;
+        left: -0.4rem;
         padding-left: 0;
         list-style: none;
         border-top: 2px solid transparent;
