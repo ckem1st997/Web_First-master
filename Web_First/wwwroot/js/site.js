@@ -164,7 +164,14 @@ $(document).ready(function () {
         $(this).find(".icon-open").toggleClass("active");
         $(this).next().slideToggle();
 
-        // 
+        // icon-subnav
+    });
+    $(".icon-subnav").click(function () {
+        // thêm và xóa 1 class luân phiên nhau
+        $(this).parent().toggleClass("active");
+        $(this).next().slideToggle();
+
+        // icon-subnav
     });
 
 });
