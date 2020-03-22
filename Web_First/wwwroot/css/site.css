@@ -1749,7 +1749,7 @@ div {
 .main-body.sidebar-move {
     right: 480px;
 }
-
+/*di chuyển theo trục x*/
 .site-nav.style--sidebar.active {
     -ms-transform: translateX(0);
     -webkit-transform: translateX(0);
@@ -1985,6 +1985,8 @@ RESPONSIVE
     #site-menu-handle {
         padding-right: 80px;
         display: inline-block !important;
+        position: relative;
+        top: 10px;
     }
 
     span#site-menu-handle:after {
@@ -4347,3 +4349,88 @@ svg.ruler-icon.base {
     max-width: 80%;
     margin: auto;
 }
+
+.site-nav.style--sidebar.active {
+    -ms-transform: translateX(0);
+    -webkit-transform: translateX(0);
+    transform: translateX(0);
+}
+/* ---------------------  menu  --------------------- */
+.menu-collection {
+    margin-bottom: 50px;
+}
+
+    .menu-collection li.navi1 {
+        margin-bottom: 5px
+    }
+
+        .menu-collection li.navi1 span.icon-subnav {
+            text-align: center;
+            width: 40px;
+            cursor: pointer;
+            font-size: 25px;
+            display: inline-block;
+            vertical-align: middle;
+            transition: 1s cubic-bezier(0.175, 0.885, 0.32, 1.275) all;
+        }
+
+    .menu-collection ul.submenu {
+        display: none;
+    }
+
+    .menu-collection li a {
+        display: inline-block;
+        width: calc(100% - 45px);
+        vertical-align: middle;
+    }
+
+    .menu-collection li.navi1 > a {
+        font-weight: 600;
+        font-size: 18px;
+    }
+
+    .menu-collection ul.subnav-children li.navi2 > a {
+        padding: 8px 0px 8px 25px;
+        font-size: 16px;
+        font-weight: 600;
+    }
+
+    .menu-collection ul.subnav-children ul.subnav-child li a {
+        padding: 8px 0px 8px 45px;
+    }
+
+    .menu-collection li.active > span.icon-subnav {
+        color: #fae332;
+        transform: rotate(180deg);
+        -webkit-transform: rotate(180deg);
+        -moz-transform: rotate(180deg);
+        -ms-transform: rotate(180deg);
+        -o-transform: rotate(180deg);
+    }
+
+.menu-about li {
+    margin-bottom: 12px;
+}
+
+    .menu-about li a {
+        font-weight: 500;
+        font-size: 15px;
+    }
+
+    .menu-about li.login {
+        margin-top: 50px;
+    }
+
+.to-bottom-content {
+    position: absolute;
+    bottom: 60px;
+    left: 70px;
+}
+
+    .to-bottom-content .site-copyright p {
+        font-size: 12px;
+        opacity: .66;
+        margin: 0;
+    }
+
+

@@ -114,6 +114,12 @@ $(document).ready(function () {
         $('#site-overlay').removeClass("active");
         $('#site-nav--mobile').removeClass("active");
     });
+
+    $(".hamburger-menu").click(function () {
+        $('#site-nav--mobile').addClass("active");
+        $('#site-nav--mobile').removeClass("show-cart");
+        $('#site-overlay').addClass("active");
+    });
 });
 // click chuyển ảnh
 $(".product-gallery__thumb img").click(function () {
@@ -148,7 +154,7 @@ $(document).ready(function () {
         $(this).parent().addClass('checked');
         $(".product-image-feature").attr("src", $(this).attr("data-image"));
     });
-    //  $(".policy-item h4").children()
+    //  hamburger-menu
     $(".policy-item h4").off("click").click(function () {
         // thêm và xóa 1 class luân phiên nhau
         //if (!$(this).find(".icon-open").hasClass("active"))

@@ -218,7 +218,7 @@
                         </a>
                     </span>
                     <span id="site-cart-handle" class="icon-cart" aria-label="Open cart" title="Giỏ hàng">
-                        <a href="/cart">
+                        <a>
                             <span class="cart-menu" aria-hidden="true">
                                 <svg version="1.1" class="svg-cart" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 24 27" style="enable-background:new 0 0 24 27;" xml:space="preserve">
                                 <g>
@@ -236,248 +236,207 @@
                 </div>
             </div>
         </div>
-       
+
     </header>
     <main role="main" class="pb-3 body_SP">
         @RenderBody()
     </main>
     <div id="site-nav--mobile" class="site-nav style--sidebar show-cart">
-        @*<div id="site-navigation" class="site-nav-container">
-                <div class="site-nav-container-last">
-                    <p class="title">Menu</p>
-                    <div class="main-navbar">
-                        <nav class="primary-menu">
-                            <ul class="menu-collection">
+        <div id="site-navigation" class="site-nav-container">
+            <div class="site-nav-container-last">
+                <p class="title">Menu</p>
+                <div class="main-navbar">
+                    <nav class="primary-menu">
+                        <ul class="menu-collection">
 
 
-                                <li class="navi1 has-sub level0">
-                                    <a href="/collections/san-pham-moi">Sản phẩm</a>
-                                    <span class="icon-subnav"><i class="fa fa-angle-down"></i></span>
-                                    <ul class=" submenu subnav-children">
+                            <li class="navi1"><a href="/"><span>TRANG CHỦ</span></a></li>
 
 
-                                        <li class="navi2 has-sub level1">
-                                            <a href="/collections/ao">Áo</a>
-                                            <span class="icon-subnav"><i class="fa fa-angle-down"></i></span>
-                                            <ul class="submenu subnav-child">
 
-                                                <li class=""><a href="/collections/ao-somi">Áo sơmi</a></li>
+                            <li class="navi1 has-sub level0">
+                                <a href="/collections/all">SẢN PHẨM</a>
+                                <span class="icon-subnav"><i class="fa fa-angle-down"></i></span>
+                                <ul class=" submenu subnav-children">
 
-                                                <li class=""><a href="/collections/ao-thun">Áo thun</a></li>
 
-                                                <li class=""><a href="/collections/ao-polos">Áo polo</a></li>
+                                    <li class="navi2 has-sub level1">
+                                        <a href="/collections/all">SALE</a>
+                                        <span class="icon-subnav"><i class="fa fa-angle-down"></i></span>
+                                        <ul class="submenu subnav-child">
 
-                                                <li class=""><a href="/collections/tank-top">Tank top</a></li>
+                                            <li class=""><a href="/collections/san-pham-moi">SẢN PHẨM MỚI</a></li>
 
-                                                <li class=""><a href="/collections/ao-len-sweater">Áo len</a></li>
+                                            <li class=""><a href="/collections/san-pham-ban-chay">SẢN PHẨM BÁN CHẠY</a></li>
 
-                                                <li class=""><a href="/collections/ao-ni-sweatshirt">Áo nỉ - Sweatshirt</a></li>
+                                            <li class=""><a href="/collections/hang-sale-149k">SALE 99k 149k 199k 249k</a></li>
 
-                                                <li class=""><a href="/collections/ao-khoac">Áo khoác</a></li>
+                                            <li class=""><a href="/collections/sale-off">ÁO THUN SALE 99K</a></li>
 
-                                                <li class=""><a href="/collections/hoodie">Hoodie</a></li>
+                                        </ul>
+                                    </li>
 
-                                                <li class=""><a href="/collections/ao-vest">Áo vest</a></li>
 
-                                            </ul>
-                                        </li>
 
+                                    <li class="navi2 has-sub level1">
+                                        <a href="/collections/all">ÁO</a>
+                                        <span class="icon-subnav"><i class="fa fa-angle-down"></i></span>
+                                        <ul class="submenu subnav-child">
 
+                                            <li class=""><a href="/collections/ao-khoac">ÁO KHOÁC</a></li>
 
-                                        <li class="navi2 has-sub level1">
-                                            <a href="/collections/quan">Quần</a>
-                                            <span class="icon-subnav"><i class="fa fa-angle-down"></i></span>
-                                            <ul class="submenu subnav-child">
+                                            <li class=""><a href="/collections/ao-polo">ÁO SƠ MI</a></li>
 
-                                                <li class=""><a href="/collections/quan-jeans">Quần jean</a></li>
+                                            <li class=""><a href="/collections/ao-thun">ÁO THUN</a></li>
 
-                                                <li class=""><a href="/collections/quan-joggers">Quần jogger - quần dài</a></li>
+                                            <li class=""><a href="/collections/ao-polo-1">ÁO POLO</a></li>
 
-                                                <li class=""><a href="/collections/quan-tay">Quần tây</a></li>
+                                            <li class=""><a href="/collections/ao-len">ÁO LEN</a></li>
 
-                                                <li class=""><a href="/collections/quan-short">Quần short</a></li>
+                                            <li class=""><a href="/collections/ao-ni">ÁO NỈ</a></li>
 
-                                                <li class=""><a href="/collections/quan-kaki">Quần kaki</a></li>
+                                            <li class=""><a href="/collections/hoodie">HOODIES</a></li>
 
-                                            </ul>
-                                        </li>
+                                        </ul>
+                                    </li>
 
 
 
-                                        <li class="navi2"><a href="/collections/balo-tui-xach">Balo - Túi xách</a></li>
+                                    <li class="navi2 has-sub level1">
+                                        <a href="/collections/all">QUẦN</a>
+                                        <span class="icon-subnav"><i class="fa fa-angle-down"></i></span>
+                                        <ul class="submenu subnav-child">
 
+                                            <li class=""><a href="/collections/quan-jean">QUẦN JEAN</a></li>
 
+                                            <li class=""><a href="/collections/quan-kaki">QUẦN KAKI</a></li>
 
-                                        <li class="navi2 has-sub level1">
-                                            <a href="/collections/giay-dep">Giày - dép</a>
-                                            <span class="icon-subnav"><i class="fa fa-angle-down"></i></span>
-                                            <ul class="submenu subnav-child">
+                                            <li class=""><a href="/collections/quan-tay">QUẦN TÂY</a></li>
 
-                                                <li class=""><a href="/collections/giay-dep">Giày - Dép</a></li>
+                                            <li class=""><a href="/collections/quan-dui">SHORT</a></li>
 
-                                                <li class=""><a href="/collections/jibbitz">Jibbitz</a></li>
+                                            <li class=""><a href="/collections/joggers">JOGGERS</a></li>
 
-                                            </ul>
-                                        </li>
+                                            <li class=""><a href="/collections/short-thun">SHORT NỈ, THUN</a></li>
 
+                                        </ul>
+                                    </li>
 
 
-                                        <li class="navi2 has-sub level1">
-                                            <a href="/collections/all">Phụ kiện khác</a>
-                                            <span class="icon-subnav"><i class="fa fa-angle-down"></i></span>
-                                            <ul class="submenu subnav-child">
 
-                                                <li class=""><a href="/collections/underwear">Underwear</a></li>
+                                    <li class="navi2 has-sub level1">
+                                        <a href="/collections/all">PHỤ KIỆN</a>
+                                        <span class="icon-subnav"><i class="fa fa-angle-down"></i></span>
+                                        <ul class="submenu subnav-child">
 
-                                                <li class=""><a href="/collections/non">Nón</a></li>
+                                            <li class=""><a href="/collections/underwear-phu-kien">UNDERWEAR - PHỤ KIỆN</a></li>
 
-                                                <li class=""><a href="/collections/vo">Vớ</a></li>
+                                            <li class=""><a href="/collections/giay-dep">GIÀY - DÉP</a></li>
 
-                                                <li class=""><a href="/collections/that-lung">Thắt lưng</a></li>
+                                            <li class=""><a href="/collections/non-vo-underwear-phu-kien">NÓN - VỚ</a></li>
 
-                                                <li class=""><a href="/collections/ong-tay">Ống tay</a></li>
+                                            <li class=""><a href="/collections/ba-lo">BA LÔ</a></li>
 
-                                                <li class=""><a href="/collections/mat-kinh">Mắt kính</a></li>
+                                            <li class=""><a href="/collections/tui">TÚI</a></li>
 
-                                                <li class=""><a href="/collections/binh-giu-nhiet">Bình nước</a></li>
+                                        </ul>
+                                    </li>
 
-                                                <li class=""><a href="/collections/vi">Ví</a></li>
 
-                                                <li class=""><a href="/collections/du">Dù</a></li>
+                                </ul>
+                            </li>
 
-                                                <li class=""><a href="/collections/ao-mua">Áo mưa</a></li>
 
-                                                <li class=""><a href="/collections/khau-trang">Khẩu trang</a></li>
 
-                                                <li class=""><a href="/collections/moc-khoa">Móc khóa</a></li>
+                            <li class="navi1 has-sub level0">
+                                <a href="/pages/about-us">HƯỚNG DẪN</a>
+                                <span class="icon-subnav"><i class="fa fa-angle-down"></i></span>
+                                <ul class=" submenu subnav-children">
 
-                                                <li class=""><a href="/collections/vong-tay-rastaclat">Vòng tay - Rastaclat</a></li>
 
-                                                <li class=""><a href="/collections/khac">Khác</a></li>
+                                    <li class="navi2"><a href="/">HƯỚNG DẪN MUA HÀNG ONLINE</a></li>
 
-                                            </ul>
-                                        </li>
 
 
+                                    <li class="navi2"><a href="/blogs/huong-dan-chon-size">HƯỚNG DẪN CHỌN SIZE</a></li>
 
-                                        <li class="navi2"><a href="/collections/tracksuit">Set áo quần</a></li>
 
 
+                                    <li class="navi2"><a href="/blogs/huong-dan-su-dung-ma-trung-thuong">HƯỚNG DẪN SỬ DỤNG MÃ TRÚNG THƯỞNG</a></li>
 
-                                        <li class="navi2"><a href="/collections/sale">Sale off 50%</a></li>
 
+                                </ul>
+                            </li>
 
 
-                                        <li class="navi2"><a href="/collections/icon-denim">ICON DENIM</a></li>
 
+                            <li class="navi1"><a href="/pages/he-thong-cua-hang"><span>ĐỊA CHỈ CỬA HÀNG</span></a></li>
 
 
-                                        <li class="navi2"><a href="/collections/set-ao-vest">Set áo vest</a></li>
+                        </ul>
+                        <ul class="menu-about">
 
+                            <li><a href="/search"><span>Tìm kiếm</span></a></li>
 
-                                    </ul>
-                                </li>
+                            <li><a href="/pages/about-us"><span>Giới thiệu</span></a></li>
 
+                            <li><a href="/pages/chinh-sach-doi-tra"><span>Chính sách đổi trả</span></a></li>
 
+                            <li><a href="/pages/chinh-sach-bao-mat"><span>Chính sách bảo mật</span></a></li>
 
-                                <li class="navi1"><a href="/collections/san-pham-moi"><span>New Arrivals</span></a></li>
+                            <li><a href="/pages/dieu-khoan-dich-vu"><span>Điều khoản dịch vụ</span></a></li>
 
 
 
-                                <li class="navi1 has-sub level0">
-                                    <a href="/pages/lien-he">Địa chỉ cửa hàng</a>
-                                    <span class="icon-subnav"><i class="fa fa-angle-down"></i></span>
-                                    <ul class=" submenu subnav-children">
 
+                            <li class="login">
+                                <a href="/account/login">
+                                    <span>
+                                        <svg class="svg-account" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="510px" height="510px" viewBox="0 0 510 510" style="enable-background:new 0 0 510 510;" xml:space="preserve">
+                                        <g><g id="account-circle">
+                                        <path d="M255,0C114.75,0,0,114.75,0,255s114.75,255,255,255s255-114.75,255-255S395.25,0,255,0z M255,76.5
+													 c43.35,0,76.5,33.15,76.5,76.5s-33.15,76.5-76.5,76.5c-43.35,0-76.5-33.15-76.5-76.5S211.65,76.5,255,76.5z M255,438.6
+													 c-63.75,0-119.85-33.149-153-81.6c0-51,102-79.05,153-79.05S408,306,408,357C374.85,405.45,318.75,438.6,255,438.6z"></path>
+									</g></g>
+							</svg>
+                                    </span>
+                                    <span>Đăng nhập</span>
+                                </a>
+                            </li>
 
-                                        <li class="navi2"><a href="/blogs/cua-hang-ha-noi">Hà Nội</a></li>
 
 
-
-                                        <li class="navi2"><a href="/blogs/cua-hang-da-nang">Đà Nẵng</a></li>
-
-
-
-                                        <li class="navi2"><a href="/blogs/cua-hang-tp-ho-chi-minh">Hồ Chí Minh</a></li>
-
-
-
-                                        <li class="navi2"><a href="/blogs/cua-hang-bien-hoa">Biên Hòa</a></li>
-
-
-
-                                        <li class="navi2"><a href="/blogs/cua-hang-can-tho">Cần Thơ</a></li>
-
-
-
-                                        <li class="navi2"><a href="/blogs/outlet-2019">Outlet</a></li>
-
-
-                                    </ul>
-                                </li>
-
-
-
-                                <li class="navi1 has-sub level0">
-                                    <a href="/pages/huong-dan-dat-hang">Hướng dẫn - Chính sách</a>
-                                    <span class="icon-subnav"><i class="fa fa-angle-down"></i></span>
-                                    <ul class=" submenu subnav-children">
-
-
-                                        <li class="navi2"><a href="/pages/huong-dan-dat-hang">Hướng dẫn đặt hàng</a></li>
-
-
-
-                                        <li class="navi2"><a href="/pages/chinh-sach-doi-tra">Chính sách đổi trả</a></li>
-
-
-
-                                        <li class="navi2"><a href="/pages/kiem-tra-don-hang">Kiểm tra đơn hàng</a></li>
-
-
-                                    </ul>
-                                </li>
-
-
-                            </ul>
-                            <ul class="menu-about">
-
-                                <li><a href="/search"><span>Tìm kiếm</span></a></li>
-
-                                <li><a href="/pages/about-us"><span>Giới thiệu</span></a></li>
-
-
-
-
-                                <li class="login">
-                                    <a href="/account/login">
-                                        <span>
-                                            <svg class="svg-account" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="510px" height="510px" viewBox="0 0 510 510" style="enable-background:new 0 0 510 510;" xml:space="preserve">
-                                            <g><g id="account-circle">
-                                            <path d="M255,0C114.75,0,0,114.75,0,255s114.75,255,255,255s255-114.75,255-255S395.25,0,255,0z M255,76.5
-                                                         c43.35,0,76.5,33.15,76.5,76.5s-33.15,76.5-76.5,76.5c-43.35,0-76.5-33.15-76.5-76.5S211.65,76.5,255,76.5z M255,438.6
-                                                         c-63.75,0-119.85-33.149-153-81.6c0-51,102-79.05,153-79.05S408,306,408,357C374.85,405.45,318.75,438.6,255,438.6z"></path>
-                                        </g></g>
-                                </svg>
-                                        </span>
-                                        <span>Đăng nhập</span>
-                                    </a>
-                                </li>
-
-
-
-                            </ul>
-                        </nav>
+                        </ul>
+                    </nav>
+                </div>
+                @*<div class="to-bottom-content">
+                    <div class="site-copyright">
+                        <p class="copy">Copyright © 2020 <a href="https://www.basicman.vn">basicmanstore</a></p>
+                        <p class="powered"><a target="_blank" href="https://www.haravan.com">Powered by Haravan</a></p>
                     </div>
-                    <div class="to-bottom-content">
-                        <div class="site-copyright">
-                            <p class="copy">Copyright © 2020 <a href="https://www.160store.com">160STORE</a></p>
-                            <p class="powered"><a target="_blank" href="https://www.haravan.com">Powered by Haravan</a></p>
+                </div>*@
+            </div>
+
+        </div>
+        <div id="site-search" class="site-nav-container" tabindex="-1">
+            <div class="site-nav-container-last">
+                <p class="title">Tìm kiếm</p>
+                <div class="search-box wpo-wrapper-search">
+                    <form action="/search" class="searchform searchform-categoris ultimate-search navbar-form">
+                        <div class="wpo-search-inner">
+                            <input type="hidden" name="type" value="product">
+                            <input required="" id="inputSearchAuto" name="q" maxlength="40" autocomplete="off" class="searchinput input-search search-input" type="text" size="20" placeholder="Tìm kiếm sản phẩm...">
                         </div>
+                        <button type="submit" class="btn-search btn" id="search-header-btn">
+                            <svg version="1.1" class="svg search" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 24 27" style="enable-background:new 0 0 24 27;" xml:space="preserve"><path d="M10,2C4.5,2,0,6.5,0,12s4.5,10,10,10s10-4.5,10-10S15.5,2,10,2z M10,19c-3.9,0-7-3.1-7-7s3.1-7,7-7s7,3.1,7,7S13.9,19,10,19z"></path><rect x="17" y="17" transform="matrix(0.7071 -0.7071 0.7071 0.7071 -9.2844 19.5856)" width="4" height="8"></rect></svg>
+                        </button>
+                    </form>
+                    <div id="ajaxSearchResults" class="smart-search-wrapper ajaxSearchResults" style="display: none">
+                        <div class="resultsContent"></div>
                     </div>
                 </div>
-
-            </div>*@
+            </div>
+        </div>
         <div id="site-cart" class="site-nav-container" tabindex="-1">
             <div class="site-nav-container-last">
                 <p class="title">Giỏ hàng</p>
