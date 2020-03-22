@@ -678,9 +678,8 @@ body {
             }
 
     .footer .ttt {
-        background-color: antiquewhite;
-        margin-top: 3rem;
-        width: 100%;
+        background-color: #fcd203;
+        margin-top: 10px;
         margin: 0 auto;
     }
 
@@ -4433,9 +4432,6 @@ svg.ruler-icon.base {
             visibility: visible;
         }
 
-    .main-footer .footer-content {
-        display: none;
-    }
 
     .main-footer .footer-col {
         border-bottom: 1px solid #efefef;
@@ -4475,3 +4471,92 @@ svg.ruler-icon.base {
     }
 }
 
+@media screen and (min-width: 992px) {
+
+    .footer-top {
+        padding-top: 30px;
+        padding-bottom: 30px;
+    }
+}
+
+@media screen and (min-width: 767px) and (max-width: 992px) {
+    .footer-top .col-xs-12 {
+        margin-bottom: 10px;
+    }
+
+    .footer-top {
+        padding-top: 15px;
+        padding-bottom: 5px;
+    }
+
+    .wrapper-home-information .homeStore {
+        background-attachment: scroll;
+    }
+}
+
+@media screen and (max-width: 767px) {
+
+    .footer-top .col-xs-12 {
+        margin-bottom: 10px;
+    }
+
+    .footer-top {
+        padding-top: 15px;
+        padding-bottom: 5px;
+    }
+
+    .wrapper-home-information .homeStore {
+        background-attachment: scroll;
+    }
+
+    .main-footer .footer-content {
+        display: none;
+    }
+    /*khi không có class active*/
+    .main-footer h4.footer-title:before {
+        content: "\f107";
+        font-family: "FontAwesome";
+        font-size: 14px;
+        position: absolute;
+        top: 0px;
+        right: 5px;
+        text-align: center;
+        line-height: 36px;
+    }
+    /*khi có class active*/
+    .main-footer h4.footer-title.active:before {
+        content: "\f106";
+    }
+}
+/* footer*/
+.main-footer {
+    padding: 20px 0;
+    margin-bottom: 60px;
+}
+
+.footer .collapse {
+    display: none;
+    visibility: hidden;
+}
+
+    .footer .collapse.in {
+        display: block;
+        visibility: visible;
+    }
+
+
+.main-footer .col-lg:last-child .footer-col {
+    border-bottom: none;
+}
+
+.breadcrumb-shop .breadcrumb-arrows li {
+    font-size: 10px;
+}
+
+.footer h4 {
+    font-size: 20px;
+    letter-spacing: 0.02em;
+    margin: 0 0 20px;
+    position: relative;
+    line-height: 30px;
+}
