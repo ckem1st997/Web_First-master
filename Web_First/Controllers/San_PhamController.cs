@@ -1120,7 +1120,7 @@ namespace Web_First.Controllers
             }
             return View(san_Pham);
         }
-
+       
         // GET: San_Pham/Edit/5
         public async Task<IActionResult> Edit(string id)
         {

@@ -5,7 +5,9 @@ for details on configuring this project to bundle and minify static web assets. 
         width: 100%;
     }
 }
-
+li {
+    list-style: none;
+}
 @media only screen and (min-width: 769px) {
     #sidebar {
         width: 300px;
@@ -491,6 +493,11 @@ body {
         top: 0;
         right: 0;
     }
+
+#site-cart-handle a{
+    position:relative;
+}
+
 
 .header_menu_text .header_menu_icon {
     position: relative;
@@ -4046,7 +4053,7 @@ svg.ruler-icon.base {
     }
 
     .header-wrap-icon > span {
-        margin: 0px 5px;
+        margin: 0px 5px -10px 0px;
         display: inline-block !important;
     }
 

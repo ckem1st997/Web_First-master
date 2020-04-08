@@ -57,13 +57,27 @@
 
                                             @foreach (var item in ViewBag.Img_ts1)
                                             {
-                                                <div class="owl-item">
-                                                    <li class="product-thumb ">
-                                                        <a href="#" data-image="/@item.Image_SP" data-zoom-image="/@item.Image_SP">
-                                                            <img src="/@item.Image_SP" data-image="/@item.Image_SP" alt="@Model.Name_SP">
-                                                        </a>
-                                                    </li>
-                                                </div>
+                                                if (@item.Image_SP.Contains("https"))
+                                                {
+                                                    <div class="owl-item">
+                                                        <li class="product-thumb ">
+                                                            <a href="#" data-image="@item.Image_SP" data-zoom-image="@item.Image_SP">
+                                                                <img src="@item.Image_SP" data-image="@item.Image_SP" alt="@Model.Name_SP">
+                                                            </a>
+                                                        </li>
+                                                    </div>
+                                                }
+                                                else
+                                                {
+                                                    <div class="owl-item">
+                                                        <li class="product-thumb ">
+                                                            <a href="#" data-image="/@item.Image_SP" data-zoom-image="/@item.Image_SP">
+                                                                <img src="/@item.Image_SP" data-image="/@item.Image_SP" alt="@Model.Name_SP">
+                                                            </a>
+                                                        </li>
+                                                    </div>
+                                                }
+
                                             }
 
 
@@ -89,11 +103,26 @@
                                     }
                                     @foreach (var item in ViewBag.Img_ts1)
                                     {
-                                        <div class="product-gallery__thumb active">
-                                            <a class="product-gallery__thumb-placeholder" href="javascript:void(0);" data-image="/@item.Image_SP" data-zoom-image="@item.Image_SP">
-                                                <img alt=" Quần ICON DENIM lưng thun " src="/@item.Image_SP" data-image="/@item.Image_SP">
-                                            </a>
-                                        </div>
+                                        if (@item.Image_SP.Contains("https"))
+                                        {
+                                            <div class="owl-item">
+                                                <li class="product-thumb ">
+                                                    <a href="#" data-image="@item.Image_SP" data-zoom-image="@item.Image_SP">
+                                                        <img src="@item.Image_SP" data-image="@item.Image_SP" alt="@Model.Name_SP">
+                                                    </a>
+                                                </li>
+                                            </div>
+                                        }
+                                        else
+                                        {
+                                            <div class="owl-item">
+                                                <li class="product-thumb ">
+                                                    <a href="#" data-image="/@item.Image_SP" data-zoom-image="/@item.Image_SP">
+                                                        <img src="/@item.Image_SP" data-image="/@item.Image_SP" alt="@Model.Name_SP">
+                                                    </a>
+                                                </li>
+                                            </div>
+                                        }
 
                                     }
 
@@ -111,9 +140,19 @@
                                     }
                                     @foreach (var item in ViewBag.Img_ts1)
                                     {
-                                        <li class="product-gallery-item gallery-item current">
-                                            <img class="product-image-feature" src="/@item.Image_SP" alt="@Model.Name_SP">
-                                        </li>
+                                        if (@item.Image_SP.Contains("https"))
+                                        {
+                                            <li class="product-gallery-item gallery-item current">
+                                                <img class="product-image-feature" src="@item.Image_SP" alt="@Model.Name_SP">
+                                            </li>
+                                        }
+                                        else
+                                        {
+                                            <li class="product-gallery-item gallery-item current">
+                                                <img class="product-image-feature" src="/@item.Image_SP" alt="@Model.Name_SP">
+                                            </li>
+                                        }
+
                                     }
                                 </ul>
                                 <div class="product-image__button">

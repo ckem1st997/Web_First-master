@@ -1,0 +1,816 @@
+﻿
+@{
+    ViewData["Title"] = "Show_SP";
+    Layout = "~/Views/Shared/_Layout_Login.cshtml";
+}
+
+
+
+@section Scripts{
+
+    <link href="~/css/Index.css" rel="stylesheet" />
+}
+
+<div id="body" class="page-content clearfix" data-tg-refresh="body">
+    <div id="content">
+
+        <style type="text/css">
+            .note {
+                color: #798c9c;
+                font-weight: normal;
+                text-transform: none;
+            }
+
+
+
+            ul, li {
+                list-style-type: none;
+            }
+
+            .single-query {
+                border: none;
+                padding: 4px 4px 4px 11px;
+                height: 28px;
+                border-bottom: 1px solid #e6e6e6;
+                border-color: #c0c0c0 #c0c0c0 #e6e6e6;
+                border-radius: 3px 3px 0 0;
+                width: 100%;
+            }
+
+            .single-suggest-result {
+                width: 320px;
+            }
+
+                .single-suggest-result li.single-suggest-select {
+                    padding: 3px;
+                }
+        </style>
+        <form id="frmAction" method="post">
+            <input type="hidden" name="AuthenticityToken" value="3D7hKA4FpbmMyFearIzuDvTt9tl5EnoVGbQWnJvUjwN/6FNtDP4T3ELvX4wGq/S1BgvD5lt6+zXeCoxyxfs2gA==">
+            <input type="hidden" name="returnUrl" value="/admin/products">
+            <input type="hidden" name="id" value="">
+        </form>
+
+        <div class="modal fade" id="bizweb-modal" data-width="" tabindex="-1" role="dialog"></div>
+        <div class="modal" data-tg-refresh="modal" id="modal_container" style="display: none;" aria-hidden="true" aria-labelledby="ModalTitle" tabindex="-1"></div>
+        <div class="modal-bg" data-tg-refresh="modal" id="modal_backdrop"></div>
+        <form id="frmRemoveSavedSearch" method="post">
+            <input type="hidden" name="AuthenticityToken" value="3D7hKA4FpbmMyFearIzuDvTt9tl5EnoVGbQWnJvUjwN/6FNtDP4T3ELvX4wGq/S1BgvD5lt6+zXeCoxyxfs2gA==">
+            <input type="hidden" name="returnUrl" value="/admin/products">
+            <input type="hidden" name="savedSearchId" value="">
+        </form>
+        <form id="frmFilter" method="get">
+            <input type="hidden" name="Query" value="">
+
+        </form>
+
+        <form id="frmBulkActions" method="get"></form>
+        <div id="pages-index" class="page default has-contextual-help discounts-page" define="{productsImportAndExport:new Bizweb.ProductsImportAndExport(this, {'products_match_current_search':20, show_change_notice: false})}" context="productsImportAndExport">
+            <header class="ui-title-bar-container   ui-title-bar-container--full-width">
+                <div class="ui-title-bar ">
+                    <div class="ui-title-bar__main-group">
+                        <div class="ui-title-bar__heading-group">
+                            <span class="ui-title-bar__icon">
+                                <svg class="next-icon next-icon--color-slate-lighter next-icon--size-20">
+                                    <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#next-discounts"></use>
+                                </svg>
+                            </span>
+                            <h1 class="ui-title-bar__title">Sản phẩm</h1>
+                        </div>
+                        <div define="{titleBarActions: new Bizweb.TitleBarActions(this)}" class="action-bar">
+                            <div class="action-bar__item action-bar__item--link-container">
+                                <div class="action-bar__top-links">
+                                    <button class="ui-button ui-button--transparent action-bar__link" bind-event-click="showExportProducts()" data-popover-index="1" type="button" name="button">
+                                        <svg class="next-icon next-icon--size-20 action-bar__link-icon next-icon--no-nudge">
+                                            <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#next-export-minor"></use>
+                                        </svg>
+                                        Xuất file
+                                    </button>
+                                    <button class="ui-button ui-button--transparent action-bar__link" bind-event-click="openFileImportProducts()" data-popover-index="2" type="button" name="button">
+                                        <svg class="next-icon next-icon--size-20 action-bar__link-icon next-icon--no-nudge">
+                                            <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#next-import-minor"></use>
+                                        </svg>
+                                        Nhập danh sách
+                                    </button>
+                                </div>
+                                <div class="action-bar__more hide">
+                                    <div class="ui-popover__container">
+                                        <button class="ui-button ui-button--transparent" type="button" name="button">
+                                            <span data-singular-label="Thao tác" data-multiple-label="Chọn thao tác" class="action-bar__more-label">Chọn thao tác</span>
+                                            <svg class="next-icon next-icon--size-20">
+                                                <use xlink:href="#next-disclosure"></use>
+                                            </svg>
+                                        </button>
+                                        <div class="ui-popover ui-popover--align-edge">
+                                            <div class="ui-popover__tooltip"></div>
+                                            <div class="ui-popover__content-wrapper">
+                                                <div class="ui-popover__content">
+                                                    <div class="ui-popover__pane">
+                                                        <ul class="action-bar__popover-wrapper">
+                                                            <li>
+                                                                <ul class="ui-action-list">
+                                                                    <li class="ui-action-list__item">
+                                                                        <button class="ui-action-list-action action-bar__popover-hidden-item" data-popover-index="1" bind-event-click="showExportProducts()" type="button" name="button">
+                                                                            <span class="ui-action-list-action__text">
+                                                                                <span class="action-bar__popover-icon-wrapper">
+                                                                                    <svg class="next-icon next-icon--color-blue next-icon--size-16 action-bar__popover-icon">
+                                                                                        <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#next-export-minor"></use>
+                                                                                    </svg>
+                                                                                </span>
+                                                                                Xuất file
+                                                                            </span>
+                                                                        </button>
+                                                                    </li>
+                                                                    <li class="ui-action-list__item">
+                                                                        <button class="ui-action-list-action action-bar__popover-hidden-item" data-popover-index="2" bind-event-click="openFileImportProducts()" type="button" name="button">
+                                                                            <span class="ui-action-list-action__text">
+                                                                                <span class="action-bar__popover-icon-wrapper">
+                                                                                    <svg class="next-icon next-icon--color-blue next-icon--size-16 action-bar__popover-icon">
+                                                                                        <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#next-import-minor"></use>
+                                                                                    </svg>
+                                                                                </span>
+                                                                                Nhập danh sách
+                                                                            </span>
+                                                                        </button>
+                                                                    </li>
+                                                                </ul>
+                                                            </li>
+
+                                                        </ul>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="ui-title-bar__mobile-primary-actions">
+                                <div class="ui-title-bar__actions">
+                                    <a href="/admin/products/create" class="ui-button ui-button--primary ui-title-bar__action">Thêm sản phẩm</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="ui-title-bar__actions-group">
+                        <div class="ui-title-bar__actions">
+                            <a href="/admin/products/create" class="ui-button ui-button--primary ui-title-bar__action">Thêm sản phẩm</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="collapsible-header">
+                    <div class="collapsible-header__heading"></div>
+                </div>
+            </header>
+            <div class="ui-layout ui-layout--full-width">
+                <div class="ui-layout__sections">
+                    <div class="ui-layout__section">
+                        <div class="ui-layout__item">
+                            <section class="ui-card">
+                                <div id="filterAndSavedSearch" context="filterandsavedsearch" define="{filterandsavedsearch: new Bizweb.ProductFilterAndSavedSearch(this,{&quot;type_filter&quot;:&quot;products&quot;})}">
+                                    <div class="next-tab__container ">
+                                        <ul class="next-tab__list filter-tab-list" id="filter-tab-list" role="tablist" data-has-next-tab-controller="true">
+                                            <li class="filter-tab-item" data-tab-index="1">
+                                                <a href="/admin/products" class="filter-tab filter-tab-active show-all-items next-tab next-tab--is-active">Tất cả sản phẩm</a>
+                                            </li>
+
+                                            <li class="next-tab__list__disclosure-item dropdown-container" id="hidden-search" style="display:none">
+                                                <span class="next-tab next-tab--disclosure filter-tab" id="more-savedsearch" tabindex="-1" aria-selected="true" aria-label="dropdown item" aria-expanded="false" role="button">
+                                                    <svg class="next-icon next-icon--size-16 next-icon--no-nudge" id="svg-msaved"> <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#next-ellipsis"></use> </svg>
+                                                </span>
+                                                <ul class="dropdown-menu arrow-style dropdown-hidden-search dropdown-menu-right pull-right" role="tablist" id="dropdown-hidden-search"></ul>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                    <div class="next-card__section next-card__section--no-bottom-spacing">
+                                        <div class="obj-filter hide-when-printing table-filter-container">
+                                            <div class="next-input-wrapper">
+                                                <div class="next-field__connected-wrapper">
+                                                    <div class="next-field--connected--no-flex">
+                                                        <div class="ui-popover__container">
+                                                            <button class="ui-button ui-btn-filter" type="button" name="button" id="ui-btn-filter">
+                                                                Lọc <span class="btn__text--deprioritize" id="btn__text--deprioritize-filter">sản phẩm</span>
+                                                                <svg class="next-icon next-icon--size-20" id="svg-filter"> <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#next-disclosure"></use> </svg>
+                                                            </button>
+                                                            <div class="ui-popover ui-popover--align-edge dropdown-menu margin-10 dropdown-filter">
+                                                                <div class="ui-popover__tooltip" style="left: 75px;"></div>
+                                                                <div class="ui-popover__content-wrapper">
+                                                                    <div class="ui-popover__content" style="max-height: 272px; width: 205px;">
+                                                                        <div class="ui-popover__section">
+                                                                            <div class="add-filters">
+                                                                                <form bind-event-submit="submit(event)" class="clearfix">
+                                                                                    <p class="filter-heading">Hiển thị sản phẩm theo:</p>
+                                                                                    <div class="filter-builder">
+                                                                                        <div class="next-input-wrapper--half-spacing">
+                                                                                            <div class="next-input-wrapper">
+                                                                                                <label class="next-label helper--visually-hidden" for="filter-select-1">Chọn điều kiện lọc</label><div class="ui-select__wrapper">
+                                                                                                    <select name="filter-select-1" bind="filterKey" bind-event-change="resetFilter()" id="filter-conditions" class="ui-select">
+                                                                                                        <option value="">Chọn điều kiện lọc...</option>
+                                                                                                        <option value="visibility">Hiển thị</option>
+                                                                                                        <option value="productType">Loại sản phẩm</option>
+                                                                                                        <option value="vendor">Nhà cung cấp</option>
+                                                                                                        <option value="tag">Đã được tag với</option>
+                                                                                                        <option value="collectionId">Danh mục sản phẩm</option>
+                                                                                                    </select><svg class="next-icon next-icon--size-16"> <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#select-chevron"></use> </svg>
+                                                                                                </div>
+                                                                                            </div>
+                                                                                        </div>
+                                                                                        <div bind-show="filterKey == 'visibility'" class="hide">
+                                                                                            <div class="next-input-wrapper--half-spacing">
+                                                                                                <div class="next-input-wrapper">
+                                                                                                    <label class="next-label helper--visually-hidden" for="filter-select-2">Chọn điều kiện lọc</label><div class="ui-select__wrapper">
+                                                                                                        <select bind="option" class="ui-select filter-select" name="filter-select-2">
+                                                                                                            <option value="">Chọn điều kiện lọc...</option>
+                                                                                                            <option value="visibility">Hiển thị</option>
+                                                                                                            <option value="hidden">Ẩn</option>
+                                                                                                        </select><svg class="next-icon next-icon--size-16"> <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#select-chevron"></use> </svg>
+                                                                                                    </div>
+                                                                                                </div>
+                                                                                            </div>
+                                                                                            <div class="next-input-wrapper--vertical-block">
+                                                                                                <button class="ui-button btn-slim add-filter filtering-complete" type="button" bind-event-click="submitFilter(this)" name="button">Lọc</button>
+                                                                                            </div>
+                                                                                        </div>
+                                                                                        <div bind-show="filterKey == 'productType'" class="hide">
+                                                                                            <div class="next-input-wrapper--half-spacing">
+                                                                                                <div class="next-input-wrapper">
+                                                                                                    <label class="next-label helper--visually-hidden" for="filter-select-4">Chọn điều kiện lọc</label><div class="ui-select__wrapper">
+                                                                                                        <select bind="option" class="ui-select filter-select" name="filter-select-4">
+                                                                                                            <option value="">Chọn điều kiện lọc...</option>
+                                                                                                            <option value="Balo">Balo</option>
+                                                                                                            <option value="Chocolate">Chocolate</option>
+                                                                                                            <option value="Gấu bông">Gấu bông</option>
+                                                                                                            <option value="Hoa">Hoa</option>
+                                                                                                            <option value="Hộp quà tặng">Hộp quà tặng</option>
+                                                                                                            <option value="Nhẫn">Nhẫn</option>
+                                                                                                            <option value="Nước hoa">Nước hoa</option>
+                                                                                                            <option value="Quần áo">Quần áo</option>
+                                                                                                            <option value="Túi xách">Túi xách</option>
+                                                                                                            <option value="Vali">Vali</option>
+                                                                                                        </select><svg class="next-icon next-icon--size-16"> <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#select-chevron"></use> </svg>
+                                                                                                    </div>
+                                                                                                </div>
+                                                                                            </div>
+                                                                                            <div class="next-input-wrapper--vertical-block">
+                                                                                                <button class="ui-button btn-slim add-filter filtering-complete" type="button" bind-event-click="submitFilter(this)" name="button">Lọc</button>
+                                                                                            </div>
+                                                                                        </div>
+                                                                                        <div bind-show="filterKey == 'vendor'" class="hide">
+                                                                                            <div class="next-input-wrapper--half-spacing">
+                                                                                                <div class="next-input-wrapper">
+                                                                                                    <label class="next-label helper--visually-hidden" for="filter-select-5">Chọn điều kiện lọc</label><div class="ui-select__wrapper">
+                                                                                                        <select bind="option" class="ui-select filter-select" name="filter-select-5">
+                                                                                                            <option value="">Chọn điều kiện lọc...</option>
+                                                                                                            <option value="Barvo">Barvo</option>
+                                                                                                            <option value="DG">DG</option>
+                                                                                                            <option value="DTH">DTH</option>
+                                                                                                            <option value="Flower">Flower</option>
+                                                                                                            <option value="Her">Her</option>
+                                                                                                            <option value="ISCO">ISCO</option>
+                                                                                                            <option value="PRADA">PRADA</option>
+                                                                                                            <option value="Teddy">Teddy</option>
+                                                                                                            <option value="Vimax">Vimax</option>
+                                                                                                        </select><svg class="next-icon next-icon--size-16"> <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#select-chevron"></use> </svg>
+                                                                                                    </div>
+                                                                                                </div>
+                                                                                            </div>
+                                                                                            <div class="next-input-wrapper--vertical-block">
+                                                                                                <button class="ui-button btn-slim add-filter filtering-complete" type="button" bind-event-click="submitFilter(this)" name="button">Lọc</button>
+                                                                                            </div>
+                                                                                        </div>
+                                                                                        <div bind-show="filterKey == 'tag'" class="hide">
+                                                                                            <div class="next-input-wrapper--half-spacing">
+                                                                                                <div class="next-input-wrapper">
+                                                                                                    <label class="next-label helper--visually-hidden" for="filter-input-4">Filter-input-4</label>
+                                                                                                    <input type="text" name="filter-input-4" id="filter-input-4" data-bind="value" bind-class="{error: isValid}" class="next-input">
+                                                                                                </div>
+                                                                                            </div>
+                                                                                            <div class="next-input-wrapper--vertical-block">
+                                                                                                <button class="ui-button btn-slim add-filter filtering-complete" type="button" bind-event-click="submitFilter(this)" name="button">Lọc</button>
+                                                                                            </div>
+                                                                                        </div>
+                                                                                        <div bind-show="filterKey == 'collectionId'" class="hide">
+                                                                                            <div class="next-input-wrapper--half-spacing">
+                                                                                                <div class="next-input-wrapper result-dropdown">
+                                                                                                    <label class="next-label helper--visually-hidden" for="filter-select-4">Chọn điều kiện lọc</label><div class="ui-select__wrapper">
+                                                                                                        <input type="hidden" name="" class="form-control form-control smaller choosed-single-id" placeholder="Nhập Id">
+                                                                                                        <a class="ui-select dropdown-toggle btn-choose-product" href="#" bind-event-click="dropdown()">
+                                                                                                            <span class="choosed-single">
+                                                                                                                Chọn danh mục
+                                                                                                            </span>
+                                                                                                        </a><svg class="next-icon next-icon--size-16"> <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#select-chevron"></use> </svg>
+                                                                                                    </div>
+                                                                                                </div>
+                                                                                            </div>
+                                                                                            <div class="next-input-wrapper--vertical-block">
+                                                                                                <button class="ui-button btn-slim add-filter filtering-complete" type="button" bind-event-click="submitFilter(this)" name="button">Lọc</button>
+                                                                                            </div>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                </form>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div id="has--actions" data-tg-refresh-always="true" class=""></div>
+                                                    <form action="/admin/products" bind-event-submit="submitQuery()" class="next-form next-form--full-width next-field--connected--no-border-radius" method="get">
+                                                        <label class="next-label helper--visually-hidden" for="query">Query</label>
+                                                        <div class="next-input--stylized next-field--connected">
+                                                            <span class="next-input__add-on next-input__add-on--before">
+                                                                <svg class="next-icon next-icon--color-slate-lightest next-icon--size-16"> <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#next-search-reverse"></use> </svg>
+                                                            </span>
+                                                            <input type="text" name="query" id="query" placeholder="Tìm kiếm sản phẩm" bind="query" bind-event-input="submitQuery()" value="" class="next-input next-input--invisible">
+                                                        </div>
+                                                    </form>                                                <div id="saved-search-actions-next" class="saved-search-actions-next" data-tg-refresh="saved-search-actions-next">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="ui-card__section has-bulk-actions products" refresh="products" id="products-refresh">
+                                    <div class="ui-type-container clearfix">
+                                        <div class="table-wrapper" define="{bulkActions: new Bizweb.ProductBulkActions(this,{&quot;type&quot;:&quot;sản phẩm&quot;})}" context="bulkActions">
+                                            <table id="price-rule-table" class="table-hover bulk-action-context expanded">
+                                                <thead>
+                                                    <tr>
+                                                        <th class="select">
+                                                            <span>
+                                                                <div class="tooltip tooltip-left-align tooltip-bottom bulk-actions__select-all-tooltip">
+                                                                    <div class="next-input-wrapper bulk-actions__select-all btn--select-all" bind-class="{'bulk-actions__select-all--has-selected-items': selectedItems.length > 0}" style="left: auto;">
+                                                                        <label class="next-label next-label--switch btn btn-slim bulk-actions__select-all-btn" for="bulk-actions__select-all" bind-class="{'btn btn-slim bulk-actions__select-all-btn': selectedItems.length == 0, 'helper--visually-hidden': selectedItems.length > 0}">
+                                                                            <span class="helper--visually-hidden">Select all discounts</span>
+                                                                        </label>
+                                                                        <input type="checkbox" name="bulk-actions__select-all" id="bulk-actions__select-all" bind-event-change="addOrRemoveAllBulkActionItems(this)" class="next-checkbox js-no-dirty bulk-actions__select-all-checkbox all-bulk-action">
+                                                                        <span class="next-checkbox--styled">
+                                                                            <svg class="next-icon next-icon--size-10 checkmark"> <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#next-checkmark-thick"></use> </svg>
+                                                                            <svg class="next-icon next-icon--size-10 indeterminate"> <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#next-minus"></use> </svg>
+                                                                        </span>
+                                                                    </div>
+                                                                    <div class="tooltip-container" bind-class="{'hide': selectedItems.length > 0}">
+                                                                        <span class="tooltip-label">Chọn tất cả sản phẩm</span>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="bulk-actions" bind-class="{'bulk-actions--is-visible': selectedItems.length > 0}" all-items="20" items-page="50" total-records="20" style="width: 797px;">
+                                                                    <ul class="bulk-actions__main-bar segmented">
+                                                                        <li>
+                                                                            <a class="btn btn-slim btn-disabled btn--selection">
+                                                                                <span class="selection-count bulk-action-items-count" selected-bulk-action-items="0">
+                                                                                    <span><span class="hidden-xs">Đã chọn</span> <span class="display-bulk-action-items-count"></span> sản phẩm</span>
+                                                                                </span>
+                                                                            </a>
+                                                                        </li>
+                                                                        <li>
+                                                                            <a class="btn btn-slim" href="javascript:void(0);" bind-event-click="Bizweb.BulkEditor.goToBulkEditor( &quot;Product&quot;, { defaultEditColumns: &quot;variants.sku,variants.price,variants.compare_at_price&quot;, defaultShowColumns: &quot;&quot;, returnTo: &quot;\/admin\/products&quot;, useSearch: true &amp;&amp; allSelected(), ids: selectedItems.join(',') })">
+                                                                                Sửa sản phẩm
+                                                                            </a>
+                                                                        </li>
+                                                                        <li>
+                                                                            <div class="ui-popover__container">
+                                                                                <button class="ui-button ui-button--size-small btn-dropdown-bulkaction" id="btn-dropdown-bulkaction" type="button" name="button">
+                                                                                    <span class="hidden-xs">Chọn thao tác</span><span class="hidden-lg hidden-md hidden-sm">Thao tác</span> <svg class="next-icon next-icon--size-20" id="svg-bulkaction"> <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#next-disclosure"></use> </svg>
+                                                                                </button>
+                                                                                <div class="dropdown-menu margin-10 dropdown-bulkaction dropdown-bulkaction-product">
+                                                                                    <div class="ui-popover__tooltip" style="left:20%"></div>
+                                                                                    <div class="ui-popover__pane">
+                                                                                        <div class="ui-popover__section ui-popover__section--no-padding">
+                                                                                            <ul class="next-list next-list--compact">
+                                                                                                <li><a class="next-list__item" href="javascript:void(0);" bind-event-click="publishItems()" define="{urlBulkActionPublish:'/admin/products/bulkpublish'}">Hiển thị</a></li>
+                                                                                                <li><a class="next-list__item" href="javascript:void(0);" bind-event-click="unPublishItems()" define="{urlBulkActionUnPublish:'/admin/products/bulkunpublish'}">Ẩn</a></li>
+                                                                                                <li><a define="{urlBulkActionDelete:'/admin/products/bulkdelete'}" class="next-list__item" href="javascript:void(0);" bind-event-click="showDeleteItemsModal()">Xóa sản phẩm</a></li>
+                                                                                            </ul>
+                                                                                        </div>
+                                                                                        <div class="ui-popover__section ui-popover__section--no-padding">
+                                                                                            <ul class="next-list next-list--compact">
+                                                                                                <li><a class="next-list__item" href="#" define="{urlBulkActionAddTag:'/admin/products/bulkaddtags'}" bind-event-click="addTags()">Thêm tags</a></li>
+                                                                                                <li><a class="next-list__item" href="" define="{urlBulkActionRemoveTag:'/admin/products/bulkremovetags'}" bind-event-click="removeTags()">Xóa tags</a></li>
+                                                                                            </ul>
+                                                                                        </div>
+                                                                                        <div class="ui-popover__section ui-popover__section--no-padding">
+                                                                                            <ul class="next-list next-list--compact">
+                                                                                                <li><a class="next-list__item" href="#" define="{urlBulkActionAddCollections:'/admin/products/bulkaddcollections'}" bind-event-click="addCollections()">Thêm sản phẩm vào danh mục</a></li>
+                                                                                                <li><a class="next-list__item" href="" define="{urlBulkActionRemoveCollections:'/admin/products/bulkremovecollections'}" bind-event-click="removeCollections()">Xóa sản phẩm khỏi danh mục</a></li>
+                                                                                                <li class="apps-link">
+                                                                                                    <div class="app-icon-list">
+                                                                                                        <a href="#" class="next-list__item" bind-event-click="showModelSendAdsToDms('google')"><img src="//bizweb.dktcdn.net/assets/admin/images/google-icon.png">Quảng cáo sản phẩm trên Google</a>
+                                                                                                    </div>
+                                                                                                </li>
+                                                                                                <li class="apps-link">
+                                                                                                    <div class="app-icon-list">
+                                                                                                        <a href="#" class="next-list__item" bind-event-click="showModelSendAdsToDms('facebook')"><img src="//bizweb.dktcdn.net/assets/admin/images/facebook-icon.png">Quảng cáo sản phẩm trên Facebook</a>
+                                                                                                    </div>
+                                                                                                </li>
+                                                                                            </ul>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                </div>
+                                                                            </div>
+                                                                        </li>
+                                                                    </ul>
+                                                                    <span class="bulk-select-all">
+                                                                        @*<p class="bulk-action-all-selector">
+                                                                            </p>*@
+                                                                    </span>
+                                                                </div>
+                                                            </span>
+                                                        </th>
+                                                        <th class="image"></th>
+                                                        <th><span>Sản phẩm</span></th>
+                                                        <th><span>Kho</span></th>
+                                                        <th><span>Danh mục</span></th>
+                                                        <th><span>Loại sản phẩm</span></th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    @{
+                                                        string kt = "";
+                                                    }
+                                                    @foreach (var item in ViewBag.sp)
+                                                    {
+                                                        if (kt == item.Id_SP)
+                                                            continue;
+                                                        else
+                                                        {
+
+
+                                                            <tr data-define="{nestedLinkContainer: new Bizweb.NestedLinkContainer(this)}">
+                                                                <td class="select">
+                                                                    <div class="next-input-wrapper">
+                                                                        <label class="next-label helper--visually-hidden next-label--switch" for="product_ids_17533534">Chọn Name</label>
+                                                                        <input type="checkbox" name="product_ids_17533534" id="product_ids_17533534" value="17533534" data-bind="selected[17533534]" bind-event-change="addOrRemoveBulkActionItem(17533534,this)" class="bulk-action-item next-checkbox">
+                                                                        <span class="next-checkbox--styled">
+                                                                            <svg class="next-icon next-icon--size-10 checkmark">
+                                                                                <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#next-checkmark-thick">
+                                                                                </use>
+                                                                            </svg>
+                                                                        </span>
+                                                                    </div>
+                                                                </td>
+                                                                <td>
+                                                                    <a class="aspect-ratio aspect-ratio--square aspect-ratio--square--50 aspect-ratio--interactive" href="/admin/products/17533534">
+                                                                        @if (@item.Image_SP.Contains("https"))
+                                                                        {
+                                                                            <img title="Gấu bông Teddy cute" class="aspect-ratio__content" src="@item.Image_SP" alt="@item.Name_SP">
+                                                                        }
+                                                                        else
+                                                                        {
+                                                                            <img title="Gấu bông Teddy cute" class="aspect-ratio__content" src="/@item.Image_SP" alt="@item.Name_SP">
+                                                                        }
+
+                                                                    </a>
+                                                                </td>
+                                                                <td class="name">
+                                                                    <div class="ui-stack ui-stack--wrap">
+                                                                        <div class="ui-stack-item">
+                                                                            <a data-nested-link-target="true">@item.Name_SP</a>
+                                                                        </div>
+                                                                    </div>
+                                                                </td>
+                                                                <td class="total">
+                                                                    @foreach (var item1 in ViewBag.tt)
+                                                                    {
+                                                                        if (item1.Id_SP == item.Id_SP)
+                                                                        {
+                                                                            <p>
+                                                                                @item1
+                                                                            </p>
+                                                                        }
+                                                                        else
+                                                                        {
+                                                                            <p>
+                                                                                400 sản phẩm loại 1
+                                                                            </p>
+                                                                        }
+
+
+                                                                    }
+                                                                </td>
+                                                                <td class="type">
+                                                                    <p>@item.Loai_SP_1</p>
+                                                                </td>
+                                                                <td class="vendor">
+                                                                    <p>@item.Loai_SP_2</p>
+                                                                </td>
+                                                            </tr>
+
+                                                        }
+                                                        kt = item.Id_SP;
+                                                    }
+                                                    @*<tr data-define="{nestedLinkContainer: new Bizweb.NestedLinkContainer(this)}">
+                                                            <td class="select">
+                                                                <div class="next-input-wrapper">
+                                                                    <label class="next-label helper--visually-hidden next-label--switch" for="product_ids_17533533">Chọn Nước hoa DG</label>
+                                                                    <input type="checkbox" name="product_ids_17533533" id="product_ids_17533533" value="17533533" data-bind="selected[17533533]" bind-event-change="addOrRemoveBulkActionItem(17533533,this)" class="bulk-action-item next-checkbox">
+                                                                    <span class="next-checkbox--styled"><svg class="next-icon next-icon--size-10 checkmark"> <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#next-checkmark-thick"></use> </svg></span>
+                                                                </div>
+                                                            </td>
+                                                            <td>
+                                                                <a class="aspect-ratio aspect-ratio--square aspect-ratio--square--50 aspect-ratio--interactive" href="/admin/products/17533533">
+                                                                    <img title="Nước hoa DG" class="aspect-ratio__content" src="//bizweb.dktcdn.net/thumb/thumb/100/383/375/products/12.jpg?v=1586226880000" alt="Nước hoa DG">
+                                                                </a>
+                                                            </td>
+                                                            <td class="name">
+                                                                <div class="ui-stack ui-stack--wrap">
+                                                                    <div class="ui-stack-item">
+                                                                        <a href="/admin/products/17533533" data-nested-link-target="true">Nước hoa DG</a>
+                                                                    </div>
+                                                                </div>
+                                                            </td>
+                                                            <td class="total">
+                                                                <p>
+                                                                    100 sản phẩm của 1 loại
+                                                                </p>
+                                                            </td>
+                                                            <td class="type">
+                                                                <p>Nước hoa</p>
+                                                            </td>
+                                                            <td class="vendor">
+                                                                <p>DG</p>
+                                                            </td>
+                                                        </tr>*@
+                                                </tbody>
+                                            </table>
+
+                                            <script class="modal_source" define="{deleteItemsModal: new Bizweb.Modal(this)}" type="text/html">
+                                                <div class="modal-dialog">
+                                                    <div class="modal-content">
+                                                        <div class="ui-modal__header">
+                                                            <div class="ui-modal__header-title">
+                                                                <h2 class="ui-title">Bạn chắc chắn muốn xóa các sản phẩm này?</h2>
+                                                            </div>
+                                                            <div class="ui-modal__header-actions">
+                                                                <div class="ui-modal__close-button">
+                                                                    <button class="ui-button ui-button--transparent close-modal" data-dismiss="modal" aria-label="Close modal" type="button" name="button"><svg class="next-icon next-icon--color-ink-lighter next-icon--size-20"> <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#cancel-small-minor"></use> </svg></button>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="ui-modal__body">
+                                                            <div class="ui-modal__section">
+                                                                <div>
+                                                                    <p>Thao tác này sẽ xóa các sản phẩm bạn đã chọn. Thao tác này không thể khôi phục.</p>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="ui-modal__footer">
+                                                            <div class="ui-modal__footer-actions">
+                                                                <div class="ui-modal__secondary-actions">
+                                                                    <div class="button-group">
+                                                                        <button class="ui-button close-modal" data-dismiss="modal" type="button" name="button">Hủy</button>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="ui-modal__primary-actions">
+                                                                    <div class="button-group button-group--right-aligned">
+                                                                        <button class="ui-button btn-destroy-no-hover js-btn-loadable has-loading btn-delete-bulk-action" type="button" name="commit" bind-event-click="deleteItems()">Xóa</button>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </script>
+                                            <script class="modal_source" define="{sendFormAdsToDMS: new Bizweb.Modal(this)}" type="text/html">
+                                                <div class="modal-dialog" id="formRequestAdvice">
+                                                    <div class="modal-content">
+                                                        <button aria-hidden="true" data-dismiss="modal" class="close close-modal" type="button">×</button>
+                                                        <div class="modal-header">
+                                                            <h4 class="modal-title">Bạn đang có nhu cầu quảng cáo <span bind="typeFormAds"></span> cho sản phẩm</h4>
+                                                            <p>Chúng tôi sẽ liên hệ với bạn trong vòng 24h để tư vấn giải pháp quảng cáo hiệu quả</p>
+                                                        </div>
+                                                        <div class="modal-body">
+                                                            <h4>Thông tin liên hệ tư vấn</h4>
+                                                            <p>Hãy cho chúng tôi thông tin liên hệ chính xác để tư vấn được cho bạn nhanh nhất, bạn có thể sửa thông tin bên dưới nếu chưa đúng.</p>
+                                                            <form>
+                                                                <table>
+                                                                    <tr bind-show="isFacebook">
+                                                                        <td>Sản phẩm bạn kinh doanh</td>
+                                                                        <td>
+                                                                            <div class="ui-select__wrapper next-input--has-content">
+                                                                                <select id="inputCategoryId" class="ui-select">
+                                                                                    <option selected="selected" value="0">Lĩnh vực kinh doanh</option>
+                                                                                    <option value="32">Máy tính Công nghệ Kỹ thuật số</option>
+                                                                                    <option value="33">Điện thoại</option>
+                                                                                    <option value="34">Điện tử - Âm thanh - Kỹ thuật số</option>
+                                                                                    <option value="35">Điện máy</option>
+                                                                                    <option value="36">Máy văn phòng</option>
+                                                                                    <option value="37">Máy công nghiệp</option>
+                                                                                    <option value="38">Thời trang Trang sức</option>
+                                                                                    <option value="39">Sản phẩm trẻ em</option>
+                                                                                    <option value="40">Mỹ phẩm Dược phẩm Nước hoa</option>
+                                                                                    <option value="41">Dược phẩm - Làm đẹp - Spa</option>
+                                                                                    <option value="42">Nhà hàng Quán ăn</option>
+                                                                                    <option value="43">Thực phẩm Đồ uống</option>
+                                                                                    <option value="44">Thủ công Mỹ nghệ</option>
+                                                                                    <option value="45">Sách - Truyện - Văn phòng phẩm</option>
+                                                                                    <option value="46">Hoa, Quà tặng</option>
+                                                                                    <option value="47">Nội thất Văn phòng</option>
+                                                                                    <option value="48">Vật liệu xây dựng</option>
+                                                                                    <option value="49">Đồ gia dụng, sinh hoạt</option>
+                                                                                    <option value="50">Giáo dục Đào tạo</option>
+                                                                                    <option value="51">Dịch vụ Du lịch Khách sạn</option>
+                                                                                    <option value="52">Dụng cụ thể thao</option>
+                                                                                    <option value="53">Vật nuôi, thú cưng</option>
+                                                                                    <option value="54">Ô tô, xe máy</option>
+                                                                                    <option value="55">Bất động sản</option>
+                                                                                    <option value="56">Khác</option>
+                                                                                    <option value="57">Thực phẩm</option>
+                                                                                    <option value="58">Đồ uống</option>
+                                                                                    <option value="59">Vật liệu Xây dựng</option>
+                                                                                    <option value="60">Sách/DVD/CD</option>
+                                                                                </select>
+                                                                                <svg class="next-icon next-icon--size-16"> <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#select-chevron"></use> </svg>
+                                                                            </div>
+                                                                        </td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <td>Họ tên</td>
+                                                                        <td><input class="next-input" type="text" placeholder="Nhập họ tên của bạn" bind="infoCus.name" id="inputCustomerFullName" /></td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <td>Email</td>
+                                                                        <td><input class="next-input" type="text" placeholder="Nhập email của bạn" bind="infoCus.email" id="inputCustomerEmail" /></td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <td>Điện thoại</td>
+                                                                        <td><input class="next-input" type="text" placeholder="Nhập điện thoại của bạn" bind="infoCus.phone" id="inputCustomerPhone" /></td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <td></td>
+                                                                        <td><button class="ui-button ui-button--primary" type="button" bind-event-click="submitFormRequestAdvice()">Yêu cầu tư vấn</button></td>
+                                                                    </tr>
+                                                                </table>
+                                                            </form>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </script>
+                                        </div>
+                                        <div class="t-grid-pager-boder">
+                                            <div class="t-pager t-reset clearfix fix-margin-pager"><div class="col-md-6 col-lg-6 hidden-xs hidden-sm no-padding"><div class="t-status-text dataTables_info">Hiển thị kết quả từ 1 - 20 trên tổng 20 </div></div></div>
+                                        </div>
+                                        <div define="{products_match_current_search: 20}"></div>
+                                    </div>
+                                </div>
+                            </section>
+                        </div>
+                        <div class="ui-footer-help">
+                            <div class="ui-footer-help__content">
+                                <div class="ui-footer-help__icon">
+                                    <svg class="next-icon next-icon--size-24 next-icon--no-nudge" role="img" aria-labelledby="next-help-circle-title">
+                                        <title id="next-help-circle-title">Help</title>
+                                        <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#next-help-circle"></use>
+                                    </svg>
+                                </div>
+                                <div>
+                                    Bạn có thể xem thêm hướng dẫn về quản lý sản phẩm <a target="_blank" rel="noreferrer noopener" title="Hướng dẫn quản lý sản phẩm" href="https://support.sapo.vn/tim-hieu-ve-san-pham">tại đây</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <script class="modal_source" define="{exportProductsModal: new Bizweb.Modal(this)}" type="text/html">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="ui-modal__header">
+                            <div class="ui-modal__header-title">
+                                <h2 class="ui-title">Xuất danh sách sản phẩm</h2>
+                            </div>
+                            <div class="ui-modal__header-actions">
+                                <div class="ui-modal__close-button">
+                                    <button class="ui-button ui-button--transparent close-modal" data-dismiss="modal" aria-label="Close modal" type="button" name="button"><svg class="next-icon next-icon--color-ink-lighter next-icon--size-20"> <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#cancel-small-minor"></use> </svg></button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="ui-modal__body">
+                            <div class="ui-modal__section">
+                                <div>
+                                    <form id="form-export-products">
+                                        <input type="hidden" name="AuthenticityToken" value="3D7hKA4FpbmMyFearIzuDvTt9tl5EnoVGbQWnJvUjwN/6FNtDP4T3ELvX4wGq/S1lQahzsERR63/MBBOAqfmAg==" />
+                                        <input type="hidden" name="Query" />
+                                        <input type="hidden" name="visibility" />
+                                        <input type="hidden" name="productType" />
+                                        <input type="hidden" name="vendor" />
+                                        <input type="hidden" name="tag" />
+                                        <input type="hidden" name="Page" />
+                                        <input type="hidden" name="collectionId" />
+                                        <fieldset class="next-fieldset-wrapper">
+                                            <legend class="helper--visually-hidden">Selection of Orders</legend>
+                                            <div class="next-input-wrapper">
+                                                <label class="next-label next-label--switch" for="exportProductsType-current-page">Trên trang này</label>
+                                                <input type="radio" name="exportProductsType" id="exportProductsType-current-page" value="currentPage" class="next-radio" checked="checked">
+                                                <span class="next-radio--styled"></span>
+                                            </div>
+                                            <div class="next-input-wrapper">
+                                                <label class="next-label next-label--switch" for="exportProductsType-all-products">Tất cả sản phẩm</label>
+                                                <input type="radio" name="exportProductsType" id="exportProductsType-all-products" value="allProducts" class="next-radio">
+                                                <span class="next-radio--styled"></span>
+                                            </div>
+                                            <div class="next-input-wrapper">
+                                                <label class="next-label next-label--switch" for="exportProductsType-selected-products">Các sản phẩm được chọn</label>
+                                                <input type="radio" name="exportProductsType" id="exportProductsType-selected-products" value="selectedProducts" class="next-radio">
+                                                <span class="next-radio--styled"></span>
+                                            </div>
+                                            <div class="next-input-wrapper">
+                                                <label class="next-label next-label--switch" for="exportProductsType-current-search"><span id="products-match-current-search"></span> sản phẩm phù hợp với kết quả tìm kiếm hiện tại</label>
+                                                <input type="radio" name="exportProductsType" id="exportProductsType-current-search" value="currentSearch" class="next-radio">
+                                                <span class="next-radio--styled"></span>
+                                            </div>
+                                        </fieldset>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="ui-modal__footer">
+                            <div class="ui-modal__footer-actions">
+                                <div class="ui-modal__secondary-actions">
+                                    <div class="button-group">
+                                        <button class="ui-button close-modal" data-dismiss="modal" type="button" name="button">Hủy</button>
+                                    </div>
+                                </div>
+                                <div class="ui-modal__primary-actions">
+                                    <div class="button-group button-group--right-aligned">
+                                        <button class="ui-button ui-button--primary js-btn-loadable has-loading" type="button" name="commit" bind-event-click="exportProducts()">Xuất danh sách sản phẩm</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </script>
+            <script class="modal_source" define="{importProductsModal: new Bizweb.Modal(this)}" type="text/html">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="ui-modal__header">
+                            <div class="ui-modal__header-title">
+                                <h2 class="ui-title">Nhập danh sách sản phẩm</h2>
+                            </div>
+                            <div class="ui-modal__header-actions">
+                                <div class="ui-modal__close-button">
+                                    <button class="ui-button ui-button--transparent close-modal" data-dismiss="modal" aria-label="Close modal" type="button" name="button"><svg class="next-icon next-icon--color-ink-lighter next-icon--size-20"> <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#cancel-small-minor"></use> </svg></button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="ui-modal__body">
+                            <div class="ui-modal__section">
+                                <div>
+                                    <form id="form-import-products" action="/admin/products/import" method="post" enctype="multipart/form-data">
+                                        <input type="hidden" name="AuthenticityToken" value="3D7hKA4FpbmMyFearIzuDvTt9tl5EnoVGbQWnJvUjwN/6FNtDP4T3ELvX4wGq/S1lQahzsERR63/MBBOAqfmAg==" />
+                                        <input name="importProductsFile" type="file" size="30" id="importProductsFileUpload" accept=".csv, application/vnd.openxmlformats-officedocument.spreadsheetml.sheet, application/vnd.ms-excel" bind-event-change="enableButtonImportProducts()" />
+                                        <div class="checkbox">
+                                            Tải file mẫu nhập danh sách sản phẩm <a href="//bizweb.dktcdn.net/assets/files/products_import_template.xls?v=1531380635">tại đây</a>
+                                        </div>
+                                        <div class="next-input-wrapper">
+                                            <label class="next-label" style="margin-left:25px;display:inline-block" for="overrideExistProducts">Ghi đè thông tin các sản phẩm đã có</label>
+                                            <input class="next-checkbox" id="overrideExistProducts" name="overrideExistProducts" type="checkbox" value="true" /><input name="overrideExistProducts" type="hidden" value="false" />
+                                            <span class="next-checkbox--styled"><svg class="next-icon next-icon--size-10 checkmark"> <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#next-checkmark-thick"></use> </svg></span>
+                                            <p class="margin-xs-top">
+                                                <b>
+                                                    Lưu ý:
+                                                    <br />- Việc ghi đè sẽ xóa hết các thông tin cũ của sản phẩm bị ghi đè để lưu thông tin mới.
+                                                    <br />- Tính năng này không dùng để cập nhật hàng loạt sản phẩm
+                                                </b>
+                                            </p>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="ui-modal__footer">
+                            <div class="ui-modal__footer-actions">
+                                <div class="ui-modal__secondary-actions">
+                                    <div class="button-group">
+                                        <button class="ui-button close-modal" data-dismiss="modal" type="button" name="button">Hủy</button>
+                                    </div>
+                                </div>
+                                <div class="ui-modal__primary-actions">
+                                    <div class="button-group button-group--right-aligned">
+                                        <button class="ui-button ui-button--primary js-btn-loadable has-loading btn-import-products" type="button" name="commit" bind-event-click="importProducts()" disabled>Nhập danh sách sản phẩm</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </script>
+        </div>
+        <script>
+            $(window).scroll(function () {
+                scrollPaggingMobile('.products');
+            });
+        </script>
+        <script>
+            function showExpiredVolumn() {
+                $("#modalExpiredVolumn").modal('show');
+            }
+        </script>
+
+
+
+    </div>
+</div>
+
+
+
+

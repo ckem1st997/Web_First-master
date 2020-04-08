@@ -95,11 +95,22 @@
                                                             if (@item.Id_SP == @item1.Id_SP)
                                                             {
                                                                 h++;
-                                                                <picture>
-                                                                    <source media="(max-width: 767px)" srcset="/@item1.Image_SP">
-                                                                    <source media="(min-width: 768px)" srcset="/@item1.Image_SP">
-                                                                    <img class="img-loop" alt=" QUẦN JOGGER S.DRY " srcset="@item1.Image_SP">
-                                                                </picture>
+                                                                if (@item1.Image_SP.Contains("https"))
+                                                                {
+                                                                    <picture>
+                                                                        <source media="(max-width: 767px)" srcset="@item1.Image_SP">
+                                                                        <source media="(min-width: 768px)" srcset="@item1.Image_SP">
+                                                                        <img class="img-loop" alt=" QUẦN JOGGER S.DRY " srcset="@item1.Image_SP">
+                                                                    </picture>
+                                                                }
+                                                                else
+                                                                {
+                                                                    <picture>
+                                                                        <source media="(max-width: 767px)" srcset="/@item1.Image_SP">
+                                                                        <source media="(min-width: 768px)" srcset="/@item1.Image_SP">
+                                                                        <img class="img-loop" alt=" QUẦN JOGGER S.DRY " srcset="@item1.Image_SP">
+                                                                    </picture>
+                                                                }
                                                             }
                                                             if (h == 2)
                                                             {

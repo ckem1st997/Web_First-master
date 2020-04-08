@@ -19,7 +19,31 @@ namespace Web_First.Controllers
         {
             _context = context;
         }
+        public IActionResult Privacy()
+        {
+            return View();
+        }
 
+        public async Task<IActionResult> Add_SP()
+        {
+
+            return View();
+        }
+
+        public async Task<IActionResult> Show_SP()
+        {
+            var tt = from b in _context.San_Pham
+                     join c in _context.ThongSo_SP
+                     on b.Id_SP equals c.Id_SP
+                     group b  by new { b.Id_SP, b.Loai_SP_1, b.Loai_SP_2, b.Name_SP } into g
+                     select g.Key;
+            ViewBag.tt = tt;
+
+            var sp = from b in _context.all
+                     select b;
+            ViewBag.sp = sp;
+            return View();
+        }
         // GET: Product
         public async Task<IActionResult> Index()
         {

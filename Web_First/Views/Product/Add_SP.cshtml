@@ -1,0 +1,600 @@
+﻿
+@{
+    ViewData["Title"] = "Add_SP";
+    Layout = "~/Views/Shared/_Layout_Login.cshtml";
+}
+<h1>Add_SP</h1>
+
+<div class="wrapper" id="wrapper">
+    <div id="body" class="page-content clearfix" data-tg-refresh="body">
+        <div id="content">
+
+            <style type="text/css">
+    /*btn more, deletable*/
+    .btn.btn-more {
+        border: 1px solid #d3dbe2;
+        padding: 6px 15px;
+    }
+
+        .btn.btn-more:hover {
+            border: 1px solid #d3dbe2;
+            background-color: #f5f6f7;
+            color: #479ccf;
+            text-decoration: none;
+        }
+
+    .btn-more:before {
+        content: "•••";
+        text-indent: 0;
+        display: block;
+        font-size: 13px;
+    }
+    /*end*/
+
+    .rssFeedDisplay {
+        overflow: hidden;
+    }
+
+    .item {
+        background-image: url("//bizweb.dktcdn.net/assets/admin/images/admin.png");
+        background-position: 2px 10px;
+        background-repeat: no-repeat;
+        line-height: 25px;
+        padding-left: 12px;
+    }
+
+    .rssFeedDisplay .item:not(:last-child) {
+        border-bottom: 1px solid #e8e8e8 !important;
+    }
+
+    .metric-content {
+        display: block;
+    }
+
+    .img-responsive {
+        display: inline-block;
+    }
+
+    .table-fluid {
+        display: table;
+        width: 100%;
+    }
+
+    .col-fluid {
+        display: table-cell;
+    }
+
+    .marketing-banner > a:hover, .marketing-banner > a:focus {
+        text-decoration: none;
+    }
+
+    .marketing-banner > a {
+        background: #2051e3 url('/themes/portal/admin/images/banner/banner-promotion.png') no-repeat center center;
+        height: 40px;
+        text-align: center;
+        color: #000;
+        display: block;
+    }
+
+    .marketing-banner span {
+        display: inline-block;
+        color: #fff;
+        position: absolute;
+        right: 0;
+        top: 0;
+        font-size: 25px;
+        width: 40px;
+        height: 40px;
+        line-height: 40px;
+        text-align: center;
+        cursor: pointer;
+        z-index: 1;
+    }
+      @*@media screen and (max-width: 1400px)
+           {
+        .marketing-banner > a > div {
+            background-size: 100%;
+        }
+    }
+
+    @media screen and (max-width:855px)
+        {
+        .marketing-banner > a > div {
+            height: 60px;
+        }
+    }*@
+
+    .notifications {
+        margin-top: 21px !important;
+    }
+            </style>
+            <script>
+                $(document).ready(function () {
+                    var checkHide = getCookie("hideBanner");
+                    if (checkHide != "true") {
+                        $(".marketing-banner").removeClass("hide");
+                    }
+                });
+
+                function hideBanner() {
+                    $(".marketing-banner").addClass("hide");
+                    setCookie("hideBanner", "true", 1);
+                }
+
+                function setCookie(cname, cvalue, exdays) {
+                    var d = new Date();
+                    d.setTime(d.getTime() + (exdays * 24 * 60 * 60 * 1000));
+                    var expires = "expires=" + d.toUTCString();
+                    document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/";
+                }
+
+                function getCookie(cname) {
+                    var name = cname + "=";
+                    var decodedCookie = decodeURIComponent(document.cookie);
+                    var ca = decodedCookie.split(';');
+                    for (var i = 0; i < ca.length; i++) {
+                        var c = ca[i];
+                        while (c.charAt(0) == ' ') {
+                            c = c.substring(1);
+                        }
+                        if (c.indexOf(name) == 0) {
+                            return c.substring(name.length, c.length);
+                        }
+                    }
+                    return "";
+                }
+            </script>
+
+
+
+            <div class="table-fluid area-banner-app hidden-md hidden-lg" style="position:relative" define="{bannerApp: new Bizweb.SetSessionUtility()}" context="bannerApp">
+                <a href="javascript:void(0);" bind-event-click="setCookieForBannerApp()" style="position: absolute; top: 0; bottom: 0; margin-bottom: auto; margin-top: auto; padding: 12px 0 12px 15px; display: table;">
+                    <img src="//bizweb.dktcdn.net/assets/admin/images/close_btn.png" width="21" />
+                </a>
+                <a href="https://www.sapo.vn/download" target="_blank">
+                    <img src="//bizweb.dktcdn.net/assets/admin/images/banner-mobile-app.png" />
+                </a>
+                <a href="https://www.sapo.vn/download" target="_blank" style="position: absolute; top: 0; bottom: 0; margin-bottom: auto; margin-top: auto; right: 10px; display: table;">
+                    <img src="//bizweb.dktcdn.net/assets/admin/images/next_btn.png" width="21" />
+                </a>
+            </div>
+
+            <div id="dashboard" class="container-fluid-md">
+                <script type="text/javascript">
+                    Page();
+                </script>
+
+
+                <div class="new-trial-dashboard">
+                    <header class="ui-title-bar-container ui-title-bar-container--full-width" style="margin-top:15px;">
+                        <div class="ui-title-bar" style="min-height:0">
+                            <div class="ui-title-bar__main-group">
+                                <div class="ui-title-bar__heading-group">
+                                    <h1 class="ui-title-bar__title">Xin chào nguyen van cong</h1>
+                                    <a href="javascript:void(0);" onclick="disableTrialDashboard()" title="Bỏ qua trang hướng dẫn" style="margin-left: auto; font-size: 14px; color: #9c9c9c;">Bỏ qua trang hướng dẫn</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="collapsible-header">
+                            <div class="collapsible-header__heading"></div>
+                        </div>
+                    </header>
+                    <div class="reports-dashboard-new">
+                        <div class="ui-layout ui-layout--full-width ui-layout__dashboard">
+                            <div class="ui-layout__sections">
+                                <div class="ui-layout__section">
+                                    <div class="ui-layout__item">
+                                        <section class="ui-card">
+                                            <div class="steps-intro clearfix">
+                                                <div class="next-grid report-caption">
+                                                    <h2 class="report-caption-h2" style="color:#333333; text-transform:initial; font-weight:500;">Tất cả đã sẵn sàng! Bắt đầu bán hàng dễ dàng hơn với các bước dưới đây</h2>
+                                                </div>
+                                                <div class="" style="margin-bottom:0">
+                                                    <div class="col-md-3 col-sm-6 col-xs-12 step-intro">
+                                                        <div class="row">
+                                                            <div class="image-intro">
+                                                                <img src="//bizweb.dktcdn.net/assets/admin/images/dasboard/image-intro-setting.png" />
+                                                            </div>
+                                                            <p class="intro-title">1. Cấu hình cửa hàng</p>
+                                                            <div class="intro-detail">
+                                                                <p>Cài đặt các thông tin cho việc</p>
+                                                                <p>bán hàng của bạn</p>
+                                                            </div>
+                                                            <a class="ui-button intro-btn ui-button--dashboard" href="/admin/settings">Cấu hình cửa hàng</a>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-3 col-sm-6 col-xs-12 step-intro">
+                                                        <div class="row">
+                                                            <div class="image-intro">
+                                                                <img src="//bizweb.dktcdn.net/assets/admin/images/dasboard/intro_add_product_img.png" />
+                                                            </div>
+                                                            <p class="intro-title">2. Thêm sản phẩm</p>
+                                                            <div class="intro-detail">
+                                                                <p>Tạo mới và quản lý tồn kho theo</p>
+                                                                <p>từng phiên bản sản phẩm</p>
+                                                            </div>
+                                                            <a class="ui-button intro-btn ui-button--dashboard" href="/admin/products">
+                                                                Xem sản phẩm
+                                                            </a>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-3 col-sm-6 col-xs-12 step-intro">
+                                                        <div class="row">
+                                                            <div class="image-intro">
+                                                                <img src="//bizweb.dktcdn.net/assets/admin/images/dasboard/pantone.svg" />
+                                                            </div>
+                                                            <p class="intro-title">3. Cài đặt giao diện</p>
+                                                            <div class="intro-detail">
+                                                                <p>Cập nhật giao diện mới và tùy chỉnh</p>
+                                                                <p>để phù hợp với cửa hàng của bạn</p>
+                                                            </div>
+                                                            <a class="ui-button intro-btn ui-button--dashboard" href="/admin/themes">Cài đặt giao diện</a>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-3 col-sm-6 col-xs-12 step-intro">
+                                                        <div class="row">
+                                                            <div class="image-intro">
+                                                                <img src="//bizweb.dktcdn.net/assets/admin/images/dasboard/intro_order_image.png" />
+                                                            </div>
+                                                            <p class="intro-title">4. Sẵn sàng bán hàng</p>
+                                                            <div class="intro-detail">
+                                                                <p>Tất cả đã sẵn sàng. Tạo đơn</p>
+                                                                <p>và quản lý đơn từ website của bạn</p>
+                                                            </div>
+                                                            <a class="ui-button intro-btn ui-button--dashboard" href="/admin/orders">
+                                                                Tạo đơn hàng mới
+                                                            </a>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </section>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="ui-layout ui-layout--full-width ui-layout__dashboard">
+                            <div class="ui-layout__sections">
+                                <div class="ui-layout__section">
+                                    <div class="ui-layout__item">
+                                        <div class="dashboard-left">
+                                            <section class="panel clearfix">
+                                                <div class="next-grid report-caption">
+                                                    <h2 class="report-caption-h2">Dành cho người mới bắt đầu</h2>
+                                                </div>
+                                                <div class="infomation-for-new-member">
+                                                    <ul>
+                                                        <li><a href="https://support.sapo.vn/them-san-pham-sapo-web" target="_blank"><i class="fa fa-circle" aria-hidden="true"></i> Hướng dẫn thêm sản phẩm lên website</a></li>
+                                                        <li><a href="https://support.sapo.vn/cai-dat-giao-dien" target="_blank"><i class="fa fa-circle" aria-hidden="true"></i> Cài đặt và thay đổi giao diện website</a></li>
+                                                        <li><a href="https://www.sapo.vn/dang-ky-ten-mien.html" target="_blank"><i class="fa fa-circle" aria-hidden="true"></i> Chọn tên miền cho website</a></li>
+                                                        <li><a href="https://support.sapo.vn/tim-hieu-ve-cau-hinh-van-chuyen" target="_blank"><i class="fa fa-circle" aria-hidden="true"></i> Tích hợp đơn vị vận chuyển cho website</a></li>
+                                                        <li><a href="https://support.sapo.vn/tim-hieu-ve-don-hang" target="_blank"><i class="fa fa-circle" aria-hidden="true"></i> Quản lý đơn hàng trên website</a></li>
+                                                    </ul>
+                                                    <div class="hotline-support">
+                                                        <div class="hotline-support-icon">
+                                                            <img src="//bizweb.dktcdn.net/assets/admin/images/dasboard/hotline-dashboard-image.png" />
+                                                        </div>
+                                                        <div class="hotline-support-info">
+                                                            <p>Nếu bạn cần thêm sự hỗ trợ, hãy liên hệ với chúng tôi</p>
+                                                            <p>Hotline: <a href="tel:18006750">1800 6750</a> hoặc truy cập <a href="https://support.sapo.vn" target="_blank">support.sapo.vn</a></p>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </section>
+                                        </div>
+                                        <div class="dashboard-right">
+                                            <div class="panel clearfix">
+                                                <div class="next-grid report-caption">
+                                                    <h2 class="report-caption-h2">Xem video hướng dẫn</h2>
+                                                </div>
+                                                <div class="flat-video-fancybox">
+                                                    <a class="fancybox" data-type="iframe" href="https://www.youtube.com/embed/rkXfWbhVgiI">
+                                                    </a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="ui-layout ui-layout--full-width ui-layout__dashboard">
+                            <div class="ui-layout__sections">
+                                <div class="ui-layout__section">
+                                    <div class="ui-layout__item">
+                                        <div class="themes-dashboard">
+                                            <div class="panel">
+                                                <div class="next-grid report-caption">
+                                                    <h2 class="report-caption-h2">Các giao diện nổi bật</h2>
+                                                    <a href="https://themes.sapo.vn/" target="_blank" class="dasboard-link-more">Xem thêm <svg class='next-icon next-icon--size-20 next-icon--rotate-180'><use xmlns:xlink='http://www.w3.org/1999/xlink' xlink:href='#chevron-left-thinner'></use></svg></a>
+                                                </div>
+                                                <div class="panel-body">
+                                                    <div class="area-top-themes clearfix">
+                                                        <div class="owl-carousel top-themes">
+                                                            <div class="featured-theme">
+                                                                <a title="Ego Medical" href="https://themes.sapo.vn/ego-medical" target="_blank" rel="nofollow noreferrer noopener">
+                                                                    <div class="featured-theme-img">
+
+                                                                        <img alt="Ego Medical" src="https://bizwebtheme.dktcdn.net/themes/3610/themestores/7240e0e2d2ed6853f99400438b1067c9.jpg?1585964116863" />
+
+                                                                    </div>
+                                                                    <div class="featured-theme-info">
+                                                                        <h4 class="featured-theme-infos-h4">Ego Medical</h4>
+                                                                        <span class="featured-theme-infos-price">980,000 VNĐ</span>
+                                                                    </div>
+                                                                </a>
+                                                            </div>
+                                                            <div class="featured-theme">
+                                                                <a title="Marni Store" href="https://themes.sapo.vn/template-marni-store" target="_blank" rel="nofollow noreferrer noopener">
+                                                                    <div class="featured-theme-img">
+
+                                                                        <img alt="Marni Store" src="https://bizwebtheme.dktcdn.net/themes/3609/themestores/d4b70a21fc53185ca907ac940746f5b3.jpg?1585963963023" />
+
+                                                                    </div>
+                                                                    <div class="featured-theme-info">
+                                                                        <h4 class="featured-theme-infos-h4">Marni Store</h4>
+                                                                        <span class="featured-theme-infos-price">910,000 VNĐ</span>
+                                                                    </div>
+                                                                </a>
+                                                            </div>
+                                                            <div class="featured-theme">
+                                                                <a title="Bean Jewelry" href="https://themes.sapo.vn/bean-jewelry" target="_blank" rel="nofollow noreferrer noopener">
+                                                                    <div class="featured-theme-img">
+
+                                                                        <img alt="Bean Jewelry" src="https://bizwebtheme.dktcdn.net/themes/3608/themestores/5e58c45bcc25d19f80ede309bff0841f.jpg?1585963462827" />
+
+                                                                    </div>
+                                                                    <div class="featured-theme-info">
+                                                                        <h4 class="featured-theme-infos-h4">Bean Jewelry</h4>
+                                                                        <span class="featured-theme-infos-price">910,000 VNĐ</span>
+                                                                    </div>
+                                                                </a>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="apps-dashboard">
+                                            <div class="panel">
+                                                <div class="next-grid report-caption">
+                                                    <h2 class="report-caption-h2">Ứng dụng hữu ích</h2>
+                                                    <a href="https://apps.sapo.vn/" target="_blank" class="dasboard-link-more">Xem thêm <svg class='next-icon next-icon--size-20 next-icon--rotate-180'><use xmlns:xlink='http://www.w3.org/1999/xlink' xlink:href='#chevron-left-thinner'></use></svg></a>
+                                                </div>
+                                                <div class="panel-body">
+                                                    <div class="apps">
+                                                        <div class="app clearfix">
+                                                            <a class="app-navigation" href="https://apps.sapo.vn/tim-kiem-thong-minh" title="Tìm kiếm thông minh" target="_blank" rel="nofollow noreferrer noopener">
+                                                                <div class="item-app">
+                                                                    <div class="app-img">
+                                                                        <img src="https://bizwebapp.dktcdn.net/api_clients/1131/applications/e9cc287650773caaedb77a16592df7ac.png">
+                                                                    </div>
+                                                                    <div class="app-info">
+                                                                        <p class="title">Tìm kiếm thông minh</p>
+                                                                        <p class="desc">Ứng dụng website tìm kiếm thông minh tăng khả năng chuyển đổi cho website thông qua những việc gợi ý sản phẩm ngay từ thanh tìm kiếm.</p>
+                                                                    </div>
+                                                                </div>
+                                                            </a>
+                                                        </div>
+                                                        <div class="app clearfix">
+                                                            <a class="app-navigation" href="https://apps.sapo.vn/zopim" title="Zopim Chat" target="_blank" rel="nofollow noreferrer noopener">
+                                                                <div class="item-app">
+                                                                    <div class="app-img">
+                                                                        <img src="https://bizwebapp.dktcdn.net/api_clients/2/applications/6bcb234aec092d1a93a93f4d2ea4fdd4.png">
+                                                                    </div>
+                                                                    <div class="app-info">
+                                                                        <p class="title">Zopim Chat</p>
+                                                                        <p class="desc">Với Zopim Live Chat, khách hàng của bạn sẽ có thể trò chuyện trực tiếp với bạn thông qua các cửa sổ chat và bạn có thể quản lý nhiều cuộc hội thoại.</p>
+                                                                    </div>
+                                                                </div>
+                                                            </a>
+                                                        </div>
+                                                        <div class="app clearfix">
+                                                            <a class="app-navigation" href="https://apps.sapo.vn/san-pham-da-xem" title="Sản phẩm đã xem" target="_blank" rel="nofollow noreferrer noopener">
+                                                                <div class="item-app">
+                                                                    <div class="app-img">
+                                                                        <img src="https://bizwebapp.dktcdn.net/api_clients/1105/applications/362eafd7e07039448b50a3a83abb290a.jpg">
+                                                                    </div>
+                                                                    <div class="app-info">
+                                                                        <p class="title">Sản phẩm đã xem</p>
+                                                                        <p class="desc">Tăng tỉ lệ click mua sản phẩm thông qua việc hiện thị lịch sử sản phẩm đã xem của khách hàng.</p>
+                                                                    </div>
+                                                                </div>
+                                                            </a>
+                                                        </div>
+
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="ui-layout ui-layout--full-width ui-layout__dashboard">
+                            <div class="ui-layout__sections">
+                                <div class="ui-layout__section">
+                                    <div class="ui-layout__item">
+                                        <div class="partners-dashboard">
+                                            <div class="panel">
+                                                <div class="next-grid report-caption">
+                                                    <h2 class="report-caption-h2">Đối tác thanh toán và vận chuyển tích hợp</h2>
+                                                </div>
+                                                <div class="panel-body panel-body-partner">
+                                                    <div class="col-md-4 col-sm-4 col-xs-12">
+                                                        <div class="partner-image">
+                                                            <img src="//bizweb.dktcdn.net/assets/admin/images/dasboard/logo_vnpay_dashboard.png" />
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-4 col-sm-4 col-xs-12">
+                                                        <div class="partner-image">
+                                                            <img src="//bizweb.dktcdn.net/assets/admin/images/dasboard/logo_moca_dashboard.png" />
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-4 col-sm-4 col-xs-12">
+                                                        <div class="partner-image">
+                                                            <img src="//bizweb.dktcdn.net/assets/admin/images/dasboard/logo_paypal_dashboard.png" />
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-4 col-sm-4 col-xs-12">
+                                                        <div class="partner-image">
+                                                            <img class="onepay-img" src="//bizweb.dktcdn.net/assets/admin/images/dasboard/logo_one_pay_dashboard.png" />
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-4 col-sm-4 col-xs-12">
+                                                        <div class="partner-image">
+                                                            <img src="//bizweb.dktcdn.net/assets/admin/images/dasboard/logo_zalopay_dashboard.png" />
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-4 col-sm-4 col-xs-12">
+                                                        <div class="partner-image">
+                                                            <img src="//bizweb.dktcdn.net/assets/admin/images/dasboard/logo_baokim_dashboard.png" />
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-4 col-sm-4 col-xs-12">
+                                                        <div class="partner-image">
+                                                            <img src="//bizweb.dktcdn.net/assets/admin/images/dasboard/logo_boxme_dashboard.png" />
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-4 col-sm-4 col-xs-12">
+                                                        <div class="partner-image">
+                                                            <img src="//bizweb.dktcdn.net/assets/admin/images/dasboard/logo_ghn_dashboard.png" />
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-4 col-sm-4 col-xs-12">
+                                                        <div class="partner-image">
+                                                            <img src="//bizweb.dktcdn.net/assets/admin/images/dasboard/logo_ghtk_dashboard.png" />
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="blogs-dashboard">
+                                            <div class="panel">
+                                                <div class="next-grid report-caption">
+                                                    <h2 class="report-caption-h2">Có thể bạn quan tâm</h2>
+                                                </div>
+                                                <div class="panel-body panel-body-rss">
+                                                    <div id="rssfeedsBlog" class="row news">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="bizweb-copyright text-center text-muted">
+                        <p>Sapo - Nền tảng quản lý và bán hàng đa kênh được sử dụng nhiều nhất Việt Nam</p>
+                    </div>
+                </div>
+                <div class="trial-notification"><span>Bạn còn 15 ngày dùng thử</span><a class="btn btn-primary" href="/admin/settings/plans/website">Chọn gói dịch vụ phù hợp với bạn ngay hôm nay</a></div>
+                <script type="text/javascript">
+                    $(".fancybox").on("click", function (event) {
+                        event.preventDefault();
+                        $.fancybox({
+                            href: this.href,
+                            type: $(this).data("type"),
+                            helpers: {
+                                overlay: {
+                                    locked: false
+                                }
+                            }
+                        }); // fancybox
+                        return false
+                    });
+
+                    $.ajax({
+                        url: "/admin/services/getRss?limit=3",
+                        type: "GET",
+                        global: false,
+                        success: function (data) {
+                            var template = '<div class="col-md-12 col-xs-12 col-sm-12 mod-responsive-rss"><a class="new-navigation" href="{url}" rel="nofollow noreferrer noopener" target="_blank"><div class="new-img"><img class="img-responsive news-image-center" src="{image}" /></div><p class="new-title"><span class="new-title-date">{title}</span><span class="new-title-category">{category}</span></p></a></div>'
+
+                            if (data && data.feeds && data.feeds.length) {
+                                for (var i = 0; i < data.feeds.length; i++) {
+                                    var post = data.feeds[i];
+                                    var createdOn = new Date(post.created_on);
+
+                                    var postUrl = post.url;
+                                    if (postUrl.indexOf("?") > -1)
+                                        postUrl += "&utm_source=admin_sky&utm_medium=dashboard_feed&utm_campaign=bizweb_admin";
+                                    else
+                                        postUrl += "?utm_source=admin_sky&utm_medium=dashboard_feed&utm_campaign=bizweb_admin";
+
+                                    var postHtml = template.replace("{url}", postUrl)
+                                        .replace("{image}", post.image)
+                                        .replace("{title}", post.title)
+                                        .replace("{category}", (post.article_category == null ? "" : post.article_category));
+                                    $("#rssfeedsBlog").append(postHtml);
+                                }
+                            }
+                        }
+                    });
+
+                    function disableTrialDashboard() {
+                        $.ajax({
+                            url: "/admin/dashboard/changesetting",
+                            type: "POST",
+                            data: {
+                                key: "TrialDashboard",
+                                value: "disable"
+                            },
+                            success: function (data) {
+                                window.location = "/admin";
+                            },
+                            error: function (error) {
+                                Bizweb.Flash.error("Đã có lỗi xảy ra, xin hãy thử lại sau.")
+                            }
+                        });
+                    }
+
+                    $(document).one("ready page:load", function () {
+                        $('.top-themes').owlCarousel({
+                            items: 5,
+                            loop: false,
+                            margin: 15,
+                            responsiveClass: true,
+                            responsive: {
+                                0: {
+                                    items: 2,
+                                    nav: false
+                                },
+                                500: {
+                                    items: 2,
+                                    nav: false
+                                },
+                                600: {
+                                    items: 2,
+                                    nav: false
+                                },
+                                992: {
+                                    items: 3,
+                                    nav: false,
+                                    loop: false
+                                },
+                                1215: {
+                                    items: 3,
+                                    nav: false,
+                                    loop: false
+                                }
+                            },
+                            navText: ["<svg class='next-icon next-icon--size-20 next-icon--no-nudge'><use xmlns:xlink='http://www.w3.org/1999/xlink' xlink:href='#chevron-left-thinner'></use></svg>", "<svg class='next-icon next-icon--size-20 next-icon--rotate-180 next-icon--no-nudge'><use xmlns:xlink='http://www.w3.org/1999/xlink' xlink:href='#chevron-left-thinner'></use></svg>"]
+                        });
+                    });
+                </script>
+
+                <style>
+                    .featuredthemes-captions .caption-button {
+                        right: 36px;
+                    }
+                </style>
+            </div>
+
+
+
+
+        </div>
+    </div>
+</div>
