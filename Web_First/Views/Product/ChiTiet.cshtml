@@ -1,4 +1,4 @@
-﻿
+﻿@model Web_First.Models.San_Pham
 @{
     ViewData["Title"] = "ChiTiet";
     Layout = "~/Views/Shared/_Layout_Login.cshtml";
@@ -141,7 +141,7 @@
                                                     <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#next-duplicate-minor"></use>
                                                 </svg>Nhân bản
                                             </button>
-                                            <a href="http://sort1.mysapo.net/gau-bong-teddy-cute" class="ui-button ui-button--transparent action-bar__link" data-popover-index="2" target="_blank" rel="noopener noreferrer">
+                                            <a asp-controller="Product" asp-action="Details" asp-route-id="@Model.Id_SP" class="ui-button ui-button--transparent action-bar__link" data-popover-index="2" rel="noopener noreferrer">
                                                 <svg class="next-icon next-icon--size-20 action-bar__link-icon next-icon--no-nudge">
                                                     <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#next-view-minor"></use>
                                                 </svg>Xem trên web
