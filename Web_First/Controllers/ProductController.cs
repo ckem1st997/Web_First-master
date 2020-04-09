@@ -32,11 +32,9 @@ namespace Web_First.Controllers
 
         public async Task<IActionResult> Show_SP()
         {
-            var tt = from b in _context.San_Pham
-                     join c in _context.ThongSo_SP
-                     on b.Id_SP equals c.Id_SP
-                     group b  by new { b.Id_SP, b.Loai_SP_1, b.Loai_SP_2, b.Name_SP } into g
-                     select g.Key;
+            var tt = await _context.ThongSo_SP.GroupBy(a => a.Id_SP).Select(group => new String[]
+            { group.Key,group.Count().ToString(), group.Sum(a=>a.SL_co).ToString()
+            }).ToListAsync();
             ViewBag.tt = tt;
 
             var sp = from b in _context.all
@@ -49,7 +47,43 @@ namespace Web_First.Controllers
         {
             return View(await _context.San_Pham.ToListAsync());
         }
+        public async Task<IActionResult> ChiTiet(string id)
+        {
+            if (id == null)
+            {
+                return NotFound();
+            }
 
+            var san_Pham = await _context.San_Pham
+                .FirstOrDefaultAsync(m => m.Id_SP == id);
+            if (san_Pham == null)
+            {
+                return NotFound();
+            }
+            // sale
+            var products = (from a in _context.San_Pham_Sale
+                            select a).Take(20);
+            ViewBag.SP_Sale = products.ToPagedList(1, 20);
+            // image
+
+            var img = from a in _context.ThongSo_SP
+                      where a.Id_SP == id
+                      select a;
+            ViewBag.Img_ts = img;
+            var img1 = from a in _context.all
+                       where a.Id_SP == id
+                       select a;
+            ViewBag.Img_ts1 = img1;
+            var size = from b in _context.Size_SP
+                       where b.Id_SP == id
+                       group b by b.Size into g
+                       select g.Key;
+            ViewBag.Img_ts2 = size;
+
+
+
+            return View(san_Pham);
+        }
         // GET: Product/Details/5
         public async Task<IActionResult> Details(string id)
         {

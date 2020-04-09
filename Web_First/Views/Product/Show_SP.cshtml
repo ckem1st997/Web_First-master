@@ -464,28 +464,35 @@
                                                                 <td class="name">
                                                                     <div class="ui-stack ui-stack--wrap">
                                                                         <div class="ui-stack-item">
-                                                                            <a data-nested-link-target="true">@item.Name_SP</a>
+                                                                            <a asp-controller="Product" asp-action="ChiTiet" asp-route-id="@item.Id_SP" data-nested-link-target="true">@item.Name_SP</a>
                                                                         </div>
                                                                     </div>
                                                                 </td>
+
                                                                 <td class="total">
                                                                     @foreach (var item1 in ViewBag.tt)
                                                                     {
-                                                                        if (item1.Id_SP == item.Id_SP)
+                                                                        // <p>@item1[0],@item1[1],@item1[2]</p>
+                                                                        if (item1[0] == item.Id_SP)
                                                                         {
-                                                                            <p>
-                                                                                @item1
-                                                                            </p>
-                                                                        }
-                                                                        else
-                                                                        {
-                                                                            <p>
-                                                                                400 sản phẩm loại 1
-                                                                            </p>
-                                                                        }
+                                                                            if (@item1[1] != null || @item1[2] != null)
+                                                                            {
+                                                                                <p class="info-sp">
+                                                                                    @item1[2] sản phẩm của @item1[1] loại
+                                                                                </p>
 
+                                                                            }
+                                                                            else
+                                                                            {
+                                                                                <p class="info-sp">
+                                                                                    1000 sản phẩm của 1 loại
+                                                                                </p>
+                                                                            }
+
+                                                                        }
 
                                                                     }
+
                                                                 </td>
                                                                 <td class="type">
                                                                     <p>@item.Loai_SP_1</p>
