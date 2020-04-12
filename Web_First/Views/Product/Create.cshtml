@@ -1,56 +1,965 @@
-﻿@model Web_First.Models.San_Pham
-
+﻿
 @{
     ViewData["Title"] = "Create";
-    Layout = "~/Views/Shared/_Layout.cshtml";
+    Layout = "~/Views/Shared/_Layout_Login.cshtml";
 }
+@section Scripts{
 
-<h1>Create</h1>
+    <link href="~/css/Index.css" rel="stylesheet" />
+    <script type="text/javascript" src="~/ckeditor/ckeditor.js"></script>
+    <script>CKEDITOR.replace('editor1');</script>
+}
+<div class="wrapper" id="wrapper">
+    <div id="body" class="page-content clearfix" data-tg-refresh="body">
+        <div id="content">
 
-<h4>San_Pham</h4>
-<hr />
-<div class="row">
-    <div class="col-md-4">
-        <form asp-action="Create">
-            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <div class="form-group">
-                <label asp-for="Id_SP" class="control-label"></label>
-                <input asp-for="Id_SP" class="form-control" />
-                <span asp-validation-for="Id_SP" class="text-danger"></span>
+            <script type="text/javascript">
+                Page(););
+            </script>
+            <div class="modal" data-tg-refresh="modal" id="modal_container" style="display: none;" aria-hidden="true" aria-labelledby="ModalTitle" tabindex="-1"></div>
+            <div class="modal-bg" data-tg-refresh="modal" id="modal_backdrop"></div>
+            <div id="products-new" class="product-detail page">
+                <div class="aviary-modal-bg"><div class="aviary-modal"></div></div>
+                <form autocomplete="off" data-context="form" data-define="{
+        form: new Bizweb.ProductCreateForm(
+          this, {
+            disabledUntilDirty: true,
+            alertUnsavedChanges: true
+          }
+        )
+      }" data-context-create-name="Sản phẩm" data-context-cancel-path="/admin/products" data-tg-full-refresh-on-error-except="product-images-content" data-tg-full-refresh-on-success-except="product-images-content" data-tg-remote="true" id="create_new_product" class="new_product" action="/admin/products/create" accept-charset="UTF-8" method="post">
+                    <input type="hidden" name="AuthenticityToken" value="3D7hKA4FpbmMyFearIzuDkfugLzczFxUJ5K6H7aJfsK8NZr4Z2n5DjDn5TICjsH4JOk7lnnnRi7o4vHOFgzRpA==">
+                    <header class="ui-title-bar-container">
+                        <div class="ui-title-bar">
+                            <div class="ui-title-bar__navigation">
+                                <div class="ui-breadcrumbs">
+                                    <a href="/admin/products" class="ui-button ui-button--transparent ui-breadcrumb">
+                                        <svg class="next-icon next-icon--size-20 next-icon--no-nudge"> <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#chevron-left-thinner"></use> </svg>
+                                        <span class="ui-breadcrumb__item">Quay lại danh sách sản phẩm</span>
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="ui-title-bar__main-group">
+                                <div class="ui-title-bar__heading-group">
+                                    <span class="ui-title-bar__icon">
+                                        <svg class="next-icon next-icon--color-slate-lighter next-icon--size-20">
+                                            <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#next-products"></use>
+                                        </svg>
+                                    </span>
+                                    <h1 class="ui-title-bar__title">
+                                        Thêm mới sản phẩm
+                                    </h1>
+                                </div>
+                            </div>
+                        </div><div class="collapsible-header"><div class="collapsible-header__heading"></div></div>
+                    </header>
+                    <div class="ui-layout">
+                        <div class="ui-layout__sections">
+
+
+                            <div class="ui-layout__section ui-layout__section--primary">
+                                <div class="ui-layout__item">
+                                    <section class="ui-card" id="product-form-container">
+                                        <div class="ui-card__section">
+                                            <div class="ui-type-container">
+                                                <div class="next-input-wrapper">
+                                                    <label class="next-label" for="product-name">
+                                                        Tên sản phẩm
+                                                    </label>
+                                                    <input required="" data-has-error="true" autofocus="autofocus" data-bind="product.title" id="product-name" value="" placeholder="Nhập tên sản phẩm" class="next-input" size="30" type="text" name="product[name]">
+                                                </div>
+                                                <div class="next-input-wrapper">
+                                                    <label class="next-label" for="Content">Nội dung</label>
+                                                    <textarea name="description" id="editor1" rows="10" cols="80">This is my textarea to be replaced with CKEditor.</textarea>
+
+                                                </div>
+
+                                            </div>
+                                        </div>
+                                    </section>
+                                    <section class="ui-card" id="product-images-container">
+                                        <div data-define="{ imageActions: new Bizweb.ProductCreateImageActions(this, $context) }" data-context="imageActions" id="product-images-content" data-tg-refresh="product-images-content" data-bind-event-dragenter="imageActions.startDrag(event)" data-bind-event-dragover="imageActions.dragOver(event)" data-bind-event-dragleave="imageActions.cancelDrag(event)" data-bind-event-drop="imageActions.dropFile(event)">
+                                            <header class="next-card__header">
+                                                <div class="next-grid next-grid--no-padding next-grid--vertically-centered">
+                                                    <div class="next-grid__cell">
+                                                        <h2 class="next-heading">Ảnh sản phẩm</h2>
+                                                    </div>
+                                                    <div class="next-grid__cell next-grid__cell--no-flex" data-bind-show="!isUploading()">
+                                                        <div class="next-grid next-grid--no-outside-padding next-grid--vertically-centered">
+                                                            <div class="next-grid__cell next-grid__cell--no-flex" data-bind-show="!isInSelectionMode()">
+                                                                <div class="styled-file-input">
+                                                                    <div class="btn btn--link" style="display:flex;">
+                                                                        <a bind-event-click="openFileUpload()" href="#" class="ui-button btn--link" style="padding:0 15px;" id="ht-cre-product-add-image">Thêm ảnh sản phẩm</a>
+                                                                        <input id="image-upload" type="file" data-bind-event-change="fileInputChanged(event, this)" multiple="" accept="image/*" class="js-no-dirty hide">
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <div class="next-grid__cell next-grid__cell--no-flex hide" data-bind-show="isInSelectionMode()">
+                                                                <div class="btn btn--link">
+                                                                    <a class="ui-button btn--link" style="padding:0 15px;" data-bind-event-click="unselectAllImages()">Bỏ chọn tất cả</a>
+                                                                </div>
+                                                                <div class="btn btn--link">
+                                                                    <a class="ui-button btn--link" style="padding:0 15px;" data-bind-event-click="deleteSelectedImages()">Xoá ảnh đã chọn</a>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </header>
+                                            <div class="next-card__section">
+                                                <div class="ui-banner ui-banner--status-warning hide" data-bind-show="hasErrors()">
+                                                    <div class="ui-banner__ribbon"><svg class="next-icon next-icon--size-20 next-icon--no-nudge"> <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#alert-circle"></use> </svg></div><div class="ui-banner__content">
+                                                        <div class="ui-banner__content-text">
+                                                            <h2 class="ui-banner__title">Những ảnh bị lỗi:</h2><div class="ui-type-container ui-type-container--spacing-tight">
+                                                                <ul id="product-image-errors"></ul>
+                                                            </div>
+                                                        </div><div class="ui-banner__content-button">
+                                                            <div class="button-group">
+                                                                <label class="btn btn--outline" for="image-upload">
+                                                                    Thử đăng ảnh khác
+                                                                </label>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="next-upload-dropzone__wrapper">
+                                                    <ol id="product-images" class="product-photo-grid product-photo-grid--is-showing-all clearfix hide ui-sortable dragable-product-images" data-bind-show="hasImages() || isUploading()"></ol>
+                                                    <div data-bind-show="(dragging() || !hasImages()) &amp;&amp; !isUploading()">
+                                                        <div class="next-upload-dropzone" data-bind-class="{
+                                'next-upload-dropzone--active': dragging() &amp;&amp; !hasImages(),
+                                'next-upload-dropzone--overlay next-upload-dropzone--active': dragging() &amp;&amp; hasImages()}">
+                                                            <div class="next-upload-dropzone__hit-area next-upload-dropzone__hit-area--padded">
+                                                                <svg class="next-icon next-icon--size-24 next-upload-dropzone__icon">
+                                                                    <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#next-dropzone">
+                                                                    </use>
+                                                                </svg>
+                                                                <h3 class="next-heading next-heading--no-margin next-upload-dropzone__heading">
+                                                                    <div data-bind-show="!dragging" class="styled-file-input hide">
+                                                                        Add images<input type="file" data-bind-event-change="fileInputChanged(event, this)" multiple="" accept="image/*" class="js-no-dirty">
+                                                                        or drag and drop to upload
+                                                                    </div>
+                                                                    <div data-bind-show="dragging" aria-hidden="true">
+                                                                        Thả file ảnh vào đây để thêm mới
+                                                                    </div>
+                                                                </h3>
+                                                            </div>
+
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <script type="text/template" id="js-template">
+                                                <li id="{{= id }}" class="product-photo-grid__item"
+                                                    data-bind-class="{'product-photo-grid__item--inselectionmode': isInSelectionMode()}">
+                                                    <div class="aspect-ratio aspect-ratio--square">
+                                                        <img class="aspect-ratio__content" src="{{= dataUrl }}" />
+                                                        <div class="product-photo-loading-overlay" data-bind-show="isUploading()">
+                                                            <div class="next-grid next-grid--center-both next-grid--no-padding" style="height: 100%">
+                                                                <div class="next-grid__cell next-grid__cell--no-flex">
+                                                                    <div class="next-spinner" data-bind-class="{'next-spinner--is-successful': uploadProgress(&quot;{{=id}}&quot;) == 'done', 'next-spinner--is-failed': uploadProgress(&quot;{{=id}}&quot;) == 'fail'}">
+                                                                        <svg class="next-icon next-icon--40 next-spinner__status next-spinner__status--successful" preserveAspectRatio="xMinYMin">
+                                                                            <circle class="next-spinner__status__background" cx="50%" cy="50%" r="50%" />
+                                                                            <path class="next-spinner__status__icon" d="M30.8,13L16.9,26.9c-0.3,0.3-0.9,0.3-1.2,0l-6.5-6.5" fill="none" />
+                                                                        </svg>
+                                                                        <svg class="next-icon next-icon--40 next-spinner__status next-spinner__status--failed" viewBox="0 0 40 40" preserveAspectRatio="xMinYMin">
+                                                                            <circle class="next-spinner__status__background" cx="50%" cy="50%" r="50%" />
+                                                                            <g class="next-spinner__status__icon">
+                                                                                <line x1="27" y1="13" x2="13" y2="27" stroke-linecap="round" stroke-linejoin="round" />
+                                                                                <line x1="27" y1="27" x2="13" y2="13" stroke-linecap="round" stroke-linejoin="round" />
+                                                                            </g>
+                                                                        </svg>
+                                                                        <svg class="next-icon next-icon--40" preserveAspectRatio="xMinYMin">
+                                                                            <circle class="next-spinner__ring" cx="50%" cy="50%" r="45%" role="presentation" />
+                                                                        </svg>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="product-photo-hover-overlay drag"
+                                                             data-bind-show="!isUploading()"
+                                                             data-bind-class="{'product-photo-hover-overlay--inselection': isImageIdSelected(&quot;{{= id }}&quot;)}">
+                                                            <ul class="photo-overlay-actions photo-overlay-actions__selection"
+                                                                data-bind-event-click="toggleImageSelection(&quot;{{= id }}&quot;)">
+                                                                <li>
+                                                                    <a class="photo-overlay-actions__link image-action tooltip tooltip-top">
+                                                                        <i style="width: 17px; height: 17px; display: flex; justify-content: center; align-items: center; border-radius: 50%; border: 2px solid white">
+                                                                            <svg class="next-icon next-icon--color-white" style="top:0;width:10px;height:10px" data-bind-show="isImageIdSelected(&quot;{{= id }}&quot;)"><use xlink:href="#next-checkmark-thick" /> </svg>
+                                                                        </i>
+                                                                        <span class="tooltip-container"><span class="tooltip-label">Chọn</span></span>
+                                                                    </a>
+                                                                </li>
+                                                            </ul>
+                                                            <ul class="photo-overlay-actions">
+                                                                <li>
+                                                                    <a data-bind-event-click="showImageModalForImage(&quot;{{= id }}&quot;)" class="photo-overlay-actions__link image-action tooltip tooltip-top">
+                                                                        <svg class="next-icon next-icon--color-white next-icon--size-16"> <use xlink:href="#next-preview" /> </svg>
+                                                                        <span class="tooltip-container"><span class="tooltip-label">Xem</span></span>
+                                                                    </a>
+                                                                </li>
+                                                                <li>
+                                                                    <a data-bind-event-click="showEditAltTextModalForImage(&quot;{{= id }}&quot;)" class="photo-overlay-actions__link image-action tooltip tooltip-top">
+                                                                        <svg class="next-icon next-icon--color-white next-icon--size-16"> <use xlink:href="#next-alt-text" /> </svg>
+                                                                        <span class="tooltip-container"><span class="tooltip-label">Sửa ALT</span></span>
+                                                                    </a>
+                                                                </li>
+                                                                <li>
+                                                                    <a data-bind-event-click="deleteImage(&quot;{{= id }}&quot;)" class="photo-overlay-actions__link image-action tooltip tooltip-top">
+                                                                        <svg class="next-icon next-icon--color-white next-icon--size-20"> <use xlink:href="#delete-minor" /> </svg>
+                                                                        <span class="tooltip-container"><span class="tooltip-label">Xóa</span></span>
+                                                                    </a>
+                                                                </li>
+                                                            </ul>
+                                                        </div>
+                                                    </div>
+                                                </li>
+                                            </script>
+                                            <script type="text/template" id="image-error-message-template">
+                                                <li class="js-image-error-message">"{{= filename }}" {{= error }}</li>
+                                            </script>
+                                            <script class="modal_source" data-define="{editImageAltImage_createPage: new Bizweb.Modal(this)}" type="text/html">
+                                                <div class="modal-dialog">
+                                                    <div class="modal-content">
+                                                        <div class="ui-modal__header">
+                                                            <div class="ui-modal__header-title">
+                                                                <h2 class="ui-title">Sửa ALT của ảnh</h2>
+                                                            </div>
+                                                            <div class="ui-modal__header-actions">
+                                                                <div class="ui-modal__close-button">
+                                                                    <button class="ui-button ui-button--transparent close-modal" data-dismiss="modal" aria-label="Close modal" type="button" name="button">
+                                                                        <svg class="next-icon next-icon--color-ink-lighter next-icon--size-20">
+                                                                            <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#cancel-small-minor"></use>
+                                                                        </svg>
+                                                                    </button>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="ui-modal__body">
+                                                            <div class="ui-modal__section">
+                                                                <div class="next-grid next-grid--no-outside-padding next-grid--vertically-centered">
+                                                                    <div class="next-grid__cell next-grid__cell--quarter">
+                                                                        <div class="aspect-ratio aspect-ratio--square">
+                                                                            <img data-bind-src="src" class="aspect-ratio__content" />
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="next-grid__cell">
+                                                                        <div class="next-input-wrapper">
+                                                                            <label class="next-label" for="image-alt-text">ALT của ảnh</label>
+                                                                            <input class="next-input" id="image-alt-text" name="alt" data-define="{ newAlt: alt }" data-bind="newAlt" maxlength="255" />
+                                                                            <p class="type--subdued st">Bổ sung thẻ ALT để tối ưu SEO và giúp ảnh dễ hiểu với khách hàng.</p>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="ui-modal__footer">
+                                                            <div class="ui-modal__footer-actions">
+                                                                <div class="ui-modal__secondary-actions">
+                                                                    <div class="button-group">
+                                                                        <button class="ui-button close-modal" data-dismiss="modal" type="button" name="button">Hủy</button>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="ui-modal__primary-actions">
+                                                                    <div class="button-group button-group--right-aligned">
+                                                                        <button class="btn btn-primary js-btn-primary close-modal" data-bind-event-click="alt = newAlt, newAlt = ''" type="button">Đóng</button>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </script>
+                                            <script data-define="{showImageModal: new Bizweb.Modal(this)}" type="text/html" class="modal_source">
+                                                <div class="modal-dialog">
+                                                    <div class="modal-content">
+                                                        <div class="ui-modal__body">
+                                                            <div class="ui-modal__section">
+                                                                <img data-bind-src="src" />
+                                                            </div>
+                                                        </div>
+                                                        <div class="ui-modal__footer">
+                                                            <div class="ui-modal__footer-actions">
+                                                                <div class="ui-modal__secondary-actions">
+                                                                    <div class="button-group">
+                                                                        <button class="ui-button close-modal" data-dismiss="modal" type="button" name="button">Done</button>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </script>
+                                        </div>
+                                    </section>
+                                </div>
+                                <script type="text/template" id="option-table-row-new">
+                                    <tr class="options options-{{= option.position}}" data-bind-attribute="{'data-tg-remote-noserialize': !hasVariants() }">
+                                        <td>
+                                            <div class="ui-popover__container" data-define="{&#39;optionAutocomplete&#39;: new Bizweb.ProductOptionsAutocomplete(this, {{= JSON.stringify(option.position - 1) }}, $(node), productOptions, {maxLength: maxOptionNameLength})}" data-context="optionAutocomplete">
+                                                <div class="relative">
+                                                    <div class="next-input-wrapper"><label class="next-label helper--visually-hidden" for="product_options__name">Product[options][{{= option.index }}][name]</label><input type="text" name="product[options][{{= option.index }}].name" id="product_options__name" value="{{= option.name }}" class="next-input js-option-name" data-bind="input" data-bind-event-keyup="inputChanged()" /></div>
+                                                    <div class="tooltip-error attached-to-bottom" data-bind-show="errorMessage">
+                                                        <ul class="error-list">
+                                                            <li>Vượt quá 50 ký tự cho phép</li>
+                                                        </ul>
+                                                    </div>
+                                                </div>
+                                                <div class="ui-popover" data-popover-relative-to-closest=".next-card">
+                                                    <div class="ui-popover__tooltip"></div><div class="ui-popover__content-wrapper">
+                                                        <div class="ui-popover__content">
+                                                            <div class="ui-popover__pane">
+                                                                <ul class="js-autocomplete-suggestions next-list next-list--compact next-list--toggles"></ul>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </td>
+                                        <input type="hidden" name="product[options][][position]" value="{{= option.position }}">
+                                        <td style="max-width:400px;">
+                                            <input type="text" placeholder="Nhập giá trị thuộc tính" data-position="{{= option.index }}"
+                                                   value="{{ _.each(option.values, function(value,i) { }}{{= value }} {{if( _.size(option.values) - 1 > i ) {}},{{ } }}{{ }) }}"
+                                                   data-context="optionTag" data-define="{optionTag:new Bizweb.ProductOptionTag(this,$context)}" class="next-input" />
+                                        </td>
+                                        <td class="p-none remove">
+                                            <a data-bind-event-click="deleteOption({{= JSON.stringify(option.position) }})"
+                                               class="remove-option btn btn--icon tooltip tooltip-bottom"
+                                               data-bind-show="canDeleteOption({{= JSON.stringify(option.position) }})">
+                                                <span class="tooltip-container"><span class="tooltip-label">Remove</span></span>
+                                                <svg class="next-icon next-icon--color-blue next-icon--size-20"><use xlink:href="#delete-minor" /> </svg>
+                                            </a>
+                                        </td>
+                                    </tr>
+                                </script>
+                                <script type="text/template" id="variants-table-row">
+                                    <tr>
+                                        <td class="select">
+                                            <div class="next-input-wrapper next-input-wrapper--inline">
+                                                {{ if (variant.mark_creation) { }}
+                                                <input type="checkbox" value="true" name="product[variants][{{= JSON.stringify(variant.index) }}][markCreation]" class="next-checkbox" checked='checked' data-bind="variants[{{= JSON.stringify(variant.index) }}].mark_creation">
+                                                {{ } else { }}
+                                                <input type="checkbox" value="true" class="next-checkbox" data-bind="variants[{{= JSON.stringify(variant.index) }}].markCreation">
+                                                {{ } }}
+                                                <span class="next-checkbox--styled"><svg class="next-icon next-icon--size-10 next-icon--blue checkmark"> <use xlink:href="#next-checkmark" /> </svg></span>
+                                            </div>
+                                        </td>
+                                        <td>
+                                            {{ _.each(variant.optionValues, function(optionValue, i) { }}
+                                            <span class="option-{{= i + 1 }}">{{= optionValue }}</span>
+                                            {{ if (_.size(variant.optionValues) - 1 > i) { }}
+                                            {{! delimiter }}
+                                            {{ } }}
+                                            {{ }) }}
+
+                                            <input type="hidden" name="product[variants][{{= variant.index}}][title]" value="{{= variant.title }}">
+                                            {{ _.each(variant.optionValues, function(optionValue, i) { }}
+                                            <input type="hidden" name="product[variants][{{= variant.index}}][option{{= variant.optionPositions[i] }}]" value="{{= optionValue }}">
+                                            {{ }) }}
+                                            <input type="hidden" name="product[variants][{{= variant.index}}][compareAtprice]" data-bind="compareAtPrice" class="js-no-dirty">
+                                            <input type="hidden" name="product[variants][{{= variant.index}}][taxable]" data-bind="taxable" class="js-no-dirty">
+                                            <input type="hidden" name="product[variants][{{= variant.index}}][requiresShipping]" data-bind="requiresShipping" class="js-no-dirty">
+                                            <input type="hidden" name="product[variants][{{= variant.index}}][weight]" data-bind="weight" class="js-no-dirty">
+                                            <input type="hidden" name="product[variants][{{= variant.index}}][weightUnit]" data-bind="weightUnit" class="js-no-dirty">
+                                            <input type="hidden" name="product[variants][{{= variant.index}}][inventoryManagement]" data-bind="inventoryOptions.inventoryManagement" class="js-no-dirty">
+                                            <input type="hidden" name="product[variants][{{= variant.index}}][inventoryPolicy]" data-bind="inventoryPolicy ? 'continue' : 'deny'" class="js-no-dirty">
+                                        </td>
+                                        <td>
+                                            <div class="next-input--stylized next-input--has-content">
+                                                <span class="next-input__add-on next-input__add-on--before">₫</span>
+                                                <input type="text" class="select-all-on-focus next-input next-input--invisible js-money-field" name="product[variants][{{= variant.index}}][price]" data-bind="variants[{{= JSON.stringify(variant.index) }}].price" data-autonumeric="autoNumeric">
+                                            </div>
+                                        </td>
+                                        <td><input type="text" class="select-all-on-focus next-input" name="product[variants][{{= variant.index}}][sku]" data-bind="variants[{{= JSON.stringify(variant.index) }}].sku"></td>
+                                        <td><input type="text" class="select-all-on-focus next-input" name="product[variants][{{= variant.index}}][barcode]" data-bind="variants[{{= JSON.stringify(variant.index) }}].barcode"></td>
+                                        <td data-bind-show="inventoryOptions.inventoryManagement"><input type="text" class="select-all-on-focus next-input" name="product[variants][{{= variant.index}}][inventoryQuantity]" data-bind="variants[{{= JSON.stringify(variant.index) }}].inventoryQuantity"></td>
+                                    </tr>
+                                </script>
+
+
+                                <div class="ui-layout__item" id="product-outer-variants" data-tg-refresh="product-outer-variants">
+                                    <div data-define="{productVariantOptions: new Bizweb.ProductVariantOptions(this,[{&quot;values&quot;:[],&quot;index&quot;:0,&quot;name&quot;:&quot;Kích thước&quot;,&quot;position&quot;:1,&quot;id&quot;:0}],[],{maxOptions: 3,maxOptionNameLength: 50,optionTitleDelimiter: &quot;<span class=\&quot;type--subdued\&quot;> • </span>&quot;,
+                            maxVariants: 100,
+                            maxOptionLength: 255,
+                            hasFulfillmentServices: false,
+                            test: false,
+                          }
+                        )}" data-context="productVariantOptions">
+                                        <input type="hidden" name="product[variant][id]" id="product_variant_id">
+                                        <section class="ui-card">
+                                            <header class="ui-card__header">
+                                                <h2 class="ui-heading">Giá sản phẩm</h2>
+                                            </header>
+                                            <div class="ui-card__section">
+                                                <div class="ui-type-container">
+                                                    <div class="ui-form__section">
+                                                        <div class="ui-form__group">
+                                                            <div class="next-input-wrapper">
+                                                                <label class="next-label" for="variant-price">Giá</label>
+                                                                <div class="next-input--stylized next-input--has-content">
+                                                                    <span class="next-input__add-on next-input__add-on--before">₫</span>
+                                                                    <input type="text" name="product[variant][price]" id="variant-price" value="0" class="next-input next-input--invisible js-money-field" placeholder="0" data-bind="price" data-autonumeric="autoNumeric">
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="next-input-wrapper">
+                                                        <label class="next-label next-label--switch" for="variant-taxable">Giá đã bao gồm VAT</label>
+                                                        <input type="checkbox" id="variant-taxable" value="1" data-bind="taxable" class="next-checkbox">
+                                                        <span class="next-checkbox--styled">
+                                                            <svg class="next-icon next-icon--size-10 checkmark"> <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#next-checkmark-thick"></use></svg>
+                                                        </span>
+                                                    </div>
+                                                    <input type="hidden" name="product[variant][taxable]" id="product_variant_taxable" value="false" data-bind="taxable">
+                                                </div>
+                                            </div>
+                                        </section>
+                                        <section class="ui-card" data-define="{ inventoryOptions: new Bizweb.InventoryOptions(1, null ) }">
+                                            <header class="ui-card__header"><h2 class="ui-heading">Kho hàng</h2></header>
+                                            <div class="ui-card__section">
+                                                <div class="ui-type-container">
+                                                    <div class="next-grid next-grid--no-outside-padding">
+                                                        <div class="next-grid__cell">
+                                                            <div class="next-input-wrapper">
+                                                                <label class="next-label" for="variant-sku">
+                                                                    Mã sản phẩm / SKU
+                                                                    <span class="alert-sku-duplicate">
+                                                                        <svg class="next-icon next-icon--size-16">
+                                                                            <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#icon-danger"></use>
+                                                                        </svg>
+                                                                        <span class="alert-sku-duplicate-cap">Mã sản phẩm này bị trùng với 1 sản phẩm khác trên hệ thống</span>
+                                                                    </span>
+                                                                </label>
+                                                                <input type="text" name="product[variant][sku]" id="variant-sku" data-bind-event-change="inventoryOptions.skuOnChange(this)" data-bind="sku" class="next-input">
+                                                            </div>
+                                                        </div>
+                            
+                                                    </div>
+                                       
+                                                    <div class="next-grid next-grid--no-outside-padding hide" bind-show="inventoryOptions.inventoryManagementEnabled()">
+                                                        <div class="next-grid__cell">
+                                                            <div class="next-input-wrapper">
+                                                                <label class="next-label next-label--switch" for="variant-inventory_policy">Cho phép tiếp tục đặt hàng khi hết hàng</label>
+                                                                <input type="checkbox" id="variant-inventory_policy" value="1" data-bind="inventoryPolicy" class="next-checkbox">
+                                                                <span class="next-checkbox--styled">
+                                                                    <svg class="next-icon next-icon--size-10 checkmark">
+                                                                        <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#next-checkmark-thick">
+                                                                        </use>
+                                                                    </svg>
+                                                                </span>
+                                                            </div>
+                                                            <input type="hidden" name="product[variant][inventoryPolicy]" id="product_variant_inventory_policy" value="deny" bind="inventoryPolicy ? 'continue' : 'deny'">
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </section>
+                                       
+                                        <section class="ui-card">
+                                            <header class="ui-card__header">
+                                                <div class="ui-stack ui-stack--wrap">
+                                                    <div class="ui-stack-item ui-stack-item--fill"><h2 class="ui-heading">Thuộc tính</h2></div><div class="ui-stack-item">
+                                                        <div class="ui-stack ui-stack--wrap">
+                                                            <div class="ui-stack-item">
+                                                                <button class="ui-button ui-button--link" id="product-multiple-options" data-bind-event-click="toggleAutoGenerate()" data-bind-show="autoGenerate" type="button" name="button">Thêm thuộc tính</button>
+                                                                <button class="ui-button ui-button--link hide" id="product-multiple-options" data-bind-show="!autoGenerate" data-bind-event-click="toggleAutoGenerate()" type="button" name="button">Hủy</button>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </header>
+                                            <div class="ui-card__section">
+                                                <div class="ui-type-container">
+                                                    <p>Thêm mới thuộc tính giúp sản phẩm có nhiều lựa chọn, như kích cỡ hay màu sắc.</p>
+                                                </div>
+                                            </div>
+                                            <div class="next-card__section next-card__section--subdued next-card--bottom-rounded-corners hide" data-bind-show="!autoGenerate">
+                                                <table class="next-table table--no-side-padding table--no-border expanded js-options-table">
+                                                    <thead>
+                                                        <tr>
+                                                            <th class="option-name" width="25%"><span>Tên thuộc tính</span></th>
+                                                            <th class="option-values">Giá trị<span class="helper--visually-hidden">Tạo thuộc tính mới bằng dấu ","</span></th>
+                                                            <th class="remove"></th>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                        <tr class="js-add-option" data-bind-show="canAddOptions()">
+                                                            <td colspan="3">
+                                                                <button type="button" class="btn" data-bind-event-click="addNewOption()">Thêm thuộc tính khác</button>
+                                                            </td>
+                                                        </tr>
+                                                    </tbody>
+                                                </table>
+                                                <div data-bind-show="tooManyPotentialVariants()" class="box warning st sb hide">
+                                                    <strong>Cảnh báo:</strong> Sản phẩm chỉ có thể có tối đa 100 phiên bản.
+                                                </div>
+                                                <div class="ppt hide" data-bind-show="variants.length > 0">
+                                                    <h3>Chỉnh sửa các phiên bản dưới đây để tạo:</h3>
+                                                    <div class="table-wrapper">
+                                                        <table class="ssb sst js-variants-table">
+                                                            <thead>
+                                                                <tr>
+                                                                    <th class="select"></th>
+                                                                    <th><span class="options-header">Phiên bản</span></th>
+                                                                    <th style="width:100px"><span>Giá</span></th>
+                                                                    <th style="min-width:100px"><span>SKU</span></th>
+                                                                    <th style="min-width:100px"><span>Barcode</span></th>
+                                                                    <th style="min-width:70px" data-bind-show="inventoryOptions.inventoryManagement" class="hide"><span>Số lượng</span></th>
+                                                                </tr>
+                                                            </thead>
+                                                            <tbody></tbody>
+                                                        </table>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </section>
+                                    </div>
+                                </div>
+                                <div class="ui-layout__item">
+                                    <section class="ui-card" data-define="{ seoFields: new Bizweb.SeoFields(this, {&quot;objectName&quot;:&quot;product&quot;,&quot;originalHandle&quot;:null}) }" data-context="seoFields">
+                                        <header class="ui-card__header">
+                                            <div class="ui-stack ui-stack--wrap">
+                                                <div class="ui-stack-item ui-stack-item--fill"><h2 class="ui-heading">Xem trước kết quả tìm kiếm</h2></div><div class="ui-stack-item">
+                                                    <div class="ui-stack ui-stack--wrap">
+                                                        <div class="ui-stack-item">
+                                                            <button class="ui-button ui-button--link" data-bind-show="!isVisible()" data-bind-event-click="show()" type="button" name="button">Tùy chỉnh SEO</button>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </header>
+                                        <div class="ui-card__section">
+                                            <div class="ui-type-container">
+                                                <div class="google-preview hide" bind-show="shouldShowGooglePreview()">
+                                                    <span class="google__title" bind="googleTitle()"></span>
+                                                    <div class="google__url">
+                                                        https://sort1.mysapo.net/<span bind="googlePath()"></span>
+                                                    </div>
+                                                    <div class="google__description" bind="_.unescape(googleDescription())"></div>
+                                                </div>
+                                                <p bind-show="!shouldShowGooglePreview()" class="">Xin hãy nhập Tiêu đề và Mô tả để xem trước kết quả tìm kiếm của sản phẩm này.</p>
+                                            </div>
+                                        </div>
+                                        <div class="ui-card__section hide" data-bind-show="isVisible()">
+                                            <div class="ui-type-container">
+                                                <div class="ui-form__section">
+                                                    <div class="next-input-wrapper">
+                                                        <div class="ui-form__label-wrapper"><label class="next-label" for="seo-title-tag">Thẻ tiêu đề</label><span class="type--subdued">Số ký tự đã dùng: <b data-bind="(object.seo_title || titlePlaceholder()).length">0</b>/70</span></div>
+                                                        <input id="seo-title-tag" data-bind="object.seo_title" bind-placeholder="titlePlaceholder()" editable-placeholder="true" class="next-input" size="30" type="text" name="product[metaTitle]" placeholder="">
+                                                    </div>
+                                                    <div class="next-input-wrapper">
+                                                        <div class="ui-form__label-wrapper"><label class="next-label" for="seo-description-tag">Thẻ mô tả</label><span class="type--subdued">Số ký tự đã dùng: <b data-bind="(object.seo_description || descriptionPlaceholder()).length">0</b>/320</span></div>
+                                                        <textarea id="seo-description-tag" data-bind="object.seo_description" bind-placeholder="descriptionPlaceholder()" editable-placeholder="true" class="ui-text-area" name="product[metaDescription]" placeholder=""></textarea>
+                                                    </div>
+                                                    <div class="ui-form__section">
+                                                        <div class="next-input-wrapper">
+                                                            <label class="next-label" for="object-handle">Đường dẫn / Alias</label>
+                                                            <div class="next-input--stylized">
+                                                                <span class="next-input__add-on next-input__add-on--before" style="padding-right:0">https://sort1.mysapo.net/</span>
+                                                                <input id="object-handle" data-bind="newHandle" bind-placeholder="defaultHandle()" editable-placeholder="true" class="next-input next-input--invisible" size="30" type="text" name="product[alias]" placeholder="">
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </section>
+                                </div>
+
+                            </div>
+                            <div class="ui-layout__section ui-layout__section--secondary">
+                                <div class="ui-layout__item">
+                                    <div class="next-card">
+                                        <header class="next-card__header">
+                                            <h3 class="ui-heading">Trạng thái</h3>
+                                        </header>
+                                        <section class="next-card__section">
+                                            <div class="visibility" id="PublishingPanel" data-context="publishingPanel" data-define="{publishingPanel: new Bizweb.PublishingPanel(this,{&quot;showDateTimePicker&quot;: false, &quot;is_published&quot;:true})}">
+                                                <div class="ui-form__section">
+                                                    <div class="ui-form__element">
+                                                        <fieldset class="ui-choice-list">
+                                                            <ul>
+                                                                <li>
+                                                                    <div class="next-input-wrapper">
+                                                                        <label class="next-label next-label--switch" for="active-true">
+                                                                            Hiển thị
+                                                                        </label>
+                                                                        <input type="radio" name="product[active]" id="active-true" value="true" data-bind-checked="isAlreadyPublished()" bind-event-click="setPublishedTrue()" class="next-radio" checked="&quot;checked&quot;">
+                                                                        <span class="next-radio--styled"></span>
+                                                                    </div>
+                                                                </li>
+                                                                <li>
+                                                                    <div class="next-input-wrapper">
+                                                                        <label class="next-label next-label--switch" for="active-false">
+                                                                            Ẩn
+                                                                        </label>
+                                                                        <input type="radio" name="product[active]" id="active-false" value="false" data-bind-checked="!isAlreadyPublished()" bind-event-click="setPublishedFalse()" class="next-radio">
+                                                                        <span class="next-radio--styled"></span>
+                                                                    </div>
+                                                                </li>
+                                                            </ul>
+                                                        </fieldset>
+                                                    </div>
+                                                    <div class="ui-form__element" data-bind-show="showSetLink()">
+                                                        <button class="ui-button btn--link" data-bind-event-click="toggleUserInputDateOptions()" type="button" name="button">Đặt lịch hiển thị</button>
+                                                    </div>
+                                                </div>
+                                                <div data-bind-show="showDateTimePicker" class="ui-form__section hide">
+                                                    <div class="ui-form__element">
+                                                        <div class="next-input-wrapper">
+                                                            <label class="next-label">Thời gian hiển thị</label>
+                                                            <div class="ui-stack ui-stack--alignment-center">
+                                                                <div class="ui-stack-item ui-stack-item--fill">
+                                                                    <div class="next-field__connected-wrapper">
+                                                                        <input data-rel="datepicker-now" name="product[date]" id="Date" type="text" class="next-field--connected next-input js-no-dirty" placeholder="Chọn ngày">
+                                                                        <input data-rel="timepicker" name="product[time]" id="Time" data-template="dropdown" data-show-meridian="true" data-minute-step="10" type="text" class="next-field--connected next-input js-no-dirty" placeholder="Chọn giờ" autocomplete="off">
+                                                                    </div>
+                                                                </div>
+                                                                <div class="ui-stack-item">
+                                                                    <button class="ui-button btn--link" data-bind-event-click="cancelUserInputDate()" type="button" name="button"><svg class="next-icon next-icon--size-12"> <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#next-remove"></use> </svg></button>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </section>
+                                    </div>
+                                </div>
+                                <div class="ui-layout__item">
+                                    <section class="ui-card ui-card--type-aside">
+                                        <header class="ui-card__header"><h2 class="ui-heading">Phân loại</h2></header>
+                                        <div class="ui-card__section">
+                                            <div class="ui-type-container">
+                                                <div class="next-input-wrapper">
+                                                    <label for="product_product_type">Loại</label>
+                                                    <script type="text/template" id="autocomplete-header-suggestion-template">
+                                                        <li>
+                                                            <a class="next-list__item next-list__item--promoted-action"
+                                                               selectable
+                                                               data-bind-event-click="selectHeader(event)">
+                                                                <div class="next-grid next-grid--no-outside-padding next-grid--compact">
+                                                                    <div class="next-grid__cell next-grid__cell--no-flex next-grid__cell--vertically-centered">
+                                                                        <svg style="overflow: visible; /* fixes clipping in Chrome */" class="next-icon next-icon--size-12 next-icon next-icon--12 block">
+                                                                            <use xlink:href="#next-add-circle" />
+                                                                        </svg>
+                                                                    </div>
+                                                                    <div class="next-grid__cell">
+                                                                        <strong>Thêm</strong> {{= input }}
+                                                                    </div>
+                                                                </div>
+                                                            </a>
+                                                        </li>
+                                                    </script>
+                                                    <script type="text/template" id="autocomplete-suggestions-list-template">
+                                                        {{ _.each(suggestions, function(suggestion, index) { }}
+                                                        <li>
+                                                            <a class="next-list__item"
+                                                               selectable
+                                                               data-bind-event-click="selectSuggestion({{= JSON.stringify(index + indexStart) }}, event)"
+                                                               data-bind-class="{ 'next-list__item--is-applied': isApplied({{= JSON.stringify(index + indexStart) }}) }">
+                                                                {{= suggestion }}
+                                                            </a>
+                                                        </li>
+                                                        {{ }) }}
+                                                    </script>
+                                                    <script type="text/template" id="autocomplete-no-suggestions-template">
+                                                        <li>
+                                                            <div class="ui-popover__section">
+                                                                <p class="type--subdued tc">Không có kết quả</p>
+                                                            </div>
+                                                        </li>
+                                                    </script>
+                                                    <script type="text/template" id="country-autocomplete-list-template">
+                                                        {{ _.each(suggestions, function(suggestion, index) { }}
+                                                        <li>
+                                                            <a class="next-list__item"
+                                                               selectable
+                                                               data-bind-event-click="selectSuggestion({{= JSON.stringify(index + indexStart) }}, event)"
+                                                               data-bind-class="{ 'next-list__item--is-applied': isApplied({{= JSON.stringify(index + indexStart) }}) }">
+                                                                {{= suggestion.name }}
+                                                            </a>
+                                                        </li>
+                                                        {{ }) }}
+                                                    </script>
+                                                    <script type="text/template" id="autocomplete-v2-suggestions-list-with-toggle-template">
+                                                        {{ _.each(suggestions, function(suggestion, index) { }}
+                                                        <li>
+                                                            <a class="next-list__item"
+                                                               selectable
+                                                               data-bind-event-click="selectSuggestion({{= JSON.stringify(_.pick(suggestion, [displayKey, detailsKey, secondaryDetailsKey, 'id'])) }}, event)"
+                                                               data-bind-class="{ 'next-list__item--is-applied': isApplied({{= JSON.stringify(suggestion.id) }}) }">
+                                                                <div class="next-grid next-grid--no-outside-padding next-grid--compact">
+                                                                    <div class="next-grid__cell next-grid__cell--no-flex">
+                                                                        <svg class="next-icon next-icon--size-12"> <use xlink:href="#next-checkmark" /> </svg>
+                                                                    </div>
+                                                                    <div class="next-grid__cell">
+                                                                        {{= suggestion[displayKey] }}
+
+                                                                        {{ if(detailsKey || secondaryDetailsKey) { }}
+                                                                        <span class="type--subdued"> {{= suggestion[detailsKey] || suggestion[secondaryDetailsKey]}}</span>
+                                                                        {{ } }}
+                                                                    </div>
+                                                                </div>
+                                                            </a>
+                                                        </li>
+                                                        {{ }) }}
+                                                    </script>
+                                                    <script type="text/template" id="autocomplete-v2-no-results-template">
+                                                        {{ if (input) { }}
+                                                        <li>
+                                                            <a class="next-list__item next-list__item--promoted-action"
+                                                               selectable
+                                                               data-bind-event-click="selectHeader(event)">
+                                                                <div class="next-grid next-grid--no-outside-padding next-grid--compact">
+                                                                    <div class="next-grid__cell next-grid__cell--no-flex next-grid__cell--vertically-centered">
+                                                                        <svg style="overflow: visible; /* fixes clipping in Chrome */" class="next-icon next-icon--size-12 next-icon next-icon--12 block"> <use xlink:href="#next-add-circle" /> </svg>
+                                                                    </div>
+                                                                    <div class="next-grid__cell">
+                                                                        <strong>Thêm</strong> {{= input }}
+                                                                    </div>
+                                                                </div>
+                                                            </a>
+                                                        </li>
+
+                                                        {{ } }}
+                                                    </script>
+                                                    <script type="text/template" id="autocomplete-v2-results-template">
+                                                        {{ if (firstPage && !hasMatchingSuggestion && input) { }}
+                                                        <li>
+                                                            <a class="next-list__item next-list__item--promoted-action"
+                                                               selectable
+                                                               data-bind-event-click="selectHeader(event)">
+                                                                <div class="next-grid next-grid--no-outside-padding next-grid--compact">
+                                                                    <div class="next-grid__cell next-grid__cell--no-flex next-grid__cell--vertically-centered">
+                                                                        <svg style="overflow: visible; /* fixes clipping in Chrome */" class="next-icon next-icon--size-12 next-icon next-icon--12 block"> <use xlink:href="#next-add-circle" /> </svg>
+                                                                    </div>
+                                                                    <div class="next-grid__cell">
+                                                                        <strong>Thêm</strong> {{= input }}
+                                                                    </div>
+                                                                </div>
+                                                            </a>
+                                                        </li>
+
+                                                        {{ } }}
+
+                                                        {{ _.each(suggestions, function(suggestion) { }}
+                                                        <li>
+                                                            <a class="next-list__item"
+                                                               selectable
+                                                               data-bind-event-click="selectSuggestion({{= JSON.stringify(suggestion) }}, event)">
+                                                                {{= suggestion }}
+                                                            </a>
+                                                        </li>
+                                                        {{ }) }}
+                                                    </script>
+                                                    <script type="text/template" id="autocomplete-v2-tag-results-template">
+                                                        {{ if (firstPage && !input) { }}
+                                                        <li>
+                                                            <h3 class="next-heading next-heading--micro-uppercase-bordered">Tag gần đây</h3>
+                                                        </li>
+                                                        {{ } }}
+                                                        {{ if (firstPage && !hasMatchingSuggestion && input) { }}
+                                                        <li>
+                                                            <a class="next-list__item next-list__item--promoted-action"
+                                                               selectable
+                                                               data-bind-event-click="selectHeader(event)">
+                                                                <div class="next-grid next-grid--no-outside-padding next-grid--compact">
+                                                                    <div class="next-grid__cell next-grid__cell--no-flex next-grid__cell--vertically-centered">
+                                                                        <svg style="overflow: visible; /* fixes clipping in Chrome */" class="next-icon next-icon--size-12 next-icon next-icon--12 block"> <use xlink:href="#next-add-circle" /> </svg>
+                                                                    </div>
+                                                                    <div class="next-grid__cell">
+                                                                        <strong>Add</strong> {{= input }}
+                                                                    </div>
+                                                                </div>
+                                                            </a>
+                                                        </li>
+
+                                                        {{ } }}
+
+                                                        {{ _.each(suggestions, function(suggestion) { }}
+                                                        <li>
+                                                            <a class="next-list__item"
+                                                               selectable
+                                                               data-bind-event-click="selectSuggestion({{= JSON.stringify(suggestion) }}, event)">
+                                                                {{= suggestion }}
+                                                            </a>
+                                                        </li>
+                                                        {{ }) }}
+                                                    </script>
+                                                    <div class="ui-popover__container ui-popover__container--full-width-container" data-context="product_typeAutocomplete" data-define="{ 'product_typeAutocomplete': new Bizweb.AutocompleteV2.SingleSelectRemoteSourceAutocomplete(this, &quot;\/admin\/products\/types?limit=5000&quot;, &quot;types&quot;, {&quot;maxLength&quot;:255}) }">
+                                                        <div>
+                                                            <div class="next-field__connected-wrapper">
+                                                                <input class="next-input next-field--connected" placeholder="Nhập loại sản phẩm" data-bind="input" data-bind-event-keyup="inputChanged()" size="30" type="text" name="product[productType]" id="product_product_type" aria-expanded="false" aria-haspopup="false" aria-owns="popover-dropdown-2" aria-controls="popover-announce-selected" role="combobox" aria-autocomplete="list" aria-activedescendant="selected-option-5">
+                                                                <a class="btn btn--icon next-field--connected next-field--connected--no-flex" data-bind-event-click="togglePopover(event)">
+                                                                    <svg class="next-icon next-icon--color-slate-lighter next-icon--size-16"> <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#next-arrow-double"></use> </svg>
+                                                                </a>
+                                                            </div>
+                                                            <div class="tooltip-error attached-to-bottom hide" data-bind-show="errorMessage">
+                                                                <ul class="error-list">
+                                                                    <li data-bind="errorMessage"></li>
+                                                                </ul>
+                                                            </div>
+                                                        </div>
+                                                        <div class="ui-popover ui-popover--full-width ui-popover--no-focus" data-popover-horizontally-relative-to-closest=".next-card" data-popover-css-vertical-margin="13" data-popover-css-horizontal-margin="0" data-popover-css-max-height="300" data-popover-css-max-width="10000" id="ui-popover--1" aria-labelledby="product_product_type" aria-expanded="false" role="dialog" style="margin-right: 0px; margin-left: 0px;">
+                                                            <div class="ui-popover__tooltip"></div><div class="ui-popover__content-wrapper">
+                                                                <div class="ui-popover__content">
+                                                                    <div class="ui-popover__pane">
+                                                                        <ul class="js-autocomplete-suggestions next-list next-list--compact next-list--toggles" role="listbox" id="popover-dropdown-2"></ul>
+                                                                        <div class="ui-popover__section hide" data-bind-show="loadingResults">
+                                                                            <p class="type--subdued tc">
+                                                                                <span class="next-spinner">
+                                                                                    <svg class="next-icon next-icon--size-16"> <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#next-spinner"></use> </svg>
+                                                                                </span>
+                                                                                Loading…
+                                                                            </p>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                              
+                                            </div>
+                                        </div>
+                                        <div class="ui-card__section">
+                                            <div class="ui-type-container">
+                                                <label for="collections" class="next-label">Danh mục</label>
+                                                <div id="js-collections" data-tg-refresh="js-collections" data-define="{productCollections: new Bizweb.ProductCollectionDisplay(this)}" data-context="productCollections">
+                                                    <div class="ui-popover__container ui-popover__container--full-width-container" data-context="remoteMultiSelectAutocomplete" data-define="{ 'remoteMultiSelectAutocomplete': new Bizweb.AutocompleteV2.RemoteMultiSelectAutocomplete(this, &quot;\/admin\/custom_collections\/dropdown&quot;, $node, &quot;results&quot;, {&quot;values&quot;:[],&quot;position&quot;:&quot;top&quot;}) }">
+                                                        <div class="next-input-wrapper"><div class="next-input--stylized"><span class="next-input__add-on next-input__add-on--before"><svg class="next-icon next-icon--color-slate-lightest next-icon--size-16"> <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#next-search-reverse"></use> </svg></span><input class="next-input next-input--invisible next-input js-no-dirty next-input--invisible" placeholder="Tìm kiếm danh mục" id="collections" data-bind="input" data-bind-event-keyup="inputChanged()" size="30" type="text" aria-expanded="false" aria-haspopup="false" aria-owns="popover-dropdown-6" aria-controls="popover-announce-selected" role="combobox" aria-autocomplete="list" aria-activedescendant="selected-option-7"></div></div>
+                                                        <div class="tooltip-error attached-to-bottom hide" data-bind-show="errorMessage">
+                                                            <ul class="error-list">
+                                                                <li data-bind="errorMessage"></li>
+                                                            </ul>
+                                                        </div>
+                                                        <div class="ui-popover ui-popover--full-width ui-popover--no-focus" data-popover-horizontally-relative-to-closest=".next-card" data-popover-css-vertical-margin="13" data-popover-css-horizontal-margin="0" data-popover-css-max-height="300" data-popover-css-max-width="10000" id="ui-popover--3" aria-labelledby="collections" aria-expanded="false" role="dialog" style="margin-right: 0px; margin-left: 0px;">
+                                                            <div class="ui-popover__tooltip"></div><div class="ui-popover__content-wrapper">
+                                                                <div class="ui-popover__content">
+                                                                    <div class="ui-popover__pane">
+                                                                        <ul class="js-autocomplete-suggestions next-list next-list--compact next-list--toggles" role="listbox" id="popover-dropdown-6"></ul>
+                                                                        <div class="ui-popover__section hide" data-bind-show="loadingResults">
+                                                                            <p class="type--subdued tc">
+                                                                                <span class="next-spinner">
+                                                                                    <svg class="next-icon next-icon--size-16"> <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#next-spinner"></use> </svg>
+                                                                                </span>
+                                                                                Đang tải…
+                                                                            </p>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+
+                                                    <div id="product-collections" data-tg-refresh="product-collections">
+
+                                                        <ul class="js-collection-list product-collections-list next-list next-list--plain-divided next-list--row-hover next-list--no-vertical-padding">
+                                                        </ul>
+                                                        <div id="add-to-collection" data-bind-show="!hasCustomCollections() &amp;&amp; true">
+                                                            <p class="next-input__help-text">Thêm sản phẩm vào danh mục để nó dễ dàng được tìm kiếm trên website của bạn.</p>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="ui-card__section">
+                                            <div class="ui-type-container">
+                                                <div class="next-grid next-grid--no-outside-padding">
+                                                    <div class="next-grid__cell">
+                                                        <label for="tags" class="next-label">Tags</label>
+                                                        <script type="text/template" id="display-one-tag" data-input-name="product[tags][]">
+                                                            <li class="next-token">
+                                                                <span class="next-token__label">{{= tag }}</span>
+                                                                <a bind-event-click="removeTag(this)" class="next-token__remove">
+                                                                    <input type="hidden" name="{{= inputName }}" value="{{= tag }}">
+                                                                    <span class="next-token__remove__icon">
+                                                                        <svg class="next-icon next-icon--size-10 next-icon--no-nudge">
+                                                                            <use xlink:href="#next-remove"></use>
+                                                                        </svg>
+                                                                    </span>
+                                                                </a>
+                                                            </li>
+                                                        </script>
+                                                    </div>
+                                                    <div class="next-grid__cell next-grid__cell--no-flex">
+                                                        <a bind-event-click="tagDisplay.showAllTagsModal.show()">Xem toàn bộ tag</a>
+                                                    </div>
+                                                </div>
+                                                <div data-define="{tagDisplay: new Bizweb.TagDisplay(this)}" data-context="tagDisplay" id="tags-event-bus">
+                                                    <a data-define="{ showAllTagsModal: new Bizweb.Modal(this) }" href="/admin/products/tags" type="text/html" class="modal_source" style="display: none"></a>
+                                                    <div class="ui-popover__container ui-popover__container--full-width-container" data-context="tagsAutocomplete" data-define="{ 'tagsAutocomplete': new Bizweb.AutocompleteV2.TagsAutocomplete(this, &quot;\/admin\/products\/tags&quot;, $node, {&quot;values&quot;:[],&quot;maxLengthError&quot;:&quot;Độ dài tag tối đa 255 ký tự&quot;,&quot;maxLength&quot;:255,&quot;duplicateError&quot;:&quot;Sản phẩm đã có tag \&quot;%s\&quot;&quot;,&quot;position&quot;:&quot;top&quot;}) }">
+                                                        <div>
+                                                            <div class="">
+                                                                <input class="next-input js-no-dirty" placeholder="Nhập tag cho sản phẩm" id="tags" data-bind="input" data-bind-event-keyup="inputChanged()" size="30" type="text" aria-expanded="false" aria-haspopup="false" aria-owns="popover-dropdown-8" aria-controls="popover-announce-selected" role="combobox" aria-autocomplete="list" aria-activedescendant="selected-option-8">
+                                                            </div>
+                                                            <div class="tooltip-error attached-to-bottom hide" data-bind-show="errorMessage">
+                                                                <ul class="error-list">
+                                                                    <li data-bind="errorMessage"></li>
+                                                                </ul>
+                                                            </div>
+                                                        </div>
+                                                        <div class="ui-popover ui-popover--full-width ui-popover--no-focus" data-popover-horizontally-relative-to-closest=".next-card" data-popover-css-vertical-margin="13" data-popover-css-horizontal-margin="0" data-popover-css-max-height="300" data-popover-css-max-width="10000" id="ui-popover--4" aria-labelledby="tags" aria-expanded="false" role="dialog" data-popover-preferred-position="top" style="margin-right: 0px; margin-left: 0px;">
+                                                            <div class="ui-popover__tooltip"></div><div class="ui-popover__content-wrapper">
+                                                                <div class="ui-popover__content">
+                                                                    <div class="ui-popover__pane">
+                                                                        <ul class="js-autocomplete-suggestions next-list next-list--compact next-list--toggles" role="listbox" id="popover-dropdown-8"></ul>
+                                                                        <div class="ui-popover__section hide" data-bind-show="loadingResults">
+                                                                            <p class="type--subdued tc">
+                                                                                <span class="next-spinner">
+                                                                                    <svg class="next-icon next-icon--size-16"> <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#next-spinner"></use> </svg>
+                                                                                </span>
+                                                                                Loading…
+                                                                            </p>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <input type="hidden" name="product[tags][]" data-bind-disabled="hasTags()">
+                                                    <ul class="js-tag-list next-token-list st"></ul>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                    </section>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                    <div class="ui-page-actions">
+                        <div class="ui-page-actions__container">
+                            <div class="ui-page-actions__actions ui-page-actions__actions--primary">
+                                <div class="ui-page-actions__button-group">
+                                    <a class="btn" data-allow-default="1" href="/admin/products">Hủy</a>
+                                    <button name="button" type="submit" class="btn js-btn-primary js-btn-loadable btn-primary has-loading" disabled="disabled">
+                                        Lưu
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </form>
             </div>
-            <div class="form-group">
-                <label asp-for="Loai_SP_1" class="control-label"></label>
-                <input asp-for="Loai_SP_1" class="form-control" />
-                <span asp-validation-for="Loai_SP_1" class="text-danger"></span>
+
+            <div class="ui-footer-help">
+                <div class="ui-footer-help__content">
+                    <div class="ui-footer-help__icon">
+                        <svg class="next-icon next-icon--size-24 next-icon--no-nudge" role="img" aria-labelledby="next-help-circle-title">
+                            <title id="next-help-circle-title">Help</title>
+                            <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#next-help-circle"></use>
+                        </svg>
+                    </div>
+                    <div>
+                        Bạn có thể xem thêm hướng dẫn <a target="_blank" rel="noreferrer noopener" title="Hướng dẫn thao tác với Sản phẩm" href="https://support.sapo.vn/them-san-pham-sapo-web">tại đây</a>
+                    </div>
+                </div>
             </div>
-            <div class="form-group">
-                <label asp-for="Loai_SP_2" class="control-label"></label>
-                <input asp-for="Loai_SP_2" class="form-control" />
-                <span asp-validation-for="Loai_SP_2" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Name_SP" class="control-label"></label>
-                <input asp-for="Name_SP" class="form-control" />
-                <span asp-validation-for="Name_SP" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Price_SP" class="control-label"></label>
-                <input asp-for="Price_SP" class="form-control" />
-                <span asp-validation-for="Price_SP" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Mo_Ta" class="control-label"></label>
-                <input asp-for="Mo_Ta" class="form-control" />
-                <span asp-validation-for="Mo_Ta" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <input type="submit" value="Create" class="btn btn-primary" />
-            </div>
-        </form>
+
+
+        </div>
     </div>
-</div>
-
-<div>
-    <a asp-action="Index">Back to List</a>
 </div>
 
