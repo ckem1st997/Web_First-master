@@ -78,6 +78,10 @@ $(document).ready(function () {
             $(".t444").removeClass("t44");
         }
     });
+    $(document).click(function () {
+        var value = CKEDITOR.instances.editor1.getData();
+        $("#Mo_Ta").val(value);
+    });
 });
 $('.dropdown-item').click(function () {
     var name = $(this).text();

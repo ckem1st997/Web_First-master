@@ -4,7 +4,24 @@
     ViewData["Title"] = "Create";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
+@section Scripts{
+    <link href="~/css/site.css" rel="stylesheet" />
+    <link href="~/css/Index.css" rel="stylesheet" />
+    <script type="text/javascript" src="~/ckeditor/ckeditor.js"></script>
+    <script>
+        CKEDITOR.replace('editor1');
+        var editor = CKEDITOR.replace('editor1');
 
+        // The "change" event is fired whenever a change is made in the editor.
+        $(document).click(function () {
+            var value = CKEDITOR.instances.editor1.getData();
+            $("#Id_SP").val(value);
+        })
+            // CKEDITOR.instances.editor1.getData();
+// lay dư lieu
+    </script>
+
+}
 <h1>Create</h1>
 
 <h4>cart_clone</h4>
@@ -15,7 +32,8 @@
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="form-group">
                 <label asp-for="Id_SP" class="control-label"></label>
-                <input asp-for="Id_SP" class="form-control" />
+                <textarea data-bind="product.description" name="product[content]" id="editor1" rows="10" cols="80">This is my textarea to be replaced with CKEditor.</textarea>
+                <input asp-for="Id_SP" class="form-control hidden" />
                 <span asp-validation-for="Id_SP" class="text-danger"></span>
             </div>
             <div class="form-group">

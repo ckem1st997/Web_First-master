@@ -1,4 +1,5 @@
-﻿
+﻿@model Web_First.Models.San_Pham
+
 @{
     ViewData["Title"] = "Create";
     Layout = "~/Views/Shared/_Layout_Login.cshtml";
@@ -7,33 +8,36 @@
 
     <link href="~/css/Index.css" rel="stylesheet" />
     <script type="text/javascript" src="~/ckeditor/ckeditor.js"></script>
-    <script>CKEDITOR.replace('editor1');</script>
+    <script>
+        CKEDITOR.replace('editor1');
+        var editor = CKEDITOR.replace('editor1');
+
+        // The "change" event is fired whenever a change is made in the editor.
+        $(document).click(function () {
+            alert("haha");
+            var value = CKEDITOR.instances.editor1.getData();
+            $("#Mo_Ta").val(value);
+        });
+    </script>
 }
 <div class="wrapper" id="wrapper">
     <div id="body" class="page-content clearfix" data-tg-refresh="body">
         <div id="content">
 
             <script type="text/javascript">
-                Page(););
+                Page();
             </script>
             <div class="modal" data-tg-refresh="modal" id="modal_container" style="display: none;" aria-hidden="true" aria-labelledby="ModalTitle" tabindex="-1"></div>
             <div class="modal-bg" data-tg-refresh="modal" id="modal_backdrop"></div>
             <div id="products-new" class="product-detail page">
                 <div class="aviary-modal-bg"><div class="aviary-modal"></div></div>
-                <form autocomplete="off" data-context="form" data-define="{
-        form: new Bizweb.ProductCreateForm(
-          this, {
-            disabledUntilDirty: true,
-            alertUnsavedChanges: true
-          }
-        )
-      }" data-context-create-name="Sản phẩm" data-context-cancel-path="/admin/products" data-tg-full-refresh-on-error-except="product-images-content" data-tg-full-refresh-on-success-except="product-images-content" data-tg-remote="true" id="create_new_product" class="new_product" action="/admin/products/create" accept-charset="UTF-8" method="post">
-                    <input type="hidden" name="AuthenticityToken" value="3D7hKA4FpbmMyFearIzuDkfugLzczFxUJ5K6H7aJfsK8NZr4Z2n5DjDn5TICjsH4JOk7lnnnRi7o4vHOFgzRpA==">
+                <form asp-action="Create" autocomplete="off" data-context="form" data-context-create-name="Sản phẩm" data-context-cancel-path="" data-tg-full-refresh-on-error-except="product-images-content" data-tg-full-refresh-on-success-except="product-images-content" data-tg-remote="true" id="create_new_product" class="new_product"  accept-charset="UTF-8">
+                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
                     <header class="ui-title-bar-container">
                         <div class="ui-title-bar">
                             <div class="ui-title-bar__navigation">
                                 <div class="ui-breadcrumbs">
-                                    <a href="/admin/products" class="ui-button ui-button--transparent ui-breadcrumb">
+                                    <a asp-action="Show_SP" class="ui-button ui-button--transparent ui-breadcrumb">
                                         <svg class="next-icon next-icon--size-20 next-icon--no-nudge"> <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#chevron-left-thinner"></use> </svg>
                                         <span class="ui-breadcrumb__item">Quay lại danh sách sản phẩm</span>
                                     </a>
@@ -66,16 +70,16 @@
                                                     <label class="next-label" for="product-name">
                                                         Tên sản phẩm
                                                     </label>
-                                                    <input required="" data-has-error="true" autofocus="autofocus" data-bind="product.title" id="product-name" value="" placeholder="Nhập tên sản phẩm" class="next-input" size="30" type="text" name="product[name]">
+                                                    <input asp-for="Name_SP" class="form-control next-input" required="" data-has-error="true" autofocus="autofocus" id="product-name" placeholder="Nhập tên sản phẩm" size="30" type="text" name="product[name]" />
+                                                    <span asp-validation-for="Name_SP" class="text-danger"></span>
                                                 </div>
                                                 <div class="next-input-wrapper">
-                                                    <label class="next-label" for="Content">Nội dung</label>
-                                                    <textarea name="description" id="editor1" rows="10" cols="80">This is my textarea to be replaced with CKEditor.</textarea>
-
+                                                    <label class="next-label">Mô Tả</label>
+                                                    <textarea data-bind="product.description" name="product[content]" id="editor1" rows="10" cols="80">This is my textarea to be replaced with CKEditor.</textarea>
+                                                    <input asp-for="Mo_Ta" class="form-control hidden" />
+                                                    <span asp-validation-for="Mo_Ta" class="text-danger"></span>
                                                 </div>
-
                                             </div>
-                                        </div>
                                     </section>
                                     <section class="ui-card" id="product-images-container">
                                         <div data-define="{ imageActions: new Bizweb.ProductCreateImageActions(this, $context) }" data-context="imageActions" id="product-images-content" data-tg-refresh="product-images-content" data-bind-event-dragenter="imageActions.startDrag(event)" data-bind-event-dragover="imageActions.dragOver(event)" data-bind-event-dragleave="imageActions.cancelDrag(event)" data-bind-event-drop="imageActions.dropFile(event)">
@@ -431,9 +435,9 @@
                                                                 <input type="text" name="product[variant][sku]" id="variant-sku" data-bind-event-change="inventoryOptions.skuOnChange(this)" data-bind="sku" class="next-input">
                                                             </div>
                                                         </div>
-                            
+
                                                     </div>
-                                       
+
                                                     <div class="next-grid next-grid--no-outside-padding hide" bind-show="inventoryOptions.inventoryManagementEnabled()">
                                                         <div class="next-grid__cell">
                                                             <div class="next-input-wrapper">
@@ -452,7 +456,7 @@
                                                 </div>
                                             </div>
                                         </section>
-                                       
+
                                         <section class="ui-card">
                                             <header class="ui-card__header">
                                                 <div class="ui-stack ui-stack--wrap">
@@ -818,7 +822,7 @@
                                                         </div>
                                                     </div>
                                                 </div>
-                                              
+
                                             </div>
                                         </div>
                                         <div class="ui-card__section">
