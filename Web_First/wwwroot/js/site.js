@@ -501,12 +501,32 @@ $(document).ready(function () {
             }
         }
     });
+    //
+
+    
+
+
+
+
+
+
     for (var i = 0; i < 609; i++) {
         if ($(".total")[i].innerText.length == 0)
             $(".total")[i].append("1000 sản phẩm của 1 loại");
     }
 });
 
+
+$(function () {
+    $('[data-toggle="popover"]').popover();
+});
+$('.next-field--connected--no-flex').popover({
+    html: true,
+    content: function () {
+        var elementId = $(this).attr("data-popover-content");
+        return $(elementId).html();
+    }
+});
 
 
 
