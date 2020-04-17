@@ -165,7 +165,13 @@ body {
     margin-bottom: 60px;
     margin: 0 auto;
 }
+.arrow {
+    left: 50% !important;
+}
 
+.popover {
+    left: 0 !important;
+}
 .top-information {
     position: relative;
     background-color: beige;

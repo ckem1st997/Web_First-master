@@ -126,6 +126,10 @@ namespace Web_First.Controllers
         // GET: Product/Create
         public IActionResult Create()
         {
+            var cart = from a in _context.San_Pham
+                       group a by a.Loai_SP_2 into g
+                       select g.Key;
+            ViewBag.LoaiSP = cart;
             return View();
         }
 

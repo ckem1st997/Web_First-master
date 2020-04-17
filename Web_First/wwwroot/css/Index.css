@@ -10,7 +10,13 @@
     animation-duration: 1s;
 }
 
-
+.arrow {
+    left: 50% !important;
+}
+.popover{
+    left:0 !important;
+    width:100% !important;
+}
 .t333 {
     cursor: pointer;
     animation-name: o4;

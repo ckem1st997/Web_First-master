@@ -528,7 +528,10 @@ $('.next-field--connected--no-flex').popover({
     }
 });
 
-
+function selectSuggestion(b) {
+    var ten_sp = $("#product_product_type");
+    ten_sp.val(b);
+}
 
 
 
