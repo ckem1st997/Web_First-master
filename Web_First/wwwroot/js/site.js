@@ -535,11 +535,11 @@ $('.next-field--connected--no-flex--1').popover({
     }
 });
 function selectSuggestion(b) {
-    var ten_sp = $("#product_product_type");
+    var ten_sp = $("#Loai_SP_2");
     ten_sp.val(b);
 }
 function selectSuggestion1(b) {
-    var ten_sp = $("#product_product_type1");
+    var ten_sp = $("#Loai_SP_1");
     ten_sp.val(b);
 }
 
