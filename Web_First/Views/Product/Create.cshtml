@@ -459,7 +459,7 @@
                                             </div>
                                         </section>
 
-               
+
                                     </div>
                                 </div>
                                 <div class="ui-layout__item">
@@ -759,7 +759,7 @@
                                                                 </ul>
                                                             </div>
                                                         </div>
-                                                        <div class="ui-banner-loai2" style="display:none" id="ui-popover--1" >
+                                                        <div class="ui-banner-loai2" style="display:none" id="ui-popover--1">
                                                             <div class="ui-banner-loai2-content">
                                                                 <div class="ui-popover__content" style="max-height: 300px;width:100%">
                                                                     <div class="ui-popover__pane scroll-shadow--bottom">
@@ -772,14 +772,6 @@
                                                                                     </a>
                                                                                 </li>
                                                                             }
-
-
-
-                                                                            <li role="option">
-                                                                                <a class="next-list__item" selectable="" data-bind-event-click="selectSuggestion(&quot;Vali&quot;, event)">
-                                                                                    Vali
-                                                                                </a>
-                                                                            </li>
 
                                                                         </ul>
                                                                         <div class="ui-popover__section hide" data-bind-show="loadingResults">
@@ -802,101 +794,54 @@
                                         <div class="ui-card__section">
                                             <div class="ui-type-container">
                                                 <label for="collections" class="next-label">Danh mục</label>
-                                                <div id="js-collections" data-tg-refresh="js-collections" data-define="{productCollections: new Bizweb.ProductCollectionDisplay(this)}" data-context="productCollections">
-                                                    <div class="ui-popover__container ui-popover__container--full-width-container" data-context="remoteMultiSelectAutocomplete" data-define="{ 'remoteMultiSelectAutocomplete': new Bizweb.AutocompleteV2.RemoteMultiSelectAutocomplete(this, &quot;\/admin\/custom_collections\/dropdown&quot;, $node, &quot;results&quot;, {&quot;values&quot;:[],&quot;position&quot;:&quot;top&quot;}) }">
-                                                        <div class="next-input-wrapper"><div class="next-input--stylized next-input--has-content"><span class="next-input__add-on next-input__add-on--before"><svg class="next-icon next-icon--color-slate-lightest next-icon--size-16"> <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#next-search-reverse"></use> </svg></span><input class="next-input next-input--invisible next-input js-no-dirty next-input--invisible" placeholder="Tìm kiếm danh mục" id="collections" data-bind="input" data-bind-event-keyup="inputChanged()" size="30" type="text" aria-expanded="false" aria-haspopup="false" aria-owns="popover-dropdown-6" aria-controls="popover-announce-selected" role="combobox" aria-autocomplete="list" aria-activedescendant="selected-option-3"></div></div>
+                                                <div class="ui-popover__container ui-popover__container--full-width-container" data-context="product_typeAutocomplete" data-define="{ 'product_typeAutocomplete': new Bizweb.AutocompleteV2.SingleSelectRemoteSourceAutocomplete(this, &quot;\/admin\/products\/types?limit=5000&quot;, &quot;types&quot;, {&quot;maxLength&quot;:255}) }">
+                                                    <div>
+                                                        <div class="next-field__connected-wrapper">
+                                                            <input class="next-input next-field--connected" placeholder="Nhập danh mục" data-bind="input" data-bind-event-keyup="inputChanged()" size="30" type="text" name="product[productType]" id="product_product_type1" aria-expanded="false" aria-haspopup="false" aria-owns="popover-dropdown-2" aria-controls="popover-announce-selected" role="combobox" aria-autocomplete="list" aria-activedescendant="selected-option-5">
+                                                            <a tabindex="0" class="btn btn--icon next-field--connected next-field--connected--no-flex next-field--connected--no-flex--1" data-trigger="focus" data-popover-content="#ui-popover--28" data-html="true" data-toggle="popover" data-placement="bottom">
+                                                                <svg class="next-icon next-icon--color-slate-lighter next-icon--size-16">
+                                                                    <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#next-arrow-double">
+                                                                        <svg id="next-arrow-double">
+                                                                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
+                                                                                <path d="M10 16l-4-4h8l-4 4zm0-12L6 8h8l-4-4z">
+                                                                                </path>
+                                                                            </svg>
+                                                                        </svg>
+                                                                    </use>
+                                                                </svg>
+                                                            </a>
+                                                        </div>
                                                         <div class="tooltip-error attached-to-bottom hide" data-bind-show="errorMessage">
                                                             <ul class="error-list">
                                                                 <li data-bind="errorMessage"></li>
                                                             </ul>
                                                         </div>
-                                                        <div class="ui-popover ui-popover--full-width ui-popover--no-focus ui-popover--is-positioned-beneath" data-popover-horizontally-relative-to-closest=".next-card" data-popover-css-vertical-margin="13" data-popover-css-horizontal-margin="0" data-popover-css-max-height="300" data-popover-css-max-width="10000" id="ui-popover--3" aria-labelledby="collections" aria-expanded="false" role="dialog" style="margin-right: 0px; margin-left: 0px; transform-origin: 50% -5px;">
-                                                            <div class="ui-popover__tooltip"></div><div class="ui-popover__content-wrapper">
-                                                                <div class="ui-popover__content" style="max-height: 288px;">
-                                                                    <div class="ui-popover__pane">
-                                                                        <ul class="js-autocomplete-suggestions next-list next-list--compact next-list--toggles" role="listbox" id="popover-dropdown-6">
-
+                                                    </div>
+                                                    <div class="ui-banner-loai2" style="display:none" id="ui-popover--28">
+                                                        <div class="ui-banner-loai2-content">
+                                                            <div class="ui-popover__content" style="max-height: 300px;width:100%">
+                                                                <div class="ui-popover__pane scroll-shadow--bottom">
+                                                                    <ul class="js-autocomplete-suggestions next-list next-list--compact next-list--toggles" role="listbox" id="popover-dropdown-2">
+                                                                        @foreach (var item in ViewBag.LoaiSP2)
+                                                                        {
                                                                             <li role="option">
-                                                                                <a class="next-list__item" selectable="" data-bind-event-click="selectSuggestion({&quot;title&quot;:&quot;Sản phẩm mới&quot;,&quot;id&quot;:2179270}, event)" data-bind-class="{ 'next-list__item--is-applied': isApplied(2179270) }">
-                                                                                    <div class="next-grid next-grid--no-outside-padding next-grid--compact">
-                                                                                        <div class="next-grid__cell next-grid__cell--no-flex">
-                                                                                            <svg class="next-icon next-icon--size-12"> <use xlink:href="#next-checkmark"></use> </svg>
-                                                                                        </div>
-                                                                                        <div class="next-grid__cell">
-                                                                                            Sản phẩm mới
-
-
-                                                                                        </div>
-                                                                                    </div>
+                                                                                <a class="next-list__item" id="@item-1" selectable="" onclick="selectSuggestion1('@item')">
+                                                                                    @item
                                                                                 </a>
                                                                             </li>
+                                                                        }
 
-                                                                            <li role="option">
-                                                                                <a class="next-list__item" selectable="" data-bind-event-click="selectSuggestion({&quot;title&quot;:&quot;Trang chủ&quot;,&quot;id&quot;:2179269}, event)" data-bind-class="{ 'next-list__item--is-applied': isApplied(2179269) }">
-                                                                                    <div class="next-grid next-grid--no-outside-padding next-grid--compact">
-                                                                                        <div class="next-grid__cell next-grid__cell--no-flex">
-                                                                                            <svg class="next-icon next-icon--size-12"> <use xlink:href="#next-checkmark"></use> </svg>
-                                                                                        </div>
-                                                                                        <div class="next-grid__cell">
-                                                                                            Trang chủ
-
-
-                                                                                        </div>
-                                                                                    </div>
-                                                                                </a>
-                                                                            </li>
-
-                                                                            <li role="option">
-                                                                                <a class="next-list__item" selectable="" data-bind-event-click="selectSuggestion({&quot;title&quot;:&quot;Sản phẩm khuyến mãi&quot;,&quot;id&quot;:2179268}, event)" data-bind-class="{ 'next-list__item--is-applied': isApplied(2179268) }">
-                                                                                    <div class="next-grid next-grid--no-outside-padding next-grid--compact">
-                                                                                        <div class="next-grid__cell next-grid__cell--no-flex">
-                                                                                            <svg class="next-icon next-icon--size-12"> <use xlink:href="#next-checkmark"></use> </svg>
-                                                                                        </div>
-                                                                                        <div class="next-grid__cell">
-                                                                                            Sản phẩm khuyến mãi
-
-
-                                                                                        </div>
-                                                                                    </div>
-                                                                                </a>
-                                                                            </li>
-
-                                                                            <li role="option">
-                                                                                <a class="next-list__item" selectable="" data-bind-event-click="selectSuggestion({&quot;title&quot;:&quot;Sản phẩm nổi bật&quot;,&quot;id&quot;:2179267}, event)" data-bind-class="{ 'next-list__item--is-applied': isApplied(2179267) }">
-                                                                                    <div class="next-grid next-grid--no-outside-padding next-grid--compact">
-                                                                                        <div class="next-grid__cell next-grid__cell--no-flex">
-                                                                                            <svg class="next-icon next-icon--size-12"> <use xlink:href="#next-checkmark"></use> </svg>
-                                                                                        </div>
-                                                                                        <div class="next-grid__cell">
-                                                                                            Sản phẩm nổi bật
-
-
-                                                                                        </div>
-                                                                                    </div>
-                                                                                </a>
-                                                                            </li>
-
-                                                                        </ul>
-                                                                        <div class="ui-popover__section hide" data-bind-show="loadingResults">
-                                                                            <p class="type--subdued tc">
-                                                                                <span class="next-spinner">
-                                                                                    <svg class="next-icon next-icon--size-16"> <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#next-spinner"></use> </svg>
-                                                                                </span>
-                                                                                Đang tải…
-                                                                            </p>
-                                                                        </div>
+                                                                    </ul>
+                                                                    <div class="ui-popover__section hide" data-bind-show="loadingResults">
+                                                                        <p class="type--subdued tc">
+                                                                            <span class="next-spinner">
+                                                                                <svg class="next-icon next-icon--size-16"> <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#next-spinner"></use> </svg>
+                                                                            </span>
+                                                                            Loading…
+                                                                        </p>
                                                                     </div>
                                                                 </div>
                                                             </div>
-                                                        </div>
-                                                    </div>
-
-                                                    <div id="product-collections" data-tg-refresh="product-collections">
-
-                                                        <ul class="js-collection-list product-collections-list next-list next-list--plain-divided next-list--row-hover next-list--no-vertical-padding">
-                                                        </ul>
-                                                        <div id="add-to-collection" data-bind-show="!hasCustomCollections() &amp;&amp; true">
-                                                            <p class="next-input__help-text">Thêm sản phẩm vào danh mục để nó dễ dàng được tìm kiếm trên website của bạn.</p>
                                                         </div>
                                                     </div>
                                                 </div>

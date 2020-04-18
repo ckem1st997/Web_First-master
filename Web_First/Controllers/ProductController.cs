@@ -130,6 +130,10 @@ namespace Web_First.Controllers
                        group a by a.Loai_SP_2 into g
                        select g.Key;
             ViewBag.LoaiSP = cart;
+            var cart1 = from b in _context.San_Pham
+                       group b by b.Loai_SP_1 into h
+                       select h.Key;
+            ViewBag.LoaiSP2 = cart1;
             return View();
         }
 

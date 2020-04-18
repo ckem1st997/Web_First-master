@@ -527,8 +527,19 @@ $('.next-field--connected--no-flex').popover({
         return $(elementId).html();
     }
 });
+$('.next-field--connected--no-flex--1').popover({
+    html: true,
+    content: function () {
+        var elementId = $(this).attr("data-popover-content");
+        return $(elementId).html();
+    }
+});
 function selectSuggestion(b) {
     var ten_sp = $("#product_product_type");
+    ten_sp.val(b);
+}
+function selectSuggestion1(b) {
+    var ten_sp = $("#product_product_type1");
     ten_sp.val(b);
 }
 
