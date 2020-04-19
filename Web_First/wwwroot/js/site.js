@@ -503,7 +503,7 @@ $(document).ready(function () {
     });
     //
 
-    
+
 
 
 
@@ -542,6 +542,11 @@ function selectSuggestion1(b) {
     var ten_sp = $("#Loai_SP_1");
     ten_sp.val(b);
 }
+
+
+
+
+
 
 
 
