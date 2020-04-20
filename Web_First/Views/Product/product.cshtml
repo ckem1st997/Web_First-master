@@ -79,7 +79,7 @@
                                             <h2 class="ui-banner__title type--breakall">@Model.Name_SP đã được tạo.</h2>
                                             <div class="ui-type-container ui-type-container--spacing-tight">
                                                 <p>
-                                                    <a data-allow-default="1" class="ui-button btn" href="/admin/products/create">Tạo sản phẩm khác</a>
+                                                    <a data-allow-default="1" class="ui-button btn" asp-controller="Product" asp-action="Create">Tạo sản phẩm khác</a>
                                                 </p>
                                             </div>
                                         </div>
@@ -96,14 +96,14 @@
                                                     <label class="next-label" for="product-name">
                                                         Tên sản phẩm
                                                     </label>
-                                                    <input value="@Model.Loai_SP_1" asp-for="Name_SP" class="form-control next-input" required="" data-has-error="true" autofocus="autofocus" id="product-name" placeholder="Nhập tên sản phẩm" size="30" type="text" />
+                                                    <input value="@Model.Name_SP" asp-for="Name_SP" class="form-control next-input" required="" data-has-error="true" autofocus="autofocus" id="product-name" placeholder="Nhập tên sản phẩm" size="30" type="text" />
                                                     <span asp-validation-for="Name_SP" class="text-danger">
 
                                                     </span>
                                                 </div>
                                                 <div class="next-input-wrapper">
                                                     <label class="next-label">Mô Tả</label>
-                                                    <textarea data-bind="product.description" id="editor1" rows="10" cols="80">This is my textarea to be replaced with CKEditor.</textarea>
+                                                    <textarea data-bind="product.description" id="editor1" rows="10" cols="80">@Model.Mo_Ta</textarea>
                                                     <input value="@Model.Mo_Ta" asp-for="Mo_Ta" class="form-control hidden" />
                                                     <span asp-validation-for="Mo_Ta" class="text-danger"></span>
                                                 </div>
@@ -127,7 +127,7 @@
                                                                 <label class="next-label" for="variant-price">Giá</label>
                                                                 <div class="next-input--stylized next-input--has-content">
                                                                     <span class="next-input__add-on next-input__add-on--before">₫</span>
-                                                                    <input value="@Model.Price_SP" asp-for="Price_SP" type="number" value="0" class="next-input next-input--invisible js-money-field" placeholder="0" data-bind="price" data-autonumeric="autoNumeric">
+                                                                    <input value="@Model.Price_SP" asp-for="Price_SP" type="number" class="next-input next-input--invisible js-money-field" placeholder="0" data-bind="price" data-autonumeric="autoNumeric">
                                                                     <span asp-validation-for="Price_SP" class="text-danger"></span>
                                                                 </div>
                                                             </div>
@@ -176,7 +176,7 @@
                                         <section class="next-card__section">
                                             <div class="form-group">
                                                 <label asp-for="ngay_add" class="control-label"></label>
-                                                <input value="@Model.ngay_add" asp-for="ngay_add" class="form-control" />
+                                                <input asp-for="ngay_add" class="form-control" />
                                                 <span asp-validation-for="ngay_add" class="text-danger"></span>
                                             </div>
                                         </section>
