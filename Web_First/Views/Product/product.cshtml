@@ -23,54 +23,6 @@
 }
 
 <div>
-    <h4>San_Pham</h4>
-    <hr />
-    <dl class="row">
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.Loai_SP_1)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.Loai_SP_1)
-        </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.Loai_SP_2)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.Loai_SP_2)
-        </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.Name_SP)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.Name_SP)
-        </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.Price_SP)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.Price_SP)
-        </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.Mo_Ta)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.Mo_Ta)
-        </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.ngay_add)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.ngay_add)
-        </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.Sale)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.Sale)
-        </dd>
-    </dl>
-</div>
-<div>
     <a asp-action="Edit" asp-route-id="@Model.Id_SP">Edit</a> |
     <a asp-action="Index">Back to List</a>
 </div>
@@ -144,7 +96,7 @@
                                                     <label class="next-label" for="product-name">
                                                         Tên sản phẩm
                                                     </label>
-                                                    <input value="@Html.DisplayFor(model => model.Loai_SP_1)" asp-for="Name_SP" class="form-control next-input" required="" data-has-error="true" autofocus="autofocus" id="product-name" placeholder="Nhập tên sản phẩm" size="30" type="text" />
+                                                    <input value="@Model.Loai_SP_1" asp-for="Name_SP" class="form-control next-input" required="" data-has-error="true" autofocus="autofocus" id="product-name" placeholder="Nhập tên sản phẩm" size="30" type="text" />
                                                     <span asp-validation-for="Name_SP" class="text-danger">
 
                                                     </span>
@@ -152,7 +104,7 @@
                                                 <div class="next-input-wrapper">
                                                     <label class="next-label">Mô Tả</label>
                                                     <textarea data-bind="product.description" id="editor1" rows="10" cols="80">This is my textarea to be replaced with CKEditor.</textarea>
-                                                    <input value="@Html.DisplayFor(model => model.Mo_Ta)" asp-for="Mo_Ta" class="form-control hidden" />
+                                                    <input value="@Model.Mo_Ta" asp-for="Mo_Ta" class="form-control hidden" />
                                                     <span asp-validation-for="Mo_Ta" class="text-danger"></span>
                                                 </div>
                                             </div>
@@ -175,7 +127,7 @@
                                                                 <label class="next-label" for="variant-price">Giá</label>
                                                                 <div class="next-input--stylized next-input--has-content">
                                                                     <span class="next-input__add-on next-input__add-on--before">₫</span>
-                                                                    <input value="@Html.DisplayFor(model => model.Price_SP)" asp-for="Price_SP" type="number" value="0" class="next-input next-input--invisible js-money-field" placeholder="0" data-bind="price" data-autonumeric="autoNumeric">
+                                                                    <input value="@Model.Price_SP" asp-for="Price_SP" type="number" value="0" class="next-input next-input--invisible js-money-field" placeholder="0" data-bind="price" data-autonumeric="autoNumeric">
                                                                     <span asp-validation-for="Price_SP" class="text-danger"></span>
                                                                 </div>
                                                             </div>
@@ -202,7 +154,7 @@
                                                                         <span class="alert-sku-duplicate-cap">Mã sản phẩm này bị trùng với 1 sản phẩm khác trên hệ thống</span>
                                                                     </span>
                                                                 </label>
-                                                                <input type="text" value="@Html.DisplayFor(model => model.Id_SP)" asp-for="Id_SP" data-bind-event-change="inventoryOptions.skuOnChange(this)" data-bind="sku" class="next-input">
+                                                                <input type="text" value="@Model.Id_SP" asp-for="Id_SP" data-bind-event-change="inventoryOptions.skuOnChange(this)" data-bind="sku" class="next-input">
                                                                 <span asp-validation-for="Id_SP" class="text-danger"></span>
 
                                                             </div>
@@ -224,7 +176,7 @@
                                         <section class="next-card__section">
                                             <div class="form-group">
                                                 <label asp-for="ngay_add" class="control-label"></label>
-                                                <input value="@Html.DisplayFor(model => model.ngay_add)" asp-for="ngay_add" class="form-control" />
+                                                <input value="@Model.ngay_add" asp-for="ngay_add" class="form-control" />
                                                 <span asp-validation-for="ngay_add" class="text-danger"></span>
                                             </div>
                                         </section>
@@ -243,7 +195,7 @@
                                                     <div class="ui-popover__container ui-popover__container--full-width-container" data-context="product_typeAutocomplete">
                                                         <div>
                                                             <div class="next-field__connected-wrapper">
-                                                                <input value="@Html.DisplayFor(model => model.Loai_SP_2)" asp-for="Loai_SP_2" class="next-input next-field--connected" placeholder="Nhập loại sản phẩm" size="30" type="text" aria-expanded="false" aria-haspopup="false" aria-owns="popover-dropdown-2" aria-controls="popover-announce-selected" role="combobox" aria-autocomplete="list" aria-activedescendant="selected-option-5">
+                                                                <input value="@Model.Loai_SP_2" asp-for="Loai_SP_2" class="next-input next-field--connected" placeholder="Nhập loại sản phẩm" size="30" type="text" aria-expanded="false" aria-haspopup="false" aria-owns="popover-dropdown-2" aria-controls="popover-announce-selected" role="combobox" aria-autocomplete="list" aria-activedescendant="selected-option-5">
                                                                 <span asp-validation-for="Loai_SP_2" class="text-danger">
 
                                                                 </span>
@@ -304,7 +256,7 @@
                                                 <div class="ui-popover__container ui-popover__container--full-width-container" data-context="product_typeAutocomplete">
                                                     <div>
                                                         <div class="next-field__connected-wrapper">
-                                                            <input value="@Html.DisplayFor(model => model.Loai_SP_1)" asp-for="Loai_SP_1" class="next-input next-field--connected" placeholder="Nhập danh mục" size="30" type="text" role="combobox" aria-autocomplete="list">
+                                                            <input value="@Model.Loai_SP_1" asp-for="Loai_SP_1" class="next-input next-field--connected" placeholder="Nhập danh mục" size="30" type="text" role="combobox" aria-autocomplete="list">
                                                             <span asp-validation-for="Loai_SP_1" class="text-danger"></span>
 
                                                             <a tabindex="0" class="btn btn--icon next-field--connected next-field--connected--no-flex next-field--connected--no-flex--1" data-trigger="focus" data-popover-content="#ui-popover--28" data-html="true" data-toggle="popover" data-placement="bottom">
@@ -366,7 +318,7 @@
                                                     <div class="next-grid__cell">
                                                         <div class="form-group">
                                                             <label asp-for="Sale" class="control-label"></label>
-                                                            <input value="@Html.DisplayFor(model => model.Sale)" asp-for="Sale" class="form-control" style="width:100%" />
+                                                            <input value="@Model.Sale" asp-for="Sale" class="form-control" style="width:100%" />
                                                             <span asp-validation-for="Sale" class="text-danger"></span>
                                                         </div>
                                                     </div>
