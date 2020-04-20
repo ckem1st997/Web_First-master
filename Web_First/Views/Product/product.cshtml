@@ -1,0 +1,416 @@
+﻿@model Web_First.Models.San_Pham
+
+@{
+    ViewData["Title"] = "product";
+    Layout = "~/Views/Shared/_Layout_Login.cshtml";
+}
+
+
+@section Scripts{
+    <link href="~/css/Index.css" rel="stylesheet" />
+    <script type="text/javascript" src="~/ckeditor/ckeditor.js"></script>
+    <script>
+        CKEDITOR.replace('editor1');
+        var editor = CKEDITOR.replace('editor1');
+
+        // The "change" event is fired whenever a change is made in the editor.
+        $(document).click(function () {
+            alert("haha");
+            var value = CKEDITOR.instances.editor1.getData();
+            $("#Mo_Ta").val(value);
+        });
+    </script>
+}
+
+<div>
+    <h4>San_Pham</h4>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Loai_SP_1)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Loai_SP_1)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Loai_SP_2)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Loai_SP_2)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Name_SP)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Name_SP)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Price_SP)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Price_SP)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Mo_Ta)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Mo_Ta)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.ngay_add)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.ngay_add)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Sale)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Sale)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model.Id_SP">Edit</a> |
+    <a asp-action="Index">Back to List</a>
+</div>
+
+<div class="wrapper" id="wrapper">
+    <div id="body" class="page-content clearfix" data-tg-refresh="body">
+        <div id="content">
+
+            <script type="text/javascript">
+                Page();
+            </script>
+            <div class="modal" data-tg-refresh="modal" id="modal_container" style="display: none;" aria-hidden="true" aria-labelledby="ModalTitle" tabindex="-1"></div>
+            <div class="modal-bg" data-tg-refresh="modal" id="modal_backdrop"></div>
+            <div id="products-new" class="product-detail page">
+                <div class="aviary-modal-bg">
+                    <div class="aviary-modal"></div>
+                </div>
+                <form asp-action="Create" autocomplete="off" data-context="form" data-context-create-name="Sản phẩm" data-context-cancel-path="" data-tg-full-refresh-on-error-except="product-images-content" data-tg-full-refresh-on-success-except="product-images-content" data-tg-remote="true" id="create_new_product" class="new_product" accept-charset="UTF-8">
+                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                    <header class="ui-title-bar-container">
+                        <div class="ui-title-bar">
+                            <div class="ui-title-bar__navigation">
+                                <div class="ui-breadcrumbs">
+                                    <a asp-action="Show_SP" class="ui-button ui-button--transparent ui-breadcrumb">
+                                        <svg class="next-icon next-icon--size-20 next-icon--no-nudge">
+                                            <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#chevron-left-thinner">
+                                            </use>
+                                        </svg>
+                                        <span class="ui-breadcrumb__item">Quay lại danh sách sản phẩm</span>
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="ui-title-bar__main-group">
+                                <div class="ui-title-bar__heading-group">
+                                    <span class="ui-title-bar__icon">
+                                        <svg class="next-icon next-icon--color-slate-lighter next-icon--size-20">
+                                            <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#next-products"></use>
+                                        </svg>
+                                    </span>
+                                    <h1 class="ui-title-bar__title">
+                                        Thêm mới sản phẩm
+                                    </h1>
+                                </div>
+                            </div>
+                        </div><div class="collapsible-header"><div class="collapsible-header__heading"></div></div>
+                    </header>
+                    <div class="ui-layout">
+                        <div class="ui-layout__sections">
+                            <div class="ui-layout__section">
+                                <div class="ui-layout__item">
+                                    <div class="ui-banner ui-banner--status-success hide-when-printing" tabindex="-1" role="alert" data-notice-announced="true">
+                                        <div class="ui-banner__ribbon"><svg class="next-icon next-icon--size-20 next-icon--no-nudge"> <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#checkmark-circle"></use> </svg></div>
+                                        <div class="ui-banner__content">
+                                            <h2 class="ui-banner__title type--breakall">@Model.Name_SP đã được tạo.</h2>
+                                            <div class="ui-type-container ui-type-container--spacing-tight">
+                                                <p>
+                                                    <a data-allow-default="1" class="ui-button btn" href="/admin/products/create">Tạo sản phẩm khác</a>
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="ui-layout__section ui-layout__section--primary">
+                                <div class="ui-layout__item">
+                                    <section class="ui-card" id="product-form-container">
+                                        <div class="ui-card__section">
+                                            <div class="ui-type-container">
+                                                <div class="next-input-wrapper">
+                                                    <label class="next-label" for="product-name">
+                                                        Tên sản phẩm
+                                                    </label>
+                                                    <input value="@Html.DisplayFor(model => model.Loai_SP_1)" asp-for="Name_SP" class="form-control next-input" required="" data-has-error="true" autofocus="autofocus" id="product-name" placeholder="Nhập tên sản phẩm" size="30" type="text" />
+                                                    <span asp-validation-for="Name_SP" class="text-danger">
+
+                                                    </span>
+                                                </div>
+                                                <div class="next-input-wrapper">
+                                                    <label class="next-label">Mô Tả</label>
+                                                    <textarea data-bind="product.description" id="editor1" rows="10" cols="80">This is my textarea to be replaced with CKEditor.</textarea>
+                                                    <input value="@Html.DisplayFor(model => model.Mo_Ta)" asp-for="Mo_Ta" class="form-control hidden" />
+                                                    <span asp-validation-for="Mo_Ta" class="text-danger"></span>
+                                                </div>
+                                            </div>
+                                    </section>
+
+                                </div>
+
+
+                                <div class="ui-layout__item" id="product-outer-variants" data-tg-refresh="product-outer-variants">
+                                    <div data-define="{productVariantOptions: new Bizweb.ProductVariantOptions(this,[{&quot;values&quot;:[],&quot;index&quot;:0,&quot;name&quot;:&quot;Kích thước&quot;,&quot;position&quot;:1,&quot;id&quot;:0}],[],{maxOptions: 3,maxOptionNameLength: 50,optionTitleDelimiter: &quot;<span class=\&quot;type--subdued\&quot;> • </span>&quot;,maxVariants: 100,maxOptionLength: 255,hasFulfillmentServices: false,test: false,})}" data-context="productVariantOptions">
+                                        <section class="ui-card">
+                                            <header class="ui-card__header">
+                                                <h2 class="ui-heading">Giá sản phẩm</h2>
+                                            </header>
+                                            <div class="ui-card__section">
+                                                <div class="ui-type-container">
+                                                    <div class="ui-form__section">
+                                                        <div class="ui-form__group">
+                                                            <div class="next-input-wrapper">
+                                                                <label class="next-label" for="variant-price">Giá</label>
+                                                                <div class="next-input--stylized next-input--has-content">
+                                                                    <span class="next-input__add-on next-input__add-on--before">₫</span>
+                                                                    <input value="@Html.DisplayFor(model => model.Price_SP)" asp-for="Price_SP" type="number" value="0" class="next-input next-input--invisible js-money-field" placeholder="0" data-bind="price" data-autonumeric="autoNumeric">
+                                                                    <span asp-validation-for="Price_SP" class="text-danger"></span>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+
+                                                    <input type="hidden" name="product[variant][taxable]" id="product_variant_taxable" value="false" data-bind="taxable">
+                                                </div>
+                                            </div>
+                                        </section>
+                                        <section class="ui-card" data-define="{ inventoryOptions: new Bizweb.InventoryOptions(1, null ) }">
+                                            <header class="ui-card__header"><h2 class="ui-heading">Kho hàng</h2></header>
+                                            <div class="ui-card__section">
+                                                <div class="ui-type-container">
+                                                    <div class="next-grid next-grid--no-outside-padding">
+                                                        <div class="next-grid__cell">
+                                                            <div class="next-input-wrapper">
+                                                                <label class="next-label" for="variant-sku">
+                                                                    Mã sản phẩm / SKU
+                                                                    <span class="alert-sku-duplicate">
+                                                                        <svg class="next-icon next-icon--size-16">
+                                                                            <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#icon-danger"></use>
+                                                                        </svg>
+                                                                        <span class="alert-sku-duplicate-cap">Mã sản phẩm này bị trùng với 1 sản phẩm khác trên hệ thống</span>
+                                                                    </span>
+                                                                </label>
+                                                                <input type="text" value="@Html.DisplayFor(model => model.Id_SP)" asp-for="Id_SP" data-bind-event-change="inventoryOptions.skuOnChange(this)" data-bind="sku" class="next-input">
+                                                                <span asp-validation-for="Id_SP" class="text-danger"></span>
+
+                                                            </div>
+                                                        </div>
+
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </section>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="ui-layout__section ui-layout__section--secondary">
+                                <div class="ui-layout__item">
+                                    <div class="next-card">
+                                        <header class="next-card__header">
+                                            <h3 class="ui-heading">Trạng thái</h3>
+                                        </header>
+                                        <section class="next-card__section">
+                                            <div class="form-group">
+                                                <label asp-for="ngay_add" class="control-label"></label>
+                                                <input value="@Html.DisplayFor(model => model.ngay_add)" asp-for="ngay_add" class="form-control" />
+                                                <span asp-validation-for="ngay_add" class="text-danger"></span>
+                                            </div>
+                                        </section>
+                                    </div>
+                                </div>
+                                <div class="ui-layout__item">
+                                    <section class="ui-card ui-card--type-aside">
+                                        <header class="ui-card__header">
+                                            <h2 class="ui-heading">Phân loại</h2>
+                                        </header>
+                                        <div class="ui-card__section">
+                                            <div class="ui-type-container">
+                                                <div class="next-input-wrapper">
+                                                    <label for="product_product_type">Loại</label>
+
+                                                    <div class="ui-popover__container ui-popover__container--full-width-container" data-context="product_typeAutocomplete">
+                                                        <div>
+                                                            <div class="next-field__connected-wrapper">
+                                                                <input value="@Html.DisplayFor(model => model.Loai_SP_2)" asp-for="Loai_SP_2" class="next-input next-field--connected" placeholder="Nhập loại sản phẩm" size="30" type="text" aria-expanded="false" aria-haspopup="false" aria-owns="popover-dropdown-2" aria-controls="popover-announce-selected" role="combobox" aria-autocomplete="list" aria-activedescendant="selected-option-5">
+                                                                <span asp-validation-for="Loai_SP_2" class="text-danger">
+
+                                                                </span>
+                                                                <a tabindex="0" class="btn btn--icon next-field--connected next-field--connected--no-flex" data-trigger="focus" data-popover-content="#ui-popover--1" data-html="true" data-toggle="popover" data-placement="bottom">
+                                                                    <svg class="next-icon next-icon--color-slate-lighter next-icon--size-16">
+                                                                        <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#next-arrow-double">
+                                                                            <svg id="next-arrow-double">
+                                                                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
+                                                                                    <path d="M10 16l-4-4h8l-4 4zm0-12L6 8h8l-4-4z">
+                                                                                    </path>
+                                                                                </svg>
+                                                                            </svg>
+                                                                        </use>
+                                                                    </svg>
+                                                                </a>
+                                                            </div>
+                                                            <div class="tooltip-error attached-to-bottom hide" data-bind-show="errorMessage">
+                                                                <ul class="error-list">
+                                                                    <li data-bind="errorMessage"></li>
+                                                                </ul>
+                                                            </div>
+                                                        </div>
+                                                        <div class="ui-banner-loai2" style="display:none" id="ui-popover--1">
+                                                            <div class="ui-banner-loai2-content">
+                                                                <div class="ui-popover__content" style="max-height: 300px;width:100%">
+                                                                    <div class="ui-popover__pane scroll-shadow--bottom">
+                                                                        <ul class="js-autocomplete-suggestions next-list next-list--compact next-list--toggles" role="listbox" id="popover-dropdown-2">
+                                                                            @foreach (var item in ViewBag.LoaiSP)
+                                                                            {
+                                                                                <li role="option">
+                                                                                    <a class="next-list__item" id="@item-item" selectable="" onclick="selectSuggestion('@item')">
+                                                                                        @item
+                                                                                    </a>
+                                                                                </li>
+                                                                            }
+
+                                                                        </ul>
+                                                                        <div class="ui-popover__section hide" data-bind-show="loadingResults">
+                                                                            <p class="type--subdued tc">
+                                                                                <span class="next-spinner">
+                                                                                    <svg class="next-icon next-icon--size-16"> <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#next-spinner"></use> </svg>
+                                                                                </span>
+                                                                                Loading…
+                                                                            </p>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                            </div>
+                                        </div>
+                                        <div class="ui-card__section">
+                                            <div class="ui-type-container">
+                                                <label for="collections" class="next-label">Danh mục</label>
+                                                <div class="ui-popover__container ui-popover__container--full-width-container" data-context="product_typeAutocomplete">
+                                                    <div>
+                                                        <div class="next-field__connected-wrapper">
+                                                            <input value="@Html.DisplayFor(model => model.Loai_SP_1)" asp-for="Loai_SP_1" class="next-input next-field--connected" placeholder="Nhập danh mục" size="30" type="text" role="combobox" aria-autocomplete="list">
+                                                            <span asp-validation-for="Loai_SP_1" class="text-danger"></span>
+
+                                                            <a tabindex="0" class="btn btn--icon next-field--connected next-field--connected--no-flex next-field--connected--no-flex--1" data-trigger="focus" data-popover-content="#ui-popover--28" data-html="true" data-toggle="popover" data-placement="bottom">
+                                                                <svg class="next-icon next-icon--color-slate-lighter next-icon--size-16">
+                                                                    <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#next-arrow-double">
+                                                                        <svg id="next-arrow-double">
+                                                                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
+                                                                                <path d="M10 16l-4-4h8l-4 4zm0-12L6 8h8l-4-4z">
+                                                                                </path>
+                                                                            </svg>
+                                                                        </svg>
+                                                                    </use>
+                                                                </svg>
+                                                            </a>
+                                                        </div>
+                                                        <div class="tooltip-error attached-to-bottom hide" data-bind-show="errorMessage">
+                                                            <ul class="error-list">
+                                                                <li data-bind="errorMessage"></li>
+                                                            </ul>
+                                                        </div>
+                                                    </div>
+                                                    <div class="ui-banner-loai2" style="display:none" id="ui-popover--28">
+                                                        <div class="ui-banner-loai2-content">
+                                                            <div class="ui-popover__content" style="max-height: 300px;width:100%">
+                                                                <div class="ui-popover__pane scroll-shadow--bottom">
+                                                                    <ul class="js-autocomplete-suggestions next-list next-list--compact next-list--toggles" role="listbox" id="popover-dropdown-2">
+                                                                        @foreach (var item in ViewBag.LoaiSP2)
+                                                                        {
+                                                                            <li role="option">
+                                                                                <a class="next-list__item" id="@item-1" selectable="" onclick="selectSuggestion1('@item')">
+                                                                                    @item
+                                                                                </a>
+                                                                            </li>
+                                                                        }
+
+                                                                    </ul>
+                                                                    <div class="ui-popover__section hide" data-bind-show="loadingResults">
+                                                                        <p class="type--subdued tc">
+                                                                            <span class="next-spinner">
+                                                                                <svg class="next-icon next-icon--size-16">
+                                                                                    <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#next-spinner">
+                                                                                    </use>
+                                                                                </svg>
+                                                                            </span>
+                                                                            Loading…
+                                                                        </p>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="ui-card__section">
+                                            <div class="ui-type-container">
+                                                <div class="next-grid next-grid--no-outside-padding">
+                                                    <div class="next-grid__cell">
+                                                        <div class="form-group">
+                                                            <label asp-for="Sale" class="control-label"></label>
+                                                            <input value="@Html.DisplayFor(model => model.Sale)" asp-for="Sale" class="form-control" style="width:100%" />
+                                                            <span asp-validation-for="Sale" class="text-danger"></span>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                    </section>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                    <div class="ui-page-actions">
+                        <div class="ui-page-actions__container">
+                            <div class="ui-page-actions__actions ui-page-actions__actions--primary">
+                                <div class="form-group">
+                                    <input type="submit" value="Create" class="btn btn-primary" />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+
+            <div class="ui-footer-help">
+                <div class="ui-footer-help__content">
+                    <div class="ui-footer-help__icon">
+                        <svg class="next-icon next-icon--size-24 next-icon--no-nudge" role="img" aria-labelledby="next-help-circle-title">
+                            <title id="next-help-circle-title">Help</title>
+                            <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#next-help-circle"></use>
+                        </svg>
+                    </div>
+                    <div>
+                        Bạn có thể xem thêm hướng dẫn <a target="_blank" rel="noreferrer noopener" title="Hướng dẫn thao tác với Sản phẩm" href="https://support.sapo.vn/them-san-pham-sapo-web">tại đây</a>
+                    </div>
+                </div>
+            </div>
+
+
+        </div>
+    </div>
+</div>
+
+
+
+

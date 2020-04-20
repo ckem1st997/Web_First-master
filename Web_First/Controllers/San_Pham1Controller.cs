@@ -60,7 +60,7 @@ namespace Web_First.Controllers
             {
                 _context.Add(san_Pham);
                 await _context.SaveChangesAsync();
-                return RedirectToAction(nameof(Index));
+                return RedirectToAction("Details", "San_Pham1", new { id = san_Pham.Id_SP }) ;
             }
             return View(san_Pham);
         }

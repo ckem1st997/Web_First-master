@@ -124,6 +124,31 @@ namespace Web_First.Controllers
         }
 
         // GET: Product/Create
+
+        public async Task<IActionResult> product(string id)
+        {
+            if (id == null)
+            {
+                return NotFound();
+            }
+
+            var san_Pham = await _context.San_Pham
+                .FirstOrDefaultAsync(m => m.Id_SP == id);
+            var cart = from a in _context.San_Pham
+                       group a by a.Loai_SP_2 into g
+                       select g.Key;
+            ViewBag.LoaiSP = cart;
+            var cart1 = from b in _context.San_Pham
+                        group b by b.Loai_SP_1 into h
+                        select h.Key;
+            ViewBag.LoaiSP2 = cart1;
+            if (san_Pham == null)
+            {
+                return NotFound();
+            }
+
+            return View(san_Pham);
+        }
         public IActionResult Create()
         {
             var cart = from a in _context.San_Pham
@@ -137,6 +162,7 @@ namespace Web_First.Controllers
             return View();
         }
 
+
         // POST: Product/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
@@ -148,7 +174,7 @@ namespace Web_First.Controllers
             {
                 _context.Add(san_Pham);
                 await _context.SaveChangesAsync();
-                return RedirectToAction(nameof(Index));
+                return RedirectToAction("product", "Product", new { id = san_Pham.Id_SP });
             }
             return View(san_Pham);
         }
