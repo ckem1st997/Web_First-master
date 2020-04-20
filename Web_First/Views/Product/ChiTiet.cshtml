@@ -443,74 +443,42 @@
                                                                             <a href="javascript:void(0)" data-bind-event-click="imageAltImage_36359365.show()" class="photo-overlay-actions__link tooltip tooltip-top">
                                                                                 <svg role="img" class="next-icon next-icon--color-white next-icon--size-16" aria-labelledby="next-preview-c653979a4d6540439c1d202788772c7c-title">
                                                                                     <title id="next-preview-a8bb1e107a9443aab37536b081dfc89b-title">xem ảnh</title>
-                                                                                    <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#next-preview"></use>
+                                                                                    <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#next-preview">
+
+                                                                                    </use>
                                                                                 </svg>
                                                                                 <span class="tooltip-container">
                                                                                     <span class="tooltip-label">Xem ảnh</span>
                                                                                 </span>
                                                                             </a>
                                                                         </li>
-                                                                        <li>
-                                                                            <a data-bind-event-click="launchAviary(&quot;36359365&quot;, &quot;https://bizweb.dktcdn.net/100/383/375/products/03.jpg?v=1586226881100&quot;)" class="photo-overlay-actions__link--edit-with-aviary photo-overlay-actions__link tooltip tooltip-top">
-                                                                                <svg role="img" class="next-icon next-icon--color-white next-icon--size-16" aria-labelledby="next-edit-e0160ec681ba44e591429d75848e4b2c-title">
-                                                                                    <title id="next-edit-b8f7dd638f664a3887366edf70ba21bb-title">sửa ảnh</title>
-                                                                                    <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#next-edit"></use>
-                                                                                </svg>
-                                                                                <span class="tooltip-container"><span class="tooltip-label">Sửa ảnh</span></span>
-                                                                            </a>
-                                                                        </li>
-                                                                        <li>
-                                                                            <a data-bind-event-click="editImageAltImage_36359365.show()" class="photo-overlay-actions__link tooltip tooltip-top">
-                                                                                <svg role="img" class="next-icon next-icon--color-white next-icon--size-16" aria-labelledby="next-alt-text-861441f8b7cf415daf5e5eeacce2597a-title">
-                                                                                    <title id="next-alt-text-eae18106371249dab4c7fd6dcdab25aa-title">thẻ ALT</title>
-                                                                                    <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#next-alt-text"></use>
-                                                                                </svg>
-                                                                                <span class="tooltip-container"><span class="tooltip-label">Sửa thẻ ALT</span></span>
-                                                                            </a>
-                                                                        </li>
-                                                                        <li>
-                                                                            <a data-bind-event-click="deleteImage_36359365.show()" class="photo-overlay-actions__link tooltip tooltip-top">
-                                                                                <svg role="img" class="next-icon next-icon--color-white next-icon--size-20" aria-labelledby="delete-minor-fde5c8448b4f4a40a18808878986feeb-title">
-                                                                                    <title id="delete-minor-4198353921934cb19b04d4901701d9c8-title">Xóa ảnh</title>
-                                                                                    <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#delete-minor"></use>
-                                                                                </svg>
-                                                                                <span class="tooltip-container"><span class="tooltip-label">Xóa ảnh</span></span>
-                                                                            </a>
-                                                                        </li>
                                                                     </ul>
-                                                                    <script data-define="{deleteImage_36359365: new Bizweb.Modal(this)}" type="text/html" class="modal_source">
+                                                                </div>
+                                                            </div>
+                                                        </li>
+                                                        @foreach (var item in ViewBag.Img_ts)
+                                                        {
+                                                            <li class="js-product-photo-grid-item product-photo-grid__item ui-sortable-handle" data-bind-class="{'product-photo-grid__item--inselectionmode': isInSelectionMode()}" id="product-image-36359366" data-tg-refresh="product-image-36359366" data-image-id="36359366">
+                                                                <div class="aspect-ratio aspect-ratio--square">
+                                                                    @{
+                                                                        string id = item.Id_SP_Option;
+                                                                        id = id.Replace("-","_");
+
+                                                                    }
+                                                                    <script data-define="{imageAltImage_@(id): new Bizweb.Modal(this)}" type="text/html" class="modal_source">
                                                                         <div class="modal-dialog">
                                                                             <div class="modal-content">
-                                                                                <div class="ui-modal__header">
-                                                                                    <div class="ui-modal__header-title">
-                                                                                        <h2 class="ui-title" id="ModalTitle">Xóa ảnh sản phẩm?</h2>
-                                                                                    </div>
-                                                                                    <div class="ui-modal__header-actions">
-                                                                                        <div class="ui-modal__close-button">
-                                                                                            <button class="ui-button ui-button--transparent close-modal" data-dismiss="modal" aria-label="Close modal" type="button" name="button">
-                                                                                                <svg class="next-icon next-icon--color-ink-lighter next-icon--size-20">
-                                                                                                    <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#cancel-small-minor"></use>
-                                                                                                </svg>
-                                                                                            </button>
-                                                                                        </div>
-                                                                                    </div>
-                                                                                </div>
                                                                                 <div class="ui-modal__body">
                                                                                     <div class="ui-modal__section">
-                                                                                        Bạn có chắc muốn xóa ảnh này và xóa nó từ tất cả phiên bản?
-                                                                                        Hành động này không thể khôi phục.
+                                                                                        <img title="" alt="" data-bind-src="src" src="@item.Image_SP_Option">
                                                                                     </div>
+
                                                                                 </div>
                                                                                 <div class="ui-modal__footer">
                                                                                     <div class="ui-modal__footer-actions">
                                                                                         <div class="ui-modal__secondary-actions">
                                                                                             <div class="button-group">
-                                                                                                <button class="ui-button close-modal" data-dismiss="modal" type="button" name="button">Hủy</button>
-                                                                                            </div>
-                                                                                        </div>
-                                                                                        <div class="ui-modal__primary-actions">
-                                                                                            <div class="button-group button-group--right-aligned">
-                                                                                                <a class="ui-button btn-destroy-no-hover js-btn-loadable" data-tg-remote="delete" data-tg-refresh-on-success="modal product-images-content variant-image-column" href="/admin/products/17533534/images/36359365?show_all_images=true">Xóa ảnh</a>
+                                                                                                <button class="ui-button close-modal" data-dismiss="modal" type="button" name="button">Đóng</button>
                                                                                             </div>
                                                                                         </div>
                                                                                     </div>
@@ -518,588 +486,43 @@
                                                                             </div>
                                                                         </div>
                                                                     </script>
-                                                                    <script data-define="{editImageAltImage_36359365: new Bizweb.Modal(this)}" type="text/html" class="modal_source">
-                                                                        <div class="modal-dialog">
-                                                                            <form data-define="{ form: new Bizweb.Forms(this) }" data-tg-refresh-on-success="modal product-image-36359365" data-tg-remote="true" action="/admin/products/UpdateProductImageAlt" accept-charset="UTF-8" method="post">
-                                                                                <div class="modal-content">
-                                                                                    <input type="hidden" name="image[id]" id="image_id" value="36359365" />
-                                                                                    <input type="hidden" name="image[productId]" id="image_product_id" value="17533534" />
-                                                                                    <div class="ui-modal__header">
-                                                                                        <div class="ui-modal__header-title">
-                                                                                            <h2 class="ui-title" id="ModalTitle">Sửa ALT của ảnh</h2>
-                                                                                        </div>
-                                                                                        <div class="ui-modal__header-actions">
-                                                                                            <div class="ui-modal__close-button">
-                                                                                                <button class="ui-button ui-button--transparent close-modal" data-dismiss="modal" aria-label="Close modal" type="button" name="button">
-                                                                                                    <svg class="next-icon next-icon--color-ink-lighter next-icon--size-20">
-                                                                                                        <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#cancel-small-minor"></use>
-                                                                                                    </svg>
-                                                                                                </button>
-                                                                                            </div>
-                                                                                        </div>
-                                                                                    </div>
-                                                                                    <div class="ui-modal__body">
-                                                                                        <div class="ui-modal__section">
-                                                                                            <div class="next-grid next-grid--no-outside-padding next-grid--vertically-centered">
-                                                                                                <div class="next-grid__cell next-grid__cell--quarter">
-                                                                                                    <div class="aspect-ratio aspect-ratio--square">
-                                                                                                        <img alt="" class="aspect-ratio__content" src="//bizweb.dktcdn.net/thumb/compact/100/383/375/products/03.jpg?v=1586226881100">
-                                                                                                    </div>
-                                                                                                </div>
-                                                                                                <div class="next-grid__cell">
-                                                                                                    <div class="next-input-wrapper">
-                                                                                                        <label class="next-label" for="image-alt-text">ALT của ảnh</label>
-                                                                                                        <input type="hidden" name="AuthenticityToken" value="3D7hKA4FpbmMyFearIzuDttn49Xu4AjAPfb7Axu+v4eAehJ46IaQk2uBUN9r6IVjTxtv28HoWE9oy8WQ1LSiQA==" />
-                                                                                                        <input value="" class="next-input" id="image-alt-text" name="image[alt]" maxlength="255">
-                                                                                                        <p class="type--subdued st">Bổ sung thẻ ALT để tối ưu SEO và giúp ảnh dễ hiểu với khách hàng.</p>
-                                                                                                    </div>
-                                                                                                </div>
-                                                                                            </div>
-                                                                                        </div>
-                                                                                    </div>
-                                                                                    <div class="ui-modal__footer">
-                                                                                        <div class="ui-modal__footer-actions">
-                                                                                            <div class="ui-modal__secondary-actions">
-                                                                                                <div class="button-group">
-                                                                                                    <button class="ui-button close-modal" data-dismiss="modal" type="button" name="button">Hủy</button>
-                                                                                                </div>
-                                                                                            </div>
-                                                                                            <div class="ui-modal__primary-actions">
-                                                                                                <div class="button-group button-group--right-aligned">
-                                                                                                    <button class="ui-button js-btn-loadable btn-primary js-btn-primary has-loading" type="submit" name="button">Lưu</button>
-                                                                                                </div>
-                                                                                            </div>
-                                                                                        </div>
-                                                                                    </div>
-                                                                                </div>
-                                                                            </form>
-                                                                        </div>
-                                                                    </script>
-                                                                </div>
-                                                            </div>
-                                                        </li>
-                                                        <li class="js-product-photo-grid-item product-photo-grid__item ui-sortable-handle" data-bind-class="{'product-photo-grid__item--inselectionmode': isInSelectionMode()}" id="product-image-36359366" data-tg-refresh="product-image-36359366" data-image-id="36359366">
-                                                            <div class="aspect-ratio aspect-ratio--square">
-                                                                <script data-define="{imageAltImage_36359366: new Bizweb.Modal(this)}" type="text/html" class="modal_source">
-                                                                    <div class="modal-dialog">
-                                                                        <div class="modal-content">
-                                                                            <div class="ui-modal__body">
-                                                                                <div class="ui-modal__section">
-                                                                                    <img title="Gấu b&#244;ng Teddy cute" alt="" data-bind-src="src" src="//bizweb.dktcdn.net/thumb/grande/100/383/375/products/04.jpg?v=1586226881100">
-                                                                                </div>
-                                                                            </div>
-                                                                            <div class="ui-modal__footer">
-                                                                                <div class="ui-modal__footer-actions">
-                                                                                    <div class="ui-modal__secondary-actions">
-                                                                                        <div class="button-group">
-                                                                                            <button class="ui-button close-modal" data-dismiss="modal" type="button" name="button">Đóng</button>
-                                                                                        </div>
-                                                                                    </div>
-                                                                                </div>
-                                                                            </div>
-                                                                        </div>
+                                                                    <img class="aspect-ratio__content" src="@item.Image_SP_Option" id="image-36359366">
+                                                                    <div class="product-photo-hover-overlay drag" data-bind-class="{'product-photo-hover-overlay--inselection': isImageIdSelected(36359366)}">
+                                                                        <ul class="photo-overlay-actions photo-overlay-actions__selection" data-bind-event-click="toggleImageSelection(36359366)">
+                                                                            <li>
+                                                                                <a class="photo-overlay-actions__link image-action tooltip tooltip-top">
+                                                                                    <i style="width: 17px; height: 17px; display: flex; justify-content: center; align-items: center; border-radius: 50%; border: 2px solid white">
+                                                                                        <svg class="next-icon next-icon--color-white hide" style="top:0;width:10px;height:10px" data-bind-show="isImageIdSelected(36359366)"><use xlink:href="#next-checkmark-thick"></use> </svg>
+                                                                                    </i>
+                                                                                    <span class="tooltip-container">
+                                                                                    <span class="tooltip-label">Chọn</span>
+                                                                                    </span>
+                                                                                </a>
+                                                                            </li>
+                                                                        </ul>
+                                                                        <ul class="photo-overlay-actions">
+                                                                            <li>
+                                                                                <a href="javascript:void(0)" data-bind-event-click="imageAltImage_@(id).show()" class="photo-overlay-actions__link tooltip tooltip-top">
+                                                                                    <svg role="img" class="next-icon next-icon--color-white next-icon--size-16" aria-labelledby="next-preview-79c82bceffe44bd3ac2ee083c5996d5d-title">
+                                                                                        <title id="next-preview-ab4c2da4eb164a76bbf3c8d107e9ede5-title">xem ảnh</title>
+                                                                                        <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#next-preview"></use>
+                                                                                    </svg>
+                                                                                    <span class="tooltip-container">
+                                                                                        <span class="tooltip-label">Xem ảnh</span>
+                                                                                    </span>
+                                                                                </a>
+                                                                            </li>
+
+                                                                        </ul>
+                                                                       
                                                                     </div>
-                                                                </script>
-                                                                <img class="aspect-ratio__content" src="//bizweb.dktcdn.net/thumb/large/100/383/375/products/04.jpg?v=1586226881100" id="image-36359366">
-                                                                <div class="product-photo-hover-overlay drag" data-bind-class="{'product-photo-hover-overlay--inselection': isImageIdSelected(36359366)}">
-                                                                    <ul class="photo-overlay-actions photo-overlay-actions__selection" data-bind-event-click="toggleImageSelection(36359366)">
-                                                                        <li>
-                                                                            <a class="photo-overlay-actions__link image-action tooltip tooltip-top">
-                                                                                <i style="width: 17px; height: 17px; display: flex; justify-content: center; align-items: center; border-radius: 50%; border: 2px solid white">
-                                                                                    <svg class="next-icon next-icon--color-white hide" style="top:0;width:10px;height:10px" data-bind-show="isImageIdSelected(36359366)"><use xlink:href="#next-checkmark-thick"></use> </svg>
-                                                                                </i>
-                                                                                <span class="tooltip-container"><span class="tooltip-label">Chọn</span></span>
-                                                                            </a>
-                                                                        </li>
-                                                                    </ul>
-                                                                    <ul class="photo-overlay-actions">
-                                                                        <li>
-                                                                            <a href="javascript:void(0)" data-bind-event-click="imageAltImage_36359366.show()" class="photo-overlay-actions__link tooltip tooltip-top">
-                                                                                <svg role="img" class="next-icon next-icon--color-white next-icon--size-16" aria-labelledby="next-preview-79c82bceffe44bd3ac2ee083c5996d5d-title">
-                                                                                    <title id="next-preview-ab4c2da4eb164a76bbf3c8d107e9ede5-title">xem ảnh</title>
-                                                                                    <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#next-preview"></use>
-                                                                                </svg>
-                                                                                <span class="tooltip-container">
-                                                                                    <span class="tooltip-label">Xem ảnh</span>
-                                                                                </span>
-                                                                            </a>
-                                                                        </li>
-                                                                        <li>
-                                                                            <a data-bind-event-click="launchAviary(&quot;36359366&quot;, &quot;https://bizweb.dktcdn.net/100/383/375/products/04.jpg?v=1586226881100&quot;)" class="photo-overlay-actions__link--edit-with-aviary photo-overlay-actions__link tooltip tooltip-top">
-                                                                                <svg role="img" class="next-icon next-icon--color-white next-icon--size-16" aria-labelledby="next-edit-9d81d3561a0c438498fccf5222536ead-title">
-                                                                                    <title id="next-edit-f2ed1be3fd0b4c938eb9fdc8ec654520-title">sửa ảnh</title>
-                                                                                    <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#next-edit"></use>
-                                                                                </svg>
-                                                                                <span class="tooltip-container"><span class="tooltip-label">Sửa ảnh</span></span>
-                                                                            </a>
-                                                                        </li>
-                                                                        <li>
-                                                                            <a data-bind-event-click="editImageAltImage_36359366.show()" class="photo-overlay-actions__link tooltip tooltip-top">
-                                                                                <svg role="img" class="next-icon next-icon--color-white next-icon--size-16" aria-labelledby="next-alt-text-bc6367d6ed8045008e1d373f9de37d9a-title">
-                                                                                    <title id="next-alt-text-2bcc40810b2a4b32a2078b56e09b7901-title">thẻ ALT</title>
-                                                                                    <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#next-alt-text"></use>
-                                                                                </svg>
-                                                                                <span class="tooltip-container"><span class="tooltip-label">Sửa thẻ ALT</span></span>
-                                                                            </a>
-                                                                        </li>
-                                                                        <li>
-                                                                            <a data-bind-event-click="deleteImage_36359366.show()" class="photo-overlay-actions__link tooltip tooltip-top">
-                                                                                <svg role="img" class="next-icon next-icon--color-white next-icon--size-20" aria-labelledby="delete-minor-5ebdc97f0adc4784af4c839f73f6e977-title">
-                                                                                    <title id="delete-minor-c52f95cf50b3442da5b5a311002a4ade-title">Xóa ảnh</title>
-                                                                                    <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#delete-minor"></use>
-                                                                                </svg>
-                                                                                <span class="tooltip-container"><span class="tooltip-label">Xóa ảnh</span></span>
-                                                                            </a>
-                                                                        </li>
-                                                                    </ul>
-                                                                    <script data-define="{deleteImage_36359366: new Bizweb.Modal(this)}" type="text/html" class="modal_source">
-                                                                        <div class="modal-dialog">
-                                                                            <div class="modal-content">
-                                                                                <div class="ui-modal__header">
-                                                                                    <div class="ui-modal__header-title">
-                                                                                        <h2 class="ui-title" id="ModalTitle">Xóa ảnh sản phẩm?</h2>
-                                                                                    </div>
-                                                                                    <div class="ui-modal__header-actions">
-                                                                                        <div class="ui-modal__close-button">
-                                                                                            <button class="ui-button ui-button--transparent close-modal" data-dismiss="modal" aria-label="Close modal" type="button" name="button">
-                                                                                                <svg class="next-icon next-icon--color-ink-lighter next-icon--size-20">
-                                                                                                    <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#cancel-small-minor"></use>
-                                                                                                </svg>
-                                                                                            </button>
-                                                                                        </div>
-                                                                                    </div>
-                                                                                </div>
-                                                                                <div class="ui-modal__body">
-                                                                                    <div class="ui-modal__section">
-                                                                                        Bạn có chắc muốn xóa ảnh này và xóa nó từ tất cả phiên bản?
-                                                                                        Hành động này không thể khôi phục.
-                                                                                    </div>
-                                                                                </div>
-                                                                                <div class="ui-modal__footer">
-                                                                                    <div class="ui-modal__footer-actions">
-                                                                                        <div class="ui-modal__secondary-actions">
-                                                                                            <div class="button-group">
-                                                                                                <button class="ui-button close-modal" data-dismiss="modal" type="button" name="button">Hủy</button>
-                                                                                            </div>
-                                                                                        </div>
-                                                                                        <div class="ui-modal__primary-actions">
-                                                                                            <div class="button-group button-group--right-aligned">
-                                                                                                <a class="ui-button btn-destroy-no-hover js-btn-loadable" data-tg-remote="delete" data-tg-refresh-on-success="modal product-images-content variant-image-column" href="/admin/products/17533534/images/36359366?show_all_images=true">Xóa ảnh</a>
-                                                                                            </div>
-                                                                                        </div>
-                                                                                    </div>
-                                                                                </div>
-                                                                            </div>
-                                                                        </div>
-                                                                    </script>
-                                                                    <script data-define="{editImageAltImage_36359366: new Bizweb.Modal(this)}" type="text/html" class="modal_source">
-                                                                        <div class="modal-dialog">
-                                                                            <form data-define="{ form: new Bizweb.Forms(this) }" data-tg-refresh-on-success="modal product-image-36359366" data-tg-remote="true" action="/admin/products/UpdateProductImageAlt" accept-charset="UTF-8" method="post">
-                                                                                <div class="modal-content">
-                                                                                    <input type="hidden" name="image[id]" id="image_id" value="36359366" />
-                                                                                    <input type="hidden" name="image[productId]" id="image_product_id" value="17533534" />
-                                                                                    <div class="ui-modal__header">
-                                                                                        <div class="ui-modal__header-title">
-                                                                                            <h2 class="ui-title" id="ModalTitle">Sửa ALT của ảnh</h2>
-                                                                                        </div>
-                                                                                        <div class="ui-modal__header-actions">
-                                                                                            <div class="ui-modal__close-button">
-                                                                                                <button class="ui-button ui-button--transparent close-modal" data-dismiss="modal" aria-label="Close modal" type="button" name="button">
-                                                                                                    <svg class="next-icon next-icon--color-ink-lighter next-icon--size-20">
-                                                                                                        <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#cancel-small-minor"></use>
-                                                                                                    </svg>
-                                                                                                </button>
-                                                                                            </div>
-                                                                                        </div>
-                                                                                    </div>
-                                                                                    <div class="ui-modal__body">
-                                                                                        <div class="ui-modal__section">
-                                                                                            <div class="next-grid next-grid--no-outside-padding next-grid--vertically-centered">
-                                                                                                <div class="next-grid__cell next-grid__cell--quarter">
-                                                                                                    <div class="aspect-ratio aspect-ratio--square">
-                                                                                                        <img alt="" class="aspect-ratio__content" src="//bizweb.dktcdn.net/thumb/compact/100/383/375/products/04.jpg?v=1586226881100">
-                                                                                                    </div>
-                                                                                                </div>
-                                                                                                <div class="next-grid__cell">
-                                                                                                    <div class="next-input-wrapper">
-                                                                                                        <label class="next-label" for="image-alt-text">ALT của ảnh</label>
-                                                                                                        <input type="hidden" name="AuthenticityToken" value="3D7hKA4FpbmMyFearIzuDttn49Xu4AjAPfb7Axu+v4eAehJ46IaQk2uBUN9r6IVjTxtv28HoWE9oy8WQ1LSiQA==" />
-                                                                                                        <input value="" class="next-input" id="image-alt-text" name="image[alt]" maxlength="255">
-                                                                                                        <p class="type--subdued st">Bổ sung thẻ ALT để tối ưu SEO và giúp ảnh dễ hiểu với khách hàng.</p>
-                                                                                                    </div>
-                                                                                                </div>
-                                                                                            </div>
-                                                                                        </div>
-                                                                                    </div>
-                                                                                    <div class="ui-modal__footer">
-                                                                                        <div class="ui-modal__footer-actions">
-                                                                                            <div class="ui-modal__secondary-actions">
-                                                                                                <div class="button-group">
-                                                                                                    <button class="ui-button close-modal" data-dismiss="modal" type="button" name="button">Hủy</button>
-                                                                                                </div>
-                                                                                            </div>
-                                                                                            <div class="ui-modal__primary-actions">
-                                                                                                <div class="button-group button-group--right-aligned">
-                                                                                                    <button class="ui-button js-btn-loadable btn-primary js-btn-primary has-loading" type="submit" name="button">Lưu</button>
-                                                                                                </div>
-                                                                                            </div>
-                                                                                        </div>
-                                                                                    </div>
-                                                                                </div>
-                                                                            </form>
-                                                                        </div>
-                                                                    </script>
                                                                 </div>
-                                                            </div>
-                                                        </li>
-                                                        <li class="js-product-photo-grid-item product-photo-grid__item ui-sortable-handle" data-bind-class="{'product-photo-grid__item--inselectionmode': isInSelectionMode()}" id="product-image-36359367" data-tg-refresh="product-image-36359367" data-image-id="36359367">
-                                                            <div class="aspect-ratio aspect-ratio--square">
-                                                                <script data-define="{imageAltImage_36359367: new Bizweb.Modal(this)}" type="text/html" class="modal_source">
-                                                                    <div class="modal-dialog">
-                                                                        <div class="modal-content">
-                                                                            <div class="ui-modal__body">
-                                                                                <div class="ui-modal__section">
-                                                                                    <img title="Gấu b&#244;ng Teddy cute" alt="" data-bind-src="src" src="//bizweb.dktcdn.net/thumb/grande/100/383/375/products/02.jpg?v=1586226881100">
-                                                                                </div>
-                                                                            </div>
-                                                                            <div class="ui-modal__footer">
-                                                                                <div class="ui-modal__footer-actions">
-                                                                                    <div class="ui-modal__secondary-actions">
-                                                                                        <div class="button-group">
-                                                                                            <button class="ui-button close-modal" data-dismiss="modal" type="button" name="button">Đóng</button>
-                                                                                        </div>
-                                                                                    </div>
-                                                                                </div>
-                                                                            </div>
-                                                                        </div>
-                                                                    </div>
-                                                                </script>
-                                                                <img class="aspect-ratio__content" src="//bizweb.dktcdn.net/thumb/large/100/383/375/products/02.jpg?v=1586226881100" id="image-36359367">
-                                                                <div class="product-photo-hover-overlay drag" data-bind-class="{'product-photo-hover-overlay--inselection': isImageIdSelected(36359367)}">
-                                                                    <ul class="photo-overlay-actions photo-overlay-actions__selection" data-bind-event-click="toggleImageSelection(36359367)">
-                                                                        <li>
-                                                                            <a class="photo-overlay-actions__link image-action tooltip tooltip-top">
-                                                                                <i style="width: 17px; height: 17px; display: flex; justify-content: center; align-items: center; border-radius: 50%; border: 2px solid white">
-                                                                                    <svg class="next-icon next-icon--color-white hide" style="top:0;width:10px;height:10px" data-bind-show="isImageIdSelected(36359367)"><use xlink:href="#next-checkmark-thick"></use> </svg>
-                                                                                </i>
-                                                                                <span class="tooltip-container"><span class="tooltip-label">Chọn</span></span>
-                                                                            </a>
-                                                                        </li>
-                                                                    </ul>
-                                                                    <ul class="photo-overlay-actions">
-                                                                        <li>
-                                                                            <a href="javascript:void(0)" data-bind-event-click="imageAltImage_36359367.show()" class="photo-overlay-actions__link tooltip tooltip-top">
-                                                                                <svg role="img" class="next-icon next-icon--color-white next-icon--size-16" aria-labelledby="next-preview-dd2bfd1d86d343cb92adc2f397526db9-title">
-                                                                                    <title id="next-preview-15601b239ef04f7aab8edb0f44412337-title">xem ảnh</title>
-                                                                                    <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#next-preview"></use>
-                                                                                </svg>
-                                                                                <span class="tooltip-container">
-                                                                                    <span class="tooltip-label">Xem ảnh</span>
-                                                                                </span>
-                                                                            </a>
-                                                                        </li>
-                                                                        <li>
-                                                                            <a data-bind-event-click="launchAviary(&quot;36359367&quot;, &quot;https://bizweb.dktcdn.net/100/383/375/products/02.jpg?v=1586226881100&quot;)" class="photo-overlay-actions__link--edit-with-aviary photo-overlay-actions__link tooltip tooltip-top">
-                                                                                <svg role="img" class="next-icon next-icon--color-white next-icon--size-16" aria-labelledby="next-edit-71d760e637f243519409b4e4f60988b4-title">
-                                                                                    <title id="next-edit-2f76400c2b024010abad56a0c22bcc4b-title">sửa ảnh</title>
-                                                                                    <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#next-edit"></use>
-                                                                                </svg>
-                                                                                <span class="tooltip-container"><span class="tooltip-label">Sửa ảnh</span></span>
-                                                                            </a>
-                                                                        </li>
-                                                                        <li>
-                                                                            <a data-bind-event-click="editImageAltImage_36359367.show()" class="photo-overlay-actions__link tooltip tooltip-top">
-                                                                                <svg role="img" class="next-icon next-icon--color-white next-icon--size-16" aria-labelledby="next-alt-text-58fd519df44a4985a03063b1c547b982-title">
-                                                                                    <title id="next-alt-text-7f4a7f294ec7449297d8d5ead1b30498-title">thẻ ALT</title>
-                                                                                    <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#next-alt-text"></use>
-                                                                                </svg>
-                                                                                <span class="tooltip-container"><span class="tooltip-label">Sửa thẻ ALT</span></span>
-                                                                            </a>
-                                                                        </li>
-                                                                        <li>
-                                                                            <a data-bind-event-click="deleteImage_36359367.show()" class="photo-overlay-actions__link tooltip tooltip-top">
-                                                                                <svg role="img" class="next-icon next-icon--color-white next-icon--size-20" aria-labelledby="delete-minor-a3b696be6eae4d09b415f1d5b082acb9-title">
-                                                                                    <title id="delete-minor-5cf44061c52648959feb30a2dbd79488-title">Xóa ảnh</title>
-                                                                                    <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#delete-minor"></use>
-                                                                                </svg>
-                                                                                <span class="tooltip-container"><span class="tooltip-label">Xóa ảnh</span></span>
-                                                                            </a>
-                                                                        </li>
-                                                                    </ul>
-                                                                    <script data-define="{deleteImage_36359367: new Bizweb.Modal(this)}" type="text/html" class="modal_source">
-                                                                        <div class="modal-dialog">
-                                                                            <div class="modal-content">
-                                                                                <div class="ui-modal__header">
-                                                                                    <div class="ui-modal__header-title">
-                                                                                        <h2 class="ui-title" id="ModalTitle">Xóa ảnh sản phẩm?</h2>
-                                                                                    </div>
-                                                                                    <div class="ui-modal__header-actions">
-                                                                                        <div class="ui-modal__close-button">
-                                                                                            <button class="ui-button ui-button--transparent close-modal" data-dismiss="modal" aria-label="Close modal" type="button" name="button">
-                                                                                                <svg class="next-icon next-icon--color-ink-lighter next-icon--size-20">
-                                                                                                    <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#cancel-small-minor"></use>
-                                                                                                </svg>
-                                                                                            </button>
-                                                                                        </div>
-                                                                                    </div>
-                                                                                </div>
-                                                                                <div class="ui-modal__body">
-                                                                                    <div class="ui-modal__section">
-                                                                                        Bạn có chắc muốn xóa ảnh này và xóa nó từ tất cả phiên bản?
-                                                                                        Hành động này không thể khôi phục.
-                                                                                    </div>
-                                                                                </div>
-                                                                                <div class="ui-modal__footer">
-                                                                                    <div class="ui-modal__footer-actions">
-                                                                                        <div class="ui-modal__secondary-actions">
-                                                                                            <div class="button-group">
-                                                                                                <button class="ui-button close-modal" data-dismiss="modal" type="button" name="button">Hủy</button>
-                                                                                            </div>
-                                                                                        </div>
-                                                                                        <div class="ui-modal__primary-actions">
-                                                                                            <div class="button-group button-group--right-aligned">
-                                                                                                <a class="ui-button btn-destroy-no-hover js-btn-loadable" data-tg-remote="delete" data-tg-refresh-on-success="modal product-images-content variant-image-column" href="/admin/products/17533534/images/36359367?show_all_images=true">Xóa ảnh</a>
-                                                                                            </div>
-                                                                                        </div>
-                                                                                    </div>
-                                                                                </div>
-                                                                            </div>
-                                                                        </div>
-                                                                    </script>
-                                                                    <script data-define="{editImageAltImage_36359367: new Bizweb.Modal(this)}" type="text/html" class="modal_source">
-                                                                        <div class="modal-dialog">
-                                                                            <form data-define="{ form: new Bizweb.Forms(this) }" data-tg-refresh-on-success="modal product-image-36359367" data-tg-remote="true" action="/admin/products/UpdateProductImageAlt" accept-charset="UTF-8" method="post">
-                                                                                <div class="modal-content">
-                                                                                    <input type="hidden" name="image[id]" id="image_id" value="36359367" />
-                                                                                    <input type="hidden" name="image[productId]" id="image_product_id" value="17533534" />
-                                                                                    <div class="ui-modal__header">
-                                                                                        <div class="ui-modal__header-title">
-                                                                                            <h2 class="ui-title" id="ModalTitle">Sửa ALT của ảnh</h2>
-                                                                                        </div>
-                                                                                        <div class="ui-modal__header-actions">
-                                                                                            <div class="ui-modal__close-button">
-                                                                                                <button class="ui-button ui-button--transparent close-modal" data-dismiss="modal" aria-label="Close modal" type="button" name="button">
-                                                                                                    <svg class="next-icon next-icon--color-ink-lighter next-icon--size-20">
-                                                                                                        <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#cancel-small-minor"></use>
-                                                                                                    </svg>
-                                                                                                </button>
-                                                                                            </div>
-                                                                                        </div>
-                                                                                    </div>
-                                                                                    <div class="ui-modal__body">
-                                                                                        <div class="ui-modal__section">
-                                                                                            <div class="next-grid next-grid--no-outside-padding next-grid--vertically-centered">
-                                                                                                <div class="next-grid__cell next-grid__cell--quarter">
-                                                                                                    <div class="aspect-ratio aspect-ratio--square">
-                                                                                                        <img alt="" class="aspect-ratio__content" src="//bizweb.dktcdn.net/thumb/compact/100/383/375/products/02.jpg?v=1586226881100">
-                                                                                                    </div>
-                                                                                                </div>
-                                                                                                <div class="next-grid__cell">
-                                                                                                    <div class="next-input-wrapper">
-                                                                                                        <label class="next-label" for="image-alt-text">ALT của ảnh</label>
-                                                                                                        <input type="hidden" name="AuthenticityToken" value="3D7hKA4FpbmMyFearIzuDttn49Xu4AjAPfb7Axu+v4eAehJ46IaQk2uBUN9r6IVjTxtv28HoWE9oy8WQ1LSiQA==" />
-                                                                                                        <input value="" class="next-input" id="image-alt-text" name="image[alt]" maxlength="255">
-                                                                                                        <p class="type--subdued st">Bổ sung thẻ ALT để tối ưu SEO và giúp ảnh dễ hiểu với khách hàng.</p>
-                                                                                                    </div>
-                                                                                                </div>
-                                                                                            </div>
-                                                                                        </div>
-                                                                                    </div>
-                                                                                    <div class="ui-modal__footer">
-                                                                                        <div class="ui-modal__footer-actions">
-                                                                                            <div class="ui-modal__secondary-actions">
-                                                                                                <div class="button-group">
-                                                                                                    <button class="ui-button close-modal" data-dismiss="modal" type="button" name="button">Hủy</button>
-                                                                                                </div>
-                                                                                            </div>
-                                                                                            <div class="ui-modal__primary-actions">
-                                                                                                <div class="button-group button-group--right-aligned">
-                                                                                                    <button class="ui-button js-btn-loadable btn-primary js-btn-primary has-loading" type="submit" name="button">Lưu</button>
-                                                                                                </div>
-                                                                                            </div>
-                                                                                        </div>
-                                                                                    </div>
-                                                                                </div>
-                                                                            </form>
-                                                                        </div>
-                                                                    </script>
-                                                                </div>
-                                                            </div>
-                                                        </li>
-                                                        <li class="js-product-photo-grid-item product-photo-grid__item ui-sortable-handle" data-bind-class="{'product-photo-grid__item--inselectionmode': isInSelectionMode()}" id="product-image-36360159" data-tg-refresh="product-image-36360159" data-image-id="36360159">
-                                                            <div class="aspect-ratio aspect-ratio--square">
-                                                                <script data-define="{imageAltImage_36360159: new Bizweb.Modal(this)}" type="text/html" class="modal_source">
-                                                                    <div class="modal-dialog">
-                                                                        <div class="modal-content">
-                                                                            <div class="ui-modal__body">
-                                                                                <div class="ui-modal__section">
-                                                                                    <img title="Gấu b&#244;ng Teddy cute" alt="" data-bind-src="src" src="//bizweb.dktcdn.net/thumb/grande/100/383/375/products/538254670451fc0fa540-5ef324f9ff3248e68410ac4b20cd8e53-large.jpg?v=1586228838283">
-                                                                                </div>
-                                                                            </div>
-                                                                            <div class="ui-modal__footer">
-                                                                                <div class="ui-modal__footer-actions">
-                                                                                    <div class="ui-modal__secondary-actions">
-                                                                                        <div class="button-group">
-                                                                                            <button class="ui-button close-modal" data-dismiss="modal" type="button" name="button">Đóng</button>
-                                                                                        </div>
-                                                                                    </div>
-                                                                                </div>
-                                                                            </div>
-                                                                        </div>
-                                                                    </div>
-                                                                </script>
-                                                                <img class="aspect-ratio__content" src="//bizweb.dktcdn.net/thumb/large/100/383/375/products/538254670451fc0fa540-5ef324f9ff3248e68410ac4b20cd8e53-large.jpg?v=1586228838283" id="image-36360159">
-                                                                <div class="product-photo-hover-overlay drag" data-bind-class="{'product-photo-hover-overlay--inselection': isImageIdSelected(36360159)}">
-                                                                    <ul class="photo-overlay-actions photo-overlay-actions__selection" data-bind-event-click="toggleImageSelection(36360159)">
-                                                                        <li>
-                                                                            <a class="photo-overlay-actions__link image-action tooltip tooltip-top">
-                                                                                <i style="width: 17px; height: 17px; display: flex; justify-content: center; align-items: center; border-radius: 50%; border: 2px solid white">
-                                                                                    <svg class="next-icon next-icon--color-white hide" style="top:0;width:10px;height:10px" data-bind-show="isImageIdSelected(36360159)"><use xlink:href="#next-checkmark-thick"></use> </svg>
-                                                                                </i>
-                                                                                <span class="tooltip-container"><span class="tooltip-label">Chọn</span></span>
-                                                                            </a>
-                                                                        </li>
-                                                                    </ul>
-                                                                    <ul class="photo-overlay-actions">
-                                                                        <li>
-                                                                            <a href="javascript:void(0)" data-bind-event-click="imageAltImage_36360159.show()" class="photo-overlay-actions__link tooltip tooltip-top">
-                                                                                <svg role="img" class="next-icon next-icon--color-white next-icon--size-16" aria-labelledby="next-preview-e65e8f32dceb415a91519f35fde997f7-title">
-                                                                                    <title id="next-preview-528e4d3e3008486ca0458d6c10ebeb3a-title">xem ảnh</title>
-                                                                                    <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#next-preview"></use>
-                                                                                </svg>
-                                                                                <span class="tooltip-container">
-                                                                                    <span class="tooltip-label">Xem ảnh</span>
-                                                                                </span>
-                                                                            </a>
-                                                                        </li>
-                                                                        <li>
-                                                                            <a data-bind-event-click="launchAviary(&quot;36360159&quot;, &quot;https://bizweb.dktcdn.net/100/383/375/products/538254670451fc0fa540-5ef324f9ff3248e68410ac4b20cd8e53-large.jpg?v=1586228838283&quot;)" class="photo-overlay-actions__link--edit-with-aviary photo-overlay-actions__link tooltip tooltip-top">
-                                                                                <svg role="img" class="next-icon next-icon--color-white next-icon--size-16" aria-labelledby="next-edit-ed7398b6c92144f38c7e005324b058bb-title">
-                                                                                    <title id="next-edit-646b157194824a32b4bb639804e98a18-title">sửa ảnh</title>
-                                                                                    <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#next-edit"></use>
-                                                                                </svg>
-                                                                                <span class="tooltip-container"><span class="tooltip-label">Sửa ảnh</span></span>
-                                                                            </a>
-                                                                        </li>
-                                                                        <li>
-                                                                            <a data-bind-event-click="editImageAltImage_36360159.show()" class="photo-overlay-actions__link tooltip tooltip-top">
-                                                                                <svg role="img" class="next-icon next-icon--color-white next-icon--size-16" aria-labelledby="next-alt-text-ed86c266a75a499d918ebdcab0b1f687-title">
-                                                                                    <title id="next-alt-text-e2f0ee19004d4f9fb506bf26819f9777-title">thẻ ALT</title>
-                                                                                    <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#next-alt-text"></use>
-                                                                                </svg>
-                                                                                <span class="tooltip-container"><span class="tooltip-label">Sửa thẻ ALT</span></span>
-                                                                            </a>
-                                                                        </li>
-                                                                        <li>
-                                                                            <a data-bind-event-click="deleteImage_36360159.show()" class="photo-overlay-actions__link tooltip tooltip-top">
-                                                                                <svg role="img" class="next-icon next-icon--color-white next-icon--size-20" aria-labelledby="delete-minor-ce6fb463cc8a45c6965db7c20fb36acd-title">
-                                                                                    <title id="delete-minor-26c8dcd3e16b4d1298efae181f1c188a-title">Xóa ảnh</title>
-                                                                                    <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#delete-minor"></use>
-                                                                                </svg>
-                                                                                <span class="tooltip-container"><span class="tooltip-label">Xóa ảnh</span></span>
-                                                                            </a>
-                                                                        </li>
-                                                                    </ul>
-                                                                    <script data-define="{deleteImage_36360159: new Bizweb.Modal(this)}" type="text/html" class="modal_source">
-                                                                        <div class="modal-dialog">
-                                                                            <div class="modal-content">
-                                                                                <div class="ui-modal__header">
-                                                                                    <div class="ui-modal__header-title">
-                                                                                        <h2 class="ui-title" id="ModalTitle">Xóa ảnh sản phẩm?</h2>
-                                                                                    </div>
-                                                                                    <div class="ui-modal__header-actions">
-                                                                                        <div class="ui-modal__close-button">
-                                                                                            <button class="ui-button ui-button--transparent close-modal" data-dismiss="modal" aria-label="Close modal" type="button" name="button">
-                                                                                                <svg class="next-icon next-icon--color-ink-lighter next-icon--size-20">
-                                                                                                    <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#cancel-small-minor"></use>
-                                                                                                </svg>
-                                                                                            </button>
-                                                                                        </div>
-                                                                                    </div>
-                                                                                </div>
-                                                                                <div class="ui-modal__body">
-                                                                                    <div class="ui-modal__section">
-                                                                                        Bạn có chắc muốn xóa ảnh này và xóa nó từ tất cả phiên bản?
-                                                                                        Hành động này không thể khôi phục.
-                                                                                    </div>
-                                                                                </div>
-                                                                                <div class="ui-modal__footer">
-                                                                                    <div class="ui-modal__footer-actions">
-                                                                                        <div class="ui-modal__secondary-actions">
-                                                                                            <div class="button-group">
-                                                                                                <button class="ui-button close-modal" data-dismiss="modal" type="button" name="button">Hủy</button>
-                                                                                            </div>
-                                                                                        </div>
-                                                                                        <div class="ui-modal__primary-actions">
-                                                                                            <div class="button-group button-group--right-aligned">
-                                                                                                <a class="ui-button btn-destroy-no-hover js-btn-loadable" data-tg-remote="delete" data-tg-refresh-on-success="modal product-images-content variant-image-column" href="/admin/products/17533534/images/36360159?show_all_images=true">Xóa ảnh</a>
-                                                                                            </div>
-                                                                                        </div>
-                                                                                    </div>
-                                                                                </div>
-                                                                            </div>
-                                                                        </div>
-                                                                    </script>
-                                                                    <script data-define="{editImageAltImage_36360159: new Bizweb.Modal(this)}" type="text/html" class="modal_source">
-                                                                        <div class="modal-dialog">
-                                                                            <form data-define="{ form: new Bizweb.Forms(this) }" data-tg-refresh-on-success="modal product-image-36360159" data-tg-remote="true" action="/admin/products/UpdateProductImageAlt" accept-charset="UTF-8" method="post">
-                                                                                <div class="modal-content">
-                                                                                    <input type="hidden" name="image[id]" id="image_id" value="36360159" />
-                                                                                    <input type="hidden" name="image[productId]" id="image_product_id" value="17533534" />
-                                                                                    <div class="ui-modal__header">
-                                                                                        <div class="ui-modal__header-title">
-                                                                                            <h2 class="ui-title" id="ModalTitle">Sửa ALT của ảnh</h2>
-                                                                                        </div>
-                                                                                        <div class="ui-modal__header-actions">
-                                                                                            <div class="ui-modal__close-button">
-                                                                                                <button class="ui-button ui-button--transparent close-modal" data-dismiss="modal" aria-label="Close modal" type="button" name="button">
-                                                                                                    <svg class="next-icon next-icon--color-ink-lighter next-icon--size-20">
-                                                                                                        <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#cancel-small-minor"></use>
-                                                                                                    </svg>
-                                                                                                </button>
-                                                                                            </div>
-                                                                                        </div>
-                                                                                    </div>
-                                                                                    <div class="ui-modal__body">
-                                                                                        <div class="ui-modal__section">
-                                                                                            <div class="next-grid next-grid--no-outside-padding next-grid--vertically-centered">
-                                                                                                <div class="next-grid__cell next-grid__cell--quarter">
-                                                                                                    <div class="aspect-ratio aspect-ratio--square">
-                                                                                                        <img alt="" class="aspect-ratio__content" src="//bizweb.dktcdn.net/thumb/compact/100/383/375/products/538254670451fc0fa540-5ef324f9ff3248e68410ac4b20cd8e53-large.jpg?v=1586228838283">
-                                                                                                    </div>
-                                                                                                </div>
-                                                                                                <div class="next-grid__cell">
-                                                                                                    <div class="next-input-wrapper">
-                                                                                                        <label class="next-label" for="image-alt-text">ALT của ảnh</label>
-                                                                                                        <input type="hidden" name="AuthenticityToken" value="3D7hKA4FpbmMyFearIzuDttn49Xu4AjAPfb7Axu+v4eAehJ46IaQk2uBUN9r6IVjTxtv28HoWE9oy8WQ1LSiQA==" />
-                                                                                                        <input value="" class="next-input" id="image-alt-text" name="image[alt]" maxlength="255">
-                                                                                                        <p class="type--subdued st">Bổ sung thẻ ALT để tối ưu SEO và giúp ảnh dễ hiểu với khách hàng.</p>
-                                                                                                    </div>
-                                                                                                </div>
-                                                                                            </div>
-                                                                                        </div>
-                                                                                    </div>
-                                                                                    <div class="ui-modal__footer">
-                                                                                        <div class="ui-modal__footer-actions">
-                                                                                            <div class="ui-modal__secondary-actions">
-                                                                                                <div class="button-group">
-                                                                                                    <button class="ui-button close-modal" data-dismiss="modal" type="button" name="button">Hủy</button>
-                                                                                                </div>
-                                                                                            </div>
-                                                                                            <div class="ui-modal__primary-actions">
-                                                                                                <div class="button-group button-group--right-aligned">
-                                                                                                    <button class="ui-button js-btn-loadable btn-primary js-btn-primary has-loading" type="submit" name="button">Lưu</button>
-                                                                                                </div>
-                                                                                            </div>
-                                                                                        </div>
-                                                                                    </div>
-                                                                                </div>
-                                                                            </form>
-                                                                        </div>
-                                                                    </script>
-                                                                </div>
-                                                            </div>
-                                                        </li>
+                                                            </li>
+
+                                                        }
+
+
+
 
                                                     </ol>
                                                     <div data-bind-show="dragging()" class="hide">
@@ -1125,7 +548,8 @@
                                                     <script data-define="{deleteSelectedImagesModal: new Bizweb.Modal(this)}" type="text/html" class="modal_source">
                                                         <div class="modal-dialog">
                                                             <form action="/admin/products/17533534/images/deleteimages" data-tg-refresh-on-success="modal product-images-content variant-image-column" data-tg-remote="true" method="post">
-                                                                <input type="hidden" name="AuthenticityToken" value="3D7hKA4FpbmMyFearIzuDttn49Xu4AjAPfb7Axu+v4eAehJ46IaQk2uBUN9r6IVjTxtv28HoWE9oy8WQ1LSiQA==" />                                <div class="modal-content">
+                                                                <input type="hidden" name="AuthenticityToken" value="3D7hKA4FpbmMyFearIzuDttn49Xu4AjAPfb7Axu+v4eAehJ46IaQk2uBUN9r6IVjTxtv28HoWE9oy8WQ1LSiQA==" />
+                                                                <div class="modal-content">
                                                                     <div class="ui-modal__header">
                                                                         <div class="ui-modal__header-title">
                                                                             <h2 class="ui-title" id="ModalTitle">Xóa ảnh sản phẩm</h2>
@@ -1134,7 +558,9 @@
                                                                             <div class="ui-modal__close-button">
                                                                                 <button class="ui-button ui-button--transparent close-modal" data-dismiss="modal" aria-label="Close modal" type="button" name="button">
                                                                                     <svg class="next-icon next-icon--color-ink-lighter next-icon--size-20">
-                                                                                        <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#cancel-small-minor"></use>
+                                                                                        <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#cancel-small-minor">
+
+                                                                                        </use>
                                                                                     </svg>
                                                                                 </button>
                                                                             </div>
@@ -2291,6 +1717,34 @@
 
                             </div>
                             <div class="ui-layout__section ui-layout__section--secondary">
+                                <div class="ui-layout__item">
+                                    <section class="ui-card" data-define="{ inventoryOptions: new Bizweb.InventoryOptions(1, null ) }">
+                                        <header class="ui-card__header"><h2 class="ui-heading">Kho hàng</h2></header>
+                                        <div class="ui-card__section">
+                                            <div class="ui-type-container">
+                                                <div class="next-grid next-grid--no-outside-padding">
+                                                    <div class="next-grid__cell">
+                                                        <div class="next-input-wrapper">
+                                                            <label class="next-label" for="variant-sku">
+                                                                Mã sản phẩm / SKU
+                                                                <span class="alert-sku-duplicate">
+                                                                    <svg class="next-icon next-icon--size-16">
+                                                                        <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#icon-danger"></use>
+                                                                    </svg>
+                                                                    <span class="alert-sku-duplicate-cap">Mã sản phẩm này bị trùng với 1 sản phẩm khác trên hệ thống</span>
+                                                                </span>
+                                                            </label>
+                                                            <input type="text" value="@Model.Id_SP" asp-for="Id_SP" data-bind-event-change="inventoryOptions.skuOnChange(this)" data-bind="sku" class="next-input">
+                                                            <span asp-validation-for="Id_SP" class="text-danger"></span>
+
+                                                        </div>
+                                                    </div>
+
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </section>
+                                </div>
                                 <div class="ui-layout__item">
                                     <div class="next-card">
                                         <header class="next-card__header">
