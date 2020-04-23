@@ -542,6 +542,10 @@ function selectSuggestion1(b) {
     var ten_sp = $("#Loai_SP_1");
     ten_sp.val(b);
 }
+$(".photo-overlay-actions__selection").off("click").click(function () {
+    $(this).parent().toggleClass("product-photo-hover-overlay--inselection");
+    $(this).children().children().children().children("svg.next-icon--color-white").toggleClass("hide");
+});
 
 
 

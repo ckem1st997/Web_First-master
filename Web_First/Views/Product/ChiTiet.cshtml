@@ -404,65 +404,16 @@
                                                     <ol id="product-images" data-tg-refresh="product-images" class="product-photo-grid product-photo-grid--is-showing-all clearfix ui-sortable">
 
                                                         @*Ảnh sản phẩm*@
-                                                        <li class="js-product-photo-grid-item product-photo-grid__item ui-sortable-handle" data-bind-class="{'product-photo-grid__item--inselectionmode': isInSelectionMode()}" id="product-image-36359365" data-tg-refresh="product-image-36359365" data-image-id="36359365">
-                                                            <div class="aspect-ratio aspect-ratio--square">
-                                                                <script data-define="{imageAltImage_36359365: new Bizweb.Modal(this)}" type="text/html" class="modal_source">
-                                                                    <div class="modal-dialog">
-                                                                        <div class="modal-content">
-                                                                            <div class="ui-modal__body">
-                                                                                <div class="ui-modal__section">
-                                                                                    <img title="Gấu b&#244;ng Teddy cute" alt="" data-bind-src="src" src="//bizweb.dktcdn.net/thumb/grande/100/383/375/products/03.jpg?v=1586226881100">
-                                                                                </div>
-                                                                            </div>
-                                                                            <div class="ui-modal__footer">
-                                                                                <div class="ui-modal__footer-actions">
-                                                                                    <div class="ui-modal__secondary-actions">
-                                                                                        <div class="button-group">
-                                                                                            <button class="ui-button close-modal" data-dismiss="modal" type="button" name="button">Đóng</button>
-                                                                                        </div>
-                                                                                    </div>
-                                                                                </div>
-                                                                            </div>
-                                                                        </div>
-                                                                    </div>
-                                                                </script>
-                                                                <img class="aspect-ratio__content" src="//bizweb.dktcdn.net/thumb/large/100/383/375/products/03.jpg?v=1586226881100" id="image-36359365">
-                                                                <div class="product-photo-hover-overlay drag" data-bind-class="{'product-photo-hover-overlay--inselection': isImageIdSelected(36359365)}">
-                                                                    <ul class="photo-overlay-actions photo-overlay-actions__selection" data-bind-event-click="toggleImageSelection(36359365)">
-                                                                        <li>
-                                                                            <a class="photo-overlay-actions__link image-action tooltip tooltip-top">
-                                                                                <i style="width: 17px; height: 17px; display: flex; justify-content: center; align-items: center; border-radius: 50%; border: 2px solid white">
-                                                                                    <svg class="next-icon next-icon--color-white hide" style="top:0;width:10px;height:10px" data-bind-show="isImageIdSelected(36359365)"><use xlink:href="#next-checkmark-thick"></use> </svg>
-                                                                                </i>
-                                                                                <span class="tooltip-container"><span class="tooltip-label">Chọn</span></span>
-                                                                            </a>
-                                                                        </li>
-                                                                    </ul>
-                                                                    <ul class="photo-overlay-actions">
-                                                                        <li>
-                                                                            <a href="javascript:void(0)" data-bind-event-click="imageAltImage_36359365.show()" class="photo-overlay-actions__link tooltip tooltip-top">
-                                                                                <svg role="img" class="next-icon next-icon--color-white next-icon--size-16" aria-labelledby="next-preview-c653979a4d6540439c1d202788772c7c-title">
-                                                                                    <title id="next-preview-a8bb1e107a9443aab37536b081dfc89b-title">xem ảnh</title>
-                                                                                    <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#next-preview">
 
-                                                                                    </use>
-                                                                                </svg>
-                                                                                <span class="tooltip-container">
-                                                                                    <span class="tooltip-label">Xem ảnh</span>
-                                                                                </span>
-                                                                            </a>
-                                                                        </li>
-                                                                    </ul>
-                                                                </div>
-                                                            </div>
-                                                        </li>
                                                         @foreach (var item in ViewBag.Img_ts)
                                                         {
-                                                            <li class="js-product-photo-grid-item product-photo-grid__item ui-sortable-handle" data-bind-class="{'product-photo-grid__item--inselectionmode': isInSelectionMode()}" id="product-image-36359366" data-tg-refresh="product-image-36359366" data-image-id="36359366">
+                                                            <li class="js-product-photo-grid-item product-photo-grid__item ui-sortable-handle" data-bind-class="{'product-photo-grid__item--inselectionmode': isInSelectionMode()}" id="product-image_@item.Id_SP_Option" data-tg-refresh="product-image_@item.Id_SP_Option" data-image-id="@item.Id_SP_Option">
                                                                 <div class="aspect-ratio aspect-ratio--square">
                                                                     @{
                                                                         string id = item.Id_SP_Option;
-                                                                        id = id.Replace("-","_");
+                                                                        id = id.Replace("-", "_");
+
+
 
                                                                     }
                                                                     <script data-define="{imageAltImage_@(id): new Bizweb.Modal(this)}" type="text/html" class="modal_source">
@@ -470,7 +421,15 @@
                                                                             <div class="modal-content">
                                                                                 <div class="ui-modal__body">
                                                                                     <div class="ui-modal__section">
-                                                                                        <img title="" alt="" data-bind-src="src" src="@item.Image_SP_Option">
+                                                                                        @if (@item.Image_SP_Option.Contains("https"))
+                                                                                        {
+                                                                                            <img title="" alt="" data-bind-src="src" src="@item.Image_SP_Option">
+                                                                                        }
+                                                                                        else
+                                                                                        {
+                                                                                            <img title="" alt="" data-bind-src="src" src="/@item.Image_SP_Option">
+                                                                                        }
+
                                                                                     </div>
 
                                                                                 </div>
@@ -486,16 +445,26 @@
                                                                             </div>
                                                                         </div>
                                                                     </script>
-                                                                    <img class="aspect-ratio__content" src="@item.Image_SP_Option" id="image-36359366">
-                                                                    <div class="product-photo-hover-overlay drag" data-bind-class="{'product-photo-hover-overlay--inselection': isImageIdSelected(36359366)}">
-                                                                        <ul class="photo-overlay-actions photo-overlay-actions__selection" data-bind-event-click="toggleImageSelection(36359366)">
+                                                                    @if (@item.Image_SP_Option.Contains("https"))
+                                                                    {
+                                                                        <img class="aspect-ratio__content" src="@item.Image_SP_Option" id="image_@item.Id_SP_Option">
+                                                                    }
+                                                                    else
+                                                                    {
+                                                                        <img class="aspect-ratio__content" src="/@item.Image_SP_Option" id="image_@item.Id_SP_Option">
+                                                                    }
+
+                                                                    <div class="product-photo-hover-overlay drag">
+                                                                        <ul class="photo-overlay-actions photo-overlay-actions__selection">
                                                                             <li>
                                                                                 <a class="photo-overlay-actions__link image-action tooltip tooltip-top">
                                                                                     <i style="width: 17px; height: 17px; display: flex; justify-content: center; align-items: center; border-radius: 50%; border: 2px solid white">
-                                                                                        <svg class="next-icon next-icon--color-white hide" style="top:0;width:10px;height:10px" data-bind-show="isImageIdSelected(36359366)"><use xlink:href="#next-checkmark-thick"></use> </svg>
+                                                                                        <svg class="next-icon next-icon--color-white hide" style="top:0;width:10px;height:10px">
+                                                                                            <use xlink:href="#next-checkmark-thick"></use>
+                                                                                        </svg>
                                                                                     </i>
                                                                                     <span class="tooltip-container">
-                                                                                    <span class="tooltip-label">Chọn</span>
+                                                                                        <span class="tooltip-label">Chọn</span>
                                                                                     </span>
                                                                                 </a>
                                                                             </li>
@@ -514,14 +483,94 @@
                                                                             </li>
 
                                                                         </ul>
-                                                                       
+
                                                                     </div>
                                                                 </div>
                                                             </li>
 
                                                         }
 
+                                                        @foreach (var item in ViewBag.Img_ts1)
+                                                        {
+                                                            <li class="js-product-photo-grid-item product-photo-grid__item ui-sortable-handle" data-bind-class="{'product-photo-grid__item--inselectionmode': isInSelectionMode()}" id="product-image_@item.Id_SP" data-tg-refresh="product-image_@item.Id_SP" data-image-id="@item.Id_SP">
+                                                                <div class="aspect-ratio aspect-ratio--square">
+                                                                    @{
+                                                                        string id1 = item.Id_SP;
 
+                                                                    }
+                                                                    <script data-define="{imageAltImage_@(id1): new Bizweb.Modal(this)}" type="text/html" class="modal_source">
+                                                                        <div class="modal-dialog">
+                                                                            <div class="modal-content">
+                                                                                <div class="ui-modal__body">
+                                                                                    <div class="ui-modal__section">
+                                                                                        @if (@item.Image_SP.Contains("https"))
+                                                                                        {
+                                                                                            <img title="" alt="" data-bind-src="src" src="@item.Image_SP">
+                                                                                        }
+                                                                                        else
+                                                                                        {
+                                                                                            <img title="" alt="" data-bind-src="src" src="/@item.Image_SP">
+                                                                                        }
+
+                                                                                    </div>
+
+                                                                                </div>
+                                                                                <div class="ui-modal__footer">
+                                                                                    <div class="ui-modal__footer-actions">
+                                                                                        <div class="ui-modal__secondary-actions">
+                                                                                            <div class="button-group">
+                                                                                                <button class="ui-button close-modal" data-dismiss="modal" type="button" name="button">Đóng</button>
+                                                                                            </div>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </script>
+                                                                    @if (@item.Image_SP.Contains("https"))
+                                                                    {
+                                                                        <img class="aspect-ratio__content" src="@item.Image_SP" id="image_@item.Id_SP">
+                                                                    }
+                                                                    else
+                                                                    {
+                                                                        <img class="aspect-ratio__content" src="/@item.Image_SP" id="image_@item.Id_SP">
+                                                                    }
+
+                                                                    <div class="product-photo-hover-overlay drag">
+                                                                        <ul class="photo-overlay-actions photo-overlay-actions__selection">
+                                                                            <li>
+                                                                                <a class="photo-overlay-actions__link image-action tooltip tooltip-top">
+                                                                                    <i style="width: 17px; height: 17px; display: flex; justify-content: center; align-items: center; border-radius: 50%; border: 2px solid white">
+                                                                                        <svg class="next-icon next-icon--color-white hide" style="top:0;width:10px;height:10px">
+                                                                                            <use xlink:href="#next-checkmark-thick"></use>
+                                                                                        </svg>
+                                                                                    </i>
+                                                                                    <span class="tooltip-container">
+                                                                                        <span class="tooltip-label">Chọn</span>
+                                                                                    </span>
+                                                                                </a>
+                                                                            </li>
+                                                                        </ul>
+                                                                        <ul class="photo-overlay-actions">
+                                                                            <li>
+                                                                                <a href="javascript:void(0)" data-bind-event-click="imageAltImage_@(id1).show()" class="photo-overlay-actions__link tooltip tooltip-top">
+                                                                                    <svg role="img" class="next-icon next-icon--color-white next-icon--size-16" aria-labelledby="next-preview-79c82bceffe44bd3ac2ee083c5996d5d-title">
+                                                                                        <title id="next-preview-ab4c2da4eb164a76bbf3c8d107e9ede5-title">xem ảnh</title>
+                                                                                        <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#next-preview"></use>
+                                                                                    </svg>
+                                                                                    <span class="tooltip-container">
+                                                                                        <span class="tooltip-label">Xem ảnh</span>
+                                                                                    </span>
+                                                                                </a>
+                                                                            </li>
+
+                                                                        </ul>
+
+                                                                    </div>
+                                                                </div>
+                                                            </li>
+
+                                                        }
 
 
                                                     </ol>
@@ -681,7 +730,9 @@
                                         </td>
                                         <td><input type="text" class="select-all-on-focus next-input" name="product[variants][{{= variant.index}}][sku]" data-bind="variants[{{= JSON.stringify(variant.index) }}].sku"></td>
                                         <td><input type="text" class="select-all-on-focus next-input" name="product[variants][{{= variant.index}}][barcode]" data-bind="variants[{{= JSON.stringify(variant.index) }}].barcode"></td>
-                                        <td data-bind-show="inventoryOptions.inventoryManagement"><input type="text" class="select-all-on-focus next-input" name="product[variants][{{= variant.index}}][inventoryQuantity]" data-bind="variants[{{= JSON.stringify(variant.index) }}].inventoryQuantity"></td>
+                                        <td data-bind-show="inventoryOptions.inventoryManagement">
+                                            <input type="text" class="select-all-on-focus next-input" name="product[variants][{{= variant.index}}][inventoryQuantity]" data-bind="variants[{{= JSON.stringify(variant.index) }}].inventoryQuantity">
+                                        </td>
                                     </tr>
                                 </script>
 
@@ -752,7 +803,10 @@
                                                                                             <span class="next-checkbox--styled">
                                                                                                 <svg class="next-icon next-icon--size-10 checkmark">
                                                                                                     <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#next-checkmark-thick"></use>
-                                                                                                </svg><svg class="next-icon next-icon--size-10 indeterminate"> <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#next-minus"></use> </svg>
+                                                                                                </svg>
+                                                                                                <svg class="next-icon next-icon--size-10 indeterminate">
+                                                                                                    <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#next-minus"></use>
+                                                                                                </svg>
                                                                                             </span>
                                                                                         </div>
                                                                                         <div class="tooltip-container" bind-class="{'hide': selectedItems().length > 0}">
@@ -1979,3 +2033,108 @@
     </div>
 </div>
 
+
+
+@*<li class="js-product-photo-grid-item product-photo-grid__item ui-sortable-handle" data-bind-class="{'product-photo-grid__item--inselectionmode': isInSelectionMode()}" id="product-image-36359365" data-tg-refresh="product-image-36359365" data-image-id="36359365">
+        <div class="aspect-ratio aspect-ratio--square">
+            <script data-define="{imageAltImage_36359365: new Bizweb.Modal(this)}" type="text/html" class="modal_source">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="ui-modal__body">
+                            <div class="ui-modal__section">
+                                <img title="Gấu b&#244;ng Teddy cute" alt="" data-bind-src="src" src="//bizweb.dktcdn.net/thumb/grande/100/383/375/products/03.jpg?v=1586226881100">
+                            </div>
+                        </div>
+                        <div class="ui-modal__footer">
+                            <div class="ui-modal__footer-actions">
+                                <div class="ui-modal__secondary-actions">
+                                    <div class="button-group">
+                                        <button class="ui-button close-modal" data-dismiss="modal" type="button" name="button">Đóng</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </script>
+            <img class="aspect-ratio__content" src="//bizweb.dktcdn.net/thumb/large/100/383/375/products/03.jpg?v=1586226881100" id="image-36359365">
+            <div class="product-photo-hover-overlay drag" data-bind-class="{'product-photo-hover-overlay--inselection': isImageIdSelected(36359365)}">
+                <ul class="photo-overlay-actions photo-overlay-actions__selection" data-bind-event-click="toggleImageSelection(36359365)">
+                    <li>
+                        <a class="photo-overlay-actions__link image-action tooltip tooltip-top">
+                            <i style="width: 17px; height: 17px; display: flex; justify-content: center; align-items: center; border-radius: 50%; border: 2px solid white">
+                                <svg class="next-icon next-icon--color-white hide" style="top:0;width:10px;height:10px" data-bind-show="isImageIdSelected(36359365)"><use xlink:href="#next-checkmark-thick"></use> </svg>
+                            </i>
+                            <span class="tooltip-container"><span class="tooltip-label">Chọn</span></span>
+                        </a>
+                    </li>
+                </ul>
+                <ul class="photo-overlay-actions">
+                    <li>
+                        <a href="javascript:void(0)" data-bind-event-click="imageAltImage_36359365.show()" class="photo-overlay-actions__link tooltip tooltip-top">
+                            <svg role="img" class="next-icon next-icon--color-white next-icon--size-16" aria-labelledby="next-preview-c653979a4d6540439c1d202788772c7c-title">
+                                <title id="next-preview-a8bb1e107a9443aab37536b081dfc89b-title">xem ảnh</title>
+                                <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#next-preview">
+
+                                </use>
+                            </svg>
+                            <span class="tooltip-container">
+                                <span class="tooltip-label">Xem ảnh</span>
+                            </span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </li>*@<li class="js-product-photo-grid-item product-photo-grid__item ui-sortable-handle" data-bind-class="{'product-photo-grid__item--inselectionmode': isInSelectionMode()}" id="product-image-36359365" data-tg-refresh="product-image-36359365" data-image-id="36359365">
+    <div class="aspect-ratio aspect-ratio--square">
+        <script data-define="{imageAltImage_36359365: new Bizweb.Modal(this)}" type="text/html" class="modal_source">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="ui-modal__body">
+                        <div class="ui-modal__section">
+                            <img title="Gấu b&#244;ng Teddy cute" alt="" data-bind-src="src" src="//bizweb.dktcdn.net/thumb/grande/100/383/375/products/03.jpg?v=1586226881100">
+                        </div>
+                    </div>
+                    <div class="ui-modal__footer">
+                        <div class="ui-modal__footer-actions">
+                            <div class="ui-modal__secondary-actions">
+                                <div class="button-group">
+                                    <button class="ui-button close-modal" data-dismiss="modal" type="button" name="button"></button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </script>
+        <img class="aspect-ratio__content" src="//bizweb.dktcdn.net/thumb/large/100/383/375/products/03.jpg?v=1586226881100" id="image-36359365">
+        <div class="product-photo-hover-overlay drag" data-bind-class="{'product-photo-hover-overlay--inselection': isImageIdSelected(36359365)}">
+            <ul class="photo-overlay-actions photo-overlay-actions__selection" data-bind-event-click="toggleImageSelection(36359365)">
+                <li>
+                    <a class="photo-overlay-actions__link image-action tooltip tooltip-top">
+                        <i style="width: 17px; height: 17px; display: flex; justify-content: center; align-items: center; border-radius: 50%; border: 2px solid white">
+                            <svg class="next-icon next-icon--color-white hide" style="top:0;width:10px;height:10px" data-bind-show="isImageIdSelected(36359365)"><use xlink:href="#next-checkmark-thick"></use></svg>
+                        </i>
+                        <span class="tooltip-container"><span class="tooltip-label"></span></span>
+                    </a>
+                </li>
+            </ul>
+            <ul class="photo-overlay-actions">
+                <li>
+                    <a href="javascript:void(0)" data-bind-event-click="imageAltImage_36359365.show()" class="photo-overlay-actions__link tooltip tooltip-top">
+                        <svg role="img" class="next-icon next-icon--color-white next-icon--size-16" aria-labelledby="next-preview-c653979a4d6540439c1d202788772c7c-title">
+                            <title id="next-preview-a8bb1e107a9443aab37536b081dfc89b-title"></title>
+                            <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#next-preview">
+
+                            </use>
+                        </svg>
+                        <span class="tooltip-container">
+                            <span class="tooltip-label"></span>
+                        </span>
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</li>
