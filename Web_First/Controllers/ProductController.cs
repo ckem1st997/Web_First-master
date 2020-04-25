@@ -47,8 +47,39 @@ namespace Web_First.Controllers
         {
             return View(await _context.San_Pham.ToListAsync());
         }
+
+        // select ThongSo_SP.Id_SP,ThongSo_SP.Id_SP_Option,ThongSo_SP.Loai_SP,ThongSo_SP.Image_SP_Option,Size_SP.Size,Size_SP.sl from ThongSo_SP inner join Size_SP on ThongSo_SP.Id_SP_Option=Size_SP.Id_SP_Option
+        public class Thong_So
+        {
+            public string Id_SP { get; set; }
+
+            public string Id_SP_Option { get; set; }
+            public string Loai_SP { get; set; }
+            public string Image_SP_Option { get; set; }
+            public string Size { get; set; }
+            public int sl { get; set; }
+            public Thong_So(string m, string n, string i, string l, string im, int t)
+            {
+                Id_SP = m;
+                Id_SP_Option = n;
+                Loai_SP = i;
+                Image_SP_Option = l;
+                Size = im;
+                sl = t;
+            }
+        }
         public async Task<IActionResult> ChiTiet(string id)
         {
+            var ct_sp = from a in _context.ThongSo_SP
+                        join b in _context.Size_SP on a.Id_SP_Option equals b.Id_SP_Option
+                        where a.Id_SP == id
+                        select new Thong_So(a.Id_SP, a.Id_SP_Option, a.Loai_SP, a.Image_SP_Option, b.Size, b.sl);
+            foreach (var item in ct_sp)
+            {
+                Console.WriteLine(""+item.Size+","+item.Loai_SP+"");
+            }
+
+            ViewBag.ts = ct_sp;
             if (id == null)
             {
                 return NotFound();
@@ -164,8 +195,8 @@ namespace Web_First.Controllers
                        select g.Key;
             ViewBag.LoaiSP = cart;
             var cart1 = from b in _context.San_Pham
-                       group b by b.Loai_SP_1 into h
-                       select h.Key;
+                        group b by b.Loai_SP_1 into h
+                        select h.Key;
             ViewBag.LoaiSP2 = cart1;
             return View();
         }
