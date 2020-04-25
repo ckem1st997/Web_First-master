@@ -299,12 +299,8 @@
                                             </li>
                                         </script>
                                         <div data-define="{
-          imageActions: new Bizweb.ProductShowImageActions(this, null,
-          {
-            productId: 17533534,
-            selectedImageIds: [],
-          }),
-          currentURL: &quot;\/admin\/products\/17533534&quot;}" data-context="imageActions" id="product-images-content" data-tg-refresh="product-images-content" data-bind-event-dragenter="imageActions.startDrag(event)" data-bind-event-dragover="imageActions.dragOver(event)" data-bind-event-dragleave="imageActions.cancelDrag(event)" data-bind-event-drop="imageActions.dropFile(event)">
+
+                                             imageActions: new Bizweb.ProductShowImageActions(this, null,{productId: 17533534,selectedImageIds: [],}),currentURL: &quot;\/admin\/products\/17533534&quot;}" data-context="imageActions" id="product-images-content" data-tg-refresh="product-images-content" data-bind-event-dragenter="imageActions.startDrag(event)" data-bind-event-dragover="imageActions.dragOver(event)" data-bind-event-dragleave="imageActions.cancelDrag(event)" data-bind-event-drop="imageActions.dropFile(event)">
                                             <header class="next-card__header">
                                                 <div class="ui-stack ui-stack--wrap ui-stack--distribution-equal-spacing ui-stack--alignment-baseline">
                                                     <div class="ui-stack-item">
@@ -321,7 +317,9 @@
                                                                         <div class="ui-modal__header-actions">
                                                                             <div class="ui-modal__close-button">
                                                                                 <button class="ui-button ui-button--transparent close-modal" data-dismiss="modal" aria-label="Close modal" type="button" name="button">
-                                                                                    <svg class="next-icon next-icon--color-ink-lighter next-icon--size-20"> <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#cancel-small-minor"></use> </svg>
+                                                                                    <svg class="next-icon next-icon--color-ink-lighter next-icon--size-20">
+                                                                                        <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#cancel-small-minor"></use>
+                                                                                    </svg>
                                                                                 </button>
                                                                             </div>
                                                                         </div>
@@ -355,9 +353,28 @@
 
                                                     </script>
                                                     <div class="ui-stack-item">
+                                                        <div class="modal fade" id="showImage" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                                                            <div class="modal-dialog modal-dialog-centered" role="document">
+                                                                <div class="modal-content">
+                                                                    <div class="modal-header">
+                                                                        <h5 class="modal-title" id="exampleModalLongTitle">Ảnh</h5>
+                                                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                                            <span aria-hidden="true">&times;</span>
+                                                                        </button>
+                                                                    </div>
+                                                                    <div class="modal-body" style="height: 300px;margin-bottom: 5px;margin-top: 5px;">
+                                                                        ...
+                                                                    </div>
+                                                                    <div class="modal-footer">
+                                                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                                                        <button type="button" class="btn btn-primary">Save changes</button>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
                                                         <div class="ui-stack ui-stack--wrap" data-bind-show="!isInSelectionMode()">
                                                             <div class="ui-stack-item">
-                                                                <button class="ui-button btn--link" data-bind-event-click="resetUrlFetchModal(), fetchProductImagesModal.show()" type="button" name="button">Thêm ảnh từ URL</button>
+                                                                <button class="ui-button btn--link" data-toggle="modal" data-target="#showImage" type="button" name="button">Thêm ảnh từ URL</button>
                                                             </div>
                                                             <div class="ui-stack-item">
                                                                 <div class="styled-file-input">
@@ -388,10 +405,12 @@
                                                 <div class="ui-banner ui-banner--status-warning hide" data-bind-show="hasErrors()">
                                                     <div class="ui-banner__ribbon"><svg class="next-icon next-icon--size-20 next-icon--no-nudge"> <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#alert-circle"></use> </svg></div><div class="ui-banner__content">
                                                         <div class="ui-banner__content-text">
-                                                            <h2 class="ui-banner__title">Những ảnh dưới đây không thể tải lên:</h2><div class="ui-type-container ui-type-container--spacing-tight">
+                                                            <h2 class="ui-banner__title">Những ảnh dưới đây không thể tải lên:</h2>
+                                                            <div class="ui-type-container ui-type-container--spacing-tight">
                                                                 <ul id="product-image-errors"></ul>
                                                             </div>
-                                                        </div><div class="ui-banner__content-button">
+                                                        </div>
+                                                        <div class="ui-banner__content-button">
                                                             <div class="button-group">
                                                                 <label class="btn btn--outline" for="image-upload">
                                                                     Thử ảnh khác
@@ -416,35 +435,32 @@
 
 
                                                                     }
-                                                                    <script data-define="{imageAltImage_@(id): new Bizweb.Modal(this)}" type="text/html" class="modal_source">
-                                                                        <div class="modal-dialog">
+                                                                    <div class="modal fade" id="exampleModalCenter_@id" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                                                                        <div class="modal-dialog modal-dialog-centered" role="document">
                                                                             <div class="modal-content">
-                                                                                <div class="ui-modal__body">
-                                                                                    <div class="ui-modal__section">
-                                                                                        @if (@item.Image_SP_Option.Contains("https"))
-                                                                                        {
-                                                                                            <img title="" alt="" data-bind-src="src" src="@item.Image_SP_Option">
-                                                                                        }
-                                                                                        else
-                                                                                        {
-                                                                                            <img title="" alt="" data-bind-src="src" src="/@item.Image_SP_Option">
-                                                                                        }
-
-                                                                                    </div>
-
+                                                                                <div class="modal-header">
+                                                                                    <h5 class="modal-title" id="exampleModalLongTitle">Ảnh</h5>
+                                                                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                                                        <span aria-hidden="true">&times;</span>
+                                                                                    </button>
                                                                                 </div>
-                                                                                <div class="ui-modal__footer">
-                                                                                    <div class="ui-modal__footer-actions">
-                                                                                        <div class="ui-modal__secondary-actions">
-                                                                                            <div class="button-group">
-                                                                                                <button class="ui-button close-modal" data-dismiss="modal" type="button" name="button">Đóng</button>
-                                                                                            </div>
-                                                                                        </div>
-                                                                                    </div>
+                                                                                <div class="modal-body" style="height: 300px;margin-bottom: 5px;margin-top: 5px;">
+                                                                                    @if (@item.Image_SP_Option.Contains("https"))
+                                                                                    {
+                                                                                        <img class="aspect-ratio__content" src="@item.Image_SP_Option" id="image_@item.Id_SP_Option">
+                                                                                    }
+                                                                                    else
+                                                                                    {
+                                                                                        <img class="aspect-ratio__content" src="/@item.Image_SP_Option" id="image_@item.Id_SP_Option">
+                                                                                    }
+                                                                                </div>
+                                                                                <div class="modal-footer">
+                                                                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                                                                    <button type="button" class="btn btn-primary">Save changes</button>
                                                                                 </div>
                                                                             </div>
                                                                         </div>
-                                                                    </script>
+                                                                    </div>
                                                                     @if (@item.Image_SP_Option.Contains("https"))
                                                                     {
                                                                         <img class="aspect-ratio__content" src="@item.Image_SP_Option" id="image_@item.Id_SP_Option">
@@ -471,7 +487,7 @@
                                                                         </ul>
                                                                         <ul class="photo-overlay-actions">
                                                                             <li>
-                                                                                <a href="javascript:void(0)" data-bind-event-click="imageAltImage_@(id).show()" class="photo-overlay-actions__link tooltip tooltip-top">
+                                                                                <a href="javascript:void(0)" data-toggle="modal" data-target="#exampleModalCenter_@id" class="photo-overlay-actions__link tooltip tooltip-top">
                                                                                     <svg role="img" class="next-icon next-icon--color-white next-icon--size-16" aria-labelledby="next-preview-79c82bceffe44bd3ac2ee083c5996d5d-title">
                                                                                         <title id="next-preview-ab4c2da4eb164a76bbf3c8d107e9ede5-title">xem ảnh</title>
                                                                                         <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#next-preview"></use>
@@ -479,7 +495,9 @@
                                                                                     <span class="tooltip-container">
                                                                                         <span class="tooltip-label">Xem ảnh</span>
                                                                                     </span>
+
                                                                                 </a>
+
                                                                             </li>
 
                                                                         </ul>
@@ -495,38 +513,35 @@
                                                             <li class="js-product-photo-grid-item product-photo-grid__item ui-sortable-handle" data-bind-class="{'product-photo-grid__item--inselectionmode': isInSelectionMode()}" id="product-image_@item.Id_SP" data-tg-refresh="product-image_@item.Id_SP" data-image-id="@item.Id_SP">
                                                                 <div class="aspect-ratio aspect-ratio--square">
                                                                     @{
-                                                                        string id1 = item.Id_SP;
+                                                                        string id1 = item.Image_SP.Replace(".", "").Replace("/", "");
 
                                                                     }
-                                                                    <script data-define="{imageAltImage_@(id1): new Bizweb.Modal(this)}" type="text/html" class="modal_source">
-                                                                        <div class="modal-dialog">
+                                                                    <div class="modal fade" id="exampleModalCenter_@id1" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                                                                        <div class="modal-dialog modal-dialog-centered" role="document">
                                                                             <div class="modal-content">
-                                                                                <div class="ui-modal__body">
-                                                                                    <div class="ui-modal__section">
-                                                                                        @if (@item.Image_SP.Contains("https"))
-                                                                                        {
-                                                                                            <img title="" alt="" data-bind-src="src" src="@item.Image_SP">
-                                                                                        }
-                                                                                        else
-                                                                                        {
-                                                                                            <img title="" alt="" data-bind-src="src" src="/@item.Image_SP">
-                                                                                        }
-
-                                                                                    </div>
-
+                                                                                <div class="modal-header">
+                                                                                    <h5 class="modal-title" id="exampleModalLongTitle">Ảnh</h5>
+                                                                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                                                        <span aria-hidden="true">&times;</span>
+                                                                                    </button>
                                                                                 </div>
-                                                                                <div class="ui-modal__footer">
-                                                                                    <div class="ui-modal__footer-actions">
-                                                                                        <div class="ui-modal__secondary-actions">
-                                                                                            <div class="button-group">
-                                                                                                <button class="ui-button close-modal" data-dismiss="modal" type="button" name="button">Đóng</button>
-                                                                                            </div>
-                                                                                        </div>
-                                                                                    </div>
+                                                                                <div class="modal-body" style="height: 300px;margin-bottom: 5px;margin-top: 5px;">
+                                                                                    @if (@item.Image_SP.Contains("https"))
+                                                                                    {
+                                                                                        <img class="aspect-ratio__content" src="@item.Image_SP" id="image_@item.Id_SP">
+                                                                                    }
+                                                                                    else
+                                                                                    {
+                                                                                        <img class="aspect-ratio__content" src="/@item.Image_SP" id="image_@item.Id_SP">
+                                                                                    }
+                                                                                </div>
+                                                                                <div class="modal-footer">
+                                                                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                                                                    <button type="button" class="btn btn-primary">Save changes</button>
                                                                                 </div>
                                                                             </div>
                                                                         </div>
-                                                                    </script>
+                                                                    </div>
                                                                     @if (@item.Image_SP.Contains("https"))
                                                                     {
                                                                         <img class="aspect-ratio__content" src="@item.Image_SP" id="image_@item.Id_SP">
@@ -539,7 +554,7 @@
                                                                     <div class="product-photo-hover-overlay drag">
                                                                         <ul class="photo-overlay-actions photo-overlay-actions__selection">
                                                                             <li>
-                                                                                <a class="photo-overlay-actions__link image-action tooltip tooltip-top">
+                                                                                <a class="photo-overlay-actions__link image-action tooltip tooltip-top" data-toggle="modal" data-target="#exampleModalCenter_@id1">
                                                                                     <i style="width: 17px; height: 17px; display: flex; justify-content: center; align-items: center; border-radius: 50%; border: 2px solid white">
                                                                                         <svg class="next-icon next-icon--color-white hide" style="top:0;width:10px;height:10px">
                                                                                             <use xlink:href="#next-checkmark-thick"></use>
@@ -553,7 +568,7 @@
                                                                         </ul>
                                                                         <ul class="photo-overlay-actions">
                                                                             <li>
-                                                                                <a href="javascript:void(0)" data-bind-event-click="imageAltImage_@(id1).show()" class="photo-overlay-actions__link tooltip tooltip-top">
+                                                                                <a href="javascript:void(0)" data-toggle="modal" data-target="#exampleModalCenter_@id1" class="photo-overlay-actions__link tooltip tooltip-top">
                                                                                     <svg role="img" class="next-icon next-icon--color-white next-icon--size-16" aria-labelledby="next-preview-79c82bceffe44bd3ac2ee083c5996d5d-title">
                                                                                         <title id="next-preview-ab4c2da4eb164a76bbf3c8d107e9ede5-title">xem ảnh</title>
                                                                                         <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#next-preview"></use>
@@ -1082,6 +1097,9 @@
                                                                     </thead>
                                                                     @foreach (var item in ViewBag.ts)
                                                                     {
+                                                                        string id = item.Id_SP_Option;
+                                                                        id = id.Replace("-", "_");
+
                                                                         <tbody data-define="{imageDrop31874412: new Bizweb.VariantImageDrop(this, 31874412, 17533534, ['variant-image-column'], ['variant-image-column', 'product-images-content'])}" class="new-variants-table__row-wrapper variant-row variant-image-section ui-droppable" id="variant-row-31874412" data-tg-refresh="variant-row-31874412">
                                                                             <tr class="variant-image-dropzone type--centered">
                                                                                 <td class="variant-image-dropzone__cell" colspan="100">
@@ -1124,7 +1142,7 @@
                                                                                                 </div>
                                                                                             </div>
                                                                                         </div>
-                                                                                        <div data-bind-show="!imageDrop31874412.uploading">
+                                                                                        <div data-bind-show="!imageDrop31874412.uploading" data-toggle="modal" data-target="#exampleModalCenter_@id">
                                                                                             @if (@item.Image_SP_Option.Contains("https"))
                                                                                             {
 
@@ -1148,7 +1166,7 @@
                                                                                     <input type="text" name="product[variants][1][option2]" id="product_variants__option2" value="@item.Loai_SP" class="variant-table-input--option-value edit-on-hover option option-2" data-bind="optionsByVariantAndPosition[@item.Id_SP_Option][2]" data-bind-event-change="editOptionDefault(this)" data-bind-event-click="editOptionValue(this)">
                                                                                 </td>
                                                                                 <td class="new-variants-table__cell tc">
-                                                                                    <input type="hidden" value="true" data-bind="tracked[@item.Id_SP_Option]">
+                                                                                    <input type="hidden" value="true" data-bind="tracked[31874412]">
                                                                                     <input type="text" name="product[variants][1][inventoryQuantity]" id="product_variants__inventory_quantity" value="@item.sl" class="becomes-numerical-on-edit edit-on-hover tc variant-table-input--numeric" data-bind-event-click="$(this).select()">
                                                                                     <input type="hidden" name="product[variants][1][oldInventoryQuantity]" id="product_variants__old_inventory_quantity" value="@item.sl">
                                                                                 </td>

@@ -73,10 +73,18 @@ namespace Web_First.Controllers
             var ct_sp = from a in _context.ThongSo_SP
                         join b in _context.Size_SP on a.Id_SP_Option equals b.Id_SP_Option
                         where a.Id_SP == id
-                        select new Thong_So(a.Id_SP, a.Id_SP_Option, a.Loai_SP, a.Image_SP_Option, b.Size, b.sl);
+                        select new Thong_So
+                        (
+                            a.Id_SP,
+                            a.Id_SP_Option,
+                            a.Loai_SP,
+                            a.Image_SP_Option,
+                            b.Size,
+                            b.sl
+                        );
             foreach (var item in ct_sp)
             {
-                Console.WriteLine(""+item.Size+","+item.Loai_SP+"");
+                Console.WriteLine("" + item.Size + "," + item.Loai_SP + "");
             }
 
             ViewBag.ts = ct_sp;
