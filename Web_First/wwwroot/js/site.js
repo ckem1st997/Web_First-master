@@ -546,7 +546,13 @@ $(".photo-overlay-actions__selection").off("click").click(function () {
     $(this).parent().toggleClass("product-photo-hover-overlay--inselection");
     $(this).children().children().children().children("svg.next-icon--color-white").toggleClass("hide");
 });
+$("#Image_SP_Option").change(function () {
+    $("#Image_show").attr("src", $("#Image_SP_Option").val())
+});
 
+$("#ItestImage").click(function () {
+    $("#Image_show").attr("src", $("#Image_SP_Option").val())
+});
 
 
 

@@ -44,9 +44,14 @@ namespace Web_First.Controllers
         }
 
         // GET: ThongSo_SP/Create
-        public IActionResult Create()
+        public IActionResult Create(string id)
         {
-            return View();
+            ThongSo_SP thongSo_SP=new ThongSo_SP();
+            if (id == null)
+                return NotFound();
+            else
+                thongSo_SP.Id_SP = id;
+            return View(thongSo_SP);
         }
 
         // POST: ThongSo_SP/Create
@@ -60,7 +65,7 @@ namespace Web_First.Controllers
             {
                 _context.Add(thongSo_SP);
                 await _context.SaveChangesAsync();
-                return RedirectToAction(nameof(Index));
+                return RedirectToAction("Create", "Size_SP", new { id = thongSo_SP.Id_SP });
             }
             return View(thongSo_SP);
         }
@@ -175,7 +180,7 @@ namespace Web_First.Controllers
         public JsonResult Check_sl(string id)
         {
             var cart = from a in _context.Size_SP
-                       where a.Id_SP_Option == id 
+                       where a.Id_SP_Option == id
                        select a;
             var result = false;
             if (cart.Count() > 0)
@@ -220,6 +225,6 @@ namespace Web_First.Controllers
 
 
 
-        
+
     }
 }

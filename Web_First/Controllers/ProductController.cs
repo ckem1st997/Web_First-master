@@ -82,6 +82,19 @@ namespace Web_First.Controllers
                             b.Size,
                             b.sl
                         );
+            var size_show = from a in _context.ThongSo_SP
+                            join b in _context.Size_SP on a.Id_SP_Option equals b.Id_SP_Option
+                            where a.Id_SP == id
+                            group a by a.Loai_SP into g
+                            select g.Key;
+            var color_show = from a in _context.ThongSo_SP
+                             join b in _context.Size_SP on a.Id_SP_Option equals b.Id_SP_Option
+                             where a.Id_SP == id
+                             group b by b.Size into g
+                             select g.Key;
+
+            ViewBag.ss = size_show;
+            ViewBag.cs = color_show;
             foreach (var item in ct_sp)
             {
                 Console.WriteLine("" + item.Size + "," + item.Loai_SP + "");

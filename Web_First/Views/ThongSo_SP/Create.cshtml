@@ -1,21 +1,21 @@
 ﻿@model Web_First.Models.ThongSo_SP
 
 @{
-    ViewData["Title"] = "Create";
-    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewData["Title"] = "ChiTiet";
+    Layout = "~/Views/Shared/_Layout_Login.cshtml";
+}
+@section Scripts{
+
+    <link href="~/css/Index.css" rel="stylesheet" />
 }
 
-<h1>Create</h1>
-
-<h4>ThongSo_SP</h4>
-<hr />
-<div class="row">
+<div class="row" style="margin-left: 0;margin-right: 0;margin-top: 20px;">
     <div class="col-md-4">
         <form asp-action="Create">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="form-group">
                 <label asp-for="Id_SP" class="control-label"></label>
-                <input asp-for="Id_SP" class="form-control" />
+                <input asp-for="Id_SP" value="@Model.Id_SP" class="form-control" readonly />
                 <span asp-validation-for="Id_SP" class="text-danger"></span>
             </div>
             <div class="form-group">
@@ -32,10 +32,11 @@
                 <label asp-for="Size" class="control-label"></label>
                 <input asp-for="Size" class="form-control" />
                 <span asp-validation-for="Size" class="text-danger"></span>
+
             </div>
             <div class="form-group">
                 <label asp-for="SL_co" class="control-label"></label>
-                <input asp-for="SL_co" class="form-control" />
+                <input asp-for="SL_co" class="form-control" min="0" />
                 <span asp-validation-for="SL_co" class="text-danger"></span>
             </div>
             <div class="form-group">
@@ -49,6 +50,10 @@
                 <span asp-validation-for="Image_SP_Option" class="text-danger"></span>
             </div>
             <div class="form-group">
+                <input type="button" class="btn btn-primary" value="Kiểm Tra Link Ảnh" id="testImage" />
+                <img id="Image_show" src="~/Img/logo.webp" />
+            </div>
+            <div class="form-group">
                 <input type="submit" value="Create" class="btn btn-primary" />
             </div>
         </form>
@@ -56,6 +61,6 @@
 </div>
 
 <div>
-    <a asp-action="Index">Back to List</a>
+    <a asp-controller="Product" asp-action="ChiTiet" asp-route-id="@Model.Id_SP">Back to List</a>
 </div>
 

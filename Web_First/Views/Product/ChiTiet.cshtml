@@ -298,60 +298,13 @@
                                                 </div>
                                             </li>
                                         </script>
-                                        <div data-define="{
-
-                                             imageActions: new Bizweb.ProductShowImageActions(this, null,{productId: 17533534,selectedImageIds: [],}),currentURL: &quot;\/admin\/products\/17533534&quot;}" data-context="imageActions" id="product-images-content" data-tg-refresh="product-images-content" data-bind-event-dragenter="imageActions.startDrag(event)" data-bind-event-dragover="imageActions.dragOver(event)" data-bind-event-dragleave="imageActions.cancelDrag(event)" data-bind-event-drop="imageActions.dropFile(event)">
+                                        <div data-define="{imageActions: new Bizweb.ProductShowImageActions(this, null,{productId: 17533534,selectedImageIds: [],}),currentURL: &quot;\/admin\/products\/17533534&quot;}" data-context="imageActions" id="product-images-content" data-tg-refresh="product-images-content" data-bind-event-dragenter="imageActions.startDrag(event)" data-bind-event-dragover="imageActions.dragOver(event)" data-bind-event-dragleave="imageActions.cancelDrag(event)" data-bind-event-drop="imageActions.dropFile(event)">
                                             <header class="next-card__header">
                                                 <div class="ui-stack ui-stack--wrap ui-stack--distribution-equal-spacing ui-stack--alignment-baseline">
                                                     <div class="ui-stack-item">
                                                         <h2 class="next-heading">Ảnh sản phẩm</h2>
                                                     </div>
-                                                    <script data-define="{fetchProductImagesModal: new Bizweb.Modal(this)}" type="text/html" class="modal_source">
-                                                        <div class="modal-dialog">
-                                                            <div class="modal-content">
-                                                                <form data-define="{ form: new Bizweb.Forms(this, { disabledUntilDirty: true, disableContextBar: true }) }" data-tg-refresh="add_image_via_url_form" data-tg-refresh-on-error="add_image_via_url_form" data-tg-refresh-on-success="product-images-content modal" data-tg-remote="true" id="add_image_via_url_form" action="/admin/products/17533534/images" accept-charset="UTF-8" method="post">
-                                                                    <div class="ui-modal__header">
-                                                                        <div class="ui-modal__header-title">
-                                                                            <h2 class="ui-title">Thêm ảnh từ URL</h2>
-                                                                        </div>
-                                                                        <div class="ui-modal__header-actions">
-                                                                            <div class="ui-modal__close-button">
-                                                                                <button class="ui-button ui-button--transparent close-modal" data-dismiss="modal" aria-label="Close modal" type="button" name="button">
-                                                                                    <svg class="next-icon next-icon--color-ink-lighter next-icon--size-20">
-                                                                                        <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#cancel-small-minor"></use>
-                                                                                    </svg>
-                                                                                </button>
-                                                                            </div>
-                                                                        </div>
-                                                                    </div>
-                                                                    <div class="ui-modal__body">
-                                                                        <div class="ui-modal__section">
-                                                                            <input name="utf8" type="hidden" value="&#x2713;" />
-                                                                            <input type="hidden" name="AuthenticityToken" value="3D7hKA4FpbmMyFearIzuDttn49Xu4AjAPfb7Axu+v4eAehJ46IaQk2uBUN9r6IVjTxtv28HoWE9oy8WQ1LSiQA==" />
-                                                                            <input type="hidden" name="productId" id="product_id" value="17533534" />
-                                                                            <label for="image_src">Đường dẫn ảnh</label>
-                                                                            <input type="text" name="image[src]" id="image_src" data-bind="newImageURL" data-bind-class="{ &quot;error&quot;: productImageUrlErrors }" placeholder="http://" autofocus="autofocus" />
-                                                                        </div>
-                                                                    </div>
-                                                                    <div class="ui-modal__footer">
-                                                                        <div class="ui-modal__footer-actions">
-                                                                            <div class="ui-modal__secondary-actions">
-                                                                                <div class="button-group">
-                                                                                    <button class="ui-button close-modal" data-dismiss="modal" type="button" name="button">Hủy</button>
-                                                                                </div>
-                                                                            </div>
-                                                                            <div class="ui-modal__primary-actions">
-                                                                                <div class="button-group button-group--right-aligned">
-                                                                                    <button class="ui-button btn-primary js-btn-primary js-btn-loadable" type="submit" id="fetch-by-image-url-button" name="button">Thêm ảnh</button>
-                                                                                </div>
-                                                                            </div>
-                                                                        </div>
-                                                                    </div>
-                                                                </form>
-                                                            </div>
-                                                        </div>
-
-                                                    </script>
+                                                    @*show anh to*@
                                                     <div class="ui-stack-item">
                                                         <div class="modal fade" id="showImage" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
                                                             <div class="modal-dialog modal-dialog-centered" role="document">
@@ -363,7 +316,7 @@
                                                                         </button>
                                                                     </div>
                                                                     <div class="modal-body" style="height: 300px;margin-bottom: 5px;margin-top: 5px;">
-                                                                        ...
+                                                                        <input />
                                                                     </div>
                                                                     <div class="modal-footer">
                                                                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
@@ -769,8 +722,29 @@
                                                             <button class="ui-button ui-button--link" data-bind-event-click="changeOptionNamesModal.show()" type="button" name="button">
                                                                 Sửa thuộc tính
                                                             </button>
-                                                        </div><div class="ui-stack-item">
-                                                            <a href="/admin/products/17533534/variants/create" class="btn--link">Thêm phiên bản</a>
+                                                        </div>
+                                                        <div class="ui-stack-item">
+                                                            <a class="btn--link" asp-controller="ThongSo_SP" asp-action="Create" asp-route-id="@Model.Id_SP">Thêm phiên bản</a>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="modal fade" id="Add_Product_@Model.Id_SP" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                                                <div class="modal-dialog modal-dialog-centered" role="document">
+                                                    <div class="modal-content">
+                                                        <div class="modal-header">
+                                                            <h5 class="modal-title" id="exampleModalLongTitle">Ảnh</h5>
+                                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                                <span aria-hidden="true">&times;</span>
+                                                            </button>
+                                                        </div>
+                                                        <div class="modal-body" style="height: 300px;margin-bottom: 5px;margin-top: 5px;">
+
+                                                                <img class="aspect-ratio__content" src="" id="">
+                                                        </div>
+                                                        <div class="modal-footer">
+                                                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                                            <button type="button" class="btn btn-primary">Save changes</button>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -784,24 +758,29 @@
                                                             <div class="variant-selector">
                                                                 <ul class="variant-selector-list">
                                                                     <li class="variant-selector-item">Chọn:</li>
-                                                                    <li class="variant-selector-item"><a class="variant-selector-link default-option" data-bind-event-click="selectAll(this)">Tất cả</a></li>
-                                                                    <li class="variant-selector-item"><a class="variant-selector-link default-option" data-bind-event-click="deselectAll(this)">Bỏ chọn</a></li>
-                                                                </ul>
-                                                                <ul class="variant-selector-list">
-                                                                    <li class="variant-selector-item option-1 variant-selector-link" data-bind-event-click="selectAllSubset(&quot;25cm&quot;, 1)">
-                                                                        25cm
+                                                                    <li class="variant-selector-item">
+                                                                        <a class="variant-selector-link default-option" data-bind-event-click="selectAll(this)">Tất cả</a>
                                                                     </li>
-                                                                    <li class="variant-selector-item option-1 variant-selector-link" data-bind-event-click="selectAllSubset(&quot;30cm&quot;, 1)">
-                                                                        30cm
+                                                                    <li class="variant-selector-item">
+                                                                        <a class="variant-selector-link default-option" data-bind-event-click="deselectAll(this)">Bỏ chọn</a>
                                                                     </li>
                                                                 </ul>
                                                                 <ul class="variant-selector-list">
-                                                                    <li class="variant-selector-item option-2 variant-selector-link" data-bind-event-click="selectAllSubset(&quot;Xanh&quot;, 2)">
-                                                                        Xanh
-                                                                    </li>
-                                                                    <li class="variant-selector-item option-2 variant-selector-link" data-bind-event-click="selectAllSubset(&quot;Vàng&quot;, 2)">
-                                                                        Vàng
-                                                                    </li>
+                                                                    @foreach (var item in ViewBag.ss)
+                                                                    {
+                                                                        <li class="variant-selector-item option-1 variant-selector-link" data-bind-event-click="selectAllSubset(&quot;@item&quot;, 1)">
+                                                                            @item
+                                                                        </li>
+                                                                    }
+
+                                                                </ul>
+                                                                <ul class="variant-selector-list">
+                                                                    @foreach (var item in ViewBag.cs)
+                                                                    {
+                                                                        <li class="variant-selector-item option-1 variant-selector-link" data-bind-event-click="selectAllSubset(&quot;@item&quot;, 1)">
+                                                                            @item
+                                                                        </li>
+                                                                    }
                                                                 </ul>
                                                             </div>
                                                             <div class="table-wrapper">
@@ -1170,16 +1149,13 @@
                                                                                     <input type="text" name="product[variants][1][inventoryQuantity]" id="product_variants__inventory_quantity" value="@item.sl" class="becomes-numerical-on-edit edit-on-hover tc variant-table-input--numeric" data-bind-event-click="$(this).select()">
                                                                                     <input type="hidden" name="product[variants][1][oldInventoryQuantity]" id="product_variants__old_inventory_quantity" value="@item.sl">
                                                                                 </td>
-                                                                                <td class="new-variants-table__cell" data-define="{ editVariantPrice: new Bizweb.EditVariantPrice(this) }" data-context="editVariantPrice">
-                                                                                    <input type="hidden" name="product[variants][1][price]" id="product_variants__price" value="@Model.Price_SP" data-bind="price" data-dirty-trigger="true">
-                                                                                    <input class="mock-edit-on-hover tr js-no-dirty js-variant-price variant-table-input--numeric" data-bind-event-focus="onFocus(this)" data-bind-event-blur="onBlur(this)" data-bind-event-input="onInput(this)" data-autonumeric="autoNumeric">
-                                                                                </td>
+
                                                                                 <td class="new-variants-table__cell">
                                                                                     <input type="text" name="product[variants][1][sku]" id="variant-inline-sku-label-31874412" value="@item.Id_SP_Option" class="mock-edit-on-hover variant-table-input--sku-barcode" data-bind-event-click="$(this).select()" disappearing-placeholder="true" placeholder="—">
                                                                                 </td>
                                                                                 <td class="new-variants-table__cell">
                                                                                     <div class="next-field__connected-wrapper next-field__connected-wrapper--align-right">
-                                                                                        <a class="btn btn-slim next-field--connected next-field--connected--no-flex" data-bind-event-click="saveScrollPosition(this)" href="/admin/products/17533534/variants/31874412">
+                                                                                        <a class="btn btn-slim next-field--connected next-field--connected--no-flex" data-bind-event-click="saveScrollPosition(this)">
                                                                                             <span>Sửa</span>
                                                                                         </a>
                                                                                         <script data-define="{deleteVariantModal_31874412: new Bizweb.Modal(this)}" type="text/html" class="modal_source">
@@ -1224,10 +1200,8 @@
                                                                                                 </div>
                                                                                             </div>
                                                                                         </script>
-                                                                                        <a class="btn btn-slim btn--icon next-field--connected next-field--connected--no-flex btn-delete" data-bind-event-click="deleteVariantModal_31874412.show()" href="#">
-                                                                                            <svg class="next-icon next-icon--size-20">
-                                                                                                <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#delete-minor"></use>
-                                                                                            </svg>
+                                                                                        <a class="btn btn-slim btn--icon next-field--connected next-field--connected--no-flex btn-delete" data-bind-event-click="deleteVariantModal_31874412.show()">
+                                                                                            <span>Xóa</span>
                                                                                         </a>
                                                                                     </div>
                                                                                 </td>
@@ -1235,138 +1209,6 @@
                                                                         </tbody>
 
                                                                     }
-                                                                    @*@foreach (var item in ViewBag.ts)
-                                                                        {
-
-                                                                            <tbody data-define="{imageDrop31874413: new Bizweb.VariantImageDrop(this, 31874413, 17533534, ['variant-image-column'], ['variant-image-column', 'product-images-content'])}" class="new-variants-table__row-wrapper variant-row variant-image-section ui-droppable" id="variant-row-31874413" data-tg-refresh="variant-row-31874413">
-
-                                                                                <tr class="new-variants-table__row variant" data-bind-class="{selected: selected[31874413]}">
-                                                                                    <td class="select new-variants-table__cell">
-                                                                                        <div class="next-input-wrapper">
-                                                                                            <label class="next-label helper--visually-hidden next-label--switch" for="variant_ids_31874413">Chọn phiên bản @item.Size/@item.Loai_SP </label>
-                                                                                            <input type="checkbox" name="variant_ids_31874413" id="variant_ids_31874413" value="31874413" class="next-checkbox js-no-dirty s-none" data-bind="selected[31874413]" data-bind-event-change="selectionChanged()">
-                                                                                            <span class="next-checkbox--styled">
-                                                                                                <svg class="next-icon next-icon--size-10 checkmark">
-                                                                                                    <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#next-checkmark-thick">
-                                                                                                    </use>
-                                                                                                </svg>
-                                                                                            </span>
-                                                                                        </div>
-                                                                                    </td>
-                                                                                    <td class="new-variants-table__cell" id="variant-image-31874413" data-tg-refresh="variant-image-column">
-                                                                                        <a href="/admin/products/17533534/images/variant_images_modal?redirect_to_product=true&amp;variant_id=31874413" data-define="{variantImageModal_31874413: new Bizweb.Modal(this)}" type="text/html" class="modal_source" style="display: none">
-                                                                                        </a>
-                                                                                        <div class="new-variants-table__variant-image-wrapper">
-                                                                                            <div data-bind-show="imageDrop31874413.uploading" class="hide">
-                                                                                                <div class="aspect-ratio aspect-ratio--square aspect-ratio--square--40">
-                                                                                                    <div class="aspect-ratio__content next-grid next-grid--no-padding next-grid--center-both">
-                                                                                                        <div class="next-grid__cell next-grid__cell--no-flex">
-                                                                                                            <div class="next-spinner">
-                                                                                                                <svg class="next-icon next-icon--size-20">
-                                                                                                                    <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#next-spinner"></use>
-                                                                                                                </svg>
-                                                                                                            </div>
-                                                                                                        </div>
-                                                                                                    </div>
-                                                                                                </div>
-                                                                                            </div>
-                                                                                            <div data-bind-show="!imageDrop31874413.uploading">
-
-                                                                                                @if (@item.Image_SP_Option.Contains("https"))
-                                                                                                {
-
-                                                                                                    <img class="product-image-feature" src="@item.Image_SP_Option" alt="@Model.Name_SP">
-
-                                                                                                }
-                                                                                                else
-                                                                                                {
-
-                                                                                                    <img class="product-image-feature" src="/@item.Image_SP.Option" alt="@Model.Name_SP">
-
-                                                                                                }
-                                                                                            </div>
-                                                                                        </div>
-                                                                                        <input type="hidden" name="product[variants][2][id]" id="product_variants__id" value="31874413">
-                                                                                    </td>
-                                                                                    <td class="new-variants-table__cell option option-1">
-                                                                                        <input type="text" name="product[variants][2][option1]" id="product_variants__option1" value="@item.Size" class="variant-table-input--option-value edit-on-hover option option-1" data-bind="optionsByVariantAndPosition[31874413][1]" data-bind-event-change="editOptionDefault(this)" data-bind-event-click="editOptionValue(this)">
-                                                                                    </td>
-                                                                                    <td class="new-variants-table__cell option option-2">
-                                                                                        <input type="text" name="product[variants][2][option2]" id="product_variants__option2" value="@item.Loai_SP" class="variant-table-input--option-value edit-on-hover option option-2" data-bind="optionsByVariantAndPosition[31874413][2]" data-bind-event-change="editOptionDefault(this)" data-bind-event-click="editOptionValue(this)">
-                                                                                    </td>
-                                                                                    <td class="new-variants-table__cell tc">
-                                                                                        <input type="hidden" value="true" data-bind="tracked[31874413]">
-                                                                                        <input type="text" name="product[variants][2][inventoryQuantity]" id="product_variants__inventory_quantity" value="@item.sl" class="becomes-numerical-on-edit edit-on-hover tc variant-table-input--numeric" data-bind-event-click="$(this).select()">
-                                                                                        <input type="hidden" name="product[variants][2][oldInventoryQuantity]" id="product_variants__old_inventory_quantity" value="@item.sl">
-                                                                                    </td>
-                                                                                    <td class="new-variants-table__cell" data-define="{ editVariantPrice: new Bizweb.EditVariantPrice(this) }" data-context="editVariantPrice">
-                                                                                        <input type="hidden" name="product[variants][2][price]" id="product_variants__price" value="@Model.Price_SP" data-bind="price" data-dirty-trigger="true">
-                                                                                        <input class="mock-edit-on-hover tr js-no-dirty js-variant-price variant-table-input--numeric" data-bind-event-focus="onFocus(this)" data-bind-event-blur="onBlur(this)" data-bind-event-input="onInput(this)" data-autonumeric="autoNumeric">
-                                                                                    </td>
-                                                                                    <td class="new-variants-table__cell">
-                                                                                        <input type="text" name="product[variants][2][sku]" id="variant-inline-sku-label-31874413" value="@item.Id_SP_Option" class="mock-edit-on-hover variant-table-input--sku-barcode" data-bind-event-click="$(this).select()" disappearing-placeholder="true" placeholder="—">
-                                                                                    </td>
-                                                                                    <td class="new-variants-table__cell">
-                                                                                        <div class="next-field__connected-wrapper next-field__connected-wrapper--align-right">
-                                                                                            <a class="btn btn-slim next-field--connected next-field--connected--no-flex" data-bind-event-click="saveScrollPosition(this)" href="/admin/products/17533534/variants/31874413">
-                                                                                                <span>Sửa</span>
-                                                                                            </a>
-                                                                                            <script data-define="{deleteVariantModal_31874413: new Bizweb.Modal(this)}" type="text/html" class="modal_source">
-                                                                                                <div class="modal-dialog">
-                                                                                                    <div class="modal-content">
-                                                                                                        <form autocomplete="off" data-define="{ deleteForm: new Bizweb.Forms(this) }" data-tg-full-refresh-on-success-except="product-images-content" data-tg-remote="true" class="edit_product_variant" id="edit_product_variant_31874413" action="/admin/products/17533534/variants/31874413" accept-charset="UTF-8" method="delete">
-                                                                                                            <div class="ui-modal__header">
-                                                                                                                <div class="ui-modal__header-title">
-                                                                                                                    <h2 class="ui-title" id="ModalTitle">Xóa @item.Size/@item.Loai_SP ?</h2>
-                                                                                                                </div>
-                                                                                                                <div class="ui-modal__header-actions">
-                                                                                                                    <div class="ui-modal__close-button">
-                                                                                                                        <button class="ui-button ui-button--transparent close-modal" data-dismiss="modal" aria-label="Close modal" type="button" name="button">
-                                                                                                                            <svg class="next-icon next-icon--color-ink-lighter next-icon--size-20">
-                                                                                                                                <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#cancel-small-minor"></use>
-                                                                                                                            </svg>
-                                                                                                                        </button>
-                                                                                                                    </div>
-                                                                                                                </div>
-                                                                                                            </div>
-                                                                                                            <div class="ui-modal__body">
-                                                                                                                <div class="ui-modal__section">
-                                                                                                                    <input type="hidden" name="AuthenticityToken" value="3D7hKA4FpbmMyFearIzuDttn49Xu4AjAPfb7Axu+v4eAehJ46IaQk2uBUN9r6IVjujsPdp7rUfgDbhTTQBiq1Q==" />
-                                                                                                                    <p>
-                                                                                                                        Bạn có chắc chắc muốn xóa phiên bản
-                                                                                                                        <strong>@item.Size/@item.Loai_SP</strong>? Hành động này không thể khôi phục.
-                                                                                                                    </p>
-                                                                                                                </div>
-                                                                                                            </div>
-                                                                                                            <div class="ui-modal__footer">
-                                                                                                                <div class="ui-modal__footer-actions">
-                                                                                                                    <div class="ui-modal__secondary-actions">
-                                                                                                                        <div class="button-group">
-                                                                                                                            <button class="ui-button close-modal" data-dismiss="modal" type="button" name="button">Hủy</button>
-                                                                                                                        </div>
-                                                                                                                    </div>
-                                                                                                                    <div class="ui-modal__primary-actions">
-                                                                                                                        <div class="button-group button-group--right-aligned">
-                                                                                                                            <button class="ui-button js-btn-loadable btn-destroy-no-hover" type="submit" name="button">Xóa</button>
-                                                                                                                        </div>
-                                                                                                                    </div>
-                                                                                                                </div>
-                                                                                                            </div>
-                                                                                                        </form>
-                                                                                                    </div>
-                                                                                                </div>
-                                                                                            </script>
-                                                                                            <a class="btn btn-slim btn--icon next-field--connected next-field--connected--no-flex btn-delete" data-bind-event-click="deleteVariantModal_31874413.show()" href="#">
-                                                                                                <svg class="next-icon next-icon--size-20">
-                                                                                                    <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#delete-minor"></use>
-                                                                                                </svg>
-                                                                                            </a>
-                                                                                        </div>
-                                                                                    </td>
-                                                                                </tr>
-                                                                            </tbody>
-                                                                        }*@
-
 
                                                                 </table>
                                                             </div>
