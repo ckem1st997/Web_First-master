@@ -77,12 +77,13 @@ namespace Web_First.Controllers
             {
                 return NotFound();
             }
-
+            id = id.Replace("%2F", "/");
             var thongSo_SP = await _context.ThongSo_SP.FindAsync(id);
             if (thongSo_SP == null)
             {
                 return NotFound();
             }
+            ViewBag.image = thongSo_SP.Image_SP_Option;
             return View(thongSo_SP);
         }
 
@@ -93,8 +94,11 @@ namespace Web_First.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Edit(string id, [Bind("Id_SP,Id_SP_Option,Loai_SP,Size,SL_co,Ngay_ADD,Image_SP_Option")] ThongSo_SP thongSo_SP)
         {
+            id = id.Replace("%252F", "/");
+            // viết bằng ajax
             if (id != thongSo_SP.Image_SP_Option)
             {
+
                 return NotFound();
             }
 

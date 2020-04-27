@@ -44,7 +44,7 @@ namespace Web_First.Controllers
         }
 
         // GET: Size_SP/Create
-        public IActionResult Create(string id, string id1)
+        public IActionResult Create(string id, string? id1)
         {
             Size_SP Size_SP = new Size_SP();
             if (id == null || id1 == null)
@@ -53,6 +53,17 @@ namespace Web_First.Controllers
             {
                 Size_SP.Id_SP = id;
                 Size_SP.Id_SP_Option = id1;
+            }
+            return View(Size_SP);
+        }
+        public IActionResult Create1(string id)
+        {
+            Size_SP Size_SP = new Size_SP();
+            if (id == null)
+                return NotFound();
+            else
+            {
+                Size_SP.Id_SP = id;
             }
             return View(Size_SP);
         }

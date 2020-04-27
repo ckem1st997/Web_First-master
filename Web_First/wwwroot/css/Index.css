@@ -17,7 +17,9 @@
     -ms-flex: 0 0 auto;
     flex: 0 0 auto;
 }
-
+input[type=number], [type=number].autocomplete-field {
+    width: 6em !important;
+}
 .arrow {
     left: 50% !important;
 }

@@ -714,9 +714,7 @@
                                                 <div class="ui-stack-item">
                                                     <div class="ui-stack ui-stack--wrap">
                                                         <div class="ui-stack-item">
-                                                            <button class="ui-button ui-button--link" data-bind-event-click="reorderVariantsModal.show()" type="button" name="button">
-                                                                Sắp xếp phiên bản
-                                                            </button>
+                                                            <a class="btn--link" asp-controller="Size_SP" asp-action="Create1" asp-route-id="@Model.Id_SP">Thêm loại SP đã tồn tại</a>
                                                         </div>
                                                         <div class="ui-stack-item">
                                                             <button class="ui-button ui-button--link" data-bind-event-click="changeOptionNamesModal.show()" type="button" name="button">
@@ -724,7 +722,7 @@
                                                             </button>
                                                         </div>
                                                         <div class="ui-stack-item">
-                                                            <a class="btn--link" asp-controller="ThongSo_SP" asp-action="Create" asp-route-id="@Model.Id_SP">Thêm phiên bản</a>
+                                                            <a class="btn--link" asp-controller="ThongSo_SP" asp-action="Create" asp-route-id="@Model.Id_SP">Thêm loại SP mới</a>
                                                         </div>
                                                     </div>
                                                 </div>

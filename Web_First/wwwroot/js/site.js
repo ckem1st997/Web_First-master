@@ -554,6 +554,7 @@ $("#ItestImage").click(function () {
     $("#Image_show").attr("src", $("#Image_SP_Option").val())
 });
 $('.alert').alert()
+$("#Image_show").attr("src", $("#Image_SP_Option").val())
 
 
 

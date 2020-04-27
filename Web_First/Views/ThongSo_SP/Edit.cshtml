@@ -1,16 +1,16 @@
 ﻿@model Web_First.Models.ThongSo_SP
 
 @{
-    ViewData["Title"] = "Edit";
-    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewData["Title"] = "ChiTiet";
+    Layout = "~/Views/Shared/_Layout_Login.cshtml";
+}
+@section Scripts{
+
+    <link href="~/css/Index.css" rel="stylesheet" />
 }
 
-<h1>Edit</h1>
-
-<h4>ThongSo_SP</h4>
-<hr />
-<div class="row">
-    <div class="col-md-4">
+<div class="row" style="margin-left: 0;margin-right: 0;margin-top: 20px;">
+    <div class="col-md-4" >
         <form asp-action="Edit">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="form-group">
@@ -43,7 +43,16 @@
                 <input asp-for="Ngay_ADD" class="form-control" />
                 <span asp-validation-for="Ngay_ADD" class="text-danger"></span>
             </div>
-            <input type="hidden" asp-for="Image_SP_Option" />
+            <div class="form-group">
+                <label asp-for="Image_SP_Option" class="control-label"></label>
+                <input asp-for="Image_SP_Option" class="form-control" />
+                <span asp-validation-for="Image_SP_Option" class="text-danger"></span>
+                <input class="hide" value=" @ViewBag.image"/>
+            </div>
+            <div class="form-group">
+                <input type="button" class="btn btn-primary" value="Kiểm Tra Link Ảnh" id="testImage" />
+                <img id="Image_show" src="~/Img/logo.webp" />
+            </div>
             <div class="form-group">
                 <input type="submit" value="Save" class="btn btn-primary" />
             </div>

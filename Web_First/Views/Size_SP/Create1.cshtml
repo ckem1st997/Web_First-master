@@ -1,10 +1,10 @@
 ﻿@model Web_First.Models.Size_SP
 
 @{
-    ViewData["Title"] = "Create";
+    ViewData["Title"] = "Create1";
     Layout = "~/Views/Shared/_Layout_Login.cshtml";
 }
-@if (Model.Id_SP.Length != 0  && Model.Id_SP_Option.Length!=0)
+@if (Model.Id_SP.Length != 0)
 {
 
     <div class="row" style="margin-left: 0;margin-right: 0;margin-top: 20px;">
@@ -30,7 +30,7 @@
                 </div>
                 <div class="form-group">
                     <label asp-for="Id_SP_Option" class="control-label"></label>
-                    <input asp-for="Id_SP_Option" value="@Model.Id_SP_Option" class="form-control"/>
+                    <input asp-for="Id_SP_Option" class="form-control" />
                     <span asp-validation-for="Id_SP_Option" class="text-danger"></span>
                 </div>
                 <div class="form-group">

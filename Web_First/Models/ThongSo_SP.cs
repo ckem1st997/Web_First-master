@@ -23,7 +23,7 @@ namespace Web_First.Models
         public string Loai_SP { get; set; }
         [Required]
 
-        [Display(Name = "Điền chu nếu là size dạng M, XL, L - Điền so nếu là size dạng 28, 29, 30")]
+        [Display(Name = "Size")]
         public string Size { get; set; }
         [Required]
 
