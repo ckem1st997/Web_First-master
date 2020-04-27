@@ -65,7 +65,7 @@ namespace Web_First.Controllers
             {
                 _context.Add(thongSo_SP);
                 await _context.SaveChangesAsync();
-                return RedirectToAction("Create", "Size_SP", new { id = thongSo_SP.Id_SP });
+                return RedirectToAction("Create", "Size_SP", new { id = thongSo_SP.Id_SP ,id1=thongSo_SP.Id_SP_Option});
             }
             return View(thongSo_SP);
         }

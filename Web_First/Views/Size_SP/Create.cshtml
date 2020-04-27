@@ -4,43 +4,59 @@
     ViewData["Title"] = "Create";
     Layout = "~/Views/Shared/_Layout_Login.cshtml";
 }
+@if (Model.Id_SP.Length != 0)
+{
 
-<h1>Create</h1>
-
-<h4>Size_SP</h4>
-<hr />
-<div class="row">
-    <div class="col-md-4">
-        <form asp-action="Create">
-            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <div class="form-group">
-                <label asp-for="Id_SP" class="control-label"></label>
-                <input asp-for="Id_SP" class="form-control" />
-                <span asp-validation-for="Id_SP" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Id_SP_Option" class="control-label"></label>
-                <input asp-for="Id_SP_Option" class="form-control" />
-                <span asp-validation-for="Id_SP_Option" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Size" class="control-label"></label>
-                <input asp-for="Size" class="form-control" />
-                <span asp-validation-for="Size" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="sl" class="control-label"></label>
-                <input asp-for="sl" class="form-control" />
-                <span asp-validation-for="sl" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <input type="submit" value="Create" class="btn btn-primary" />
-            </div>
-        </form>
+    <div class="row" style="margin-left: 0;margin-right: 0;margin-top: 20px;">
+        <div class="col-md-4">
+            <form asp-action="Create">
+                <div class="ui-layout__section form-group">
+                    <div class="ui-banner ui-banner--status-success hide-when-printing" tabindex="-1" role="alert" data-notice-announced="true">
+                        <div class="ui-banner__ribbon">
+                            <svg class="next-icon next-icon--size-20 next-icon--no-nudge">
+                                <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#checkmark-circle"></use>
+                            </svg>
+                        </div>
+                        <div class="ui-banner__content">
+                            <h2 class="ui-banner__title type--breakall">Thêm loại sản phẩm mới thành công !</h2>
+                        </div>
+                    </div>
+                </div>
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <div class="form-group">
+                    <label asp-for="Id_SP" class="control-label"></label>
+                    <input asp-for="Id_SP" value="@Model.Id_SP" class="form-control" readonly />
+                    <span asp-validation-for="Id_SP" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Id_SP_Option" class="control-label"></label>
+                    <input asp-for="Id_SP_Option" value="@Model.Id_SP_Option" class="form-control"readonly />
+                    <span asp-validation-for="Id_SP_Option" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Size" class="control-label"></label>
+                    <input asp-for="Size" class="form-control" />
+                    <span asp-validation-for="Size" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="sl" class="control-label"></label>
+                    <input asp-for="sl" class="form-control" />
+                    <span asp-validation-for="sl" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <input type="submit" value="Create" class="btn btn-primary" />
+                </div>
+            </form>
+        </div>
     </div>
-</div>
 
-<div>
-    <a asp-action="Index">Back to List</a>
-</div>
+
+}
+else
+{
+    <div>
+        <a asp-controller="Home" asp-action="Index">Back to List</a>
+    </div>
+}
+
 
