@@ -484,6 +484,9 @@ function check_size_null(i, s) {
 }
 
 
+$(document).click(function () {
+});
+
 $(document).ready(function () {
     $('.owl-carousel').owlCarousel({
         loop: true,
@@ -501,15 +504,6 @@ $(document).ready(function () {
             }
         }
     });
-    //
-
-
-
-
-
-
-
-
     for (var i = 0; i < 609; i++) {
         if ($(".total")[i].innerText.length == 0)
             $(".total")[i].append("1000 sản phẩm của 1 loại");
@@ -555,6 +549,39 @@ $("#ItestImage").click(function () {
 });
 $('.alert').alert()
 $("#Image_show").attr("src", $("#Image_SP_Option").val())
+
+
+$("#btn-edit-ts").click(function () {
+    var ss = $("#image_key").val();
+    var id_op = $("#Id_SP_Option").val();
+    var cl = $("#Loai_SP").val();
+    var size = $("#Size").val();
+    var sl = $("#SL_co").val();
+    var ngay = $("#Ngay_ADD").val();
+    var img = $("#Image_SP_Option").val();
+    check_size_null(id_op, cl, size, sl, ngay, img, ss);
+});
+
+function check_size_null(id_op, cl, size, sl, ngay, img, ss) {
+    var params = {
+        type: 'POST',
+        url: '/ThongSo_SP/Edit_ThongSo',
+        data: { id_op: id_op, cl: cl, size: size, sl: sl, ngay: ngay, img: img, ss: ss },
+        dataType: 'json',
+        success: function (response) {
+            console.log(response);
+            if (response.result == true) {
+                alert("Cập nhật thành công nha !");
+                location.reload();
+            }
+            else {
+                alert("!")
+            }
+        }
+
+    };
+    jQuery.ajax(params);
+}
 
 
 

@@ -8,14 +8,14 @@
 
     <link href="~/css/Index.css" rel="stylesheet" />
 }
-
+<h1>Chỉnh sửa sản phẩm có mã @Model.Id_SP </h1>
 <div class="row" style="margin-left: 0;margin-right: 0;margin-top: 20px;">
-    <div class="col-md-4" >
-        <form asp-action="Edit">
+    <div class="col-md-10" >
+        <div>
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="form-group">
                 <label asp-for="Id_SP" class="control-label"></label>
-                <input asp-for="Id_SP" class="form-control" />
+                <input asp-for="Id_SP" class="form-control" readonly />
                 <span asp-validation-for="Id_SP" class="text-danger"></span>
             </div>
             <div class="form-group">
@@ -45,18 +45,20 @@
             </div>
             <div class="form-group">
                 <label asp-for="Image_SP_Option" class="control-label"></label>
-                <input asp-for="Image_SP_Option" class="form-control" />
-                <span asp-validation-for="Image_SP_Option" class="text-danger"></span>
-                <input class="hide" value=" @ViewBag.image"/>
+                <input asp-for="Image_SP_Option" class="form-control" readonly/>
+                <span asp-validation-for="Image_SP_Option" class="text-danger" ></span>
+                <input type="image" id="image_key" class="hide" value="@ViewBag.image" />
             </div>
             <div class="form-group">
                 <input type="button" class="btn btn-primary" value="Kiểm Tra Link Ảnh" id="testImage" />
                 <img id="Image_show" src="~/Img/logo.webp" />
             </div>
             <div class="form-group">
-                <input type="submit" value="Save" class="btn btn-primary" />
+                <input type="button" id="btn-edit-ts" value="Save" class="btn btn-primary" href="javascript:void(0);"/>
             </div>
-        </form>
+        </div>
+          
+
     </div>
 </div>
 

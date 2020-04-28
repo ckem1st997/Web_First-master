@@ -46,7 +46,7 @@ namespace Web_First.Controllers
         // GET: ThongSo_SP/Create
         public IActionResult Create(string id)
         {
-            ThongSo_SP thongSo_SP=new ThongSo_SP();
+            ThongSo_SP thongSo_SP = new ThongSo_SP();
             if (id == null)
                 return NotFound();
             else
@@ -65,7 +65,7 @@ namespace Web_First.Controllers
             {
                 _context.Add(thongSo_SP);
                 await _context.SaveChangesAsync();
-                return RedirectToAction("Create", "Size_SP", new { id = thongSo_SP.Id_SP ,id1=thongSo_SP.Id_SP_Option});
+                return RedirectToAction("Create", "Size_SP", new { id = thongSo_SP.Id_SP, id1 = thongSo_SP.Id_SP_Option });
             }
             return View(thongSo_SP);
         }
@@ -222,6 +222,40 @@ namespace Web_First.Controllers
                 cart,
                 id,
                 id_sp,
+                result
+            });
+
+        }
+        [HttpPost]
+        public JsonResult Edit_ThongSo(string id_op, string cl, string size, int sl, DateTime ngay, string img, string ss)
+        {
+            var cart = _context.ThongSo_SP.FirstOrDefault(a => a.Image_SP_Option == ss);
+            cart.Id_SP_Option = id_op;
+            cart.Loai_SP = cl;
+            cart.Size = size;
+            cart.SL_co = sl;
+            cart.Ngay_ADD = ngay;
+            cart.Image_SP_Option = img;
+            var result = false;
+            if (cart != null)
+            {
+                try
+                {
+                    _context.Update(cart);
+                    _context.SaveChangesAsync();
+                    result = true;
+                }
+                catch (DbUpdateConcurrencyException)
+                {
+                    result = false;
+                }
+            }
+            else
+                result = false;
+            return Json(new
+            {
+                ss,
+                cart,
                 result
             });
 

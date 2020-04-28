@@ -27,7 +27,7 @@ namespace Web_First.Models
         public string Size { get; set; }
         [Required]
 
-        [Display(Name = "Số lượng")]
+        [Display(Name = "Số lượng tổng")]
 
         public int SL_co { get; set; }
         [Required]
