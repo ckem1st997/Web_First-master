@@ -229,29 +229,42 @@ namespace Web_First.Controllers
         [HttpPost]
         public JsonResult Edit_ThongSo(string id_op, string cl, string size, int sl, DateTime ngay, string img, string ss)
         {
-            var cart = _context.ThongSo_SP.FirstOrDefault(a => a.Image_SP_Option == ss);
-            cart.Id_SP_Option = id_op;
-            cart.Loai_SP = cl;
-            cart.Size = size;
-            cart.SL_co = sl;
-            cart.Ngay_ADD = ngay;
-            cart.Image_SP_Option = img;
             var result = false;
-            if (cart != null)
+            var cart = _context.ThongSo_SP.FirstOrDefault(a => a.Image_SP_Option == ss);
+            if (id_op == null || cl == null || sl == 0 || img == null || ss == null || size == null)
             {
-                try
+                return Json(new
                 {
-                    _context.Update(cart);
-                    _context.SaveChangesAsync();
-                    result = true;
-                }
-                catch (DbUpdateConcurrencyException)
-                {
-                    result = false;
-                }
+                    result
+                });
             }
             else
-                result = false;
+            {
+
+                cart.Id_SP_Option = id_op;
+                cart.Loai_SP = cl;
+                cart.Size = size;
+                cart.SL_co = sl;
+                cart.Ngay_ADD = ngay;
+                cart.Image_SP_Option = img;
+
+                if (cart != null)
+                {
+                    try
+                    {
+                        _context.Update(cart);
+                        _context.SaveChangesAsync();
+                        result = true;
+                    }
+                    catch (DbUpdateConcurrencyException)
+                    {
+                        result = false;
+                    }
+                }
+                else
+                    result = false;
+            }
+
             return Json(new
             {
                 ss,

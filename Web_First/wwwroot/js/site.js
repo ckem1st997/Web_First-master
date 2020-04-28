@@ -559,10 +559,10 @@ $("#btn-edit-ts").click(function () {
     var sl = $("#SL_co").val();
     var ngay = $("#Ngay_ADD").val();
     var img = $("#Image_SP_Option").val();
-    check_size_null(id_op, cl, size, sl, ngay, img, ss);
+    check_size_1(id_op, cl, size, sl, ngay, img, ss);
 });
 
-function check_size_null(id_op, cl, size, sl, ngay, img, ss) {
+function check_size_1(id_op, cl, size, sl, ngay, img, ss) {
     var params = {
         type: 'POST',
         url: '/ThongSo_SP/Edit_ThongSo',
@@ -575,7 +575,7 @@ function check_size_null(id_op, cl, size, sl, ngay, img, ss) {
                 location.reload();
             }
             else {
-                alert("!")
+                alert("Xin bạn vui lòng nhập đầy đủ thông tin nha !");
             }
         }
 

@@ -1,44 +1,44 @@
 ﻿@model Web_First.Models.Size_SP
 
 @{
-    ViewData["Title"] = "Delete";
+    ViewData["Title"] = "Tao";
     Layout = "~/Views/Shared/_Layout_Login.cshtml";
 }
 
-<h1>Delete</h1>
+<h1>Tạo Size sản phẩm</h1>
 
-<h3>Are you sure you want to delete this?</h3>
 <div class="row" style="margin-left: 0;margin-right: 0;margin-top: 20px;">
-    <div class="col-md-4">
-        <form>
+    <div class="col-md-10">
+        <form asp-action="Tao">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <input type="hidden" asp-for="stt" />
             <div class="form-group">
                 <label asp-for="Id_SP" class="control-label"></label>
-                <input asp-for="Id_SP" class="form-control" readonly />
+                <input asp-for="Id_SP" class="form-control" />
                 <span asp-validation-for="Id_SP" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="Id_SP_Option" class="control-label"></label>
-                <input asp-for="Id_SP_Option" class="form-control" readonly />
+                <input asp-for="Id_SP_Option" class="form-control" />
                 <span asp-validation-for="Id_SP_Option" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="Size" class="control-label"></label>
-                <input asp-for="Size" class="form-control" readonly />
+                <input asp-for="Size" class="form-control" />
                 <span asp-validation-for="Size" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="sl" class="control-label"></label>
-                <input asp-for="sl" class="form-control" readonly />
+                <input asp-for="sl" class="form-control" />
                 <span asp-validation-for="sl" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
             </div>
         </form>
     </div>
 </div>
 
-<form asp-action="Delete">
-    <input type="hidden" asp-for="stt" />
-    <input type="submit" value="Delete" class="btn btn-danger" /> |
+<div>
     <a asp-action="Index">Back to List</a>
-</form>
+</div>
+
