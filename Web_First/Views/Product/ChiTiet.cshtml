@@ -22,15 +22,11 @@
             <div class="modal" data-tg-refresh="modal" id="modal_container" style="display: none;" aria-hidden="true" aria-labelledby="ModalTitle" tabindex="-1"></div>
             <div class="modal-bg" data-tg-refresh="modal" id="modal_backdrop"></div>
             <div id="products-show" class="product-detail page">
-                <div class="aviary-modal-bg"><div class="aviary-modal"></div></div>
-                <form autocomplete="off" data-context="form" data-define="{
-        form: new Bizweb.Forms(
-          this, {
-            disabledUntilDirty: true,
-            alertUnsavedChanges: true
-          }
-        )
-      }" data-tg-full-refresh-on-error-except="product-images-content" data-tg-full-refresh-on-success-except="product-images-content" data-tg-remote="true" id="edit_product_17533534" class="edit_product" action="/admin/products/17533534" accept-charset="UTF-8" method="post">
+                <div class="aviary-modal-bg">
+                    <div class="aviary-modal">
+                    </div>
+                </div>
+                <form autocomplete="off" data-context="form" data-define="{form: new Bizweb.Forms(this, {disabledUntilDirty: true,alertUnsavedChanges: true})}" data-tg-full-refresh-on-error-except="product-images-content" data-tg-full-refresh-on-success-except="product-images-content" data-tg-remote="true" id="edit_product_17533534" class="edit_product" accept-charset="UTF-8">
                     <input type="hidden" name="AuthenticityToken" value="3D7hKA4FpbmMyFearIzuDttn49Xu4AjAPfb7Axu+v4eAehJ46IaQk2uBUN9r6IVjTxtv28HoWE9oy8WQ1LSiQA==">
                     <input type="hidden" name="product[id]" value="17533534">
                     <header class="ui-title-bar-container">
@@ -38,14 +34,17 @@
                             <div class="ui-title-bar__navigation">
                                 <div class="ui-breadcrumbs">
                                     <a href="/admin/products" class="ui-button ui-button--transparent ui-breadcrumb">
-                                        <svg class="next-icon next-icon--size-20 next-icon--no-nudge"> <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#chevron-left-thinner"></use> </svg>
+                                        <svg class="next-icon next-icon--size-20 next-icon--no-nudge">
+                                            <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#chevron-left-thinner">
+                                            </use>
+                                        </svg>
                                         <span class="ui-breadcrumb__item">Quay lại danh sách sản phẩm</span>
                                     </a>
                                 </div>
                                 <script class="modal_source" data-define="{duplicateProductModal: new Bizweb.Modal(this)}" type="text/html">
                                     <div class="modal-dialog">
                                         <div class="modal-content">
-                                            <form data-define="{form: new Bizweb.Forms(this)}" action="/admin/products/duplicate" accept-charset="UTF-8" method="post">
+                                            <form data-define="{form: new Bizweb.Forms(this)}" accept-charset="UTF-8" method="post">
                                                 <input type="hidden" name="AuthenticityToken" value="3D7hKA4FpbmMyFearIzuDttn49Xu4AjAPfb7Axu+v4eAehJ46IaQk2uBUN9r6IVjTxtv28HoWE9oy8WQ1LSiQA==" />
                                                 <div class="ui-modal__header">
                                                     <div class="ui-modal__header-title">
@@ -725,10 +724,10 @@
                                                             <a class="btn--link" asp-controller="ThongSo_SP" asp-action="Create" asp-route-id="@Model.Id_SP">Thêm loại SP mới</a>
                                                         </div>
                                                         <div class="ui-stack-item">
-                                                            <a class="btn--link" asp-controller="ThongSo_SP" asp-action="Index" >Tổng hợp các loại SP</a>
+                                                            <a class="btn--link" asp-controller="ThongSo_SP" asp-action="Index">Tổng hợp các loại SP</a>
                                                         </div>
                                                         <div class="ui-stack-item">
-                                                            <a class="btn--link" asp-controller="Size_SP" asp-action="Index" >Tổng hợp các Size SP</a>
+                                                            <a class="btn--link" asp-controller="Size_SP" asp-action="Index">Tổng hợp các Size SP</a>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -744,7 +743,7 @@
                                                         </div>
                                                         <div class="modal-body" style="height: 300px;margin-bottom: 5px;margin-top: 5px;">
 
-                                                                <img class="aspect-ratio__content" src="" id="">
+                                                            <img class="aspect-ratio__content" src="" id="">
                                                         </div>
                                                         <div class="modal-footer">
                                                             <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
@@ -1544,41 +1543,32 @@
                         </div>
                     </script>
                     <div class="ui-page-actions ui-page-actions--has-secondary">
-                        <div class="ui-page-actions__container">
-                            <div class="ui-page-actions__actions ui-page-actions__actions--secondary">
-                                <div class="ui-page-actions__button-group">
-                                    <button class="ui-button btn-destroy" data-bind-event-click="deleteProductModal.show()" type="button" name="button">Xóa sản phẩm</button>
-                                </div>
-                            </div>
-                            <div class="ui-page-actions__actions ui-page-actions__actions--primary">
-                                <div class="ui-page-actions__button-group">
-                                    <button name="button" type="submit" class="btn js-btn-primary js-btn-loadable btn-primary has-loading" disabled="disabled">
-                                        Lưu
-                                    </button>
-                                </div>
-                            </div>
-                        </div>
+                        <a class="Edit--a" asp-action="" asp-controller="Product" asp-route-id="@Model.Id_SP" type="button" name="button">Xóa sản phẩm</a>
+                        <a class="Edit--a" asp-action="Edit" asp-controller="San_Pham" asp-route-id="@Model.Id_SP" type="button" name="button">Chỉnh sửa sản phẩm</a>
                     </div>
+
                 </form>
             </div>
 
-            <div class="ui-footer-help">
-                <div class="ui-footer-help__content">
-                    <div class="ui-footer-help__icon">
-                        <svg class="next-icon next-icon--size-24 next-icon--no-nudge" role="img" aria-labelledby="next-help-circle-title">
-                            <title id="next-help-circle-title">Help</title>
-                            <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#next-help-circle"></use>
-                        </svg>
-                    </div>
-                    <div>
-                        Bạn có thể xem thêm hướng dẫn <a target="_blank" rel="noreferrer noopener" title="Hướng dẫn thao tác với Sản phẩm" href="https://support.sapo.vn/them-san-pham-sapo-web">tại đây</a>
-                    </div>
+        </div>
+
+        <div class="ui-footer-help">
+            <div class="ui-footer-help__content">
+                <div class="ui-footer-help__icon">
+                    <svg class="next-icon next-icon--size-24 next-icon--no-nudge" role="img" aria-labelledby="next-help-circle-title">
+                        <title id="next-help-circle-title">Help</title>
+                        <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#next-help-circle"></use>
+                    </svg>
+                </div>
+                <div>
+                    Bạn có thể xem thêm hướng dẫn <a target="_blank" rel="noreferrer noopener" title="Hướng dẫn thao tác với Sản phẩm" href="https://support.sapo.vn/them-san-pham-sapo-web">tại đây</a>
                 </div>
             </div>
-
-
         </div>
+
+
     </div>
+</div>
 </div>
 
 

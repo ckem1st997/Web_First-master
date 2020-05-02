@@ -1120,8 +1120,7 @@ namespace Web_First.Controllers
             }
             return View(san_Pham);
         }
-       
-        // GET: San_Pham/Edit/5
+
         public async Task<IActionResult> Edit(string id)
         {
             if (id == null)
@@ -1137,12 +1136,12 @@ namespace Web_First.Controllers
             return View(san_Pham);
         }
 
-        // POST: San_Pham/Edit/5
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
+        // POST: San_Pham1/Edit/5
+        // To protect from overposting attacks, enable the specific properties you want to bind to, for 
+        // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(string id, [Bind("Id_SP,Loai_SP_1,Loai_SP_2,Name_SP,Price_SP,Mo_Ta")] San_Pham san_Pham)
+        public async Task<IActionResult> Edit(string id, [Bind("Id_SP,Loai_SP_1,Loai_SP_2,Name_SP,Price_SP,Mo_Ta,ngay_add,Sale")] San_Pham san_Pham)
         {
             if (id != san_Pham.Id_SP)
             {
@@ -1167,7 +1166,7 @@ namespace Web_First.Controllers
                         throw;
                     }
                 }
-                return RedirectToAction(nameof(Index));
+                return RedirectToAction("ChiTiet", "Product", new { id = san_Pham.Id_SP});
             }
             return View(san_Pham);
         }

@@ -155,7 +155,7 @@
 
                                     }
                                 </ul>
-                
+
                             </div>
                         </div>
                     </div>
@@ -301,9 +301,20 @@
                                 </div>
                                 <div class="description-content">
                                     <div class="description-productdetail">
-                                        <h2>
-                                            @Model.Mo_Ta
-                                        </h2>
+                                        @if (@Model.Mo_Ta.Contains(">"))
+                                        {
+                                            <script>
+                                            $(".description-productdetail").append(@Model.Mo_Ta);
+                                            </script>
+
+                                        }
+                                        else
+                                        {
+                                            <h2>
+                                                @Model.Mo_Ta
+                                            </h2>
+                                        }
+
                                     </div>
                                 </div>
                             </div>

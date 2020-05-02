@@ -1,15 +1,15 @@
 ﻿@model Web_First.Models.San_Pham
 
 @{
-    ViewData["Title"] = "Edit";
-    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewData["Title"] = "ChiTiet";
+    Layout = "~/Views/Shared/_Layout_Login.cshtml";
 }
 
-<h1>Edit</h1>
-
-<h4>San_Pham</h4>
-<hr />
-<div class="row">
+@section Scripts{
+    <script src="~/js/site.js"></script>
+    <link href="~/css/Index.css" rel="stylesheet" />
+}
+<div class="row" style="margin-left: 0;margin-right: 0;margin-top: 20px;">
     <div class="col-md-4">
         <form asp-action="Edit">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
