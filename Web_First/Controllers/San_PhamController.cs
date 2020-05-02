@@ -1197,7 +1197,7 @@ namespace Web_First.Controllers
             var san_Pham = await _context.San_Pham.FindAsync(id);
             _context.San_Pham.Remove(san_Pham);
             await _context.SaveChangesAsync();
-            return RedirectToAction(nameof(Index));
+            return RedirectToAction("Show_SP", "Product");
         }
 
         private bool San_PhamExists(string id)

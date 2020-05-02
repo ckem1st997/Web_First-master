@@ -1543,8 +1543,9 @@
                         </div>
                     </script>
                     <div class="ui-page-actions ui-page-actions--has-secondary">
-                        <a class="Edit--a" asp-action="" asp-controller="Product" asp-route-id="@Model.Id_SP" type="button" name="button">Xóa sản phẩm</a>
-                        <a class="Edit--a" asp-action="Edit" asp-controller="San_Pham" asp-route-id="@Model.Id_SP" type="button" name="button">Chỉnh sửa sản phẩm</a>
+                        <a class="Edit--a" asp-action="Delete" asp-controller="San_Pham" asp-route-id="@Model.Id_SP" type="button" name="button">Xóa sản phẩm</a>
+
+                        <a style="margin-left: 30px;" class="Edit--a" asp-action="Edit" asp-controller="San_Pham" asp-route-id="@Model.Id_SP" type="button" name="button">Chỉnh sửa sản phẩm</a>
                     </div>
 
                 </form>
