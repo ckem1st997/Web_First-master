@@ -6,7 +6,7 @@
     <link rel="manifest" href="//bizweb.dktcdn.net/assets/admin/manifest.json?v5">
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
-    <meta name="bizweb-admin-context" content="{&quot;store&quot;:{&quot;settings&quot;:{&quot;storeName&quot;:&quot;sort1&quot;,&quot;timezone&quot;:&quot;SE Asia Standard Time&quot;,&quot;tzinfo&quot;:&quot;Asia/Bangkok&quot;,&quot;currency&quot;:&quot;VND&quot;,&quot;moneyFormat&quot;:&quot;{{amount_no_decimals_with_comma_separator}}₫&quot;,&quot;moneySymbol&quot;:&quot;₫&quot;,&quot;moneyWithCurrencyFormat&quot;:&quot;{{amount_no_decimals_with_comma_separator}} VND&quot;,&quot;createdOn&quot;:&quot;2020-04-07T02:34:28Z&quot;},&quot;domain&quot;:&quot;sort1.mysapo.net&quot;},&quot;currentUser&quot;:{&quot;id&quot;:446714,&quot;name&quot;:&quot;nguyen van cong&quot;,&quot;email&quot;:&quot;hopxc1997@gmail.com&quot;,&quot;accountOwner&quot;:true,&quot;accountAccess&quot;:&quot;Account owner&quot;,&quot;permissions&quot;:[&quot;full&quot;],&quot;isEmployee&quot;:false}}" />
+    <meta name="bizweb-admin-context" content="{&quot;store&quot;:{&quot;settings&quot;:{&quot;storeName&quot;:&quot;sort1&quot;,&quot;timezone&quot;:&quot;SE Asia Standard Time&quot;,&quot;tzinfo&quot;:&quot;Asia/Bangkok&quot;,&quot;currency&quot;:&quot;VND&quot;,&quot;moneyFormat&quot;:&quot;{{amount_no_decimals_with_comma_separator}}₫&quot;,&quot;moneySymbol&quot;:&quot;₫&quot;,&quot;moneyWithCurrencyFormat&quot;:&quot;{{amount_no_decimals_with_comma_separator}} VND&quot;,&quot;createdOn&quot;:&quot;2020-04-07T02:34:28Z&quot;},&quot;domain&quot;:&quot;sort1.mysapo.net&quot;},&quot;currentUser&quot;:{&quot;id&quot;:446714,&quot;name&quot;:&quot;@UserManager.GetUserName(User)&quot;,&quot;email&quot;:&quot;hopxc1997@gmail.com&quot;,&quot;accountOwner&quot;:true,&quot;accountAccess&quot;:&quot;Account owner&quot;,&quot;permissions&quot;:[&quot;full&quot;],&quot;isEmployee&quot;:false}}" />
     <title>sort1 | Tổng quan</title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
@@ -54,6 +54,11 @@
         }
     </style>
 </head>
+@using Microsoft.AspNetCore.Identity
+
+@inject SignInManager<IdentityUser> SignInManager
+@inject UserManager<IdentityUser> UserManager
+
 <body class="page-wrapper fresh-ui next-ui">
     <div id="flash-message-component" data-tg-refresh-always="true" data-isError="false" data-message=""></div>
     <div class="ui-app-frame" data-tg-refresh="ui-app-frame" id="ui-app-frame">
@@ -131,7 +136,7 @@
                                     </div>
                                     <div class="top-bar-profile__summary">
                                         <p class="top-bar-profile__title">
-                                            nguyen van cong
+                                            @UserManager.GetUserName(User)
                                         </p>
                                         <p class="top-bar-profile__description">
                                             <span>
@@ -146,54 +151,78 @@
                                     <div class="ui-popover__content">
                                         <div class="ui-popover__pane">
                                             <ul class="ui-action-list">
-                                                <li class="ui-action-list__item">
-                                                    <a href="/admin/settings/account/446714" class="ui-action-list-action" data-allow-default="1">
-                                                        <span class="ui-action-list-action__text">
-                                                            <div class="ui-stack ui-stack--wrap ui-stack--alignment-center ui-stack--spacing-tight">
-                                                                <div class="ui-stack-item">
-                                                                    <svg role="img" class="next-icon next-icon--size-16" aria-labelledby="account-3d4a92ab5af96f48bf19a083d207c987-title"><title id="account-3d4a92ab5af96f48bf19a083d207c987-title">Profile icon</title> <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#account"></use> </svg>
+                                                @if (SignInManager.IsSignedIn(User))
+                                                {
+                                                    <li class="ui-action-list__item">
+                                                        <a asp-area="Identity" asp-page="/Account/Manage/Index" class="ui-action-list-action">
+                                                            <span class="ui-action-list-action__text">
+                                                                <div class="ui-stack ui-stack--wrap ui-stack--alignment-center ui-stack--spacing-tight">
+                                                                    <div class="ui-stack-item">
+                                                                        <svg role="img" class="next-icon next-icon--size-16" aria-labelledby="account-3d4a92ab5af96f48bf19a083d207c987-title">
+                                                                            <title id="account-3d4a92ab5af96f48bf19a083d207c987-title">Profile icon</title>
+                                                                            <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#account"></use>
+                                                                        </svg>
+                                                                    </div>
+                                                                    <div class="ui-stack-item ui-stack-item--fill">
+                                                                        <span>Tài khoản của bạn</span>
+                                                                    </div>
                                                                 </div>
-                                                                <div class="ui-stack-item ui-stack-item--fill">
-                                                                    <span>Tài khoản của bạn</span>
-                                                                </div>
-                                                            </div>
-                                                        </span>
-                                                    </a>
-                                                </li>
-                                                <li class="ui-action-list__item">
-                                                    <a href="/admin/settings/plans" class="ui-action-list-action" data-allow-default="1">
-                                                        <span class="ui-action-list-action__text">
-                                                            <div class="ui-stack ui-stack--wrap ui-stack--alignment-center ui-stack--spacing-tight">
-                                                                <div class="ui-stack-item">
-                                                                    <svg class="next-icon next-icon--size-24" role="img" style="margin-left: -4px; margin-right: -3px; margin-top: 2px;">
-                                                                        <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#payments-billing"></use>
-                                                                    </svg>
-                                                                </div>
-                                                                <div class="ui-stack-item ui-stack-item--fill">
-                                                                    <span>Gói dịch vụ</span>
-                                                                </div>
-                                                            </div>
-                                                        </span>
-                                                    </a>
-                                                </li>
-                                                <li class="ui-action-list__item">
-                                                    <a href="/admin/authorization/logout" class="ui-action-list-action" data-no-turbolink="true" data-method="post">
-                                                        <span class="ui-action-list-action__text">
-                                                            <div class="ui-stack ui-stack--wrap ui-stack--alignment-center ui-stack--spacing-tight">
-                                                                <div class="ui-stack-item">
-                                                                    <svg role="img" class="next-icon next-icon--size-16" aria-labelledby="minor-log-out-title"><title id="minor-log-out-title">Log out icon</title> <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#minor-log-out"></use> </svg>
-                                                                </div>      <div class="ui-stack-item ui-stack-item--fill">
-                                                                    <span>Đăng xuất</span>
-                                                                </div>
-                                                            </div>
-                                                        </span>
-                                                    </a>
-                                                </li>
+                                                            </span>
+                                                        </a>
+                                                    </li>
+
+                                                    <li class="ui-action-list__item">
+                                                        <form id="logoutForm" class="form-inline" asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="@Url.Action("Index", "Home", new { area = "" })">
+                                                            <button id="logout" type="submit" class="ui-action-list-action">
+                                                                <span class="ui-action-list-action__text">
+                                                                    <div class="ui-stack ui-stack--wrap ui-stack--alignment-center ui-stack--spacing-tight">
+                                                                        <div class="ui-stack-item">
+                                                                            <svg role="img" class="next-icon next-icon--size-16" aria-labelledby="minor-log-out-title">
+                                                                                <title id="minor-log-out-title">Log out icon</title>
+                                                                                <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#minor-log-out"></use>
+                                                                            </svg>
+                                                                        </div>      <div class="ui-stack-item ui-stack-item--fill">
+                                                                            <span>Đăng xuất</span>
+                                                                        </div>
+                                                                    </div>
+                                                                </span>
+                                                            </button>
+
+                                                        </form>
+                                                        @*<a asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="@Url.Action("Index", "Home", new { area = "" })" class="ui-action-list-action">
+                                                                <span class="ui-action-list-action__text">
+                                                                    <div class="ui-stack ui-stack--wrap ui-stack--alignment-center ui-stack--spacing-tight">
+                                                                        <div class="ui-stack-item">
+                                                                            <svg role="img" class="next-icon next-icon--size-16" aria-labelledby="minor-log-out-title">
+                                                                                <title id="minor-log-out-title">Log out icon</title>
+                                                                                <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#minor-log-out"></use>
+                                                                            </svg>
+                                                                        </div>      <div class="ui-stack-item ui-stack-item--fill">
+                                                                            <span>Đăng xuất</span>
+                                                                        </div>
+                                                                    </div>
+                                                                </span>
+                                                            </a>*@
+                                                    </li>
+                                                }
+
                                             </ul>
                                             <ul class="ui-action-list">
-                                                <li class="ui-action-list__item"><a href="https://web-docs.sapo.vn/quy-dinh-su-dung-87.html" class="ui-action-list-action" target="_blank" rel="noopener noreferrer"><span class="ui-action-list-action__text">Điều khoản dịch vụ</span></a></li>
-                                                <li class="ui-action-list__item"><a href="https://web-docs.sapo.vn/chinh-sach-bao-mat-88.html" class="ui-action-list-action" target="_blank" rel="noopener noreferrer"><span class="ui-action-list-action__text">Chính sách bảo mật</span></a></li>
-                                                <li class="ui-action-list__item"><a href="https://support.sapo.vn/" target="_blank" rel="noopener noreferrer" class="ui-action-list-action"><span class="ui-action-list-action__text">Hỗ trợ</span></a></li>
+                                                <li class="ui-action-list__item">
+                                                    <a href="https://web-docs.sapo.vn/quy-dinh-su-dung-87.html" class="ui-action-list-action" target="_blank" rel="noopener noreferrer">
+                                                        <span class="ui-action-list-action__text">Điều khoản dịch vụ</span>
+                                                    </a>
+                                                </li>
+                                                <li class="ui-action-list__item">
+                                                    <a href="https://web-docs.sapo.vn/chinh-sach-bao-mat-88.html" class="ui-action-list-action" target="_blank" rel="noopener noreferrer">
+                                                        <span class="ui-action-list-action__text">Chính sách bảo mật</span>
+                                                    </a>
+                                                </li>
+                                                <li class="ui-action-list__item">
+                                                    <a href="https://support.sapo.vn/" target="_blank" rel="noopener noreferrer" class="ui-action-list-action">
+                                                        <span class="ui-action-list-action__text">Hỗ trợ</span>
+                                                    </a>
+                                                </li>
                                             </ul>
                                         </div>
                                     </div>
@@ -272,15 +301,26 @@
                 </div>
             </script>
         </header>
-        <div class="ui-flash-container"><div class="ui-flash-wrapper" id="UIFlashWrapper">
-            <div class="ui-flash ui-flash--nav-offset" id="UIFlashMessage">
-            <p class="ui-flash__message"></p>
-            <div class='ui-flash__close-button'>
-                <button class='ui-button ui-button--transparent ui-button--icon-only ui-button-flash-close' aria-label='Close message' type='button' name='button'><svg class='next-icon next-icon--color-white next-icon--size-12'>
-                    <use xmlns:xlink='http://www.w3.org/1999/xlink' xlink:href='#next-remove'>
-                    <svg id='next-remove' width='100%' height='100%'>
-                        <svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'>
-                        <path d='M18.263 16l10.07-10.07c.625-.625.625-1.636 0-2.26s-1.638-.627-2.263 0L16 13.737 5.933 3.667c-.626-.624-1.637-.624-2.262 0s-.624 1.64 0 2.264L13.74 16 3.67 26.07c-.626.625-.626 1.636 0 2.26.312.313.722.47 1.13.47s.82-.157 1.132-.47l10.07-10.068 10.068 10.07c.312.31.722.468 1.13.468s.82-.157 1.132-.47c.626-.625.626-1.636 0-2.26L18.262 16z'></path></svg></svg></use></svg></button></div></div></div></div>
+        <div class="ui-flash-container">
+            <div class="ui-flash-wrapper" id="UIFlashWrapper">
+                <div class="ui-flash ui-flash--nav-offset" id="UIFlashMessage">
+                    <p class="ui-flash__message"></p>
+                    <div class='ui-flash__close-button'>
+                        <button class='ui-button ui-button--transparent ui-button--icon-only ui-button-flash-close' aria-label='Close message' type='button' name='button'>
+                            <svg class='next-icon next-icon--color-white next-icon--size-12'>
+                                <use xmlns:xlink='http://www.w3.org/1999/xlink' xlink:href='#next-remove'>
+                                    <svg id='next-remove' width='100%' height='100%'>
+                                        <svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'>
+                                            <path d='M18.263 16l10.07-10.07c.625-.625.625-1.636 0-2.26s-1.638-.627-2.263 0L16 13.737 5.933 3.667c-.626-.624-1.637-.624-2.262 0s-.624 1.64 0 2.264L13.74 16 3.67 26.07c-.626.625-.626 1.636 0 2.26.312.313.722.47 1.13.47s.82-.157 1.132-.47l10.07-10.068 10.068 10.07c.312.31.722.468 1.13.468s.82-.157 1.132-.47c.626-.625.626-1.636 0-2.26L18.262 16z'></path>
+                                        </svg>
+                                    </svg>
+                                </use>
+                            </svg>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
         <style>
             .dropdown-menu2 {
                 position: absolute;
@@ -464,7 +504,7 @@
                         </div>
                         <div class="top-bar-profile__summary" style="flex:1;padding:1.6rem 0;min-width:0">
                             <p class="top-bar-profile__title collapse-actor" style="color: #686868;font-size: 15px;max-width: 136px">
-                                nguyen van cong
+                                @UserManager.GetUserName(User)
                             </p>
                             <p class="top-bar-profile__description" style="font-size:12px;">
                                 <a style="display:block" href="http://sort1.mysapo.net" target="_blank" rel="noreferrer noopener" title="Xem website của bạn">
@@ -473,7 +513,9 @@
                             </p>
                         </div>
                         <div class="aside-profile__icon collapse-actor" style="padding:1.2rem;position:relative;top:0;right:0;transform:none;-webkit-transform:none">
-                            <svg class="next-icon next-icon--rotate-90 next-icon--size-20 next-icon--no-nudge"> <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#next-chevron"></use> </svg>
+                            <svg class="next-icon next-icon--rotate-90 next-icon--size-20 next-icon--no-nudge">
+                                <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#next-chevron"></use>
+                            </svg>
                         </div>
                     </div>
                 </div>
@@ -1274,6 +1316,133 @@
                 <path d="M8.517,32.006l2.189-0.008l-4.826,7.494l-4.871-7.465l2.221-0.008L3.282,0l5.291,0.008L8.517,32.006z M11.599,0.059v5.288
                 		h26.885V0.059H11.599z M11.599,13.646H32.31V8.359H11.599V13.646z M11.599,21.949H23.94v-5.29H11.599V21.949z M11.599,30.248h6.834
                 		v-5.289h-6.834V30.248z" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
                 </g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g>
                 </svg>
             </symbol>

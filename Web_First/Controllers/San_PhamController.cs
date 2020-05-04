@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
@@ -19,7 +20,8 @@ namespace Web_First.Controllers
     //    VD:  public DbSet<Web_First.Models.View> View { get; set; }
     //b3: sửa tên sau collection/ tên view muốn hiển thị
     //    b4:thêm view
-
+    // ngăn truy cập ẩn danh, bắt buộc phải đăng nhập
+    [Authorize]
     public class San_PhamController : Controller
     {
         private readonly MvcSPContext _context;
