@@ -601,3 +601,4 @@ function check_size_1(id_op, cl, size, sl, ngay, img, ss) {
 
 
 
+

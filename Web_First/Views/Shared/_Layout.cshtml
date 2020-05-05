@@ -35,20 +35,26 @@
         </div>
     </div>
     <header class="header">
-        <nav class="hidden-sm hidden-xs navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3 header_menu scroll-menu" id="scroll-menu">
-            <div class="nav-img" id="simg">
-                <img id="s1" src="~/Img/logo.webp" />
-            </div>
+        <div class="wrap-logo visible-lg visible-md" style="height:inherit">
 
-            <div class="container header_menu_text">
+            <a href="https://www.160store.com">
+                <img src="//theme.hstatic.net/1000253775/1000571612/14/logo.png?v=67" alt="160STORE" class="img-responsive logoimg">
+            </a>
+
+        </div>
+        <nav class="hidden-sm hidden-xs navbar navbar-expand-sm navbar-toggleable-sm navbar-light border-bottom box-shadow mb-3 header_menu scroll-menu" id="scroll-menu" style="background: #f8f9fa;">
+            <div class="header_menu_text">
                 <div class="navbar-collapse collapse d-sm-inline-flex flex-sm-row-reverse header_menu_text-seletion">
                     <ul class="navbar-nav flex-grow-1 link-selection">
                         <li class="nav-item link-selection-1">
                             <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">Trang chủ</a>
                         </li>
                         <li class="nav-item link-selection-2">
-                            <a class="nav-link text-dark a_1" asp-area="" asp-controller="Home" asp-action="Index">Sản Phẩm</a>
-                            <i class="fa fa-arrow-down fa1" aria-hidden="true"></i>
+                            <a class="nav-link text-dark a_1" asp-area="" asp-controller="Home" asp-action="Index">
+                                Sản Phẩm
+                                <i class="fa fa-arrow-down" aria-hidden="true"></i>
+                            </a>
+
                             <ul class="menu_Ao_list">
                                 <li class="menu_Ao_list_h menu_Ao_list--1" id="a">
                                     <a class="link" asp-controller="San_Pham" asp-action="ao">Áo</a>
@@ -128,9 +134,12 @@
                             <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">New Arrivals</a>
                         </li>
                         <li class="nav-item link-selection-4">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="San_Pham1" asp-action="Index">Chính sách - Hướng dẫn</a>
-                            <i class="fa fa-arrow-down fa1" aria-hidden="true"></i>
-                            <ul class="menu_Ao_list cs">
+                            <a class="nav-link text-dark" asp-area="" asp-controller="San_Pham1" asp-action="Index">
+                                Chính sách - Hướng dẫn
+                                <i class="fa fa-arrow-down" aria-hidden="true"></i>
+                            </a>
+
+                            <ul class="menu_Ao_list">
                                 <li class="menu_Ao_list_h menu_Ao_list--1 cs_1" id="a">
                                     <a>Chính sách đổi trả</a>
                                 </li>
@@ -146,9 +155,12 @@
                             </ul>
                         </li>
                         <li class="nav-item link-selection-5">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Địa chỉ cửa hàng</a>
-                            <i class="fa fa-arrow-down fa1" aria-hidden="true"></i>
-                            <ul class="menu_Ao_list ch">
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy" title="Địa chỉ cửa hàng">
+                                Địa chỉ cửa hàng
+                                <i class="fa fa-arrow-down" aria-hidden="true"></i>
+                            </a>
+
+                            <ul class="menu_Ao_list">
                                 <li class="menu_Ao_list_h menu_Ao_list--1 ch_1" id="a">
                                     <a>Hà Nội</a>
                                 </li>
@@ -168,7 +180,7 @@
                 </div>
 
             </div>
-            <partial name="_LoginPartial" />
+            @*<partial name="_LoginPartial" />*@
             @using Microsoft.AspNetCore.Identity
 
             @inject SignInManager<IdentityUser> SignInManager
