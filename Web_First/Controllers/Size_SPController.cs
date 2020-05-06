@@ -11,7 +11,7 @@ using Web_First.Models;
 
 namespace Web_First.Controllers
 {
-    [Authorize]
+
     public class Size_SPController : Controller
     {
         private readonly MvcSPContext _context;
@@ -46,6 +46,7 @@ namespace Web_First.Controllers
         }
 
         // GET: Size_SP/Create
+        [Authorize]
         public IActionResult Create(string id, string? id1)
         {
             Size_SP Size_SP = new Size_SP();
@@ -58,6 +59,7 @@ namespace Web_First.Controllers
             }
             return View(Size_SP);
         }
+        [Authorize]
         public IActionResult Create1(string id)
         {
             Size_SP Size_SP = new Size_SP();
@@ -69,7 +71,7 @@ namespace Web_First.Controllers
             }
             return View(Size_SP);
         }
-
+        [Authorize]
         public IActionResult Tao()
         {
             return View();
@@ -80,6 +82,7 @@ namespace Web_First.Controllers
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize]
         public async Task<IActionResult> Create([Bind("stt,Id_SP,Id_SP_Option,Size,sl")] Size_SP size_SP)
         {
             if (ModelState.IsValid)
@@ -90,7 +93,7 @@ namespace Web_First.Controllers
             }
             return View(size_SP);
         }
-
+        [Authorize]
         // GET: Size_SP/Edit/5
         public async Task<IActionResult> Edit(int? id)
         {
@@ -112,6 +115,7 @@ namespace Web_First.Controllers
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize]
         public async Task<IActionResult> Edit(int id, [Bind("stt,Id_SP,Id_SP_Option,Size,sl")] Size_SP size_SP)
         {
             if (id != size_SP.stt)
@@ -143,6 +147,7 @@ namespace Web_First.Controllers
         }
 
         // GET: Size_SP/Delete/5
+        [Authorize]
         public async Task<IActionResult> Delete(int? id)
         {
             if (id == null)
@@ -163,6 +168,7 @@ namespace Web_First.Controllers
         // POST: Size_SP/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
+        [Authorize]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
             var size_SP = await _context.Size_SP.FindAsync(id);

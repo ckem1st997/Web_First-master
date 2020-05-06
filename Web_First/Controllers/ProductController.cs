@@ -12,7 +12,7 @@ using X.PagedList;
 
 namespace Web_First.Controllers
 {
-    [Authorize]
+
     public class ProductController : Controller
     {
         private readonly MvcSPContext _context;
@@ -211,6 +211,8 @@ namespace Web_First.Controllers
 
             return View(san_Pham);
         }
+
+        [Authorize]
         public IActionResult Create()
         {
             var cart = from a in _context.San_Pham
@@ -230,6 +232,7 @@ namespace Web_First.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize]
         public async Task<IActionResult> Create([Bind("Id_SP,Loai_SP_1,Loai_SP_2,Name_SP,Price_SP,Mo_Ta,ngay_add,Sale")] San_Pham san_Pham)
         {
             if (ModelState.IsValid)
@@ -240,7 +243,7 @@ namespace Web_First.Controllers
             }
             return View(san_Pham);
         }
-
+        [Authorize]
         // GET: Product/Edit/5
         public async Task<IActionResult> Edit(string id)
         {
@@ -260,6 +263,7 @@ namespace Web_First.Controllers
         // POST: Product/Edit/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
+        [Authorize]
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Edit(string id, [Bind("Id_SP,Loai_SP_1,Loai_SP_2,Name_SP,Price_SP,Mo_Ta")] San_Pham san_Pham)
@@ -293,6 +297,7 @@ namespace Web_First.Controllers
         }
 
         // GET: Product/Delete/5
+        [Authorize]
         public async Task<IActionResult> Delete(string id)
         {
             if (id == null)
@@ -313,6 +318,7 @@ namespace Web_First.Controllers
         // POST: Product/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
+        [Authorize]
         public async Task<IActionResult> DeleteConfirmed(string id)
         {
             var san_Pham = await _context.San_Pham.FindAsync(id);

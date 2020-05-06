@@ -11,7 +11,7 @@ using Web_First.Models;
 
 namespace Web_First.Controllers
 {
-    [Authorize]
+
     public class ThongSo_SPController : Controller
     {
         private readonly MvcSPContext _context;
@@ -44,7 +44,7 @@ namespace Web_First.Controllers
 
             return View(thongSo_SP);
         }
-
+        [Authorize]
         // GET: ThongSo_SP/Create
         public IActionResult Create(string id)
         {
@@ -61,6 +61,7 @@ namespace Web_First.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize]
         public async Task<IActionResult> Create([Bind("Id_SP,Id_SP_Option,Loai_SP,Size,SL_co,Ngay_ADD,Image_SP_Option")] ThongSo_SP thongSo_SP)
         {
             if (ModelState.IsValid)
@@ -73,6 +74,7 @@ namespace Web_First.Controllers
         }
 
         // GET: ThongSo_SP/Edit/5
+        [Authorize]
         public async Task<IActionResult> Edit(string id)
         {
             if (id == null)
@@ -88,7 +90,7 @@ namespace Web_First.Controllers
             ViewBag.image = thongSo_SP.Image_SP_Option;
             return View(thongSo_SP);
         }
-
+        [Authorize]
         // POST: ThongSo_SP/Edit/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
@@ -128,6 +130,7 @@ namespace Web_First.Controllers
         }
 
         // GET: ThongSo_SP/Delete/5
+        [Authorize]
         public async Task<IActionResult> Delete(string id)
         {
             if (id == null)
@@ -148,6 +151,7 @@ namespace Web_First.Controllers
         // POST: ThongSo_SP/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
+        [Authorize]
         public async Task<IActionResult> DeleteConfirmed(string id)
         {
             var thongSo_SP = await _context.ThongSo_SP.FindAsync(id);

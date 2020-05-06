@@ -35,15 +35,8 @@
         </div>
     </div>
     <header class="header">
-        <div class="wrap-logo visible-lg visible-md" style="height:inherit">
-
-            <a href="https://www.160store.com">
-                <img src="//theme.hstatic.net/1000253775/1000571612/14/logo.png?v=67" alt="160STORE" class="img-responsive logoimg">
-            </a>
-
-        </div>
         <nav class="hidden-sm hidden-xs navbar navbar-expand-sm navbar-toggleable-sm navbar-light border-bottom box-shadow mb-3 header_menu scroll-menu" id="scroll-menu" style="background: #f8f9fa;">
-            <div class="header_menu_text">
+            <div class="header_menu_text" style="margin:auto">
                 <div class="navbar-collapse collapse d-sm-inline-flex flex-sm-row-reverse header_menu_text-seletion">
                     <ul class="navbar-nav flex-grow-1 link-selection">
                         <li class="nav-item link-selection-1">
@@ -185,7 +178,7 @@
 
             @inject SignInManager<IdentityUser> SignInManager
             @inject UserManager<IdentityUser> UserManager
-            <div class="header-wrap-icon">
+            <div class="header-wrap-icon" style="margin:auto">
                 <span class="icon-account" aria-label="Tài khoản" title="Tài khoản">
                     @if (SignInManager.IsSignedIn(User))
                     {
@@ -228,6 +221,13 @@
                 <span id="site-menu-handle" class="hamburger-menu visible-sm visible-xs" aria-hidden="true"><span class="bar"></span></span>
             </div>
         </nav>
+        <div class="wrap-logo visible-lg visible-md" style="height:inherit">
+
+            <a href="https://www.160store.com">
+                <img src="//theme.hstatic.net/1000253775/1000571612/14/logo.png?v=67" alt="160STORE" class="img-responsive logoimg">
+            </a>
+
+        </div>
         <div class="main-header">
             <div class="header-mid wrap-flex-align">
                 <div class="visible-lg visible-md col-header-mid"></div>

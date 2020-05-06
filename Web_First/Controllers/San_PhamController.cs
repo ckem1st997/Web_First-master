@@ -21,7 +21,7 @@ namespace Web_First.Controllers
     //b3: sửa tên sau collection/ tên view muốn hiển thị
     //    b4:thêm view
     // ngăn truy cập ẩn danh, bắt buộc phải đăng nhập
-    [Authorize]
+
     public class San_PhamController : Controller
     {
         private readonly MvcSPContext _context;
@@ -1100,7 +1100,7 @@ namespace Web_First.Controllers
 
             return View(san_Pham);
         }
-
+        [Authorize]
         // GET: San_Pham/Create
         public IActionResult Create()
         {
@@ -1112,6 +1112,7 @@ namespace Web_First.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize]
         public async Task<IActionResult> Create([Bind("Id_SP,Loai_SP_1,Loai_SP_2,Name_SP,Price_SP,Mo_Ta")] San_Pham san_Pham)
         {
             if (ModelState.IsValid)
@@ -1122,7 +1123,7 @@ namespace Web_First.Controllers
             }
             return View(san_Pham);
         }
-
+        [Authorize]
         public async Task<IActionResult> Edit(string id)
         {
             if (id == null)
@@ -1143,6 +1144,7 @@ namespace Web_First.Controllers
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize]
         public async Task<IActionResult> Edit(string id, [Bind("Id_SP,Loai_SP_1,Loai_SP_2,Name_SP,Price_SP,Mo_Ta,ngay_add,Sale")] San_Pham san_Pham)
         {
             if (id != san_Pham.Id_SP)
@@ -1174,6 +1176,7 @@ namespace Web_First.Controllers
         }
 
         // GET: San_Pham/Delete/5
+        [Authorize]
         public async Task<IActionResult> Delete(string id)
         {
             if (id == null)
@@ -1194,6 +1197,7 @@ namespace Web_First.Controllers
         // POST: San_Pham/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
+        [Authorize]
         public async Task<IActionResult> DeleteConfirmed(string id)
         {
             var san_Pham = await _context.San_Pham.FindAsync(id);
