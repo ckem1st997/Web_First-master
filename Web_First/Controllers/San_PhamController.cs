@@ -36,45 +36,46 @@ namespace Web_First.Controllers
             var products = from a in _context.Ao
                            select a;//returns IQueryable<Product> representing an unknown number of products. a thousand maybe?
             var pageNumber = page ?? 1; // if no page was specified in the querystring, default to the first page (1)
-            var onePageOfProducts = products.ToPagedList(pageNumber, 80);
+            var onePageOfProducts = products.ToPagedList(pageNumber, 60);
             if (id == "Price_ascending")
             {
                 products = from a in _context.Ao
                            orderby a.Price_SP
                            select a;
-                onePageOfProducts = products.ToPagedList(pageNumber, 86); // will only contain 25 products max because of the pageSize
+                onePageOfProducts = products.ToPagedList(pageNumber, 66); // will only contain 25 products max because of the pageSize
             }
             else if (id == "Price_descending")
             {
                 products = from a in _context.Ao
                            orderby a.Price_SP descending
                            select a;
-                onePageOfProducts = products.ToPagedList(pageNumber, 86); // will only contain 25 products max because of the pageSize
+                onePageOfProducts = products.ToPagedList(pageNumber, 66); // will only contain 25 products max because of the pageSize
             }
             else if (id == "Name_A-Z")
             {
                 products = from a in _context.Ao
                            orderby a.Name_SP ascending
                            select a;
-                onePageOfProducts = products.ToPagedList(pageNumber, 86); // will only contain 25 products max because of the pageSize
+                onePageOfProducts = products.ToPagedList(pageNumber, 66); // will only contain 25 products max because of the pageSize
             }
             else if (id == "Name_Z-A")
             {
                 products = from a in _context.Ao
                            orderby a.Name_SP descending
                            select a;
-                onePageOfProducts = products.ToPagedList(pageNumber, 86); // will only contain 25 products max because of the pageSize
+                onePageOfProducts = products.ToPagedList(pageNumber, 66); // will only contain 25 products max because of the pageSize
             }
             else if (id == "mn")
             {
                 products = from a in _context.Ao
                            orderby a.ngay_add ascending
                            select a;
-                onePageOfProducts = products.ToPagedList(pageNumber, 86); // will only contain 25 products max because of the pageSize
+                onePageOfProducts = products.ToPagedList(pageNumber, 66); // will only contain 25 products max because of the pageSize
             }
             else
-                onePageOfProducts = products.ToPagedList(pageNumber, 80); // will only contain 25 products max because of the pageSizee
+                onePageOfProducts = products.ToPagedList(pageNumber, 60); // will only contain 25 products max because of the pageSizee
             ViewBag.OnePageOfProducts = onePageOfProducts;
+            ViewBag.id = id;
             return View();
         }
 
@@ -84,44 +85,44 @@ namespace Web_First.Controllers
             var products = from a in _context.San_Pham_New
                            select a;//returns IQueryable<Product> representing an unknown number of products. a thousand maybe?
             var pageNumber = page ?? 1; // if no page was specified in the querystring, default to the first page (1)
-            var onePageOfProducts = products.ToPagedList(pageNumber, 80);
+            var onePageOfProducts = products.ToPagedList(pageNumber, 50);
             if (id == "Price_ascending")
             {
                 products = from a in _context.San_Pham_New
                            orderby a.Price_SP
                            select a;
-                onePageOfProducts = products.ToPagedList(pageNumber, 86); // will only contain 25 products max because of the pageSize
+                onePageOfProducts = products.ToPagedList(pageNumber, 56); // will only contain 25 products max because of the pageSize
             }
             else if (id == "Price_descending")
             {
                 products = from a in _context.San_Pham_New
                            orderby a.Price_SP descending
                            select a;
-                onePageOfProducts = products.ToPagedList(pageNumber, 86); // will only contain 25 products max because of the pageSize
+                onePageOfProducts = products.ToPagedList(pageNumber, 56); // will only contain 25 products max because of the pageSize
             }
             else if (id == "Name_A-Z")
             {
                 products = from a in _context.San_Pham_New
                            orderby a.Name_SP ascending
                            select a;
-                onePageOfProducts = products.ToPagedList(pageNumber, 86); // will only contain 25 products max because of the pageSize
+                onePageOfProducts = products.ToPagedList(pageNumber, 56); // will only contain 25 products max because of the pageSize
             }
             else if (id == "Name_Z-A")
             {
                 products = from a in _context.San_Pham_New
                            orderby a.Name_SP descending
                            select a;
-                onePageOfProducts = products.ToPagedList(pageNumber, 86); // will only contain 25 products max because of the pageSize
+                onePageOfProducts = products.ToPagedList(pageNumber, 56); // will only contain 25 products max because of the pageSize
             }
             else if (id == "mn")
             {
                 products = from a in _context.San_Pham_New
                            orderby a.ngay_add ascending
                            select a;
-                onePageOfProducts = products.ToPagedList(pageNumber, 86); // will only contain 25 products max because of the pageSize
+                onePageOfProducts = products.ToPagedList(pageNumber, 56); // will only contain 25 products max because of the pageSize
             }
             else
-                onePageOfProducts = products.ToPagedList(pageNumber, 80); // will only contain 25 products max because of the pageSizee
+                onePageOfProducts = products.ToPagedList(pageNumber, 50); // will only contain 25 products max because of the pageSizee
             ViewBag.OnePageOfProducts = onePageOfProducts;
             return View();
         }
@@ -131,44 +132,44 @@ namespace Web_First.Controllers
             var products = from a in _context.San_Pham_Sale
                            select a;//returns IQueryable<Product> representing an unknown number of products. a thousand maybe?
             var pageNumber = page ?? 1; // if no page was specified in the querystring, default to the first page (1)
-            var onePageOfProducts = products.ToPagedList(pageNumber, 80);
+            var onePageOfProducts = products.ToPagedList(pageNumber, 50);
             if (id == "Price_ascending")
             {
                 products = from a in _context.San_Pham_Sale
                            orderby a.Price_SP
                            select a;
-                onePageOfProducts = products.ToPagedList(pageNumber, 86); // will only contain 25 products max because of the pageSize
+                onePageOfProducts = products.ToPagedList(pageNumber, 56); // will only contain 25 products max because of the pageSize
             }
             else if (id == "Price_descending")
             {
                 products = from a in _context.San_Pham_Sale
                            orderby a.Price_SP descending
                            select a;
-                onePageOfProducts = products.ToPagedList(pageNumber, 86); // will only contain 25 products max because of the pageSize
+                onePageOfProducts = products.ToPagedList(pageNumber, 56); // will only contain 25 products max because of the pageSize
             }
             else if (id == "Name_A-Z")
             {
                 products = from a in _context.San_Pham_Sale
                            orderby a.Name_SP ascending
                            select a;
-                onePageOfProducts = products.ToPagedList(pageNumber, 86); // will only contain 25 products max because of the pageSize
+                onePageOfProducts = products.ToPagedList(pageNumber, 56); // will only contain 25 products max because of the pageSize
             }
             else if (id == "Name_Z-A")
             {
                 products = from a in _context.San_Pham_Sale
                            orderby a.Name_SP descending
                            select a;
-                onePageOfProducts = products.ToPagedList(pageNumber, 86); // will only contain 25 products max because of the pageSize
+                onePageOfProducts = products.ToPagedList(pageNumber, 56); // will only contain 25 products max because of the pageSize
             }
             else if (id == "mn")
             {
                 products = from a in _context.San_Pham_Sale
                            orderby a.ngay_add ascending
                            select a;
-                onePageOfProducts = products.ToPagedList(pageNumber, 86); // will only contain 25 products max because of the pageSize
+                onePageOfProducts = products.ToPagedList(pageNumber, 56); // will only contain 25 products max because of the pageSize
             }
             else
-                onePageOfProducts = products.ToPagedList(pageNumber, 80); // will only contain 25 products max because of the pageSizee
+                onePageOfProducts = products.ToPagedList(pageNumber, 50); // will only contain 25 products max because of the pageSizee
             ViewBag.OnePageOfProducts = onePageOfProducts;
             return View();
         }
@@ -178,44 +179,44 @@ namespace Web_First.Controllers
             var products = from a in _context.PK
                            select a;//returns IQueryable<Product> representing an unknown number of products. a thousand maybe?
             var pageNumber = page ?? 1; // if no page was specified in the querystring, default to the first page (1)
-            var onePageOfProducts = products.ToPagedList(pageNumber, 80);
+            var onePageOfProducts = products.ToPagedList(pageNumber, 50);
             if (id == "Price_ascending")
             {
                 products = from a in _context.PK
                            orderby a.Price_SP
                            select a;
-                onePageOfProducts = products.ToPagedList(pageNumber, 86); // will only contain 25 products max because of the pageSize
+                onePageOfProducts = products.ToPagedList(pageNumber, 56); // will only contain 25 products max because of the pageSize
             }
             else if (id == "Price_descending")
             {
                 products = from a in _context.PK
                            orderby a.Price_SP descending
                            select a;
-                onePageOfProducts = products.ToPagedList(pageNumber, 86); // will only contain 25 products max because of the pageSize
+                onePageOfProducts = products.ToPagedList(pageNumber, 56); // will only contain 25 products max because of the pageSize
             }
             else if (id == "Name_A-Z")
             {
                 products = from a in _context.PK
                            orderby a.Name_SP ascending
                            select a;
-                onePageOfProducts = products.ToPagedList(pageNumber, 86); // will only contain 25 products max because of the pageSize
+                onePageOfProducts = products.ToPagedList(pageNumber, 56); // will only contain 25 products max because of the pageSize
             }
             else if (id == "Name_Z-A")
             {
                 products = from a in _context.PK
                            orderby a.Name_SP descending
                            select a;
-                onePageOfProducts = products.ToPagedList(pageNumber, 86); // will only contain 25 products max because of the pageSize
+                onePageOfProducts = products.ToPagedList(pageNumber, 56); // will only contain 25 products max because of the pageSize
             }
             else if (id == "mn")
             {
                 products = from a in _context.PK
                            orderby a.ngay_add ascending
                            select a;
-                onePageOfProducts = products.ToPagedList(pageNumber, 86); // will only contain 25 products max because of the pageSize
+                onePageOfProducts = products.ToPagedList(pageNumber, 56); // will only contain 25 products max because of the pageSize
             }
             else
-                onePageOfProducts = products.ToPagedList(pageNumber, 80); // will only contain 25 products max because of the pageSizee
+                onePageOfProducts = products.ToPagedList(pageNumber, 50); // will only contain 25 products max because of the pageSizee
             ViewBag.OnePageOfProducts = onePageOfProducts;
             return View();
         }
@@ -225,44 +226,44 @@ namespace Web_First.Controllers
             var products = from a in _context.quan
                            select a;//returns IQueryable<Product> representing an unknown number of products. a thousand maybe?
             var pageNumber = page ?? 1; // if no page was specified in the querystring, default to the first page (1)
-            var onePageOfProducts = products.ToPagedList(pageNumber, 80);
+            var onePageOfProducts = products.ToPagedList(pageNumber, 50);
             if (id == "Price_ascending")
             {
                 products = from a in _context.quan
                            orderby a.Price_SP
                            select a;
-                onePageOfProducts = products.ToPagedList(pageNumber, 86); // will only contain 25 products max because of the pageSize
+                onePageOfProducts = products.ToPagedList(pageNumber, 56); // will only contain 25 products max because of the pageSize
             }
             else if (id == "Price_descending")
             {
                 products = from a in _context.quan
                            orderby a.Price_SP descending
                            select a;
-                onePageOfProducts = products.ToPagedList(pageNumber, 86); // will only contain 25 products max because of the pageSize
+                onePageOfProducts = products.ToPagedList(pageNumber, 56); // will only contain 25 products max because of the pageSize
             }
             else if (id == "Name_A-Z")
             {
                 products = from a in _context.quan
                            orderby a.Name_SP ascending
                            select a;
-                onePageOfProducts = products.ToPagedList(pageNumber, 86); // will only contain 25 products max because of the pageSize
+                onePageOfProducts = products.ToPagedList(pageNumber, 56); // will only contain 25 products max because of the pageSize
             }
             else if (id == "Name_Z-A")
             {
                 products = from a in _context.quan
                            orderby a.Name_SP descending
                            select a;
-                onePageOfProducts = products.ToPagedList(pageNumber, 86); // will only contain 25 products max because of the pageSize
+                onePageOfProducts = products.ToPagedList(pageNumber, 56); // will only contain 25 products max because of the pageSize
             }
             else if (id == "mn")
             {
                 products = from a in _context.quan
                            orderby a.ngay_add ascending
                            select a;
-                onePageOfProducts = products.ToPagedList(pageNumber, 86); // will only contain 25 products max because of the pageSize
+                onePageOfProducts = products.ToPagedList(pageNumber, 56); // will only contain 25 products max because of the pageSize
             }
             else
-                onePageOfProducts = products.ToPagedList(pageNumber, 80); // will only contain 25 products max because of the pageSizee
+                onePageOfProducts = products.ToPagedList(pageNumber, 50); // will only contain 25 products max because of the pageSizee
             ViewBag.OnePageOfProducts = onePageOfProducts;
             return View();
         }
@@ -272,44 +273,44 @@ namespace Web_First.Controllers
             var products = from a in _context.Ao_Khoac
                            select a;//returns IQueryable<Product> representing an unknown number of products. a thousand maybe?
             var pageNumber = page ?? 1; // if no page was specified in the querystring, default to the first page (1)
-            var onePageOfProducts = products.ToPagedList(pageNumber, 80);
+            var onePageOfProducts = products.ToPagedList(pageNumber, 50);
             if (id == "Price_ascending")
             {
                 products = from a in _context.Ao_Khoac
                            orderby a.Price_SP
                            select a;
-                onePageOfProducts = products.ToPagedList(pageNumber, 86); // will only contain 25 products max because of the pageSize
+                onePageOfProducts = products.ToPagedList(pageNumber, 56); // will only contain 25 products max because of the pageSize
             }
             else if (id == "Price_descending")
             {
                 products = from a in _context.Ao_Khoac
                            orderby a.Price_SP descending
                            select a;
-                onePageOfProducts = products.ToPagedList(pageNumber, 86); // will only contain 25 products max because of the pageSize
+                onePageOfProducts = products.ToPagedList(pageNumber, 56); // will only contain 25 products max because of the pageSize
             }
             else if (id == "Name_A-Z")
             {
                 products = from a in _context.Ao_Khoac
                            orderby a.Name_SP ascending
                            select a;
-                onePageOfProducts = products.ToPagedList(pageNumber, 86); // will only contain 25 products max because of the pageSize
+                onePageOfProducts = products.ToPagedList(pageNumber, 56); // will only contain 25 products max because of the pageSize
             }
             else if (id == "Name_Z-A")
             {
                 products = from a in _context.Ao_Khoac
                            orderby a.Name_SP descending
                            select a;
-                onePageOfProducts = products.ToPagedList(pageNumber, 86); // will only contain 25 products max because of the pageSize
+                onePageOfProducts = products.ToPagedList(pageNumber, 56); // will only contain 25 products max because of the pageSize
             }
             else if (id == "mn")
             {
                 products = from a in _context.Ao_Khoac
                            orderby a.ngay_add ascending
                            select a;
-                onePageOfProducts = products.ToPagedList(pageNumber, 86); // will only contain 25 products max because of the pageSize
+                onePageOfProducts = products.ToPagedList(pageNumber, 56); // will only contain 25 products max because of the pageSize
             }
             else
-                onePageOfProducts = products.ToPagedList(pageNumber, 80); // will only contain 25 products max because of the pageSizee
+                onePageOfProducts = products.ToPagedList(pageNumber, 50); // will only contain 25 products max because of the pageSizee
             ViewBag.OnePageOfProducts = onePageOfProducts;
             return View();
         }
@@ -320,44 +321,44 @@ namespace Web_First.Controllers
             var products = from a in _context.Ao_Len
                            select a;//returns IQueryable<Product> representing an unknown number of products. a thousand maybe?
             var pageNumber = page ?? 1; // if no page was specified in the querystring, default to the first page (1)
-            var onePageOfProducts = products.ToPagedList(pageNumber, 80);
+            var onePageOfProducts = products.ToPagedList(pageNumber, 50);
             if (id == "Price_ascending")
             {
                 products = from a in _context.Ao_Len
                            orderby a.Price_SP
                            select a;
-                onePageOfProducts = products.ToPagedList(pageNumber, 86); // will only contain 25 products max because of the pageSize
+                onePageOfProducts = products.ToPagedList(pageNumber, 56); // will only contain 25 products max because of the pageSize
             }
             else if (id == "Price_descending")
             {
                 products = from a in _context.Ao_Len
                            orderby a.Price_SP descending
                            select a;
-                onePageOfProducts = products.ToPagedList(pageNumber, 86); // will only contain 25 products max because of the pageSize
+                onePageOfProducts = products.ToPagedList(pageNumber, 56); // will only contain 25 products max because of the pageSize
             }
             else if (id == "Name_A-Z")
             {
                 products = from a in _context.Ao_Len
                            orderby a.Name_SP ascending
                            select a;
-                onePageOfProducts = products.ToPagedList(pageNumber, 86); // will only contain 25 products max because of the pageSize
+                onePageOfProducts = products.ToPagedList(pageNumber, 56); // will only contain 25 products max because of the pageSize
             }
             else if (id == "Name_Z-A")
             {
                 products = from a in _context.Ao_Len
                            orderby a.Name_SP descending
                            select a;
-                onePageOfProducts = products.ToPagedList(pageNumber, 86); // will only contain 25 products max because of the pageSize
+                onePageOfProducts = products.ToPagedList(pageNumber, 56); // will only contain 25 products max because of the pageSize
             }
             else if (id == "mn")
             {
                 products = from a in _context.Ao_Len
                            orderby a.ngay_add ascending
                            select a;
-                onePageOfProducts = products.ToPagedList(pageNumber, 86); // will only contain 25 products max because of the pageSize
+                onePageOfProducts = products.ToPagedList(pageNumber, 56); // will only contain 25 products max because of the pageSize
             }
             else
-                onePageOfProducts = products.ToPagedList(pageNumber, 80); // will only contain 25 products max because of the pageSizee
+                onePageOfProducts = products.ToPagedList(pageNumber, 50); // will only contain 25 products max because of the pageSizee
             ViewBag.OnePageOfProducts = onePageOfProducts;
             return View();
         }
@@ -368,44 +369,44 @@ namespace Web_First.Controllers
             var products = from a in _context.Ao_Polo
                            select a;//returns IQueryable<Product> representing an unknown number of products. a thousand maybe?
             var pageNumber = page ?? 1; // if no page was specified in the querystring, default to the first page (1)
-            var onePageOfProducts = products.ToPagedList(pageNumber, 80);
+            var onePageOfProducts = products.ToPagedList(pageNumber, 50);
             if (id == "Price_ascending")
             {
                 products = from a in _context.Ao_Polo
                            orderby a.Price_SP
                            select a;
-                onePageOfProducts = products.ToPagedList(pageNumber, 86); // will only contain 25 products max because of the pageSize
+                onePageOfProducts = products.ToPagedList(pageNumber, 56); // will only contain 25 products max because of the pageSize
             }
             else if (id == "Price_descending")
             {
                 products = from a in _context.Ao_Polo
                            orderby a.Price_SP descending
                            select a;
-                onePageOfProducts = products.ToPagedList(pageNumber, 86); // will only contain 25 products max because of the pageSize
+                onePageOfProducts = products.ToPagedList(pageNumber, 56); // will only contain 25 products max because of the pageSize
             }
             else if (id == "Name_A-Z")
             {
                 products = from a in _context.Ao_Polo
                            orderby a.Name_SP ascending
                            select a;
-                onePageOfProducts = products.ToPagedList(pageNumber, 86); // will only contain 25 products max because of the pageSize
+                onePageOfProducts = products.ToPagedList(pageNumber, 56); // will only contain 25 products max because of the pageSize
             }
             else if (id == "Name_Z-A")
             {
                 products = from a in _context.Ao_Polo
                            orderby a.Name_SP descending
                            select a;
-                onePageOfProducts = products.ToPagedList(pageNumber, 86); // will only contain 25 products max because of the pageSize
+                onePageOfProducts = products.ToPagedList(pageNumber, 56); // will only contain 25 products max because of the pageSize
             }
             else if (id == "mn")
             {
                 products = from a in _context.Ao_Polo
                            orderby a.ngay_add ascending
                            select a;
-                onePageOfProducts = products.ToPagedList(pageNumber, 86); // will only contain 25 products max because of the pageSize
+                onePageOfProducts = products.ToPagedList(pageNumber, 56); // will only contain 25 products max because of the pageSize
             }
             else
-                onePageOfProducts = products.ToPagedList(pageNumber, 80); // will only contain 25 products max because of the pageSizee
+                onePageOfProducts = products.ToPagedList(pageNumber, 50); // will only contain 25 products max because of the pageSizee
             ViewBag.OnePageOfProducts = onePageOfProducts;
             return View();
         }
@@ -416,44 +417,44 @@ namespace Web_First.Controllers
             var products = from a in _context.Ao_SM
                            select a;//returns IQueryable<Product> representing an unknown number of products. a thousand maybe?
             var pageNumber = page ?? 1; // if no page was specified in the querystring, default to the first page (1)
-            var onePageOfProducts = products.ToPagedList(pageNumber, 80);
+            var onePageOfProducts = products.ToPagedList(pageNumber, 50);
             if (id == "Price_ascending")
             {
                 products = from a in _context.Ao_SM
                            orderby a.Price_SP
                            select a;
-                onePageOfProducts = products.ToPagedList(pageNumber, 86); // will only contain 25 products max because of the pageSize
+                onePageOfProducts = products.ToPagedList(pageNumber, 56); // will only contain 25 products max because of the pageSize
             }
             else if (id == "Price_descending")
             {
                 products = from a in _context.Ao_SM
                            orderby a.Price_SP descending
                            select a;
-                onePageOfProducts = products.ToPagedList(pageNumber, 86); // will only contain 25 products max because of the pageSize
+                onePageOfProducts = products.ToPagedList(pageNumber, 56); // will only contain 25 products max because of the pageSize
             }
             else if (id == "Name_A-Z")
             {
                 products = from a in _context.Ao_SM
                            orderby a.Name_SP ascending
                            select a;
-                onePageOfProducts = products.ToPagedList(pageNumber, 86); // will only contain 25 products max because of the pageSize
+                onePageOfProducts = products.ToPagedList(pageNumber, 56); // will only contain 25 products max because of the pageSize
             }
             else if (id == "Name_Z-A")
             {
                 products = from a in _context.Ao_SM
                            orderby a.Name_SP descending
                            select a;
-                onePageOfProducts = products.ToPagedList(pageNumber, 86); // will only contain 25 products max because of the pageSize
+                onePageOfProducts = products.ToPagedList(pageNumber, 56); // will only contain 25 products max because of the pageSize
             }
             else if (id == "mn")
             {
                 products = from a in _context.Ao_SM
                            orderby a.ngay_add ascending
                            select a;
-                onePageOfProducts = products.ToPagedList(pageNumber, 86); // will only contain 25 products max because of the pageSize
+                onePageOfProducts = products.ToPagedList(pageNumber, 56); // will only contain 25 products max because of the pageSize
             }
             else
-                onePageOfProducts = products.ToPagedList(pageNumber, 80); // will only contain 25 products max because of the pageSizee
+                onePageOfProducts = products.ToPagedList(pageNumber, 50); // will only contain 25 products max because of the pageSizee
             ViewBag.OnePageOfProducts = onePageOfProducts;
             return View();
         }
@@ -463,44 +464,44 @@ namespace Web_First.Controllers
             var products = from a in _context.Ao_ST
                            select a;//returns IQueryable<Product> representing an unknown number of products. a thousand maybe?
             var pageNumber = page ?? 1; // if no page was specified in the querystring, default to the first page (1)
-            var onePageOfProducts = products.ToPagedList(pageNumber, 80);
+            var onePageOfProducts = products.ToPagedList(pageNumber, 50);
             if (id == "Price_ascending")
             {
                 products = from a in _context.Ao_ST
                            orderby a.Price_SP
                            select a;
-                onePageOfProducts = products.ToPagedList(pageNumber, 86); // will only contain 25 products max because of the pageSize
+                onePageOfProducts = products.ToPagedList(pageNumber, 56); // will only contain 25 products max because of the pageSize
             }
             else if (id == "Price_descending")
             {
                 products = from a in _context.Ao_ST
                            orderby a.Price_SP descending
                            select a;
-                onePageOfProducts = products.ToPagedList(pageNumber, 86); // will only contain 25 products max because of the pageSize
+                onePageOfProducts = products.ToPagedList(pageNumber, 56); // will only contain 25 products max because of the pageSize
             }
             else if (id == "Name_A-Z")
             {
                 products = from a in _context.Ao_ST
                            orderby a.Name_SP ascending
                            select a;
-                onePageOfProducts = products.ToPagedList(pageNumber, 86); // will only contain 25 products max because of the pageSize
+                onePageOfProducts = products.ToPagedList(pageNumber, 56); // will only contain 25 products max because of the pageSize
             }
             else if (id == "Name_Z-A")
             {
                 products = from a in _context.Ao_ST
                            orderby a.Name_SP descending
                            select a;
-                onePageOfProducts = products.ToPagedList(pageNumber, 86); // will only contain 25 products max because of the pageSize
+                onePageOfProducts = products.ToPagedList(pageNumber, 56); // will only contain 25 products max because of the pageSize
             }
             else if (id == "mn")
             {
                 products = from a in _context.Ao_ST
                            orderby a.ngay_add ascending
                            select a;
-                onePageOfProducts = products.ToPagedList(pageNumber, 86); // will only contain 25 products max because of the pageSize
+                onePageOfProducts = products.ToPagedList(pageNumber, 56); // will only contain 25 products max because of the pageSize
             }
             else
-                onePageOfProducts = products.ToPagedList(pageNumber, 80); // will only contain 25 products max because of the pageSizee
+                onePageOfProducts = products.ToPagedList(pageNumber, 50); // will only contain 25 products max because of the pageSizee
             ViewBag.OnePageOfProducts = onePageOfProducts;
             return View();
         }
@@ -511,44 +512,44 @@ namespace Web_First.Controllers
             var products = from a in _context.Ao_Thun
                            select a;//returns IQueryable<Product> representing an unknown number of products. a thousand maybe?
             var pageNumber = page ?? 1; // if no page was specified in the querystring, default to the first page (1)
-            var onePageOfProducts = products.ToPagedList(pageNumber, 80);
+            var onePageOfProducts = products.ToPagedList(pageNumber, 50);
             if (id == "Price_ascending")
             {
                 products = from a in _context.Ao_Thun
                            orderby a.Price_SP
                            select a;
-                onePageOfProducts = products.ToPagedList(pageNumber, 86); // will only contain 25 products max because of the pageSize
+                onePageOfProducts = products.ToPagedList(pageNumber, 56); // will only contain 25 products max because of the pageSize
             }
             else if (id == "Price_descending")
             {
                 products = from a in _context.Ao_Thun
                            orderby a.Price_SP descending
                            select a;
-                onePageOfProducts = products.ToPagedList(pageNumber, 86); // will only contain 25 products max because of the pageSize
+                onePageOfProducts = products.ToPagedList(pageNumber, 56); // will only contain 25 products max because of the pageSize
             }
             else if (id == "Name_A-Z")
             {
                 products = from a in _context.Ao_Thun
                            orderby a.Name_SP ascending
                            select a;
-                onePageOfProducts = products.ToPagedList(pageNumber, 86); // will only contain 25 products max because of the pageSize
+                onePageOfProducts = products.ToPagedList(pageNumber, 56); // will only contain 25 products max because of the pageSize
             }
             else if (id == "Name_Z-A")
             {
                 products = from a in _context.Ao_Thun
                            orderby a.Name_SP descending
                            select a;
-                onePageOfProducts = products.ToPagedList(pageNumber, 86); // will only contain 25 products max because of the pageSize
+                onePageOfProducts = products.ToPagedList(pageNumber, 56); // will only contain 25 products max because of the pageSize
             }
             else if (id == "mn")
             {
                 products = from a in _context.Ao_Thun
                            orderby a.ngay_add ascending
                            select a;
-                onePageOfProducts = products.ToPagedList(pageNumber, 86); // will only contain 25 products max because of the pageSize
+                onePageOfProducts = products.ToPagedList(pageNumber, 56); // will only contain 25 products max because of the pageSize
             }
             else
-                onePageOfProducts = products.ToPagedList(pageNumber, 80); // will only contain 25 products max because of the pageSizee
+                onePageOfProducts = products.ToPagedList(pageNumber, 50); // will only contain 25 products max because of the pageSizee
             ViewBag.OnePageOfProducts = onePageOfProducts;
             return View();
         }
@@ -559,44 +560,44 @@ namespace Web_First.Controllers
             var products = from a in _context.Ao_HD
                            select a;//returns IQueryable<Product> representing an unknown number of products. a thousand maybe?
             var pageNumber = page ?? 1; // if no page was specified in the querystring, default to the first page (1)
-            var onePageOfProducts = products.ToPagedList(pageNumber, 80);
+            var onePageOfProducts = products.ToPagedList(pageNumber, 50);
             if (id == "Price_ascending")
             {
                 products = from a in _context.Ao_HD
                            orderby a.Price_SP
                            select a;
-                onePageOfProducts = products.ToPagedList(pageNumber, 86); // will only contain 25 products max because of the pageSize
+                onePageOfProducts = products.ToPagedList(pageNumber, 56); // will only contain 25 products max because of the pageSize
             }
             else if (id == "Price_descending")
             {
                 products = from a in _context.Ao_HD
                            orderby a.Price_SP descending
                            select a;
-                onePageOfProducts = products.ToPagedList(pageNumber, 86); // will only contain 25 products max because of the pageSize
+                onePageOfProducts = products.ToPagedList(pageNumber, 56); // will only contain 25 products max because of the pageSize
             }
             else if (id == "Name_A-Z")
             {
                 products = from a in _context.Ao_HD
                            orderby a.Name_SP ascending
                            select a;
-                onePageOfProducts = products.ToPagedList(pageNumber, 86); // will only contain 25 products max because of the pageSize
+                onePageOfProducts = products.ToPagedList(pageNumber, 56); // will only contain 25 products max because of the pageSize
             }
             else if (id == "Name_Z-A")
             {
                 products = from a in _context.Ao_HD
                            orderby a.Name_SP descending
                            select a;
-                onePageOfProducts = products.ToPagedList(pageNumber, 86); // will only contain 25 products max because of the pageSize
+                onePageOfProducts = products.ToPagedList(pageNumber, 56); // will only contain 25 products max because of the pageSize
             }
             else if (id == "mn")
             {
                 products = from a in _context.Ao_HD
                            orderby a.ngay_add ascending
                            select a;
-                onePageOfProducts = products.ToPagedList(pageNumber, 86); // will only contain 25 products max because of the pageSize
+                onePageOfProducts = products.ToPagedList(pageNumber, 56); // will only contain 25 products max because of the pageSize
             }
             else
-                onePageOfProducts = products.ToPagedList(pageNumber, 80); // will only contain 25 products max because of the pageSizee
+                onePageOfProducts = products.ToPagedList(pageNumber, 50); // will only contain 25 products max because of the pageSizee
             ViewBag.OnePageOfProducts = onePageOfProducts;
             return View();
         }
@@ -607,44 +608,44 @@ namespace Web_First.Controllers
             var products = from a in _context.Ao_TT
                            select a;//returns IQueryable<Product> representing an unknown number of products. a thousand maybe?
             var pageNumber = page ?? 1; // if no page was specified in the querystring, default to the first page (1)
-            var onePageOfProducts = products.ToPagedList(pageNumber, 80);
+            var onePageOfProducts = products.ToPagedList(pageNumber, 50);
             if (id == "Price_ascending")
             {
                 products = from a in _context.Ao_TT
                            orderby a.Price_SP
                            select a;
-                onePageOfProducts = products.ToPagedList(pageNumber, 86); // will only contain 25 products max because of the pageSize
+                onePageOfProducts = products.ToPagedList(pageNumber, 56); // will only contain 25 products max because of the pageSize
             }
             else if (id == "Price_descending")
             {
                 products = from a in _context.Ao_TT
                            orderby a.Price_SP descending
                            select a;
-                onePageOfProducts = products.ToPagedList(pageNumber, 86); // will only contain 25 products max because of the pageSize
+                onePageOfProducts = products.ToPagedList(pageNumber, 56); // will only contain 25 products max because of the pageSize
             }
             else if (id == "Name_A-Z")
             {
                 products = from a in _context.Ao_TT
                            orderby a.Name_SP ascending
                            select a;
-                onePageOfProducts = products.ToPagedList(pageNumber, 86); // will only contain 25 products max because of the pageSize
+                onePageOfProducts = products.ToPagedList(pageNumber, 56); // will only contain 25 products max because of the pageSize
             }
             else if (id == "Name_Z-A")
             {
                 products = from a in _context.Ao_TT
                            orderby a.Name_SP descending
                            select a;
-                onePageOfProducts = products.ToPagedList(pageNumber, 86); // will only contain 25 products max because of the pageSize
+                onePageOfProducts = products.ToPagedList(pageNumber, 56); // will only contain 25 products max because of the pageSize
             }
             else if (id == "mn")
             {
                 products = from a in _context.Ao_TT
                            orderby a.ngay_add ascending
                            select a;
-                onePageOfProducts = products.ToPagedList(pageNumber, 86); // will only contain 25 products max because of the pageSize
+                onePageOfProducts = products.ToPagedList(pageNumber, 56); // will only contain 25 products max because of the pageSize
             }
             else
-                onePageOfProducts = products.ToPagedList(pageNumber, 80); // will only contain 25 products max because of the pageSizee
+                onePageOfProducts = products.ToPagedList(pageNumber, 50); // will only contain 25 products max because of the pageSizee
             ViewBag.OnePageOfProducts = onePageOfProducts;
             return View();
         }
@@ -655,44 +656,44 @@ namespace Web_First.Controllers
             var products = from a in _context.BL_T
                            select a;//returns IQueryable<Product> representing an unknown number of products. a thousand maybe?
             var pageNumber = page ?? 1; // if no page was specified in the querystring, default to the first page (1)
-            var onePageOfProducts = products.ToPagedList(pageNumber, 80);
+            var onePageOfProducts = products.ToPagedList(pageNumber, 50);
             if (id == "Price_ascending")
             {
                 products = from a in _context.BL_T
                            orderby a.Price_SP
                            select a;
-                onePageOfProducts = products.ToPagedList(pageNumber, 86); // will only contain 25 products max because of the pageSize
+                onePageOfProducts = products.ToPagedList(pageNumber, 56); // will only contain 25 products max because of the pageSize
             }
             else if (id == "Price_descending")
             {
                 products = from a in _context.BL_T
                            orderby a.Price_SP descending
                            select a;
-                onePageOfProducts = products.ToPagedList(pageNumber, 86); // will only contain 25 products max because of the pageSize
+                onePageOfProducts = products.ToPagedList(pageNumber, 56); // will only contain 25 products max because of the pageSize
             }
             else if (id == "Name_A-Z")
             {
                 products = from a in _context.BL_T
                            orderby a.Name_SP ascending
                            select a;
-                onePageOfProducts = products.ToPagedList(pageNumber, 86); // will only contain 25 products max because of the pageSize
+                onePageOfProducts = products.ToPagedList(pageNumber, 56); // will only contain 25 products max because of the pageSize
             }
             else if (id == "Name_Z-A")
             {
                 products = from a in _context.BL_T
                            orderby a.Name_SP descending
                            select a;
-                onePageOfProducts = products.ToPagedList(pageNumber, 86); // will only contain 25 products max because of the pageSize
+                onePageOfProducts = products.ToPagedList(pageNumber, 56); // will only contain 25 products max because of the pageSize
             }
             else if (id == "mn")
             {
                 products = from a in _context.BL_T
                            orderby a.ngay_add ascending
                            select a;
-                onePageOfProducts = products.ToPagedList(pageNumber, 86); // will only contain 25 products max because of the pageSize
+                onePageOfProducts = products.ToPagedList(pageNumber, 56); // will only contain 25 products max because of the pageSize
             }
             else
-                onePageOfProducts = products.ToPagedList(pageNumber, 80); // will only contain 25 products max because of the pageSizee
+                onePageOfProducts = products.ToPagedList(pageNumber, 50); // will only contain 25 products max because of the pageSizee
             ViewBag.OnePageOfProducts = onePageOfProducts;
             return View();
         }
@@ -703,44 +704,44 @@ namespace Web_First.Controllers
             var products = from a in _context.Giay_Dep
                            select a;//returns IQueryable<Product> representing an unknown number of products. a thousand maybe?
             var pageNumber = page ?? 1; // if no page was specified in the querystring, default to the first page (1)
-            var onePageOfProducts = products.ToPagedList(pageNumber, 80);
+            var onePageOfProducts = products.ToPagedList(pageNumber, 50);
             if (id == "Price_ascending")
             {
                 products = from a in _context.Giay_Dep
                            orderby a.Price_SP
                            select a;
-                onePageOfProducts = products.ToPagedList(pageNumber, 86); // will only contain 25 products max because of the pageSize
+                onePageOfProducts = products.ToPagedList(pageNumber, 56); // will only contain 25 products max because of the pageSize
             }
             else if (id == "Price_descending")
             {
                 products = from a in _context.Giay_Dep
                            orderby a.Price_SP descending
                            select a;
-                onePageOfProducts = products.ToPagedList(pageNumber, 86); // will only contain 25 products max because of the pageSize
+                onePageOfProducts = products.ToPagedList(pageNumber, 56); // will only contain 25 products max because of the pageSize
             }
             else if (id == "Name_A-Z")
             {
                 products = from a in _context.Giay_Dep
                            orderby a.Name_SP ascending
                            select a;
-                onePageOfProducts = products.ToPagedList(pageNumber, 86); // will only contain 25 products max because of the pageSize
+                onePageOfProducts = products.ToPagedList(pageNumber, 56); // will only contain 25 products max because of the pageSize
             }
             else if (id == "Name_Z-A")
             {
                 products = from a in _context.Giay_Dep
                            orderby a.Name_SP descending
                            select a;
-                onePageOfProducts = products.ToPagedList(pageNumber, 86); // will only contain 25 products max because of the pageSize
+                onePageOfProducts = products.ToPagedList(pageNumber, 56); // will only contain 25 products max because of the pageSize
             }
             else if (id == "mn")
             {
                 products = from a in _context.Giay_Dep
                            orderby a.ngay_add ascending
                            select a;
-                onePageOfProducts = products.ToPagedList(pageNumber, 86); // will only contain 25 products max because of the pageSize
+                onePageOfProducts = products.ToPagedList(pageNumber, 56); // will only contain 25 products max because of the pageSize
             }
             else
-                onePageOfProducts = products.ToPagedList(pageNumber, 80); // will only contain 25 products max because of the pageSizee
+                onePageOfProducts = products.ToPagedList(pageNumber, 50); // will only contain 25 products max because of the pageSizee
             ViewBag.OnePageOfProducts = onePageOfProducts;
             return View();
         }
@@ -751,44 +752,44 @@ namespace Web_First.Controllers
             var products = from a in _context.Non_Vo
                            select a;//returns IQueryable<Product> representing an unknown number of products. a thousand maybe?
             var pageNumber = page ?? 1; // if no page was specified in the querystring, default to the first page (1)
-            var onePageOfProducts = products.ToPagedList(pageNumber, 80);
+            var onePageOfProducts = products.ToPagedList(pageNumber, 50);
             if (id == "Price_ascending")
             {
                 products = from a in _context.Non_Vo
                            orderby a.Price_SP
                            select a;
-                onePageOfProducts = products.ToPagedList(pageNumber, 86); // will only contain 25 products max because of the pageSize
+                onePageOfProducts = products.ToPagedList(pageNumber, 56); // will only contain 25 products max because of the pageSize
             }
             else if (id == "Price_descending")
             {
                 products = from a in _context.Non_Vo
                            orderby a.Price_SP descending
                            select a;
-                onePageOfProducts = products.ToPagedList(pageNumber, 86); // will only contain 25 products max because of the pageSize
+                onePageOfProducts = products.ToPagedList(pageNumber, 56); // will only contain 25 products max because of the pageSize
             }
             else if (id == "Name_A-Z")
             {
                 products = from a in _context.Non_Vo
                            orderby a.Name_SP ascending
                            select a;
-                onePageOfProducts = products.ToPagedList(pageNumber, 86); // will only contain 25 products max because of the pageSize
+                onePageOfProducts = products.ToPagedList(pageNumber, 56); // will only contain 25 products max because of the pageSize
             }
             else if (id == "Name_Z-A")
             {
                 products = from a in _context.Non_Vo
                            orderby a.Name_SP descending
                            select a;
-                onePageOfProducts = products.ToPagedList(pageNumber, 86); // will only contain 25 products max because of the pageSize
+                onePageOfProducts = products.ToPagedList(pageNumber, 56); // will only contain 25 products max because of the pageSize
             }
             else if (id == "mn")
             {
                 products = from a in _context.Non_Vo
                            orderby a.ngay_add ascending
                            select a;
-                onePageOfProducts = products.ToPagedList(pageNumber, 86); // will only contain 25 products max because of the pageSize
+                onePageOfProducts = products.ToPagedList(pageNumber, 56); // will only contain 25 products max because of the pageSize
             }
             else
-                onePageOfProducts = products.ToPagedList(pageNumber, 80); // will only contain 25 products max because of the pageSizee
+                onePageOfProducts = products.ToPagedList(pageNumber, 50); // will only contain 25 products max because of the pageSizee
             ViewBag.OnePageOfProducts = onePageOfProducts;
             return View();
         }
@@ -799,44 +800,44 @@ namespace Web_First.Controllers
             var products = from a in _context.Quan_Jeans
                            select a;//returns IQueryable<Product> representing an unknown number of products. a thousand maybe?
             var pageNumber = page ?? 1; // if no page was specified in the querystring, default to the first page (1)
-            var onePageOfProducts = products.ToPagedList(pageNumber, 80);
+            var onePageOfProducts = products.ToPagedList(pageNumber, 50);
             if (id == "Price_ascending")
             {
                 products = from a in _context.Quan_Jeans
                            orderby a.Price_SP
                            select a;
-                onePageOfProducts = products.ToPagedList(pageNumber, 86); // will only contain 25 products max because of the pageSize
+                onePageOfProducts = products.ToPagedList(pageNumber, 56); // will only contain 25 products max because of the pageSize
             }
             else if (id == "Price_descending")
             {
                 products = from a in _context.Quan_Jeans
                            orderby a.Price_SP descending
                            select a;
-                onePageOfProducts = products.ToPagedList(pageNumber, 86); // will only contain 25 products max because of the pageSize
+                onePageOfProducts = products.ToPagedList(pageNumber, 56); // will only contain 25 products max because of the pageSize
             }
             else if (id == "Name_A-Z")
             {
                 products = from a in _context.Quan_Jeans
                            orderby a.Name_SP ascending
                            select a;
-                onePageOfProducts = products.ToPagedList(pageNumber, 86); // will only contain 25 products max because of the pageSize
+                onePageOfProducts = products.ToPagedList(pageNumber, 56); // will only contain 25 products max because of the pageSize
             }
             else if (id == "Name_Z-A")
             {
                 products = from a in _context.Quan_Jeans
                            orderby a.Name_SP descending
                            select a;
-                onePageOfProducts = products.ToPagedList(pageNumber, 86); // will only contain 25 products max because of the pageSize
+                onePageOfProducts = products.ToPagedList(pageNumber, 56); // will only contain 25 products max because of the pageSize
             }
             else if (id == "mn")
             {
                 products = from a in _context.Quan_Jeans
                            orderby a.ngay_add ascending
                            select a;
-                onePageOfProducts = products.ToPagedList(pageNumber, 86); // will only contain 25 products max because of the pageSize
+                onePageOfProducts = products.ToPagedList(pageNumber, 56); // will only contain 25 products max because of the pageSize
             }
             else
-                onePageOfProducts = products.ToPagedList(pageNumber, 80); // will only contain 25 products max because of the pageSizee
+                onePageOfProducts = products.ToPagedList(pageNumber, 50); // will only contain 25 products max because of the pageSizee
             ViewBag.OnePageOfProducts = onePageOfProducts;
             return View();
         }
@@ -847,44 +848,44 @@ namespace Web_First.Controllers
             var products = from a in _context.Quan_JJ
                            select a;//returns IQueryable<Product> representing an unknown number of products. a thousand maybe?
             var pageNumber = page ?? 1; // if no page was specified in the querystring, default to the first page (1)
-            var onePageOfProducts = products.ToPagedList(pageNumber, 80);
+            var onePageOfProducts = products.ToPagedList(pageNumber, 50);
             if (id == "Price_ascending")
             {
                 products = from a in _context.Quan_JJ
                            orderby a.Price_SP
                            select a;
-                onePageOfProducts = products.ToPagedList(pageNumber, 86); // will only contain 25 products max because of the pageSize
+                onePageOfProducts = products.ToPagedList(pageNumber, 56); // will only contain 25 products max because of the pageSize
             }
             else if (id == "Price_descending")
             {
                 products = from a in _context.Quan_JJ
                            orderby a.Price_SP descending
                            select a;
-                onePageOfProducts = products.ToPagedList(pageNumber, 86); // will only contain 25 products max because of the pageSize
+                onePageOfProducts = products.ToPagedList(pageNumber, 56); // will only contain 25 products max because of the pageSize
             }
             else if (id == "Name_A-Z")
             {
                 products = from a in _context.Quan_JJ
                            orderby a.Name_SP ascending
                            select a;
-                onePageOfProducts = products.ToPagedList(pageNumber, 86); // will only contain 25 products max because of the pageSize
+                onePageOfProducts = products.ToPagedList(pageNumber, 56); // will only contain 25 products max because of the pageSize
             }
             else if (id == "Name_Z-A")
             {
                 products = from a in _context.Quan_JJ
                            orderby a.Name_SP descending
                            select a;
-                onePageOfProducts = products.ToPagedList(pageNumber, 86); // will only contain 25 products max because of the pageSize
+                onePageOfProducts = products.ToPagedList(pageNumber, 56); // will only contain 25 products max because of the pageSize
             }
             else if (id == "mn")
             {
                 products = from a in _context.Quan_JJ
                            orderby a.ngay_add ascending
                            select a;
-                onePageOfProducts = products.ToPagedList(pageNumber, 86); // will only contain 25 products max because of the pageSize
+                onePageOfProducts = products.ToPagedList(pageNumber, 56); // will only contain 25 products max because of the pageSize
             }
             else
-                onePageOfProducts = products.ToPagedList(pageNumber, 80); // will only contain 25 products max because of the pageSizee
+                onePageOfProducts = products.ToPagedList(pageNumber, 50); // will only contain 25 products max because of the pageSizee
             ViewBag.OnePageOfProducts = onePageOfProducts;
             return View();
         }
@@ -895,44 +896,44 @@ namespace Web_First.Controllers
             var products = from a in _context.Quan_Kaki
                            select a;//returns IQueryable<Product> representing an unknown number of products. a thousand maybe?
             var pageNumber = page ?? 1; // if no page was specified in the querystring, default to the first page (1)
-            var onePageOfProducts = products.ToPagedList(pageNumber, 80);
+            var onePageOfProducts = products.ToPagedList(pageNumber, 50);
             if (id == "Price_ascending")
             {
                 products = from a in _context.Quan_Kaki
                            orderby a.Price_SP
                            select a;
-                onePageOfProducts = products.ToPagedList(pageNumber, 86); // will only contain 25 products max because of the pageSize
+                onePageOfProducts = products.ToPagedList(pageNumber, 56); // will only contain 25 products max because of the pageSize
             }
             else if (id == "Price_descending")
             {
                 products = from a in _context.Quan_Kaki
                            orderby a.Price_SP descending
                            select a;
-                onePageOfProducts = products.ToPagedList(pageNumber, 86); // will only contain 25 products max because of the pageSize
+                onePageOfProducts = products.ToPagedList(pageNumber, 56); // will only contain 25 products max because of the pageSize
             }
             else if (id == "Name_A-Z")
             {
                 products = from a in _context.Quan_Kaki
                            orderby a.Name_SP ascending
                            select a;
-                onePageOfProducts = products.ToPagedList(pageNumber, 86); // will only contain 25 products max because of the pageSize
+                onePageOfProducts = products.ToPagedList(pageNumber, 56); // will only contain 25 products max because of the pageSize
             }
             else if (id == "Name_Z-A")
             {
                 products = from a in _context.Quan_Kaki
                            orderby a.Name_SP descending
                            select a;
-                onePageOfProducts = products.ToPagedList(pageNumber, 86); // will only contain 25 products max because of the pageSize
+                onePageOfProducts = products.ToPagedList(pageNumber, 56); // will only contain 25 products max because of the pageSize
             }
             else if (id == "mn")
             {
                 products = from a in _context.Quan_Kaki
                            orderby a.ngay_add ascending
                            select a;
-                onePageOfProducts = products.ToPagedList(pageNumber, 86); // will only contain 25 products max because of the pageSize
+                onePageOfProducts = products.ToPagedList(pageNumber, 56); // will only contain 25 products max because of the pageSize
             }
             else
-                onePageOfProducts = products.ToPagedList(pageNumber, 80); // will only contain 25 products max because of the pageSizee
+                onePageOfProducts = products.ToPagedList(pageNumber, 50); // will only contain 25 products max because of the pageSizee
             ViewBag.OnePageOfProducts = onePageOfProducts;
             return View();
         }
@@ -943,44 +944,44 @@ namespace Web_First.Controllers
             var products = from a in _context.Quan_Short
                            select a;//returns IQueryable<Product> representing an unknown number of products. a thousand maybe?
             var pageNumber = page ?? 1; // if no page was specified in the querystring, default to the first page (1)
-            var onePageOfProducts = products.ToPagedList(pageNumber, 80);
+            var onePageOfProducts = products.ToPagedList(pageNumber, 50);
             if (id == "Price_ascending")
             {
                 products = from a in _context.Quan_Short
                            orderby a.Price_SP
                            select a;
-                onePageOfProducts = products.ToPagedList(pageNumber, 86); // will only contain 25 products max because of the pageSize
+                onePageOfProducts = products.ToPagedList(pageNumber, 56); // will only contain 25 products max because of the pageSize
             }
             else if (id == "Price_descending")
             {
                 products = from a in _context.Quan_Short
                            orderby a.Price_SP descending
                            select a;
-                onePageOfProducts = products.ToPagedList(pageNumber, 86); // will only contain 25 products max because of the pageSize
+                onePageOfProducts = products.ToPagedList(pageNumber, 56); // will only contain 25 products max because of the pageSize
             }
             else if (id == "Name_A-Z")
             {
                 products = from a in _context.Quan_Short
                            orderby a.Name_SP ascending
                            select a;
-                onePageOfProducts = products.ToPagedList(pageNumber, 86); // will only contain 25 products max because of the pageSize
+                onePageOfProducts = products.ToPagedList(pageNumber, 56); // will only contain 25 products max because of the pageSize
             }
             else if (id == "Name_Z-A")
             {
                 products = from a in _context.Quan_Short
                            orderby a.Name_SP descending
                            select a;
-                onePageOfProducts = products.ToPagedList(pageNumber, 86); // will only contain 25 products max because of the pageSize
+                onePageOfProducts = products.ToPagedList(pageNumber, 56); // will only contain 25 products max because of the pageSize
             }
             else if (id == "mn")
             {
                 products = from a in _context.Quan_Short
                            orderby a.ngay_add ascending
                            select a;
-                onePageOfProducts = products.ToPagedList(pageNumber, 86); // will only contain 25 products max because of the pageSize
+                onePageOfProducts = products.ToPagedList(pageNumber, 56); // will only contain 25 products max because of the pageSize
             }
             else
-                onePageOfProducts = products.ToPagedList(pageNumber, 80); // will only contain 25 products max because of the pageSizee
+                onePageOfProducts = products.ToPagedList(pageNumber, 50); // will only contain 25 products max because of the pageSizee
             ViewBag.OnePageOfProducts = onePageOfProducts;
             return View();
         }
@@ -991,44 +992,44 @@ namespace Web_First.Controllers
             var products = from a in _context.Quan_Tay
                            select a;//returns IQueryable<Product> representing an unknown number of products. a thousand maybe?
             var pageNumber = page ?? 1; // if no page was specified in the querystring, default to the first page (1)
-            var onePageOfProducts = products.ToPagedList(pageNumber, 80);
+            var onePageOfProducts = products.ToPagedList(pageNumber, 50);
             if (id == "Price_ascending")
             {
                 products = from a in _context.Quan_Tay
                            orderby a.Price_SP
                            select a;
-                onePageOfProducts = products.ToPagedList(pageNumber, 86); // will only contain 25 products max because of the pageSize
+                onePageOfProducts = products.ToPagedList(pageNumber, 56); // will only contain 25 products max because of the pageSize
             }
             else if (id == "Price_descending")
             {
                 products = from a in _context.Quan_Tay
                            orderby a.Price_SP descending
                            select a;
-                onePageOfProducts = products.ToPagedList(pageNumber, 86); // will only contain 25 products max because of the pageSize
+                onePageOfProducts = products.ToPagedList(pageNumber, 56); // will only contain 25 products max because of the pageSize
             }
             else if (id == "Name_A-Z")
             {
                 products = from a in _context.Quan_Tay
                            orderby a.Name_SP ascending
                            select a;
-                onePageOfProducts = products.ToPagedList(pageNumber, 86); // will only contain 25 products max because of the pageSize
+                onePageOfProducts = products.ToPagedList(pageNumber, 56); // will only contain 25 products max because of the pageSize
             }
             else if (id == "Name_Z-A")
             {
                 products = from a in _context.Quan_Tay
                            orderby a.Name_SP descending
                            select a;
-                onePageOfProducts = products.ToPagedList(pageNumber, 86); // will only contain 25 products max because of the pageSize
+                onePageOfProducts = products.ToPagedList(pageNumber, 56); // will only contain 25 products max because of the pageSize
             }
             else if (id == "mn")
             {
                 products = from a in _context.Quan_Tay
                            orderby a.ngay_add ascending
                            select a;
-                onePageOfProducts = products.ToPagedList(pageNumber, 86); // will only contain 25 products max because of the pageSize
+                onePageOfProducts = products.ToPagedList(pageNumber, 56); // will only contain 25 products max because of the pageSize
             }
             else
-                onePageOfProducts = products.ToPagedList(pageNumber, 80); // will only contain 25 products max because of the pageSizee
+                onePageOfProducts = products.ToPagedList(pageNumber, 50); // will only contain 25 products max because of the pageSizee
             ViewBag.OnePageOfProducts = onePageOfProducts;
             return View();
         }
@@ -1038,44 +1039,44 @@ namespace Web_First.Controllers
             var products = from a in _context.That_Lung
                            select a;//returns IQueryable<Product> representing an unknown number of products. a thousand maybe?
             var pageNumber = page ?? 1; // if no page was specified in the querystring, default to the first page (1)
-            var onePageOfProducts = products.ToPagedList(pageNumber, 80);
+            var onePageOfProducts = products.ToPagedList(pageNumber, 50);
             if (id == "Price_ascending")
             {
                 products = from a in _context.That_Lung
                            orderby a.Price_SP
                            select a;
-                onePageOfProducts = products.ToPagedList(pageNumber, 86); // will only contain 25 products max because of the pageSize
+                onePageOfProducts = products.ToPagedList(pageNumber, 56); // will only contain 25 products max because of the pageSize
             }
             else if (id == "Price_descending")
             {
                 products = from a in _context.That_Lung
                            orderby a.Price_SP descending
                            select a;
-                onePageOfProducts = products.ToPagedList(pageNumber, 86); // will only contain 25 products max because of the pageSize
+                onePageOfProducts = products.ToPagedList(pageNumber, 56); // will only contain 25 products max because of the pageSize
             }
             else if (id == "Name_A-Z")
             {
                 products = from a in _context.That_Lung
                            orderby a.Name_SP ascending
                            select a;
-                onePageOfProducts = products.ToPagedList(pageNumber, 86); // will only contain 25 products max because of the pageSize
+                onePageOfProducts = products.ToPagedList(pageNumber, 56); // will only contain 25 products max because of the pageSize
             }
             else if (id == "Name_Z-A")
             {
                 products = from a in _context.That_Lung
                            orderby a.Name_SP descending
                            select a;
-                onePageOfProducts = products.ToPagedList(pageNumber, 86); // will only contain 25 products max because of the pageSize
+                onePageOfProducts = products.ToPagedList(pageNumber, 56); // will only contain 25 products max because of the pageSize
             }
             else if (id == "mn")
             {
                 products = from a in _context.That_Lung
                            orderby a.ngay_add ascending
                            select a;
-                onePageOfProducts = products.ToPagedList(pageNumber, 86); // will only contain 25 products max because of the pageSize
+                onePageOfProducts = products.ToPagedList(pageNumber, 56); // will only contain 25 products max because of the pageSize
             }
             else
-                onePageOfProducts = products.ToPagedList(pageNumber, 80); // will only contain 25 products max because of the pageSizee
+                onePageOfProducts = products.ToPagedList(pageNumber, 50); // will only contain 25 products max because of the pageSizee
             ViewBag.OnePageOfProducts = onePageOfProducts;
             return View();
         }

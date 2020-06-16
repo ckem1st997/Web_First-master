@@ -35,9 +35,14 @@ namespace Web_First.Controllers
             if (!String.IsNullOrEmpty(searchString))
             {
                 movies = movies.Where(s => s.Name_SP.Contains(searchString));
+                ViewBag.Result = searchString;
             }
+            else
+            {
+                ViewBag.Result = null;
+            }    
             ViewBag.Seach = searchString;
-            return View(movies.ToPagedList(pageNumber, 60));
+            return View( movies.ToPagedList(pageNumber, 60));
         }
         public async Task<IActionResult> Add_SP()
         {
