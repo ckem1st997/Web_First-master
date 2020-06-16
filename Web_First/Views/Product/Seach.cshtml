@@ -1,0 +1,132 @@
+﻿@model IEnumerable<Web_First.Models.all>
+@using X.PagedList.Mvc.Core;
+@using X.PagedList;
+@using X.PagedList.Mvc.Bootstrap4;
+@{
+    ViewData["Title"] = "Seach";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    <link href="~/css/site.css" rel="stylesheet" />
+}
+
+
+
+<h1>Tìm kiếm</h1>
+<p class="subtxt">Có <span>@(Model.Count()/2) sản phẩm</span> cho tìm kiếm '@ViewBag.Seach'</p>
+
+<div class="collection-page">
+    <div class="wrapper-collection-1">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="clearfix content-product-list">
+                    @{
+                        var id = new List<string>();
+                    }
+                    @foreach (var item in Model)
+                    {
+                        int ss_id(string a)
+                        {
+                            int k = 0;
+                            foreach (var it in id)
+                            {
+                                if (it == a)
+                                    k = 1;
+                            }
+
+                            return k;
+                        }
+                        if (ss_id(item.Id_SP) == 0)
+                        {
+                            int h = 0;
+                            id.Add(item.Id_SP);
+
+                            <div class="col-md-3 col-sm-6 col-xs-6 pro-loop index-loop-mb animation-tran active">
+                                <div class="product-block product-resize site-animation fixheight" data-anmation="1" style="height: 308px;">
+                                    <div class="product-img">
+                                        <a asp-controller="Product" asp-action="Details" asp-route-id="@item.Id_SP" title="@item.Name_SP" class="image-resize" style="height: 234px;">
+                                            @foreach (var item1 in Model)
+                                            {
+
+                                                if (item.Image_SP.Length < 12)
+                                                {
+                                                    <picture>
+                                                        <source media="(max-width: 767px)" src="~/Img/sold_out11.png">
+                                                        <source media="(min-width: 768px)" src="~/Img/sold_out11.png">
+                                                        <img class="img-loop" alt=" QUẦN JOGGER S.DRY " src="~/Img/sold_out11.png">
+                                                    </picture>
+                                                    break;
+                                                }
+                                                else
+                                                {
+
+                                                    if (@item.Id_SP == @item1.Id_SP)
+                                                    {
+                                                        h++;
+                                                        if (@item1.Image_SP.Contains("https"))
+                                                        {
+                                                            <picture>
+                                                                <source media="(max-width: 767px)" srcset="@item1.Image_SP">
+                                                                <source media="(min-width: 768px)" srcset="@item1.Image_SP">
+                                                                <img class="img-loop" alt=" QUẦN JOGGER S.DRY " srcset="@item1.Image_SP">
+                                                            </picture>
+                                                        }
+                                                        else
+                                                        {
+                                                            <picture>
+                                                                <source media="(max-width: 767px)" srcset="/@item1.Image_SP">
+                                                                <source media="(min-width: 768px)" srcset="/@item1.Image_SP">
+                                                                <img class="img-loop" alt=" QUẦN JOGGER S.DRY " srcset="@item1.Image_SP">
+                                                            </picture>
+                                                        }
+                                                    }
+                                                    if (h == 2)
+                                                    {
+                                                        break;
+                                                    }
+                                                }
+                                            }
+                                        </a>
+                                    </div>
+                                    <div class="product-detail clearfix">
+                                        <div class="box-pro-detail">
+                                            <h3 class="pro-name">
+                                                <a href="/products/quan-jogger-s-dry" title="@item.Name_SP">
+                                                    @item.Name_SP
+                                                </a>
+                                            </h3>
+                                            <div class="box-pro-prices">
+                                                @{
+                                                    if (item.Sale > 0)
+                                                    {
+                                                        //  int del = ;
+                                                        <p class="pro-price highlight">
+                                                            <span class="giaban">@((item.Price_SP * (100 - item.Sale)) / 100)₫</span>
+                                                            <span class="pro-price-del"><del class="compare-price">@item.Price_SP₫</del></span>
+                                                        </p>
+                                                    }
+                                                    else
+                                                    {
+                                                        <p class="pro-price ">
+                                                            <span class="giaban">@item.Price_SP₫</span>
+                                                            <span class="pro-price-del"></span>
+                                                        </p>
+                                                    }
+                                                }
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                        }
+
+                    }
+
+                </div>
+            </div>
+        </div>
+        <!-- status elements -->
+    </div>
+</div>
+@Html.PagedListPager((IPagedList)Model, page => Url.Action("Seach", new { page }), X.PagedList.Mvc.Bootstrap4.NetCore.Bootstrap4PagedListRenderOptions.Classic)
+
+

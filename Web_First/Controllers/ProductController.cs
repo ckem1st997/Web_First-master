@@ -25,7 +25,20 @@ namespace Web_First.Controllers
         {
             return View();
         }
+        [HttpGet]
+        public async Task<IActionResult> Seach(string searchString, int? page)
+        {
+            var pageNumber = page ?? 1;
+            var movies = from m in _context.all
+                         select m;
 
+            if (!String.IsNullOrEmpty(searchString))
+            {
+                movies = movies.Where(s => s.Name_SP.Contains(searchString));
+            }
+            ViewBag.Seach = searchString;
+            return View(movies.ToPagedList(pageNumber, 60));
+        }
         public async Task<IActionResult> Add_SP()
         {
 

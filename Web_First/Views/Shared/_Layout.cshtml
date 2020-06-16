@@ -13,6 +13,7 @@
     <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
     <link rel="stylesheet" type="text/css" href="~/fontawesome-pro-5.0.13/css/all.css">
     <!-- Optional theme -->
+    <script src="https://unpkg.com/infinite-scroll@3/dist/infinite-scroll.pkgd.js"></script>
     <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap-theme.min.css">
     <Link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
     <!-- Latest compiled and minified JavaScript -->
@@ -36,195 +37,205 @@
     </div>
     <header class="header">
         <nav class="hidden-sm hidden-xs navbar navbar-expand-sm navbar-toggleable-sm navbar-light border-bottom box-shadow mb-3 header_menu scroll-menu" id="scroll-menu" style="background: #f8f9fa;">
-            <div class="header_menu_text" style="margin:auto">
-                <div class="navbar-collapse collapse d-sm-inline-flex flex-sm-row-reverse header_menu_text-seletion">
-                    <ul class="navbar-nav flex-grow-1 link-selection">
-                        <li class="nav-item link-selection-1">
-                            <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">Trang chủ</a>
-                        </li>
-                        <li class="nav-item link-selection-2">
-                            <a class="nav-link text-dark a_1" asp-area="" asp-controller="Home" asp-action="Index">
-                                Sản Phẩm
-                                <i class="fa fa-arrow-down" aria-hidden="true"></i>
-                            </a>
+            <div class="container-fluid">
+                <div class="row" style="width:inherit">
+                    <div class="header_menu_text col-md-10" style="margin:auto">
+                        <div class="navbar-collapse collapse d-sm-inline-flex flex-sm-row-reverse header_menu_text-seletion">
+                            <ul class="navbar-nav flex-grow-1 link-selection">
+                                <div class="container">
+                                    <div class="row">
+                                        <li class="nav-item link-selection-1">
+                                            <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">Trang chủ</a>
+                                        </li>
+                                        <li class="nav-item link-selection-2">
+                                            <a class="nav-link text-dark a_1" asp-area="" asp-controller="Home" asp-action="Index">
+                                                Sản Phẩm
+                                                <i class="fa fa-arrow-down" aria-hidden="true"></i>
+                                            </a>
 
-                            <ul class="menu_Ao_list">
-                                <li class="menu_Ao_list_h menu_Ao_list--1" id="a">
-                                    <a class="link" asp-controller="San_Pham" asp-action="ao">Áo</a>
-                                    <i class="fa fa-arrow-right" aria-hidden="true"></i>
-                                    <ul class="ao hide_s" id="ao">
-                                        <li class="a_1 hide_s pk_11" id="a_1">
-                                            <a asp-controller="San_Pham" asp-action="ao_sm">Áo Sơ mi</a>
+                                            <ul class="menu_Ao_list">
+                                                <li class="menu_Ao_list_h menu_Ao_list--1" id="a">
+                                                    <a class="link" asp-controller="San_Pham" asp-action="ao">Áo</a>
+                                                    <i class="fa fa-arrow-right" aria-hidden="true"></i>
+                                                    <ul class="ao hide_s" id="ao">
+                                                        <li class="a_1 hide_s pk_11" id="a_1">
+                                                            <a asp-controller="San_Pham" asp-action="ao_sm">Áo Sơ mi</a>
+                                                        </li>
+                                                        <li class="a_1 hide_s" id="a_1">
+                                                            <a asp-controller="San_Pham" asp-action="ao_thun">Áo thun</a>
+                                                        </li>
+                                                        <li class="a_1 hide_s" id="a_1">
+                                                            <a asp-controller="San_Pham" asp-action="ao_polo">Áo polo</a>
+                                                        </li>
+                                                        <li class="a_1 hide_s" id="a_1">
+                                                            <a asp-controller="San_Pham" asp-action="ao_tt">Áo Tank top</a>
+                                                        </li>
+                                                        <li class="a_1 hide_s" id="a_1">
+                                                            <a asp-controller="San_Pham" asp-action="ao_len">Áo Len</a>
+                                                        </li>
+                                                        <li class="a_1 hide_s" id="a_1">
+                                                            <a asp-controller="San_Pham" asp-action="ao_st">Áo Nỉ-Sweatshirt</a>
+                                                        </li>
+                                                        <li class="a_1 hide_s" id="a_1">
+                                                            <a asp-controller="San_Pham" asp-action="ao_khoac">Áo Khoác</a>
+                                                        </li>
+                                                        <li class="hoodie hide_s" id="a_1">
+                                                            <a asp-controller="San_Pham" asp-action="ao_hd">Áo Hoodie</a>
+                                                        </li>
+                                                    </ul>
+                                                </li>
+                                                <li class="menu_Ao_list_h menu_Ao_list--2">
+                                                    <a class="link" asp-controller="San_Pham" asp-action="quan">Quần</a>
+                                                    <i class="fa fa-arrow-right" aria-hidden="true"></i>
+                                                    <ul class="quan hide_s" id="quan">
+                                                        <li class="quan_1 hide_s pk_11">
+                                                            <a asp-controller="San_Pham" asp-action="quan_jeans">Quần jean</a>
+                                                        </li>
+                                                        <li class="quan_1 hide_s">
+                                                            <a asp-controller="San_Pham" asp-action="quan_jj">Quần jogger-dài</a>
+                                                        </li>
+                                                        <li class="quan_1 hide_s">
+                                                            <a asp-controller="San_Pham" asp-action="quan_tay">Quần tây</a>
+                                                        </li>
+                                                        <li class="quan_1 hide_s">
+                                                            <a asp-controller="San_Pham" asp-action="quan_short">Quần short</a>
+                                                        </li>
+                                                        <li class="quan_1 hide_s">
+                                                            <a asp-controller="San_Pham" asp-action="quan_kaki">Quần kaki</a>
+                                                        </li>
+                                                    </ul>
+                                                </li>
+                                                <li class="menu_Ao_list_h menu_Ao_list--3">
+                                                    <a class="link" asp-controller="San_Pham" asp-action="bl_t">Ba lô-Túi xách</a>
+                                                </li>
+                                                <li class="menu_Ao_list_h menu_Ao_list--4">
+                                                    <a asp-controller="San_Pham" asp-action="giay_dep">Giầy-Dép</a>
+                                                </li>
+                                                <li class="menu_Ao_list_h menu_Ao_list--5">
+                                                    <a class="link" asp-controller="San_Pham" asp-action="pk">Phụ kiện khác</a>
+                                                    <i class="fa fa-arrow-right" aria-hidden="true"></i>
+                                                    <ul class="pk hide_s" id="pk">
+                                                        <li class="pk_1 hide_s pk_11">
+                                                            <a asp-controller="San_Pham" asp-action="ao_khoac">Bình nước</a>
+                                                        </li>
+                                                        <li class="pk_1 hide_s">
+                                                            <a asp-controller="San_Pham" asp-action="non_vo">Nón vớ</a>
+                                                        </li>
+                                                        <li class="pk_1 hide_s">
+                                                            <a asp-controller="San_Pham" asp-action="that_lung">Thắt lưng</a>
+                                                        </li>
+                                                    </ul>
+                                                </li>
+                                            </ul>
                                         </li>
-                                        <li class="a_1 hide_s" id="a_1">
-                                            <a asp-controller="San_Pham" asp-action="ao_thun">Áo thun</a>
+                                        <li class="nav-item link-selection-3">
+                                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">New Arrivals</a>
                                         </li>
-                                        <li class="a_1 hide_s" id="a_1">
-                                            <a asp-controller="San_Pham" asp-action="ao_polo">Áo polo</a>
+                                        <li class="nav-item link-selection-4">
+                                            <a class="nav-link text-dark" asp-area="" asp-controller="San_Pham1" asp-action="Index">
+                                                Chính sách - Hướng dẫn
+                                                <i class="fa fa-arrow-down" aria-hidden="true"></i>
+                                            </a>
+
+                                            <ul class="menu_Ao_list">
+                                                <li class="menu_Ao_list_h menu_Ao_list--1 cs_1" id="a">
+                                                    <a>Chính sách đổi trả</a>
+                                                </li>
+                                                <li class="menu_Ao_list_h menu_Ao_list--1" id="a">
+                                                    <a>Hướng dẫn đặt hàng</a>
+                                                </li>
+                                                <li class="menu_Ao_list_h menu_Ao_list--1" id="a">
+                                                    <a>Kiểm tra đơn hàng</a>
+                                                </li>
+                                                <li class="menu_Ao_list_h menu_Ao_list--1" id="a">
+                                                    <a>Hướng dẫn chọn Size</a>
+                                                </li>
+                                            </ul>
                                         </li>
-                                        <li class="a_1 hide_s" id="a_1">
-                                            <a asp-controller="San_Pham" asp-action="ao_tt">Áo Tank top</a>
+                                        <li class="nav-item link-selection-5">
+                                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy" title="Địa chỉ cửa hàng">
+                                                Địa chỉ cửa hàng
+                                                <i class="fa fa-arrow-down" aria-hidden="true"></i>
+                                            </a>
+
+                                            <ul class="menu_Ao_list">
+                                                <li class="menu_Ao_list_h menu_Ao_list--1 ch_1" id="a">
+                                                    <a>Hà Nội</a>
+                                                </li>
+                                                <li class="menu_Ao_list_h menu_Ao_list--1" id="a">
+                                                    <a>Đà Nẵng</a>
+                                                </li>
+                                                <li class="menu_Ao_list_h menu_Ao_list--1" id="a">
+                                                    <a>Hồ Chí Minh</a>
+                                                </li>
+                                            </ul>
                                         </li>
-                                        <li class="a_1 hide_s" id="a_1">
-                                            <a asp-controller="San_Pham" asp-action="ao_len">Áo Len</a>
+                                        <li class="nav-item link-selection-6">
+                                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Kiểm tra đơn hàng</a>
                                         </li>
-                                        <li class="a_1 hide_s" id="a_1">
-                                            <a asp-controller="San_Pham" asp-action="ao_st">Áo Nỉ-Sweatshirt</a>
-                                        </li>
-                                        <li class="a_1 hide_s" id="a_1">
-                                            <a asp-controller="San_Pham" asp-action="ao_khoac">Áo Khoác</a>
-                                        </li>
-                                        <li class="hoodie hide_s" id="a_1">
-                                            <a asp-controller="San_Pham" asp-action="ao_hd">Áo Hoodie</a>
-                                        </li>
-                                    </ul>
-                                </li>
-                                <li class="menu_Ao_list_h menu_Ao_list--2">
-                                    <a class="link" asp-controller="San_Pham" asp-action="quan">Quần</a>
-                                    <i class="fa fa-arrow-right" aria-hidden="true"></i>
-                                    <ul class="quan hide_s" id="quan">
-                                        <li class="quan_1 hide_s pk_11">
-                                            <a asp-controller="San_Pham" asp-action="quan_jeans">Quần jean</a>
-                                        </li>
-                                        <li class="quan_1 hide_s">
-                                            <a asp-controller="San_Pham" asp-action="quan_jj">Quần jogger-dài</a>
-                                        </li>
-                                        <li class="quan_1 hide_s">
-                                            <a asp-controller="San_Pham" asp-action="quan_tay">Quần tây</a>
-                                        </li>
-                                        <li class="quan_1 hide_s">
-                                            <a asp-controller="San_Pham" asp-action="quan_short">Quần short</a>
-                                        </li>
-                                        <li class="quan_1 hide_s">
-                                            <a asp-controller="San_Pham" asp-action="quan_kaki">Quần kaki</a>
-                                        </li>
-                                    </ul>
-                                </li>
-                                <li class="menu_Ao_list_h menu_Ao_list--3">
-                                    <a class="link" asp-controller="San_Pham" asp-action="bl_t">Ba lô-Túi xách</a>
-                                </li>
-                                <li class="menu_Ao_list_h menu_Ao_list--4">
-                                    <a asp-controller="San_Pham" asp-action="giay_dep">Giầy-Dép</a>
-                                </li>
-                                <li class="menu_Ao_list_h menu_Ao_list--5">
-                                    <a class="link" asp-controller="San_Pham" asp-action="pk">Phụ kiện khác</a>
-                                    <i class="fa fa-arrow-right" aria-hidden="true"></i>
-                                    <ul class="pk hide_s" id="pk">
-                                        <li class="pk_1 hide_s pk_11">
-                                            <a asp-controller="San_Pham" asp-action="ao_khoac">Bình nước</a>
-                                        </li>
-                                        <li class="pk_1 hide_s">
-                                            <a asp-controller="San_Pham" asp-action="non_vo">Nón vớ</a>
-                                        </li>
-                                        <li class="pk_1 hide_s">
-                                            <a asp-controller="San_Pham" asp-action="that_lung">Thắt lưng</a>
-                                        </li>
-                                    </ul>
-                                </li>
+                                    </div>
+
+                                </div>
+
+
                             </ul>
-                        </li>
-                        <li class="nav-item link-selection-3">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">New Arrivals</a>
-                        </li>
-                        <li class="nav-item link-selection-4">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="San_Pham1" asp-action="Index">
-                                Chính sách - Hướng dẫn
-                                <i class="fa fa-arrow-down" aria-hidden="true"></i>
-                            </a>
+                        </div>
 
-                            <ul class="menu_Ao_list">
-                                <li class="menu_Ao_list_h menu_Ao_list--1 cs_1" id="a">
-                                    <a>Chính sách đổi trả</a>
-                                </li>
-                                <li class="menu_Ao_list_h menu_Ao_list--1" id="a">
-                                    <a>Hướng dẫn đặt hàng</a>
-                                </li>
-                                <li class="menu_Ao_list_h menu_Ao_list--1" id="a">
-                                    <a>Kiểm tra đơn hàng</a>
-                                </li>
-                                <li class="menu_Ao_list_h menu_Ao_list--1" id="a">
-                                    <a>Hướng dẫn chọn Size</a>
-                                </li>
-                            </ul>
-                        </li>
-                        <li class="nav-item link-selection-5">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy" title="Địa chỉ cửa hàng">
-                                Địa chỉ cửa hàng
-                                <i class="fa fa-arrow-down" aria-hidden="true"></i>
-                            </a>
+                    </div>
+                    @*<partial name="_LoginPartial" />*@
+                    @using Microsoft.AspNetCore.Identity
 
-                            <ul class="menu_Ao_list">
-                                <li class="menu_Ao_list_h menu_Ao_list--1 ch_1" id="a">
-                                    <a>Hà Nội</a>
-                                </li>
-                                <li class="menu_Ao_list_h menu_Ao_list--1" id="a">
-                                    <a>Đà Nẵng</a>
-                                </li>
-                                <li class="menu_Ao_list_h menu_Ao_list--1" id="a">
-                                    <a>Hồ Chí Minh</a>
-                                </li>
-                            </ul>
-                        </li>
-                        <li class="nav-item link-selection-6">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Kiểm tra đơn hàng</a>
-                        </li>
+                    @inject SignInManager<IdentityUser> SignInManager
+                    @inject UserManager<IdentityUser> UserManager
+                    <div class="header-wrap-icon col-md-2" style="margin:auto">
+                        <span class="icon-account" aria-label="Tài khoản" title="Tài khoản">
+                            @if (SignInManager.IsSignedIn(User))
+                            {
+                                <a asp-action="Add_SP" asp-controller="Product" />
+                            }
+                            else
+                            {
+                                <a asp-area="Identity" asp-page="/Account/Login" />
+                            }
 
-                    </ul>
-                </div>
-
-            </div>
-            @*<partial name="_LoginPartial" />*@
-            @using Microsoft.AspNetCore.Identity
-
-            @inject SignInManager<IdentityUser> SignInManager
-            @inject UserManager<IdentityUser> UserManager
-            <div class="header-wrap-icon" style="margin:auto">
-                <span class="icon-account" aria-label="Tài khoản" title="Tài khoản">
-                    @if (SignInManager.IsSignedIn(User))
-                    {
-                        <a asp-action="Add_SP" asp-controller="Product" />
-                    }
-                    else
-                    {
-                        <a asp-area="Identity" asp-page="/Account/Login" />
-                    }
-
-                    <span class="account-menu" aria-hidden="true">
-                        <svg class="svg-account" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="510px" height="510px" viewBox="0 0 510 510" style="enable-background:new 0 0 510 510;" xml:space="preserve">
-                        <g><g id="account-circle">
-                        <path d="M255,0C114.75,0,0,114.75,0,255s114.75,255,255,255s255-114.75,255-255S395.25,0,255,0z M255,76.5
+                            <span class="account-menu" aria-hidden="true">
+                                <svg class="svg-account" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="510px" height="510px" viewBox="0 0 510 510" style="enable-background:new 0 0 510 510;" xml:space="preserve">
+                                <g><g id="account-circle">
+                                <path d="M255,0C114.75,0,0,114.75,0,255s114.75,255,255,255s255-114.75,255-255S395.25,0,255,0z M255,76.5
 												 c43.35,0,76.5,33.15,76.5,76.5s-33.15,76.5-76.5,76.5c-43.35,0-76.5-33.15-76.5-76.5S211.65,76.5,255,76.5z M255,438.6
 												 c-63.75,0-119.85-33.149-153-81.6c0-51,102-79.05,153-79.05S408,306,408,357C374.85,405.45,318.75,438.6,255,438.6z"></path>
 								</g></g>
 						</svg>
-                    </span>
-                    </a>
-                </span>
-                <span id="site-search-handle" class="icon-search" aria-label="Tìm kiếm" title="Tìm kiếm">
-                    <a href="/search">
-                        <span class="search-menu" aria-hidden="true">
-                            <svg version="1.1" class="svg-search" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 24 27" style="enable-background:new 0 0 24 27;" xml:space="preserve">
-                            <path d="M10,2C4.5,2,0,6.5,0,12s4.5,10,10,10s10-4.5,10-10S15.5,2,10,2z M10,19c-3.9,0-7-3.1-7-7s3.1-7,7-7s7,3.1,7,7S13.9,19,10,19z"></path>
-                            <rect x="17" y="17" transform="matrix(0.7071 -0.7071 0.7071 0.7071 -9.2844 19.5856)" width="4" height="8"></rect>
+                            </span>
+                            </a>
+                        </span>
+                        <span id="site-search-handle" class="icon-search" aria-label="Tìm kiếm" title="Tìm kiếm">
+                            <a href="/search">
+                                <span class="search-menu" aria-hidden="true">
+                                    <svg version="1.1" class="svg-search" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 24 27" style="enable-background:new 0 0 24 27;" xml:space="preserve">
+                                    <path d="M10,2C4.5,2,0,6.5,0,12s4.5,10,10,10s10-4.5,10-10S15.5,2,10,2z M10,19c-3.9,0-7-3.1-7-7s3.1-7,7-7s7,3.1,7,7S13.9,19,10,19z"></path>
+                                    <rect x="17" y="17" transform="matrix(0.7071 -0.7071 0.7071 0.7071 -9.2844 19.5856)" width="4" height="8"></rect>
 						</svg>
+                                </span>
+                            </a>
                         </span>
-                    </a>
-                </span>
-                <span id="site-cart-handle" class="icon-cart" aria-label="Open cart" title="Giỏ hàng">
-                    <a>
-                        <span class="cart-menu" aria-hidden="true">
-                            <svg version="1.1" class="svg-cart" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 24 27" style="enable-background:new 0 0 24 27;" xml:space="preserve"> <g> <path d="M0,6v21h24V6H0z M22,25H2V8h20V25z"></path> </g> <g> <path d="M12,2c3,0,3,2.3,3,4h2c0-2.8-1-6-5-6S7,3.2,7,6h2C9,4.3,9,2,12,2z"></path> </g> </svg>
-                            <span class="count-holder"><span class="count">0</span></span>
+                        <span id="site-cart-handle" class="icon-cart" aria-label="Open cart" title="Giỏ hàng">
+                            <a>
+                                <span class="cart-menu" aria-hidden="true">
+                                    <svg version="1.1" class="svg-cart" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 24 27" style="enable-background:new 0 0 24 27;" xml:space="preserve"> <g> <path d="M0,6v21h24V6H0z M22,25H2V8h20V25z"></path> </g> <g> <path d="M12,2c3,0,3,2.3,3,4h2c0-2.8-1-6-5-6S7,3.2,7,6h2C9,4.3,9,2,12,2z"></path> </g> </svg>
+                                    <span class="count-holder"><span class="count">0</span></span>
+                                </span>
+                            </a>
                         </span>
-                    </a>
-                </span>
-                <span id="site-menu-handle" class="hamburger-menu visible-sm visible-xs" aria-hidden="true"><span class="bar"></span></span>
+                        <span id="site-menu-handle" class="hamburger-menu visible-sm visible-xs" aria-hidden="true"><span class="bar"></span></span>
+                    </div>
+                </div>
             </div>
         </nav>
         <div class="wrap-logo visible-lg visible-md" style="height:inherit">
 
-            <a href="https://www.160store.com">
-                <img style="margin:auto" src="//theme.hstatic.net/1000253775/1000571612/14/logo.png?v=67" alt="160STORE" class="img-responsive logoimg">
+            <a>
+                <img style="margin:auto" src="//theme.hstatic.net/1000253775/1000571612/14/logo.png?v=67" alt="" class="img-responsive logoimg">
             </a>
 
         </div>
@@ -238,11 +249,13 @@
                     </a>
 
                 </div>
-                <div class="header-wrap-icon">
+                <div class="header-wrap-icon" style="text-align:center">
                     <span id="site-cart-handle" class="icon-cart visible-sm visible-xs" aria-label="Open cart" title="Giỏ hàng">
                         <a>
                             <span class="cart-menu" aria-hidden="true">
-                                <svg version="1.1" class="svg-cart" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 24 27" style="enable-background:new 0 0 24 27;" xml:space="preserve">
+                                <svg version="1.1" class="svg-cart"
+                                     xmlns="http://www.w3.org/2000/svg"
+                                     xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 24 27" style="enable-background:new 0 0 24 27;" xml:space="preserve">
                                 <g>
                                 <path d="M0,6v21h24V6H0z M22,25H2V8h20V25z"></path>
 							</g>
@@ -250,7 +263,9 @@
                                 <path d="M12,2c3,0,3,2.3,3,4h2c0-2.8-1-6-5-6S7,3.2,7,6h2C9,4.3,9,2,12,2z"></path>
 							</g>
 						</svg>
-                                <span class="count-holder"><span class="count">1</span></span>
+                                <span class="count-holder">
+                                    <span class="count">1</span>
+                                </span>
                             </span>
                         </a>
                     </span>
@@ -262,13 +277,23 @@
     </header>
     <div class="search-bar-mobile">
         <div class="search-box wpo-wrapper-search">
-            <form action="/search" class="searchform searchform-categoris ultimate-search">
+            <form class="searchform searchform-categoris ultimate-search" asp-controller="Product" asp-action="Seach" method="get">
                 <div class="wpo-search-inner">
                     <input type="hidden" name="type" value="product">
-                    <input required="" id="inputSearchAuto-mb" name="q" maxlength="40" autocomplete="off" class="searchinput input-search search-input" type="text" size="20" placeholder="Tìm kiếm sản phẩm...">
+                    <input required="" id="seach"
+                           name="SearchString"
+                           maxlength="40"
+                           autocomplete="off"
+                           class="searchinput input-search search-input"
+                           type="text"
+                           size="20" placeholder="Tìm kiếm sản phẩm...">
                 </div>
                 <button type="submit" class="btn-search btn" id="search-header-btn-mb">
-                    <svg version="1.1" class="svg search" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 24 27" style="enable-background:new 0 0 24 27;" xml:space="preserve"><path d="M10,2C4.5,2,0,6.5,0,12s4.5,10,10,10s10-4.5,10-10S15.5,2,10,2z M10,19c-3.9,0-7-3.1-7-7s3.1-7,7-7s7,3.1,7,7S13.9,19,10,19z"></path><rect x="17" y="17" transform="matrix(0.7071 -0.7071 0.7071 0.7071 -9.2844 19.5856)" width="4" height="8"></rect></svg>
+                    <svg version="1.1" class="svg search" xmlns="http://www.w3.org/2000/svg"
+                         xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 24 27"
+                         style="enable-background:new 0 0 24 27;" xml:space="preserve">
+                    <path d="M10,2C4.5,2,0,6.5,0,12s4.5,10,10,10s10-4.5,10-10S15.5,2,10,2z M10,19c-3.9,0-7-3.1-7-7s3.1-7,7-7s7,3.1,7,7S13.9,19,10,19z"></path>
+                    <rect x="17" y="17" transform="matrix(0.7071 -0.7071 0.7071 0.7071 -9.2844 19.5856)" width="4" height="8"></rect></svg>
                 </button>
             </form>
             <div id="ajaxSearchResults-mb" class="smart-search-wrapper ajaxSearchResults" style="display: none">
@@ -294,19 +319,21 @@
                             <li class="navi1 has-sub level0">
                                 <a href="/collections/all">SẢN PHẨM</a>
                                 <span class="icon-subnav">
-                                <i class="fa fa-angle-down"></i></span>
+                                    <i class="fa fa-angle-down"></i>
+                                </span>
                                 <ul class=" submenu subnav-children">
                                     <li class="navi2 has-sub level1">
                                         <a href="/collections/all">SALE</a>
                                         <span class="icon-subnav">
-                                        <i class="fa fa-angle-down"></i></span>
+                                            <i class="fa fa-angle-down"></i>
+                                        </span>
                                         <ul class="submenu subnav-child">
 
                                             <li class="">
                                                 <a href="/collections/san-pham-moi">SẢN PHẨM MỚI</a>
                                             </li>
 
-                                           <li class="">
+                                            <li class="">
                                                 <a href="/collections/san-pham-ban-chay">SẢN PHẨM BÁN CHẠY</a>
                                             </li>
                                             <li class="">
@@ -681,7 +708,7 @@
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>
     <script src="~/OwlCarousel2-2.3.4/dist/owl.carousel.min.js"></script>
-
+    <script src="/js/infinite-scroll.pkgd.min.js"></script>
 
     @RenderSection("Scripts", required: false)
 </body>

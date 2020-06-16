@@ -3,6 +3,9 @@
 
 // Write your JavaScript code.
 
+//-------------------------------------//
+// init Masonry
+
 
 
 function show_scroll() {
@@ -22,12 +25,11 @@ function show_scroll() {
     c.style.height = "5rem";
     //   alert("haha");
 }
-
 $(document).ready(function () {
     $(window).scroll(function (event) {
         //h_img
         var pos_body = $("html,body").scrollTop();
-        console.log(pos_body);
+       // // console.log(pos_body);
         //  $(".scroll-menu").addClass("co-dinh-menu");
         if (pos_body > 129) {
             $(".scroll-menu").addClass("co-dinh-menu");
@@ -266,7 +268,7 @@ function Show_Cart() {
         data: {},
         dataType: 'json',
         success: function (response) {
-            console.log(response);
+            // console.log(response);
             $("span.count").html(response.sum);
             $("table#cart-view tbody tr").remove();
             var sum = 0;
@@ -275,7 +277,7 @@ function Show_Cart() {
             }
             else {
                 for (var i = 0; i < response.sum; i++) {
-                    //  console.log(response.cart[i].price_SP);
+                    //  // console.log(response.cart[i].price_SP);
                     var stt = response.cart[i].stt;
                     var id_SP = response.cart[i].id_SP;
                     var name_SP = response.cart[i].name_SP;
@@ -284,9 +286,9 @@ function Show_Cart() {
                     var image_sp = response.cart[i].image_sp;
                     var size = response.cart[i].size;
                     var loai_SP = response.cart[i].loai_SP;
-                    console.log(stt);
-                    console.log(image_sp);
-                    console.log(loai_SP);
+                    // console.log(stt);
+                    // console.log(image_sp);
+                    // console.log(loai_SP);
                     var sp = '<tr id=' + stt + ' class="item_2"><td class="img"><a title="' + name_SP + '"><img src=' + image_sp + ' alt="' + name_SP + '"></a></td><td><a class="pro-title-view" title="' + name_SP + '">' + name_SP + '</a> <span class="variant">' + loai_SP + '/' + size + '</span><span class="pro-quantity-view">' + sl + '</span><span class="pro-price-view">' + price_SP + '₫</span><span class="remove_link remove-cart"><a href="javascript:void(0);" onclick="deleteCart(' + i + ')"><i class="fa fa-times"></i></a></span></td></tr>';
                     $("table#cart-view tbody").append(sp);
                     sum = sum + parseInt(response.cart[i].sl) * parseInt(response.cart[i].price_SP);
@@ -307,7 +309,7 @@ function Update_Cart(i, si, l, s, id_sp) {
         data: { id: i, sl: s, size: si, loai: l, idsp: id_sp },
         dataType: 'json',
         success: function (response) {
-            console.log(response);
+            // console.log(response);
         }
 
     };
@@ -322,7 +324,7 @@ function Add_Cart(i, n, p, s, im, si, l) {
         data: { id: i, name: n, price: p, sl: s, image: im, size: si, loai: l },
         dataType: 'json',
         success: function (response) {
-            console.log(response);
+            // console.log(response);
             //if (response.sum == 0) {
 
             //}
@@ -347,11 +349,11 @@ function Test_Cart(i, n, p, s, im, si, l) {
         data: { id: i, size: si, loai: l },
         dataType: 'json',
         success: function (response) {
-            console.log(response);
+            // console.log(response);
 
             if (response.result == true) {
 
-                console.log(response.cart[0].sl);
+                // console.log(response.cart[0].sl);
                 var sl_sum = parseInt(response.cart[0].sl) + parseInt($("#quantity").val());
                 Update_Cart(i, si, l, sl_sum, response.cart[0].stt);
                 Show_Cart();
@@ -375,7 +377,7 @@ function Delete_Cart(i) {
         data: { id: i },
         dataType: 'json',
         success: function (response) {
-            console.log(response);
+            // console.log(response);
 
             if (response.result == true) {
 
@@ -390,14 +392,14 @@ function Delete_Cart(i) {
 
 // delete_cart_table
 function deleteCart(a) {
-    console.log($("table#cart-view tbody tr.item_2:eq(" + a + ")").attr('id'));
+    // console.log($("table#cart-view tbody tr.item_2:eq(" + a + ")").attr('id'));
     // lấy theo vị trí
     var id_sp_delete = parseInt($("table#cart-view tbody tr.item_2:eq(" + a + ")").attr('id'));
     $("table#cart-view tbody tr.item_2")[a].remove();
     var i = 0;
     $("span.remove-cart a").each(function () {
         $(this).attr('onclick', 'deleteCart(' + i + ')');
-        console.log(i);
+        // console.log(i);
         if (i == parseInt($("span.remove-cart a").length) - 1)
             i = 0;
         i++;
@@ -414,7 +416,7 @@ function check_Id(i, l) {
         data: { id: i, loai: l },
         dataType: 'json',
         success: function (response) {
-            console.log(response.cart);
+            // console.log(response.cart);
             if (response.result == true) {
                 $("span.sku-number").html(response.cart);
                 check_sl(response.cart);
@@ -437,7 +439,7 @@ function check_sl(i) {
         data: { id: i },
         dataType: 'json',
         success: function (response) {
-            console.log(response.cart);
+            // console.log(response.cart);
             $("#variant-swatch-1 .select-swap .swatch-element").removeClass("soldout");
             if (response.result == true) {
                 for (var i = 0; i < response.cart.length; i++) {
@@ -466,7 +468,7 @@ function check_size_null(i, s) {
         data: { id: i, id_sp: s },
         dataType: 'json',
         success: function (response) {
-            console.log(response);
+            // console.log(response);
             if (response.result == true) {
                 for (var i = 0; i < response.cart.length; i++) {
                     //soldout
@@ -569,7 +571,7 @@ function check_size_1(id_op, cl, size, sl, ngay, img, ss) {
         data: { id_op: id_op, cl: cl, size: size, sl: sl, ngay: ngay, img: img, ss: ss },
         dataType: 'json',
         success: function (response) {
-            console.log(response);
+            // console.log(response);
             if (response.result == true) {
                 alert("Cập nhật thành công nha !");
                 location.reload();
