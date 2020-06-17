@@ -447,8 +447,12 @@ body {
     transition: all 0.3s;
 }*/
 .menu_Ao_list {
-    transform: translateY(-300px);
+    transform: translateY(-500px);
 }
+.hide_s {
+    transform: translateY(-500px);
+}
+
 .header_menu_text-seletion .nav-item:hover {
     color: #ff6a00;
 }
