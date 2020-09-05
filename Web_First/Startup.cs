@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -10,6 +11,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Web_First.Data;
+using Web_First.TestRole;
 
 namespace Web_First
 {
@@ -33,6 +35,16 @@ namespace Web_First
             services.AddDbContext<Web_FirstContext>(options =>
                     options.UseSqlServer(Configuration.GetConnectionString("AdventureContext")));
             services.AddMvc();
+            services.AddAuthorization(options =>
+            {
+                options.AddPolicy("AtLeast21", policy =>
+                    policy.Requirements.Add(new MinimumAgeRequirement(21)));
+            });
+
+            services.AddSingleton<IAuthorizationHandler, MinimumAgeHandler>();
+            services.AddSingleton<IAuthorizationPolicyProvider, MinimumAgePolicyProvider>();
+            // services.AddSingleton<IAuthorizationPolicyProvider, MinimumAgeAuthorizeAttribute>();
+            //  services.AddSingleton<IAuthorizationPolicyProvider, MinimumAgePolicyProvider>();
 
             //services.AddDbContext<MvcSPContext>(options =>
             //        options.UseSqlServer(Configuration.GetConnectionString("MvcSPContext")));

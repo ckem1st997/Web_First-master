@@ -3,14 +3,18 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using Web_First.Data;
 using Web_First.Models;
+using Web_First.TestRole;
 using X.PagedList;
 
 namespace Web_First.Controllers
 {
+    [MinimumAgePolicyProvider(10)]
+
     public class HomeController : Controller
     {
         private readonly MvcSPContext _context;
@@ -21,6 +25,7 @@ namespace Web_First.Controllers
 
         public IActionResult Index()
         {
+            TempData["StatusMessage"] = "Create book successfully";
             // sale
             var products = (from a in _context.San_Pham_Sale
                            select a).Take(20);

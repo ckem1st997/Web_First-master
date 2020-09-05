@@ -45,6 +45,7 @@ namespace Web_First.Data
         public virtual DbSet<ThongSo_SP> ThongSo_SP { get; set; }
         public DbSet<Web_First.Models.cart_clone> cart_clone { get; set; }
         public DbSet<Web_First.Models.Image> Image { get; set; }
+      
     }
 
 }
